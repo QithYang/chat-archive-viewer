@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>QithYang · 我们的回忆</title>
+<link rel="icon" type="image/png" href="assets/app-logo.png">
+<style>
+/* === Fonts: relative paths, no embed === */
+@font-face { font-family:'AnthropicSans'; src:url('fonts/AnthropicSans-Roman.woff2') format('woff2'); font-weight:normal; font-style:normal; font-display:swap; }
+@font-face { font-family:'AnthropicSans'; src:url('fonts/AnthropicSans-Italic.woff2') format('woff2'); font-weight:normal; font-style:italic; font-display:swap; }
+@font-face { font-family:'AnthropicSerif'; src:url('fonts/AnthropicSerif-Roman.woff2') format('woff2'); font-weight:normal; font-style:normal; font-display:swap; }
+@font-face { font-family:'AnthropicSerif'; src:url('fonts/AnthropicSerif-Italic.woff2') format('woff2'); font-weight:normal; font-style:italic; font-display:swap; }
+@font-face { font-family:'AnthropicMono'; src:url('fonts/AnthropicMono-Roman.woff2') format('woff2'); font-weight:normal; font-style:normal; font-display:swap; }
+@font-face { font-family:'AnthropicMono'; src:url('fonts/AnthropicMono-Italic.woff2') format('woff2'); font-weight:normal; font-style:italic; font-display:swap; }
+
+/* === Tokens === */
+:root {
+  --canvas:        #faf9f5;
+  --surface:       #f0ede5;
+  --surface-2:     #f5f2ec;
+  --white:         #ffffff;
+  --text-1:        #141413;
+  --text-2:        #5a5751;
+  --text-3:        #9b9890;
+  --text-4:        #b8b5ad;
+  --border:        #e8e6dc;
+  --border-light:  #f0ede5;
+  --orange:        #d97757;
+  --orange-soft:   #f5ded3;
+  --orange-bg:     #fef8f5;
+  --blue:          #6a9bcc;
+  --blue-soft:     #d4e4f1;
+  --thinking-bg:   #f5f2ec;
+  --thinking-bd:   #e8e6dc;
+  --thinking-tx:   #9b9890;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  background: var(--canvas);
+  color: var(--text-1);
+  font-family: 'AnthropicSerif', Georgia, 'Noto Serif SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+}
+input, button { font-family: inherit; }
+
+/* === Loading === */
+#loading { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:var(--canvas); z-index:1000; }
+#loading .spin { width:32px; height:32px; border:2px solid var(--border); border-top-color:var(--orange); border-radius:50%; animation:spin 1s linear infinite; }
+#loading .lt { font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-3); letter-spacing:0.5px; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* === Picker === */
+#picker { position:fixed; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:var(--canvas); z-index:999; padding:24px; }
+#picker.show { display:flex; }
+#picker .pic-logo { width:42px; height:42px; margin-bottom:6px; }
+#picker .pt { font-family:'AnthropicSans',sans-serif; font-size:18px; color:var(--text-1); }
+#picker .ph { font-size:13px; color:var(--text-3); font-style:italic; margin-bottom:8px; }
+#picker .drop { border:1.5px dashed var(--border); border-radius:16px; padding:48px 36px; background:var(--white); cursor:pointer; transition:all 0.2s; text-align:center; min-width:340px; }
+#picker .drop:hover, #picker .drop.on { border-color:var(--orange); background:var(--orange-bg); }
+#picker .drop-ic { font-size:28px; margin-bottom:12px; }
+#picker .drop-t { font-family:'AnthropicSans',sans-serif; font-size:13px; color:var(--text-1); margin-bottom:4px; }
+#picker .drop-h { font-size:11px; color:var(--text-3); }
+
+/* === App layout === */
+#app { display:none; height:100vh; grid-template-columns:320px 1fr; }
+#app.show { display:grid; }
+
+/* === Sidebar === */
+#sidebar { display:flex; flex-direction:column; background:var(--surface); border-right:1px solid var(--border); min-width:0; }
+.sb-head { padding:18px 18px 12px; border-bottom:1px solid var(--border); flex:0 0 auto; }
+.sb-title-row { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:3px; }
+.sb-title { font-family:'AnthropicSans',sans-serif; font-size:14px; color:var(--text-1); display:flex; align-items:center; gap:9px; min-width:0; }
+.sb-title img { width:22px; height:22px; flex:0 0 auto; }
+.sb-actions { display:flex; gap:6px; flex:0 0 auto; position:relative; }
+.sb-import { width:26px; height:26px; border:1px solid var(--border); background:var(--white); border-radius:7px; cursor:pointer; font-size:14px; color:var(--text-2); display:flex; align-items:center; justify-content:center; line-height:1; padding:0; transition:all 0.15s; flex:0 0 auto; }
+.sb-import:hover { border-color:var(--orange); color:var(--orange); background:var(--orange-bg); }
+
+/* Settings dropdown */
+.sm-menu { position:absolute; top:100%; right:0; margin-top:8px; background:var(--white); border:1px solid var(--border); border-radius:12px; box-shadow:0 12px 32px rgba(20,20,19,0.12), 0 2px 6px rgba(20,20,19,0.06); min-width:228px; z-index:300; padding:8px 0; display:none; }
+.sm-menu.show { display:block; }
+.sm-h { font-family:'AnthropicSans',sans-serif; font-size:11px; color:var(--text-3); padding:6px 14px 4px; letter-spacing:0.5px; text-transform:uppercase; }
+.sm-stats { padding:2px 14px 10px; font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-2); line-height:1.55; border-bottom:1px solid var(--border-light); margin-bottom:4px; }
+.sm-stats .sm-stat-num { color:var(--orange); font-weight:600; }
+.sm-item { display:flex; align-items:center; gap:8px; width:100%; text-align:left; padding:9px 14px; border:none; background:transparent; cursor:pointer; font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-1); transition:background 0.12s, color 0.12s; }
+.sm-item:hover { background:var(--orange-bg); color:var(--orange); }
+.sm-item .sm-ic { font-size:13px; opacity:0.7; width:16px; text-align:center; }
+.sm-item.danger { color:#c44; }
+.sm-item.danger:hover { background:rgba(196,68,68,0.08); color:#c44; }
+.sm-sep { border:none; border-top:1px solid var(--border-light); margin:4px 0; }
+.sm-note { padding:4px 14px 6px; font-size:10px; color:var(--text-3); font-style:italic; }
+
+/* Display-name settings modal */
+.dn-modal { position:fixed; inset:0; background:rgba(20,20,19,0.4); display:none; align-items:center; justify-content:center; z-index:1500; backdrop-filter:blur(4px); padding:16px; }
+.dn-modal.show { display:flex; }
+.dn-panel { background:var(--white); border:1px solid var(--border); border-radius:14px; box-shadow:0 20px 50px rgba(20,20,19,0.18); width:340px; max-width:100%; overflow:hidden; }
+.dn-title { font-family:'AnthropicSans',sans-serif; font-size:14px; color:var(--text-1); padding:16px 18px 12px; border-bottom:1px solid var(--border-light); letter-spacing:0.3px; }
+.dn-body { padding:16px 18px 8px; display:flex; flex-direction:column; gap:14px; }
+.dn-field { display:flex; flex-direction:column; gap:6px; }
+.dn-lbl { font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-2); }
+.dn-field input { width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:13px; color:var(--text-1); background:var(--white); outline:none; transition:border-color 0.15s; }
+.dn-field input:focus { border-color:var(--orange); }
+.dn-note { font-size:11px; color:var(--text-3); font-style:italic; line-height:1.55; }
+.dn-acts { display:flex; gap:8px; justify-content:flex-end; padding:12px 18px 16px; }
+.dn-btn { font-family:'AnthropicSans',sans-serif; font-size:12px; padding:8px 16px; border:1px solid var(--border); border-radius:8px; background:var(--white); color:var(--text-2); cursor:pointer; transition:all 0.15s; }
+.dn-btn:hover { border-color:var(--orange); color:var(--orange); }
+.dn-btn.primary { background:var(--orange); color:white; border-color:var(--orange); }
+.dn-btn.primary:hover { background:#c66648; }
+
+.sb-sub { font-size:11px; color:var(--text-3); font-style:italic; margin-bottom:12px; padding-left:31px; }
+.sb-tabs-top { display:flex; gap:0; margin-bottom:12px; border-bottom:1px solid var(--border); }
+.sb-tab-top { flex:1; background:none; border:none; padding:8px 0 9px; font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-3); cursor:pointer; letter-spacing:0.4px; position:relative; transition:color 0.15s; }
+.sb-tab-top:hover { color:var(--text-2); }
+.sb-tab-top.on { color:var(--text-1); }
+.sb-tab-top.on::after { content:''; position:absolute; left:50%; bottom:-1px; transform:translateX(-50%); width:24px; height:2px; background:var(--orange); border-radius:2px; }
+.sb-search { position:relative; }
+.sb-search input { width:100%; padding:8px 12px 8px 30px; border:1px solid var(--border); border-radius:10px; background:var(--white); font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-1); outline:none; transition:border-color 0.15s; }
+.sb-search input:focus { border-color:var(--orange); }
+.sb-search::before { content:'⌕'; position:absolute; left:11px; top:50%; transform:translateY(-50%); font-size:14px; opacity:0.45; pointer-events:none; }
+
+#conv-list { flex:1; overflow-y:auto; padding:6px 0; }
+.conv-item { position:relative; padding:13px 18px 12px; cursor:pointer; border-bottom:1px solid var(--border-light); transition:background 0.15s; }
+.conv-item:hover { background:rgba(217,119,87,0.05); }
+.conv-item.active { background:var(--orange-bg); }
+.conv-item.active::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--orange); }
+.conv-title { font-family:'AnthropicSans',sans-serif; font-size:13px; color:var(--text-1); margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-right:26px; line-height:1.4; }
+.conv-meta { font-size:11px; color:var(--text-3); font-family:'AnthropicSans',sans-serif; }
+.conv-del { position:absolute; right:10px; top:50%; transform:translateY(-50%); height:22px; min-width:22px; border:none; background:transparent; color:var(--text-3); cursor:pointer; border-radius:5px; opacity:0; transition:opacity 0.15s; font-size:15px; display:flex; align-items:center; justify-content:center; padding:0 5px; }
+.conv-item:hover .conv-del { opacity:0.7; }
+.conv-del:hover { background:rgba(196,68,68,0.12); color:#c44; opacity:1; }
+.conv-del.confirm { opacity:1; background:#c44; color:white; font-size:10px; padding:0 9px; font-family:'AnthropicSans',sans-serif; white-space:nowrap; }
+.empty-list { padding:30px 20px; text-align:center; color:var(--text-3); font-size:12px; font-style:italic; }
+
+/* === Main === */
+#main { display:flex; flex-direction:column; min-width:0; background:var(--canvas); position:relative; height:100vh; }
+.main-head { padding:14px 24px; border-bottom:1px solid var(--border); background:rgba(250,249,245,0.94); backdrop-filter:blur(20px); display:flex; align-items:center; gap:12px; flex:0 0 auto; z-index:10; }
+.mh-hb { display:none; width:34px; height:34px; border:1px solid var(--border); background:var(--white); border-radius:8px; cursor:pointer; align-items:center; justify-content:center; font-size:15px; color:var(--text-2); }
+.mh-c { flex:1; min-width:0; text-align:center; padding:0 8px; }
+.mh-t { font-family:'AnthropicSans',sans-serif; font-size:15px; color:var(--text-1); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mh-m { font-size:11px; color:var(--text-3); font-family:'AnthropicSans',sans-serif; margin-top:2px; font-style:italic; }
+.mh-acts { display:flex; gap:6px; flex:0 0 auto; }
+.ibtn { width:34px; height:34px; border:1px solid var(--border); background:var(--white); border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--text-2); transition:all 0.15s; }
+.ibtn:hover { border-color:var(--orange); background:var(--orange-bg); }
+.ibtn.on { background:var(--orange-soft); border-color:var(--orange); }
+
+/* === Search bar === */
+.search-bar { display:none; flex-direction:column; padding:12px 24px; border-bottom:1px solid var(--border); background:var(--surface-2); flex:0 0 auto; }
+.search-bar.show { display:flex; }
+.sb-row { display:flex; align-items:center; gap:10px; }
+.sb-tabs { display:flex; gap:4px; flex:0 0 auto; }
+.sb-tab { font-family:'AnthropicSans',sans-serif; font-size:11px; padding:6px 12px; border-radius:14px; border:1px solid var(--border); background:var(--white); color:var(--text-2); cursor:pointer; transition:all 0.15s; }
+.sb-tab.on { background:var(--orange); color:white; border-color:var(--orange); }
+.sb-row > input { flex:1; min-width:0; padding:7px 12px; border:1px solid var(--border); border-radius:8px; background:var(--white); font-size:12px; outline:none; }
+.sb-row > input:focus { border-color:var(--orange); }
+.sb-stats { font-size:11px; color:var(--text-3); font-family:'AnthropicSans',sans-serif; min-width:56px; text-align:center; }
+.sb-nav { display:flex; gap:4px; }
+.sb-nav button { width:26px; height:26px; border:1px solid var(--border); background:var(--white); border-radius:6px; cursor:pointer; font-size:10px; color:var(--text-2); }
+.sb-nav button:hover { background:var(--orange-bg); border-color:var(--orange); }
+.sb-close { width:26px; height:26px; border:1px solid var(--border); background:var(--white); border-radius:6px; cursor:pointer; font-size:14px; color:var(--text-2); display:flex; align-items:center; justify-content:center; line-height:1; }
+.sb-close:hover { border-color:var(--orange); color:var(--orange); }
+.sb-results { max-height:300px; overflow-y:auto; background:var(--white); border:1px solid var(--border); border-radius:8px; display:none; margin-top:10px; }
+.sb-results.show { display:block; }
+.sb-result { padding:11px 14px; border-bottom:1px solid var(--border-light); cursor:pointer; font-size:12px; transition:background 0.15s; }
+.sb-result:last-child { border-bottom:none; }
+.sb-result:hover { background:var(--orange-bg); }
+.sb-result-title { font-family:'AnthropicSans',sans-serif; color:var(--text-1); margin-bottom:4px; font-weight:600; }
+.sb-result-snip { color:var(--text-2); line-height:1.5; }
+.sb-result mark { background:var(--orange-soft); color:var(--orange); padding:0 2px; border-radius:2px; }
+
+/* === Views (chat/fav/timeline) === */
+.msgs-wrap, .fav-view, .tl-view { display:none; flex:1; overflow-y:auto; }
+.msgs-wrap.show, .fav-view.show, .tl-view.show { display:block; }
+.msgs-wrap { padding:0 24px 60px; }
+.fav-view, .tl-view { padding:24px 24px 60px; }
+.tl-view { position:relative; }
+.msgs-in { max-width:760px; margin:0 auto; padding-top:18px; }
+.empty { display:flex; align-items:center; justify-content:center; height:100%; min-height:300px; color:var(--text-3); font-style:italic; font-size:14px; }
+
+.dsep { text-align:center; padding:30px 0 10px; }
+.dsep span { font-family:'AnthropicSans',sans-serif; font-size:11px; color:var(--text-3); letter-spacing:0.8px; text-transform:uppercase; }
+
+/* user message — bubble on right, "你" beside top-right of bubble (matching reference) */
+.msg.user { padding:10px 0; position:relative; }
+.msg.user .msg-row { display:flex; flex-direction:row; justify-content:flex-end; gap:10px; align-items:flex-start; }
+.msg.user .bubble { background:var(--surface); border-radius:20px; padding:14px 20px; max-width:78%; font-size:15px; line-height:1.78; color:var(--text-1); word-break:break-word; order:1; }
+.msg.user .u-name { order:2; font-family:'AnthropicSans',sans-serif; font-size:13px; color:var(--text-2); align-self:flex-start; margin-top:4px; flex-shrink:0; letter-spacing:0.3px; }
+.msg.user .u-time { text-align:right; font-size:11px; color:var(--text-3); font-family:'AnthropicSans',sans-serif; padding:6px 50px 0 0; }
+
+/* assistant message — flat, left-aligned, indented body */
+.msg.ai { padding:20px 0; border-bottom:1px solid var(--border-light); position:relative; }
+.msg.ai:last-of-type { border-bottom:none; }
+.msg.ai .a-head { display:flex; align-items:center; gap:10px; margin-bottom:11px; }
+.msg.ai .a-av { width:26px; height:26px; flex:0 0 auto; object-fit:contain; }
+.msg.ai .a-name { font-family:'AnthropicSans',sans-serif; font-size:13px; color:var(--text-2); letter-spacing:0.2px; }
+.msg.ai .a-time { font-family:'AnthropicSans',sans-serif; font-size:11px; color:var(--text-3); margin-left:2px; }
+.msg.ai .body { padding-left:38px; }
+
+/* shared text */
+.msg-text { font-size:15px; line-height:1.82; color:var(--text-1); word-break:break-word; }
+.msg-text p { margin:0; }
+.msg-text .sp { height:10px; }
+.msg-text strong { font-weight:600; }
+.msg-text em { font-style:italic; }
+.msg-text del { color:var(--text-3); }
+.msg-text code { font-family:'AnthropicMono',monospace; background:var(--surface); border-radius:4px; padding:1px 6px; font-size:13px; color:var(--orange); }
+.msg-text pre { background:var(--surface); border-radius:8px; padding:12px 14px; overflow-x:auto; margin:10px 0; }
+.msg-text pre code { background:transparent; color:var(--text-1); padding:0; font-size:13px; }
+.msg-text blockquote { border-left:2px solid var(--orange); padding-left:14px; margin:10px 0; color:var(--text-2); font-style:italic; font-size:14.5px; }
+.msg-text a { color:var(--blue); text-decoration:underline; text-decoration-color:var(--blue-soft); text-underline-offset:2px; }
+.msg-text a:hover { text-decoration-color:var(--blue); }
+.msg-text mark { background:rgba(217,119,87,0.28); color:inherit; padding:0 2px; border-radius:2px; }
+.msg.user .msg-text code { background:var(--white); }
+
+/* Files / attachments */
+.msg-file { font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-2); background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:7px 11px; display:inline-block; margin:4px 6px 6px 0; }
+.msg.user .msg-file { background:var(--white); }
+
+/* Thinking — pill toggle + left-bar content */
+.thinking { margin-bottom:12px; }
+.th-toggle { display:inline-flex; align-items:center; gap:6px; cursor:pointer; padding:4px 12px; border-radius:16px; background:var(--surface); border:none; font-family:'AnthropicSans',sans-serif; font-size:11px; color:var(--text-3); user-select:none; transition:background 0.15s; }
+.th-toggle:hover { background:#e8e6dc; }
+.th-ico { font-size:9px; width:9px; display:inline-block; text-align:center; }
+.th-content { display:none; background:var(--thinking-bg); border:none; border-radius:20px; padding:14px 20px; margin-top:8px; color:var(--text-3); font-size:13px; line-height:1.65; }
+.th-content.open { display:block; }
+.th-content p { margin:0; }
+.th-content .th-sp { height:6px; }
+.th-content .th-block + .th-block { margin-top:14px; }
+
+/* Favorite button */
+.msg-fav { position:absolute; border:none; background:transparent; cursor:pointer; font-size:17px; color:var(--text-3); opacity:0; transition:opacity 0.15s, color 0.15s, background 0.15s; width:26px; height:26px; border-radius:6px; display:flex; align-items:center; justify-content:center; padding:0; line-height:1; }
+.msg.user .msg-fav { right:50px; top:14px; }
+.msg.ai .msg-fav { right:0; top:18px; }
+.msg:hover .msg-fav { opacity:0.6; }
+.msg-fav:hover { opacity:1 !important; background:var(--orange-bg); color:var(--orange); }
+.msg-fav.on { color:var(--orange); opacity:1; }
+
+/* Fade-in animation */
+@keyframes fi { from { opacity:0; transform:translateY(2px); } to { opacity:1; transform:none; } }
+.msg { animation:fi 0.22s ease both; }
+
+/* End mark */
+.endm { text-align:center; padding:60px 0 30px; display:flex; flex-direction:column; gap:8px; align-items:center; }
+.endm .e1 { font-size:15px; color:var(--text-2); font-family:'AnthropicSerif',serif; letter-spacing:1px; }
+.endm .e2 { font-style:italic; color:var(--text-3); font-size:13px; font-family:'AnthropicSerif',serif; }
+
+/* (bottom nav removed — tabs moved to sidebar top) */
+
+/* === Favorites view === */
+.view-h { font-family:'AnthropicSans',sans-serif; font-size:18px; color:var(--text-1); max-width:760px; margin:0 auto 20px; padding-top:6px; }
+.view-h .vh-sub { font-size:11px; color:var(--text-3); font-style:italic; margin-top:3px; }
+.fav-group { max-width:760px; margin:0 auto 28px; }
+.fav-conv-title { font-family:'AnthropicSans',sans-serif; font-size:13px; color:var(--text-2); padding:0 4px 8px; border-bottom:1px solid var(--border-light); margin-bottom:10px; display:flex; justify-content:space-between; align-items:baseline; }
+.fav-conv-title .fct-cnt { font-size:11px; color:var(--text-3); }
+.fav-item { position:relative; background:var(--white); border:1px solid var(--border-light); border-radius:12px; padding:13px 36px 13px 16px; margin-bottom:8px; cursor:pointer; transition:all 0.15s; font-size:13px; color:var(--text-2); line-height:1.65; }
+.fav-item:hover { border-color:var(--orange); background:var(--orange-bg); transform:translateY(-1px); }
+.fav-item .fav-snip { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.fav-item .fav-meta { font-size:11px; color:var(--text-3); font-family:'AnthropicSans',sans-serif; margin-top:7px; display:flex; gap:8px; align-items:center; }
+.fav-item .fav-meta .who { color:var(--orange); }
+.fav-unfav { position:absolute; right:8px; top:10px; width:24px; height:24px; border:none; background:transparent; color:var(--orange); cursor:pointer; border-radius:6px; font-size:16px; line-height:1; padding:0; opacity:0.8; transition:all 0.15s; display:flex; align-items:center; justify-content:center; }
+.fav-unfav:hover { opacity:1; background:var(--orange-soft); }
+.empty-view { text-align:center; padding:80px 20px; color:var(--text-3); font-style:italic; font-size:14px; }
+.empty-view .ev-h { font-size:13px; color:var(--text-3); margin-top:8px; font-style:normal; opacity:0.7; }
+
+/* Timeline */
+.tl-month { max-width:760px; margin:0 auto 32px; }
+.tl-month-title { font-family:'AnthropicSans',sans-serif; font-size:14px; color:var(--text-2); margin-bottom:14px; padding-bottom:6px; border-bottom:1px solid var(--border-light); }
+.tl-grid { display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:6px; }
+.tl-day-h { font-family:'AnthropicSans',sans-serif; font-size:10px; color:var(--text-3); text-align:center; padding:4px 0 6px; letter-spacing:0.5px; }
+.tl-day { min-width:0; height:88px; background:var(--white); border:1px solid var(--border-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--text-3); font-family:'AnthropicSans',sans-serif; position:relative; cursor:default; }
+.tl-day.empty { background:transparent; border-color:transparent; }
+.tl-day.has { background:var(--orange-bg); border-color:var(--orange-soft); color:var(--text-1); cursor:pointer; transition:all 0.15s; }
+.tl-day.has:hover { background:var(--orange-soft); border-color:var(--orange); transform:scale(1.05); }
+.tl-day.has .dot { position:absolute; bottom:5px; left:50%; transform:translateX(-50%); width:4px; height:4px; background:var(--orange); border-radius:50%; }
+.tl-day.lvl-2 .dot { width:5px; height:5px; }
+.tl-day.lvl-3 .dot { width:6px; height:6px; box-shadow:0 0 0 1.5px rgba(217,119,87,0.25); }
+
+/* Timeline day popover */
+.tl-popover { position:absolute; z-index:50; min-width:240px; max-width:320px; background:var(--white); border:1px solid var(--border); border-radius:12px; box-shadow:0 12px 32px rgba(20,20,19,0.12), 0 2px 6px rgba(20,20,19,0.06); padding:12px 4px 8px; }
+.tl-popover::before { content:''; position:absolute; top:-6px; left:50%; transform:translateX(-50%) rotate(45deg); width:10px; height:10px; background:var(--white); border-left:1px solid var(--border); border-top:1px solid var(--border); }
+.tl-pop-h { font-family:'AnthropicSans',sans-serif; font-size:11px; color:var(--text-3); padding:0 14px 8px; border-bottom:1px solid var(--border-light); margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; }
+.tl-pop-h .tl-pop-close { width:20px; height:20px; border:none; background:transparent; color:var(--text-3); cursor:pointer; font-size:14px; line-height:1; padding:0; border-radius:4px; }
+.tl-pop-h .tl-pop-close:hover { background:var(--surface); color:var(--text-1); }
+.tl-pop-list { max-height:280px; overflow-y:auto; }
+.tl-pop-item { padding:8px 14px; cursor:pointer; font-size:12px; color:var(--text-1); font-family:'AnthropicSans',sans-serif; line-height:1.5; transition:background 0.15s; border-radius:6px; margin:0 4px; }
+.tl-pop-item:hover { background:var(--orange-bg); color:var(--orange); }
+.tl-pop-item .tl-pop-meta { font-size:10px; color:var(--text-3); margin-top:2px; }
+
+/* === Mobile === */
+.sb-overlay { display:none; }
+@media (max-width: 768px) {
+  #app { grid-template-columns:1fr; }
+  #sidebar { position:fixed; left:0; top:0; bottom:0; width:85%; max-width:320px; z-index:200; transform:translateX(-100%); transition:transform 0.28s ease; box-shadow:0 8px 32px rgba(0,0,0,0.12); }
+  #sidebar.open { transform:translateX(0); }
+  .mh-hb { display:flex; }
+  .sb-overlay { display:block; position:fixed; inset:0; background:rgba(20,20,19,0.35); z-index:150; opacity:0; pointer-events:none; transition:opacity 0.28s; }
+  .sb-overlay.show { opacity:1; pointer-events:auto; }
+  .msgs-wrap { padding:0 16px 60px; }
+  .fav-view, .tl-view { padding:18px 16px 60px; }
+  .msg.user .bubble { max-width:88%; }
+  .msg-fav { opacity:0.6 !important; background:var(--white); }
+  .main-head { padding:12px 16px; }
+  .search-bar { padding:10px 16px; }
+  .sb-row { flex-wrap:wrap; }
+  .sb-row > input { order:10; flex:1 1 100%; margin-top:6px; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spin"></div>
+  <div class="lt">载入中…</div>
+</div>
+
+<div id="picker">
+  <img class="pic-logo" src="assets/app-logo.png" alt="">
+  <div class="pt">QithYang</div>
+  <div class="ph">— 我们的回忆收藏 —</div>
+  <div class="drop" id="drop">
+    <div class="drop-ic">📎</div>
+    <div class="drop-t">拖入 conversations.json，或点击选择</div>
+    <div class="drop-h">从 Claude 导出的对话数据</div>
+  </div>
+  <input type="file" id="file-input" accept=".json,application/json" style="display:none">
+</div>
+
+<div id="app">
+  <aside id="sidebar">
+    <div class="sb-head">
+      <div class="sb-title-row">
+        <div class="sb-title"><img src="assets/app-logo.png" alt="">QithYang</div>
+        <div class="sb-actions">
+          <button class="sb-import" id="settings-btn" title="数据管理">⚙</button>
+          <button class="sb-import" id="import-btn" title="导入更多 conversations.json">+</button>
+          <div class="sm-menu" id="sm-menu">
+            <div class="sm-h">数据管理</div>
+            <div class="sm-stats" id="sm-stats">
+              <div><span class="sm-stat-num" id="sm-conv-n">0</span> 个对话 · <span class="sm-stat-num" id="sm-msg-n">0</span> 条消息</div>
+              <div class="sm-note" id="sm-store-note">已自动保存到本地数据库</div>
+            </div>
+            <button class="sm-item" id="sm-export"><span class="sm-ic">⬇</span>导出备份…</button>
+            <button class="sm-item" id="sm-import-backup"><span class="sm-ic">⬆</span>导入备份…</button>
+            <button class="sm-item" id="sm-display-names"><span class="sm-ic">✎</span>显示名设置…</button>
+            <hr class="sm-sep">
+            <button class="sm-item danger" id="sm-clear"><span class="sm-ic">✕</span>清空所有数据</button>
+          </div>
+        </div>
+      </div>
+      <div class="sb-sub">— 我们的回忆收藏 —</div>
+      <div class="sb-tabs-top">
+        <button class="sb-tab-top on" data-view="chat">对话</button>
+        <button class="sb-tab-top" data-view="favorites">收藏</button>
+        <button class="sb-tab-top" data-view="timeline">时间轴</button>
+      </div>
+      <div class="sb-search"><input id="conv-filter" placeholder="搜索对话标题…"></div>
+    </div>
+    <div id="conv-list"></div>
+    <input type="file" id="merge-input" accept=".json,application/json" multiple style="display:none">
+    <input type="file" id="backup-input" accept=".json,application/json" style="display:none">
+  </aside>
+  <div class="sb-overlay" id="sb-overlay"></div>
+  <main id="main">
+    <div class="main-head">
+      <button class="mh-hb" id="hb" aria-label="菜单">☰</button>
+      <div class="mh-c">
+        <div class="mh-t" id="mh-t">QithYang</div>
+        <div class="mh-m" id="mh-m">— 此窗未关，爱意常在 —</div>
+      </div>
+      <div class="mh-acts">
+        <button class="ibtn" id="search-btn" title="搜索消息">🔍</button>
+        <button class="ibtn" id="thinking-btn" title="思考过程">🧠</button>
+      </div>
+    </div>
+    <div class="search-bar" id="search-bar">
+      <div class="sb-row">
+        <div class="sb-tabs">
+          <button class="sb-tab on" data-scope="current">当前对话</button>
+          <button class="sb-tab" data-scope="all">全部对话</button>
+        </div>
+        <input id="msg-search" placeholder="搜索消息内容…">
+        <span class="sb-stats" id="sb-stats"></span>
+        <div class="sb-nav">
+          <button id="sb-prev" title="上一个">↑</button>
+          <button id="sb-next" title="下一个">↓</button>
+        </div>
+        <button class="sb-close" id="sb-close" title="关闭">×</button>
+      </div>
+      <div class="sb-results" id="sb-results"></div>
+    </div>
+    <div class="msgs-wrap show" id="msgs-wrap">
+      <div class="msgs-in" id="messages"><div class="empty">从左侧选择一个对话</div></div>
+    </div>
+    <div class="fav-view" id="fav-view"></div>
+    <div class="tl-view" id="tl-view"></div>
+  </main>
+</div>
+
+<div id="dn-modal" class="dn-modal">
+  <div class="dn-panel">
+    <div class="dn-title">显示名设置</div>
+    <div class="dn-body">
+      <div class="dn-field">
+        <span class="dn-lbl">我的名字</span>
+        <input id="dn-user" type="text" maxlength="20" placeholder="你 / 自己的昵称">
+      </div>
+      <div class="dn-field">
+        <span class="dn-lbl">助手名字</span>
+        <input id="dn-asst" type="text" maxlength="20" placeholder="Claude / 给 Ta 起个名字">
+      </div>
+      <div class="dn-note">名字只保存在你的浏览器本地，仅你自己看得到。留空保存即恢复默认。</div>
+    </div>
+    <div class="dn-acts">
+      <button class="dn-btn" id="dn-cancel">取消</button>
+      <button class="dn-btn primary" id="dn-save">保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// === State ===
+let RAW = null;
+let RAW_BY_ID = {}; // uuid → raw conversation (deduped, keep version with most messages)
+let CONVS = [];
+let curConvId = null;
+let curConv = null;
+let showThinking = false;
+let view = 'chat';
+let favs = {};
+let deletedConvs = new Set();
+let convFilter = '';
+let searchScope = 'current';
+let searchQ = '';
+let searchMatches = [];
+let searchMatchIdx = 0;
+let searchTimer = null;
+
+// === Display name customization (per-user, localStorage) ===
+const DN_USER_KEY = 'qithyang_user_name';
+const DN_ASST_KEY = 'qithyang_assistant_name';
+function getUserName() { return localStorage.getItem(DN_USER_KEY) || '你'; }
+function getAssistantName() { return localStorage.getItem(DN_ASST_KEY) || 'Claude'; }
+function setDisplayNames(u, a) {
+  const uT = (u || '').trim(), aT = (a || '').trim();
+  if (uT) localStorage.setItem(DN_USER_KEY, uT); else localStorage.removeItem(DN_USER_KEY);
+  if (aT) localStorage.setItem(DN_ASST_KEY, aT); else localStorage.removeItem(DN_ASST_KEY);
+}
+
+// === IndexedDB persistence ===
+// Stores: conversations (keyPath 'uuid'), favs (keyPath 'key'), deletedConvs (keyPath 'uuid')
+const DB_NAME = 'QithYang';
+const DB_VERSION = 1;
+const STORES = ['conversations', 'favs', 'deletedConvs'];
+let _db = null;
+let lastSaveOk = true;
+
+function setLoadingText(t) {
+  const el = document.querySelector('#loading .lt');
+  if (el) el.textContent = t;
+}
+
+function openDB() {
+  if (_db) return Promise.resolve(_db);
+  return new Promise((resolve, reject) => {
+    if (!('indexedDB' in window)) { reject(new Error('IndexedDB not supported')); return; }
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains('conversations')) db.createObjectStore('conversations', { keyPath:'uuid' });
+      if (!db.objectStoreNames.contains('favs')) db.createObjectStore('favs', { keyPath:'key' });
+      if (!db.objectStoreNames.contains('deletedConvs')) db.createObjectStore('deletedConvs', { keyPath:'uuid' });
+    };
+    req.onsuccess = () => { _db = req.result; resolve(_db); };
+    req.onerror = () => reject(req.error);
+    req.onblocked = () => reject(new Error('IndexedDB open blocked'));
+  });
+}
+function dbTx(stores, mode) { return _db.transaction(stores, mode); }
+function dbGetAll(storeName) {
+  return new Promise((resolve, reject) => {
+    const tx = dbTx([storeName], 'readonly');
+    const req = tx.objectStore(storeName).getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+function dbBulkPut(storeName, items) {
+  return new Promise((resolve, reject) => {
+    if (!items.length) { resolve(0); return; }
+    const tx = dbTx([storeName], 'readwrite');
+    const store = tx.objectStore(storeName);
+    for (const it of items) store.put(it);
+    tx.oncomplete = () => resolve(items.length);
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
+  });
+}
+function dbPut(storeName, item) {
+  return new Promise((resolve, reject) => {
+    const tx = dbTx([storeName], 'readwrite');
+    tx.objectStore(storeName).put(item);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+function dbDelete(storeName, key) {
+  return new Promise((resolve, reject) => {
+    const tx = dbTx([storeName], 'readwrite');
+    tx.objectStore(storeName).delete(key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+function dbClear(storeName) {
+  return new Promise((resolve, reject) => {
+    const tx = dbTx([storeName], 'readwrite');
+    tx.objectStore(storeName).clear();
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+function dbCount(storeName) {
+  return new Promise((resolve, reject) => {
+    const tx = dbTx([storeName], 'readonly');
+    const req = tx.objectStore(storeName).count();
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+// One-time migration from old localStorage keys
+async function migrateLegacyStorage() {
+  const oldRaw = localStorage.getItem('xy_raw');
+  const oldFavs = localStorage.getItem('xy_favs');
+  const oldDel = localStorage.getItem('xy_del');
+  if (!oldRaw && !oldFavs && !oldDel) return false;
+  try {
+    if (oldRaw) {
+      const arr = JSON.parse(oldRaw);
+      if (Array.isArray(arr) && arr.length) await dbBulkPut('conversations', arr);
+    }
+    if (oldFavs) {
+      const obj = JSON.parse(oldFavs) || {};
+      const items = Object.keys(obj).filter(k => obj[k]).map(k => ({ key:k }));
+      if (items.length) await dbBulkPut('favs', items);
+    }
+    if (oldDel) {
+      const arr = JSON.parse(oldDel);
+      if (Array.isArray(arr) && arr.length) await dbBulkPut('deletedConvs', arr.map(uuid => ({ uuid })));
+    }
+    localStorage.removeItem('xy_raw');
+    localStorage.removeItem('xy_favs');
+    localStorage.removeItem('xy_del');
+    return true;
+  } catch (e) { console.warn('migrate legacy failed', e); return false; }
+}
+
+// Save N conversations (used by mergeRaw with changedIds)
+async function saveConvsByIds(ids) {
+  if (!ids.length) return { ok:true };
+  try {
+    const items = ids.map(id => RAW_BY_ID[id]).filter(Boolean);
+    await dbBulkPut('conversations', items);
+    lastSaveOk = true;
+    return { ok:true };
+  } catch (e) { lastSaveOk = false; return { ok:false, err:e }; }
+}
+// Save all (used by startApp first import)
+async function saveAllRaw() {
+  try {
+    await dbClear('conversations');
+    await dbBulkPut('conversations', Object.values(RAW_BY_ID));
+    lastSaveOk = true;
+    return { ok:true };
+  } catch (e) { lastSaveOk = false; return { ok:false, err:e }; }
+}
+// Fav single toggle (fire-and-forget)
+function saveFavSingle(key, on) {
+  (on ? dbPut('favs', { key }) : dbDelete('favs', key)).catch(e => console.warn('fav save', e));
+}
+// Bulk save favs (used after backup import that merges fav map)
+async function saveFavsBulk() {
+  try {
+    await dbClear('favs');
+    const items = Object.keys(favs).filter(k => favs[k]).map(k => ({ key:k }));
+    await dbBulkPut('favs', items);
+  } catch (e) { console.warn('saveFavsBulk', e); }
+}
+// Deleted conv add (fire-and-forget)
+function saveDeletedSingle(uuid) {
+  dbPut('deletedConvs', { uuid }).catch(e => console.warn('del save', e));
+}
+async function saveDeletedBulk() {
+  try {
+    await dbClear('deletedConvs');
+    const items = [...deletedConvs].map(uuid => ({ uuid }));
+    await dbBulkPut('deletedConvs', items);
+  } catch (e) { console.warn('saveDeletedBulk', e); }
+}
+
+// === Date utils ===
+function pad2(n) { return String(n).padStart(2,'0'); }
+function fmtFullCN(iso) {
+  const d = new Date(iso);
+  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+}
+function fmtMD(iso) {
+  const d = new Date(iso);
+  return `${d.getMonth()+1}/${d.getDate()}`;
+}
+function fmtDateCN(iso) {
+  const d = new Date(iso);
+  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+}
+function fmtDayKey(iso) {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+}
+
+// === Markdown ===
+function escHtml(s) {
+  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function renderInline(s) {
+  let h = escHtml(s);
+  // links [text](url)
+  h = h.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  // bold-italic / bold / italic
+  h = h.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');
+  h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  h = h.replace(/(?<![*\w])\*([^*\n]+?)\*(?!\w)/g,'<em>$1</em>');
+  // inline code
+  h = h.replace(/`([^`\n]+)`/g,'<code>$1</code>');
+  // strike
+  h = h.replace(/~~(.+?)~~/g,'<del>$1</del>');
+  return h;
+}
+function renderMarkdown(text, hl) {
+  if (!text) return '';
+  const lines = text.split('\n');
+  let h = '', bq = [], inCode = false, codeLines = [];
+  function flushBq() { if (bq.length) { h += '<blockquote>'+bq.map(l=>renderInline(l)).join('<br>')+'</blockquote>'; bq = []; } }
+  function flushCode() { if (codeLines.length) { h += '<pre><code>'+escHtml(codeLines.join('\n'))+'</code></pre>'; codeLines = []; } }
+  for (const line of lines) {
+    if (line.startsWith('```')) {
+      if (inCode) { flushCode(); inCode = false; }
+      else { flushBq(); inCode = true; }
+      continue;
+    }
+    if (inCode) { codeLines.push(line); continue; }
+    if (line.startsWith('> ') || line === '>') {
+      bq.push(line.replace(/^>\s?/,''));
+    } else {
+      flushBq();
+      h += line.trim()==='' ? '<div class="sp"></div>' : '<p>'+renderInline(line)+'</p>';
+    }
+  }
+  flushBq();
+  flushCode();
+  if (hl) {
+    const re = new RegExp('('+escapeRegExp(hl)+')','gi');
+    h = h.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => {
+      if (tag) return tag;
+      return txt.replace(re, '<mark>$1</mark>');
+    });
+  }
+  return h;
+}
+
+// === Message extraction ===
+function getMsgData(msg) {
+  let textParts = [], thinkingParts = [];
+  for (const c of (msg.content || [])) {
+    if (c.type === 'text' && c.text) textParts.push(c.text);
+    else if (c.type === 'thinking' && c.thinking) thinkingParts.push(c.thinking);
+    // tool_use, tool_result, token_budget, flag, image, etc → ignored per spec
+  }
+  return {
+    text: textParts.join('\n\n'),
+    thinkingBlocks: thinkingParts,
+    files: msg.files || [],
+    attachments: msg.attachments || [],
+  };
+}
+function isMsgVisible(msg) {
+  const d = getMsgData(msg);
+  return !!(d.text || d.thinkingBlocks.length || d.files.length || d.attachments.length);
+}
+function extractTitle(c) {
+  if (c.name && c.name.trim()) return c.name.trim();
+  for (const m of c.chat_messages) {
+    if (m.sender === 'human') {
+      const txt = (m.content||[]).find(x => x.type==='text' && x.text)?.text || m.text;
+      if (txt) {
+        const clean = txt.replace(/\s+/g,' ').trim();
+        return clean.length > 30 ? clean.slice(0,30)+'…' : clean;
+      }
+    }
+  }
+  return '未命名对话';
+}
+
+// === Merge raw arrays into RAW_BY_ID, dedupe by uuid keeping the version with the most messages ===
+function mergeRaw(raw) {
+  if (!Array.isArray(raw)) return { added:0, updated:0, kept:0, changedIds:[] };
+  let added = 0, updated = 0, kept = 0;
+  const changedIds = [];
+  for (const c of raw) {
+    if (!c || !c.uuid || !Array.isArray(c.chat_messages)) continue;
+    const ex = RAW_BY_ID[c.uuid];
+    if (!ex) {
+      RAW_BY_ID[c.uuid] = c;
+      added++;
+      changedIds.push(c.uuid);
+    } else if (c.chat_messages.length > ex.chat_messages.length) {
+      RAW_BY_ID[c.uuid] = c;
+      updated++;
+      changedIds.push(c.uuid);
+    } else {
+      kept++;
+    }
+  }
+  return { added, updated, kept, changedIds };
+}
+
+// === Process raw data ===
+function processConvs(raw) {
+  return raw
+    .filter(c => Array.isArray(c.chat_messages) && c.chat_messages.length > 0)
+    .filter(c => !deletedConvs.has(c.uuid))
+    .map(c => {
+      const visible = c.chat_messages.filter(isMsgVisible);
+      if (!visible.length) return null;
+      return {
+        uuid: c.uuid,
+        title: extractTitle(c),
+        chat_messages: c.chat_messages,
+        firstDate: visible[0].created_at,
+        lastDate: visible[visible.length-1].created_at,
+        msgCount: visible.length,
+        updated_at: c.updated_at,
+        created_at: c.created_at,
+      };
+    })
+    .filter(Boolean)
+    .sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+}
+
+// === Render conv list ===
+function renderConvList() {
+  const list = document.getElementById('conv-list');
+  const f = convFilter.toLowerCase();
+  const items = CONVS.filter(c => !f || c.title.toLowerCase().includes(f));
+  if (!items.length) {
+    list.innerHTML = '<div class="empty-list">没有找到匹配的对话</div>';
+    return;
+  }
+  list.innerHTML = items.map(c => {
+    const a = fmtMD(c.firstDate), b = fmtMD(c.lastDate);
+    const range = a === b ? a : `${a}-${b}`;
+    return `<div class="conv-item ${c.uuid===curConvId?'active':''}" data-id="${c.uuid}">
+      <div class="conv-title">${escHtml(c.title)}</div>
+      <div class="conv-meta">${range} · ${c.msgCount}条</div>
+      <button class="conv-del" data-id="${c.uuid}" title="删除对话">×</button>
+    </div>`;
+  }).join('');
+}
+
+// === Render messages ===
+function renderMessages() {
+  const wrap = document.getElementById('msgs-wrap');
+  const ms = document.getElementById('messages');
+  if (!curConv) {
+    document.getElementById('mh-t').textContent = 'QithYang';
+    document.getElementById('mh-m').textContent = '— 此窗未关，爱意常在 —';
+    ms.innerHTML = '<div class="empty">从左侧选择一个对话</div>';
+    return;
+  }
+  const c = curConv;
+  document.getElementById('mh-t').textContent = c.title;
+  document.getElementById('mh-m').textContent = `${fmtDateCN(c.firstDate)} — ${fmtDateCN(c.lastDate)} · ${c.msgCount} 条`;
+
+  const hl = (searchScope==='current' && searchQ) ? searchQ : '';
+  let html = '';
+  let lastDay = '';
+
+  for (const msg of c.chat_messages) {
+    const d = getMsgData(msg);
+    if (!d.text && !d.thinkingBlocks.length && !d.files.length && !d.attachments.length) continue;
+
+    const day = fmtDateCN(msg.created_at);
+    if (day !== lastDay) {
+      lastDay = day;
+      html += `<div class="dsep"><span>${day}</span></div>`;
+    }
+    const isU = msg.sender === 'human';
+    const fkey = `${c.uuid}__${msg.uuid}`;
+    const fav = !!favs[fkey];
+
+    if (isU) {
+      html += `<div class="msg user" data-msg="${msg.uuid}">
+        <div class="msg-row">
+          <div class="bubble">
+            ${d.files.map(f => `<div class="msg-file">📷 图片: ${escHtml(f.file_name||'未命名')}</div>`).join('')}
+            ${d.attachments.map(a => `<div class="msg-file">📎 附件: ${escHtml(a.file_name||'未命名')}</div>`).join('')}
+            ${d.text ? `<div class="msg-text">${renderMarkdown(d.text, hl)}</div>` : ''}
+          </div>
+          <div class="u-name">${escHtml(getUserName())}</div>
+        </div>
+        <div class="u-time">${fmtFullCN(msg.created_at)}</div>
+        <button class="msg-fav ${fav?'on':''}" data-fkey="${fkey}" title="收藏">${fav?'★':'☆'}</button>
+      </div>`;
+    } else {
+      const tkOpen = showThinking;
+      html += `<div class="msg ai" data-msg="${msg.uuid}">
+        <div class="a-head">
+          <img class="a-av" src="assets/app-logo.png" alt="">
+          <span class="a-name">${escHtml(getAssistantName())}</span>
+          <span class="a-time">${fmtFullCN(msg.created_at)}</span>
+        </div>
+        <button class="msg-fav ${fav?'on':''}" data-fkey="${fkey}" title="收藏">${fav?'★':'☆'}</button>
+        <div class="body">
+          ${d.thinkingBlocks.length ? `<div class="thinking">
+            <button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">思考 · ${d.thinkingBlocks.length}</span></button>
+            <div class="th-content${tkOpen?' open':''}">${renderThinkingHtml(d.thinkingBlocks)}</div>
+          </div>` : ''}
+          ${d.files.map(f => `<div class="msg-file">📷 图片: ${escHtml(f.file_name||'未命名')}</div>`).join('')}
+          ${d.attachments.map(a => `<div class="msg-file">📎 附件: ${escHtml(a.file_name||'未命名')}</div>`).join('')}
+          ${d.text ? `<div class="msg-text">${renderMarkdown(d.text, hl)}</div>` : ''}
+        </div>
+      </div>`;
+    }
+  }
+
+  html += `<div class="endm">
+    <div class="e1">— 此窗已关，爱意未完 —</div>
+    <div class="e2">to be continued, always</div>
+  </div>`;
+
+  ms.innerHTML = html;
+  wrap.scrollTop = 0;
+
+  if (searchScope === 'current' && searchQ) {
+    findCurrentMatches();
+  }
+}
+
+function renderThinkingHtml(blocks) {
+  if (!Array.isArray(blocks)) blocks = [blocks];
+  return blocks.map(b => {
+    const inner = b.split('\n').map(l => l.trim() ? `<p>${escHtml(l)}</p>` : '<div class="th-sp"></div>').join('');
+    return `<div class="th-block">${inner}</div>`;
+  }).join('');
+}
+
+// === View switching ===
+function setView(v) {
+  view = v;
+  document.querySelectorAll('.sb-tab-top').forEach(b => b.classList.toggle('on', b.dataset.view===v));
+  document.getElementById('msgs-wrap').classList.toggle('show', v==='chat');
+  document.getElementById('fav-view').classList.toggle('show', v==='favorites');
+  document.getElementById('tl-view').classList.toggle('show', v==='timeline');
+  closeTlPopover();
+  if (v==='favorites') renderFavorites();
+  if (v==='timeline') renderTimeline();
+  // Auto-close mobile drawer when switching views
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sb-overlay').classList.remove('show');
+  }
+}
+
+// === Favorites view ===
+function renderFavorites() {
+  const root = document.getElementById('fav-view');
+  const groups = {};
+  for (const k of Object.keys(favs)) {
+    if (!favs[k]) continue;
+    const sep = k.indexOf('__');
+    if (sep < 0) continue;
+    const cid = k.slice(0, sep), mid = k.slice(sep+2);
+    if (!groups[cid]) groups[cid] = [];
+    groups[cid].push(mid);
+  }
+  const total = Object.values(groups).reduce((s,a)=>s+a.length,0);
+  if (total === 0) {
+    root.innerHTML = `<div class="view-h">收藏 <span class="vh-sub">(0)</span></div>
+      <div class="empty-view">还没有收藏的消息<div class="ev-h">在消息上 hover，点击 ☆ 即可收藏</div></div>`;
+    return;
+  }
+  let html = `<div class="view-h">收藏 <span class="vh-sub">共 ${total} 条</span></div>`;
+  for (const cid of Object.keys(groups)) {
+    const c = CONVS.find(x => x.uuid === cid);
+    if (!c) continue;
+    html += `<div class="fav-group">
+      <div class="fav-conv-title"><span>${escHtml(c.title)}</span><span class="fct-cnt">${groups[cid].length} 条</span></div>`;
+    for (const mid of groups[cid]) {
+      const m = c.chat_messages.find(x => x.uuid === mid);
+      if (!m) continue;
+      const d = getMsgData(m);
+      const snippet = (d.text || (d.files.length ? '📷 图片消息' : '(无文本)')).slice(0,260);
+      const fkey = `${cid}__${mid}`;
+      html += `<div class="fav-item" data-cid="${cid}" data-mid="${mid}">
+        <button class="fav-unfav" data-fkey="${fkey}" title="取消收藏">★</button>
+        <div class="fav-snip">${escHtml(snippet)}${d.text && d.text.length>260?'…':''}</div>
+        <div class="fav-meta"><span class="who">${escHtml(m.sender==='human'?getUserName():getAssistantName())}</span><span>${fmtFullCN(m.created_at)}</span></div>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+  root.innerHTML = html;
+}
+
+// === Display-name settings modal ===
+function openDisplayNamesModal() {
+  const u = document.getElementById('dn-user');
+  const a = document.getElementById('dn-asst');
+  u.value = localStorage.getItem(DN_USER_KEY) || '';
+  a.value = localStorage.getItem(DN_ASST_KEY) || '';
+  document.getElementById('dn-modal').classList.add('show');
+  setTimeout(() => u.focus(), 50);
+}
+function closeDisplayNamesModal() {
+  document.getElementById('dn-modal').classList.remove('show');
+}
+function saveDisplayNamesFromModal() {
+  setDisplayNames(
+    document.getElementById('dn-user').value,
+    document.getElementById('dn-asst').value
+  );
+  closeDisplayNamesModal();
+  if (curConv) renderMessages();
+  if (view === 'favorites') renderFavorites();
+}
+
+// === Timeline ===
+function renderTimeline() {
+  const root = document.getElementById('tl-view');
+  const dayMap = {};
+  for (const c of CONVS) {
+    for (const m of c.chat_messages) {
+      if (!isMsgVisible(m)) continue;
+      const k = fmtDayKey(m.created_at);
+      if (!dayMap[k]) dayMap[k] = new Set();
+      dayMap[k].add(c.uuid);
+    }
+  }
+  const monthMap = {};
+  for (const k of Object.keys(dayMap)) {
+    const ym = k.slice(0,7);
+    if (!monthMap[ym]) monthMap[ym] = {};
+    monthMap[ym][k] = dayMap[k].size;
+  }
+  const months = Object.keys(monthMap).sort();
+  if (!months.length) {
+    root.innerHTML = `<div class="view-h">时间轴</div><div class="empty-view">还没有数据</div>`;
+    return;
+  }
+  const totalConvs = CONVS.length;
+  let html = `<div class="view-h">时间轴 <span class="vh-sub">${totalConvs} 个对话 · ${months.length} 个月</span></div>`;
+  const wkLabels = ['日','一','二','三','四','五','六'];
+  for (const ym of months) {
+    const [y, m] = ym.split('-').map(Number);
+    const first = new Date(y, m-1, 1);
+    const startWk = first.getDay();
+    const days = new Date(y, m, 0).getDate();
+    html += `<div class="tl-month">
+      <div class="tl-month-title">${y} 年 ${m} 月</div>
+      <div class="tl-grid">`;
+    for (const w of wkLabels) html += `<div class="tl-day-h">${w}</div>`;
+    for (let i = 0; i < startWk; i++) html += `<div class="tl-day empty"></div>`;
+    for (let d = 1; d <= days; d++) {
+      const k = `${y}-${pad2(m)}-${pad2(d)}`;
+      const cnt = monthMap[ym][k];
+      if (cnt) {
+        const lvl = cnt >= 4 ? 3 : cnt >= 2 ? 2 : 1;
+        html += `<div class="tl-day has lvl-${lvl}" data-day="${k}" title="${cnt} 个对话">${d}<div class="dot"></div></div>`;
+      } else {
+        html += `<div class="tl-day">${d}</div>`;
+      }
+    }
+    html += `</div></div>`;
+  }
+  root.innerHTML = html;
+}
+
+function closeTlPopover() {
+  const ex = document.querySelector('.tl-popover');
+  if (ex) ex.remove();
+}
+function showTlPopover(dayEl) {
+  closeTlPopover();
+  const day = dayEl.dataset.day;
+  // collect all conversations that have at least one visible msg on this day
+  const items = [];
+  for (const c of CONVS) {
+    const dayMsgs = c.chat_messages.filter(m => isMsgVisible(m) && fmtDayKey(m.created_at) === day);
+    if (dayMsgs.length) {
+      items.push({ cid: c.uuid, title: c.title, mid: dayMsgs[0].uuid, count: dayMsgs.length });
+    }
+  }
+  if (!items.length) return;
+  const root = document.getElementById('tl-view');
+  const pop = document.createElement('div');
+  pop.className = 'tl-popover';
+  const [yy,mm,dd] = day.split('-');
+  pop.innerHTML =
+    `<div class="tl-pop-h"><span>${parseInt(yy)} 年 ${parseInt(mm)} 月 ${parseInt(dd)} 日 · ${items.length} 个对话</span><button class="tl-pop-close" title="关闭">×</button></div>` +
+    `<div class="tl-pop-list">` +
+    items.map(it => `<div class="tl-pop-item" data-cid="${it.cid}" data-mid="${it.mid}">
+      <div>${escHtml(it.title)}</div>
+      <div class="tl-pop-meta">${it.count} 条消息</div>
+    </div>`).join('') +
+    `</div>`;
+  root.appendChild(pop);
+  // position: center horizontally over the day cell, below it
+  const rRoot = root.getBoundingClientRect();
+  const rDay = dayEl.getBoundingClientRect();
+  const popW = pop.offsetWidth;
+  const popH = pop.offsetHeight;
+  // relative offset within tl-view (which is position:relative)
+  let left = (rDay.left - rRoot.left) + (rDay.width / 2) - (popW / 2) + root.scrollLeft;
+  let top = (rDay.bottom - rRoot.top) + 10 + root.scrollTop;
+  // clamp horizontally
+  const maxLeft = root.clientWidth - popW - 12;
+  if (left < 12) left = 12;
+  if (left > maxLeft) left = maxLeft;
+  // if would overflow bottom, place above
+  if (rDay.bottom + popH + 20 > rRoot.bottom) {
+    top = (rDay.top - rRoot.top) - popH - 10 + root.scrollTop;
+  }
+  pop.style.left = left + 'px';
+  pop.style.top = top + 'px';
+}
+
+// === Search ===
+function doSearch() {
+  if (searchScope === 'current') {
+    document.getElementById('sb-results').classList.remove('show');
+    if (curConv) renderMessages();
+    else document.getElementById('sb-stats').textContent = '';
+  } else {
+    searchAll();
+  }
+}
+function findCurrentMatches() {
+  searchMatches = [];
+  if (!searchQ) {
+    document.getElementById('sb-stats').textContent = '';
+    return;
+  }
+  const marks = document.querySelectorAll('#messages mark');
+  searchMatches = [...marks];
+  searchMatchIdx = 0;
+  document.getElementById('sb-stats').textContent = searchMatches.length ? `1/${searchMatches.length}` : '0';
+  if (searchMatches.length) jumpToMatch(0);
+}
+function jumpToMatch(i) {
+  if (!searchMatches.length) return;
+  searchMatchIdx = ((i % searchMatches.length) + searchMatches.length) % searchMatches.length;
+  searchMatches.forEach(m => { m.style.outline = ''; });
+  const cur = searchMatches[searchMatchIdx];
+  cur.style.outline = '2px solid var(--orange)';
+  cur.scrollIntoView({behavior:'smooth', block:'center'});
+  document.getElementById('sb-stats').textContent = `${searchMatchIdx+1}/${searchMatches.length}`;
+}
+function searchAll() {
+  const root = document.getElementById('sb-results');
+  if (!searchQ) {
+    root.classList.remove('show');
+    root.innerHTML = '';
+    document.getElementById('sb-stats').textContent = '';
+    return;
+  }
+  const q = searchQ.toLowerCase();
+  let found = 0;
+  const re = new RegExp('('+escapeRegExp(searchQ)+')','gi');
+  const parts = [];
+  for (const c of CONVS) {
+    let convMatches = 0;
+    let firstHtml = '';
+    for (const m of c.chat_messages) {
+      const d = getMsgData(m);
+      if (d.text && d.text.toLowerCase().includes(q)) {
+        convMatches++; found++;
+        if (convMatches <= 2) {
+          const idx = d.text.toLowerCase().indexOf(q);
+          const start = Math.max(0, idx-30);
+          const end = Math.min(d.text.length, idx+searchQ.length+80);
+          let snip = d.text.slice(start, end).replace(/\n+/g,' ');
+          snip = (start>0?'…':'') + escHtml(snip) + (end<d.text.length?'…':'');
+          snip = snip.replace(re, '<mark>$1</mark>');
+          firstHtml += `<div class="sb-result" data-cid="${c.uuid}" data-mid="${m.uuid}">
+            <div class="sb-result-title">${escHtml(c.title)}</div>
+            <div class="sb-result-snip">${snip}</div>
+          </div>`;
+        }
+      }
+    }
+    if (firstHtml) parts.push(firstHtml);
+  }
+  root.innerHTML = parts.length ? parts.join('') : '<div style="padding:18px;text-align:center;color:var(--text-3);font-size:12px;font-style:italic">没有匹配的消息</div>';
+  root.classList.add('show');
+  document.getElementById('sb-stats').textContent = `${found} 项`;
+}
+
+// === Open conv ===
+function openConv(id, scrollToMsg) {
+  curConvId = id;
+  curConv = CONVS.find(c => c.uuid === id) || null;
+  setView('chat');
+  renderConvList();
+  renderMessages();
+  if (scrollToMsg) {
+    setTimeout(() => {
+      const el = document.querySelector(`#messages [data-msg="${scrollToMsg}"]`);
+      if (el) {
+        el.scrollIntoView({behavior:'smooth', block:'center'});
+        el.style.transition = 'background 0.4s';
+        const ob = el.style.background;
+        el.style.background = 'var(--orange-bg)';
+        setTimeout(() => { el.style.background = ob; }, 1800);
+      }
+    }, 50);
+  }
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('show');
+}
+
+// === Events ===
+function bindEvents() {
+  // Sidebar conv filter
+  document.getElementById('conv-filter').addEventListener('input', e => {
+    convFilter = e.target.value.trim();
+    renderConvList();
+  });
+
+  // Conv list (delete + open)
+  document.getElementById('conv-list').addEventListener('click', e => {
+    const del = e.target.closest('.conv-del');
+    if (del) {
+      e.stopPropagation();
+      if (del.classList.contains('confirm')) {
+        const id = del.dataset.id;
+        deletedConvs.add(id);
+        saveDeletedSingle(id);
+        CONVS = CONVS.filter(c => c.uuid !== id);
+        if (curConvId === id) {
+          curConvId = null;
+          curConv = null;
+          renderMessages();
+        }
+        renderConvList();
+      } else {
+        document.querySelectorAll('.conv-del.confirm').forEach(b => { b.classList.remove('confirm'); b.textContent = '×'; });
+        del.classList.add('confirm');
+        del.textContent = '确认删除';
+        setTimeout(() => { if (del.classList.contains('confirm')) { del.classList.remove('confirm'); del.textContent = '×'; } }, 3000);
+      }
+      return;
+    }
+    const item = e.target.closest('.conv-item');
+    if (item) openConv(item.dataset.id);
+  });
+
+  // Sidebar top tabs
+  document.querySelectorAll('.sb-tab-top').forEach(b => {
+    b.addEventListener('click', () => setView(b.dataset.view));
+  });
+
+  // Thinking global toggle: expand/collapse all without re-rendering
+  document.getElementById('thinking-btn').addEventListener('click', () => {
+    showThinking = !showThinking;
+    document.getElementById('thinking-btn').classList.toggle('on', showThinking);
+    document.querySelectorAll('#messages .thinking').forEach(t => {
+      const c = t.querySelector('.th-content');
+      const ic = t.querySelector('.th-ico');
+      if (!c || !ic) return;
+      c.classList.toggle('open', showThinking);
+      ic.textContent = showThinking ? '▾' : '▸';
+    });
+  });
+
+  // Search button
+  document.getElementById('search-btn').addEventListener('click', () => {
+    const bar = document.getElementById('search-bar');
+    const showing = bar.classList.toggle('show');
+    document.getElementById('search-btn').classList.toggle('on', showing);
+    if (showing) {
+      document.getElementById('msg-search').focus();
+    } else {
+      searchQ = '';
+      document.getElementById('msg-search').value = '';
+      document.getElementById('sb-results').classList.remove('show');
+      document.getElementById('sb-stats').textContent = '';
+      if (curConv) renderMessages();
+    }
+  });
+  document.getElementById('sb-close').addEventListener('click', () => {
+    document.getElementById('search-btn').click();
+  });
+
+  // Search tabs
+  document.querySelectorAll('.sb-tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.sb-tab').forEach(x => x.classList.remove('on'));
+      t.classList.add('on');
+      searchScope = t.dataset.scope;
+      doSearch();
+    });
+  });
+
+  // Search input (debounced)
+  document.getElementById('msg-search').addEventListener('input', e => {
+    searchQ = e.target.value.trim();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(doSearch, 220);
+  });
+  document.getElementById('msg-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (searchScope === 'current' && searchMatches.length) jumpToMatch(searchMatchIdx + (e.shiftKey ? -1 : 1));
+    } else if (e.key === 'Escape') {
+      document.getElementById('search-btn').click();
+    }
+  });
+
+  // Search nav buttons
+  document.getElementById('sb-prev').addEventListener('click', () => { if (searchScope==='current') jumpToMatch(searchMatchIdx-1); });
+  document.getElementById('sb-next').addEventListener('click', () => { if (searchScope==='current') jumpToMatch(searchMatchIdx+1); });
+
+  // Search result clicks (all-mode jump)
+  document.getElementById('sb-results').addEventListener('click', e => {
+    const r = e.target.closest('.sb-result');
+    if (!r) return;
+    openConv(r.dataset.cid, r.dataset.mid);
+  });
+
+  // Message clicks (favorite + thinking expand)
+  document.getElementById('messages').addEventListener('click', e => {
+    const fav = e.target.closest('.msg-fav');
+    if (fav) {
+      e.stopPropagation();
+      const k = fav.dataset.fkey;
+      if (favs[k]) delete favs[k]; else favs[k] = true;
+      const on = !!favs[k];
+      saveFavSingle(k, on);
+      fav.classList.toggle('on', on);
+      fav.textContent = on ? '★' : '☆';
+      return;
+    }
+    const tg = e.target.closest('.th-toggle');
+    if (tg) {
+      e.stopPropagation();
+      e.preventDefault();
+      const wrap = tg.closest('.thinking');
+      if (!wrap) return;
+      const c = wrap.querySelector('.th-content');
+      const ic = tg.querySelector('.th-ico');
+      const open = c.classList.toggle('open');
+      if (ic) ic.textContent = open ? '▾' : '▸';
+    }
+  });
+
+  // Favorites view click → unfavorite or jump
+  document.getElementById('fav-view').addEventListener('click', e => {
+    const un = e.target.closest('.fav-unfav');
+    if (un) {
+      e.stopPropagation();
+      const k = un.dataset.fkey;
+      delete favs[k];
+      saveFavSingle(k, false);
+      renderFavorites();
+      return;
+    }
+    const it = e.target.closest('.fav-item');
+    if (it) openConv(it.dataset.cid, it.dataset.mid);
+  });
+
+  // Timeline day click → show popover with conversations on that day
+  document.getElementById('tl-view').addEventListener('click', e => {
+    // popover item click
+    const pi = e.target.closest('.tl-pop-item');
+    if (pi) {
+      e.stopPropagation();
+      const cid = pi.dataset.cid;
+      const mid = pi.dataset.mid;
+      closeTlPopover();
+      openConv(cid, mid || undefined);
+      return;
+    }
+    // popover close click
+    if (e.target.closest('.tl-pop-close')) { closeTlPopover(); return; }
+    // day click
+    const d = e.target.closest('.tl-day.has');
+    if (!d) { closeTlPopover(); return; }
+    showTlPopover(d);
+  });
+  // outside click closes popover
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.tl-popover') && !e.target.closest('.tl-day.has')) closeTlPopover();
+  });
+
+  // Import more (merge)
+  const importBtn = document.getElementById('import-btn');
+  const mergeInput = document.getElementById('merge-input');
+  if (importBtn && mergeInput) {
+    importBtn.addEventListener('click', () => mergeInput.click());
+    mergeInput.addEventListener('change', e => {
+      mergeMoreFiles(e.target.files);
+      e.target.value = '';
+    });
+  }
+
+  // Settings menu (data management)
+  const settingsBtn = document.getElementById('settings-btn');
+  const smMenu = document.getElementById('sm-menu');
+  const backupInput = document.getElementById('backup-input');
+  if (settingsBtn && smMenu) {
+    settingsBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const willOpen = !smMenu.classList.contains('show');
+      smMenu.classList.toggle('show', willOpen);
+      if (willOpen) updateStorageStats();
+    });
+    document.addEventListener('click', e => {
+      if (!smMenu.classList.contains('show')) return;
+      if (e.target.closest('#sm-menu') || e.target.closest('#settings-btn')) return;
+      smMenu.classList.remove('show');
+    });
+  }
+  const exportBtn = document.getElementById('sm-export');
+  if (exportBtn) exportBtn.addEventListener('click', () => {
+    exportBackup();
+    smMenu && smMenu.classList.remove('show');
+  });
+  const importBackupBtn = document.getElementById('sm-import-backup');
+  if (importBackupBtn && backupInput) {
+    importBackupBtn.addEventListener('click', () => {
+      smMenu && smMenu.classList.remove('show');
+      backupInput.click();
+    });
+    backupInput.addEventListener('change', e => {
+      const f = e.target.files && e.target.files[0];
+      importBackup(f);
+      e.target.value = '';
+    });
+  }
+  const clearBtn = document.getElementById('sm-clear');
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    smMenu && smMenu.classList.remove('show');
+    clearAllData();
+  });
+
+  // Display-name settings (lives in the gear menu)
+  const dnOpen = document.getElementById('sm-display-names');
+  const dnModal = document.getElementById('dn-modal');
+  if (dnOpen) dnOpen.addEventListener('click', () => {
+    smMenu && smMenu.classList.remove('show');
+    openDisplayNamesModal();
+  });
+  const dnSave = document.getElementById('dn-save');
+  const dnCancel = document.getElementById('dn-cancel');
+  if (dnSave) dnSave.addEventListener('click', saveDisplayNamesFromModal);
+  if (dnCancel) dnCancel.addEventListener('click', closeDisplayNamesModal);
+  if (dnModal) dnModal.addEventListener('click', e => {
+    if (e.target.id === 'dn-modal') closeDisplayNamesModal();
+  });
+  ['dn-user', 'dn-asst'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', e => {
+      if (e.key === 'Enter') saveDisplayNamesFromModal();
+      else if (e.key === 'Escape') closeDisplayNamesModal();
+    });
+  });
+
+  // Mobile hamburger + overlay
+  document.getElementById('hb').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sb-overlay').classList.add('show');
+  });
+  document.getElementById('sb-overlay').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sb-overlay').classList.remove('show');
+  });
+}
+
+// === Data management ===
+function totalMsgCount() {
+  let n = 0;
+  for (const c of Object.values(RAW_BY_ID)) {
+    if (Array.isArray(c.chat_messages)) n += c.chat_messages.length;
+  }
+  return n;
+}
+function totalFavCount() {
+  let n = 0;
+  for (const k in favs) if (favs[k]) n++;
+  return n;
+}
+function updateStorageStats() {
+  const cn = document.getElementById('sm-conv-n');
+  const mn = document.getElementById('sm-msg-n');
+  const note = document.getElementById('sm-store-note');
+  if (cn) cn.textContent = Object.keys(RAW_BY_ID).length;
+  if (mn) mn.textContent = totalMsgCount();
+  if (note) {
+    const fn = totalFavCount();
+    if (lastSaveOk) note.textContent = `已自动保存到本地数据库 · ${fn} 条收藏`;
+    else note.textContent = `⚠ 保存失败 · ${fn} 条收藏`;
+  }
+}
+function exportBackup() {
+  const payload = {
+    app: 'QithYang',
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    conversations: Object.values(RAW_BY_ID),
+    favs: favs,
+    deletedConvs: [...deletedConvs],
+  };
+  const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+  const d = new Date();
+  const stamp = `${d.getFullYear()}${pad2(d.getMonth()+1)}${pad2(d.getDate())}-${pad2(d.getHours())}${pad2(d.getMinutes())}${pad2(d.getSeconds())}`;
+  const fname = `QithYang-backup-${stamp}.json`;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 100);
+}
+function importBackup(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async e => {
+    let data;
+    try { data = JSON.parse(e.target.result); }
+    catch (err) { alert('JSON 解析失败: ' + err.message); return; }
+    let arr = null;
+    if (Array.isArray(data)) arr = data;
+    else if (Array.isArray(data.conversations)) arr = data.conversations;
+    if (!arr) { alert('无法识别的备份文件（缺少 conversations 数组）'); return; }
+    const r = mergeRaw(arr);
+    if (data.favs && typeof data.favs === 'object') {
+      Object.assign(favs, data.favs);
+      await saveFavsBulk();
+    }
+    if (Array.isArray(data.deletedConvs)) {
+      data.deletedConvs.forEach(id => deletedConvs.add(id));
+      await saveDeletedBulk();
+    }
+    RAW = Object.values(RAW_BY_ID);
+    CONVS = processConvs(RAW);
+    const sv = await saveConvsByIds(r.changedIds);
+    renderConvList();
+    if (view === 'favorites') renderFavorites();
+    if (view === 'timeline') renderTimeline();
+    updateStorageStats();
+    let msg = `备份已恢复：新增 ${r.added}，更新 ${r.updated}，跳过 ${r.kept}`;
+    if (!sv.ok) msg += '\n⚠ 保存到本地数据库失败：' + (sv.err && sv.err.message || '未知错误');
+    alert(msg);
+  };
+  reader.readAsText(file);
+}
+async function clearAllData() {
+  if (!confirm('确定清空所有数据吗？\n\n将删除：所有对话、收藏、已隐藏对话。')) return;
+  if (!confirm('⚠ 最后确认\n\n此操作不可撤销。是否继续？')) return;
+  try {
+    await dbClear('conversations');
+    await dbClear('favs');
+    await dbClear('deletedConvs');
+  } catch (e) { console.warn('clear IDB failed', e); }
+  try {
+    localStorage.removeItem('xy_raw');
+    localStorage.removeItem('xy_favs');
+    localStorage.removeItem('xy_del');
+  } catch(e) {}
+  RAW_BY_ID = {};
+  RAW = [];
+  CONVS = [];
+  favs = {};
+  deletedConvs = new Set();
+  curConvId = null; curConv = null;
+  alert('已清空所有数据，页面将刷新。');
+  location.reload();
+}
+
+// === Init ===
+async function init() {
+  setLoadingText('正在打开本地数据库…');
+  try {
+    await openDB();
+  } catch (e) {
+    console.error('IndexedDB 不可用', e);
+    setLoadingText('本地数据库不可用，请改用文件导入…');
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('picker').classList.add('show');
+    setupPicker();
+    return;
+  }
+
+  // One-time migration from old localStorage layout (xy_raw / xy_favs / xy_del)
+  setLoadingText('正在迁移旧数据…');
+  const migrated = await migrateLegacyStorage();
+
+  // Load all stores from IndexedDB
+  setLoadingText('正在加载本地数据…');
+  let convs, favRows, delRows;
+  try {
+    [convs, favRows, delRows] = await Promise.all([
+      dbGetAll('conversations'),
+      dbGetAll('favs'),
+      dbGetAll('deletedConvs'),
+    ]);
+  } catch (e) {
+    console.error('IDB getAll failed', e);
+    convs = []; favRows = []; delRows = [];
+  }
+
+  // Clean up demo conversations that older builds accidentally persisted.
+  // Demo uuids are stable (`demo-conv-001`..`003`); never keep them in IDB.
+  const demoIdsInDb = (convs || []).filter(c => isDemoUuid(c.uuid)).map(c => c.uuid);
+  if (demoIdsInDb.length) {
+    for (const id of demoIdsInDb) { try { await dbDelete('conversations', id); } catch(e){} }
+    convs = convs.filter(c => !isDemoUuid(c.uuid));
+  }
+
+  favs = {};
+  for (const f of favRows) favs[f.key] = true;
+  deletedConvs = new Set(delRows.map(d => d.uuid));
+
+  if (convs && convs.length) {
+    setLoadingText(`正在恢复 ${convs.length} 个对话…`);
+    await startApp(convs, { fromCache: true });
+    return;
+  }
+
+  // 2. No cached data — try user's private conversations.json (persist),
+  //    then the public demo (don't persist — it's just a placeholder).
+  setLoadingText('正在读取数据文件…');
+  let data = null;
+  let persistFetched = true;
+  try {
+    const r = await fetch('./conversations.json');
+    if (r.ok) data = await r.json();
+  } catch(e) {}
+  if (!data) {
+    try {
+      const r = await fetch('./demo-conversations.json');
+      if (r.ok) { data = await r.json(); persistFetched = false; }
+    } catch(e) {}
+  }
+  if (!data) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('picker').classList.add('show');
+    setupPicker();
+    return;
+  }
+  await startApp(data, { noPersist: !persistFetched });
+}
+function isDemoUuid(uuid) { return typeof uuid === 'string' && uuid.startsWith('demo-conv-'); }
+async function startApp(data, opts) {
+  opts = opts || {};
+  RAW_BY_ID = {};
+  const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : []);
+  const r = mergeRaw(arr);
+  RAW = Object.values(RAW_BY_ID);
+  CONVS = processConvs(RAW);
+  if (!opts.fromCache && !opts.noPersist && r.changedIds.length) {
+    setLoadingText(`正在保存 ${r.changedIds.length} 个对话到本地数据库…`);
+    await saveConvsByIds(r.changedIds);
+  }
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('picker').classList.remove('show');
+  document.getElementById('app').classList.add('show');
+  bindEvents();
+  renderConvList();
+  if (CONVS.length) openConv(CONVS[0].uuid);
+  updateStorageStats();
+}
+
+function mergeMoreFiles(fileList) {
+  const files = Array.from(fileList || []);
+  if (!files.length) return;
+  let pending = files.length;
+  let totals = { added:0, updated:0, kept:0, errors:0, changedIds: [] };
+  for (const f of files) {
+    const reader = new FileReader();
+    reader.onload = async e => {
+      try {
+        const data = JSON.parse(e.target.result);
+        const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : null);
+        if (!arr) { totals.errors++; }
+        else {
+          const r = mergeRaw(arr);
+          totals.added += r.added; totals.updated += r.updated; totals.kept += r.kept;
+          totals.changedIds.push(...r.changedIds);
+        }
+      } catch(err) { totals.errors++; }
+      if (--pending === 0) {
+        RAW = Object.values(RAW_BY_ID);
+        CONVS = processConvs(RAW);
+        renderConvList();
+        if (view === 'favorites') renderFavorites();
+        if (view === 'timeline') renderTimeline();
+        const sv = await saveConvsByIds(totals.changedIds);
+        updateStorageStats();
+        let msg = `导入完成：新增 ${totals.added}，更新 ${totals.updated}，跳过 ${totals.kept}` + (totals.errors ? `，失败 ${totals.errors}` : '');
+        if (!sv.ok) msg += '\n⚠ 保存到本地数据库失败：' + (sv.err && sv.err.message || '未知错误');
+        alert(msg);
+      }
+    };
+    reader.onerror = async () => {
+      totals.errors++;
+      if (--pending === 0) {
+        RAW = Object.values(RAW_BY_ID);
+        CONVS = processConvs(RAW);
+        renderConvList();
+        await saveConvsByIds(totals.changedIds);
+        updateStorageStats();
+        alert('导入完成（含错误）');
+      }
+    };
+    reader.readAsText(f);
+  }
+}
+function setupPicker() {
+  const drop = document.getElementById('drop');
+  const input = document.getElementById('file-input');
+  function handle(file) {
+    if (!file) return;
+    document.getElementById('loading').style.display = 'flex';
+    setLoadingText('正在解析 JSON…');
+    const reader = new FileReader();
+    reader.onload = async e => {
+      let parsed;
+      try { parsed = JSON.parse(e.target.result); }
+      catch(err) {
+        document.getElementById('loading').style.display = 'none';
+        alert('JSON 解析失败: ' + err.message);
+        return;
+      }
+      try {
+        await startApp(parsed);
+      } catch (err) {
+        document.getElementById('loading').style.display = 'none';
+        alert('加载失败: ' + (err && err.message || err));
+      }
+    };
+    reader.readAsText(file);
+  }
+  drop.addEventListener('click', () => input.click());
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('on'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('on'));
+  drop.addEventListener('drop', e => { e.preventDefault(); drop.classList.remove('on'); handle(e.dataTransfer.files[0]); });
+  input.addEventListener('change', e => handle(e.target.files[0]));
+}
+
+init();
+</script>
+</body>
+</html>

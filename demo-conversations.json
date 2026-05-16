@@ -1,0 +1,117 @@
+[
+  {
+    "uuid": "demo-conv-001",
+    "name": "示例对话 · 样式与功能演示",
+    "summary": "",
+    "created_at": "2026-04-05T14:00:00Z",
+    "updated_at": "2026-04-05T14:08:00Z",
+    "chat_messages": [
+      {
+        "uuid": "demo-001-m1",
+        "sender": "human",
+        "created_at": "2026-04-05T14:00:00Z",
+        "content": [
+          { "type": "text", "text": "你好呀，我想试试这个查看器的功能。" }
+        ]
+      },
+      {
+        "uuid": "demo-001-m2",
+        "sender": "assistant",
+        "created_at": "2026-04-05T14:00:30Z",
+        "content": [
+          { "type": "thinking", "thinking": "用户想试试功能。\n我先简单介绍一下能看到什么。\n应该展示常见的 markdown 元素，让样式更直观。" },
+          { "type": "thinking", "thinking": "可以展示这些元素：\n- 加粗、斜体、删除线\n- 行内代码、代码块\n- 引用、链接\n- 列表" },
+          { "type": "text", "text": "你好～这里支持常见的 markdown 元素：\n\n**加粗**、*斜体*、~~删除线~~、`行内代码`、[链接](https://github.com)\n\n> 引用块也可以\n\n点击上面的「思考·2」药丸可以展开折叠我的思考过程。" }
+        ]
+      },
+      {
+        "uuid": "demo-001-m3",
+        "sender": "human",
+        "created_at": "2026-04-05T14:02:00Z",
+        "content": [
+          { "type": "text", "text": "代码块呢？" }
+        ]
+      },
+      {
+        "uuid": "demo-001-m4",
+        "sender": "assistant",
+        "created_at": "2026-04-05T14:02:20Z",
+        "content": [
+          { "type": "thinking", "thinking": "展示一个代码块的例子。\n用 JavaScript 写个简单函数。" },
+          { "type": "text", "text": "代码块的渲染：\n\n```\nfunction greet(name) {\n  return `你好, ${name}!`;\n}\n\nconsole.log(greet('world'));\n```\n\n试试搜索、收藏（hover 消息右上角的 ☆）、切换到「时间轴」看看日历视图。" }
+        ]
+      }
+    ]
+  },
+  {
+    "uuid": "demo-conv-002",
+    "name": "示例对话 · 多日跨度",
+    "summary": "",
+    "created_at": "2026-04-06T10:00:00Z",
+    "updated_at": "2026-04-07T11:30:00Z",
+    "chat_messages": [
+      {
+        "uuid": "demo-002-m1",
+        "sender": "human",
+        "created_at": "2026-04-06T10:00:00Z",
+        "content": [
+          { "type": "text", "text": "今天想问个问题。" }
+        ]
+      },
+      {
+        "uuid": "demo-002-m2",
+        "sender": "assistant",
+        "created_at": "2026-04-06T10:00:15Z",
+        "content": [
+          { "type": "text", "text": "好呀，请说。" }
+        ]
+      },
+      {
+        "uuid": "demo-002-m3",
+        "sender": "human",
+        "created_at": "2026-04-07T11:28:00Z",
+        "content": [
+          { "type": "text", "text": "（隔一天）我又来啦。" }
+        ]
+      },
+      {
+        "uuid": "demo-002-m4",
+        "sender": "assistant",
+        "created_at": "2026-04-07T11:30:00Z",
+        "content": [
+          { "type": "thinking", "thinking": "用户隔了一天回来。\n上面会出现日期分隔，验证多日渲染。" },
+          { "type": "text", "text": "欢迎回来～你看到上面有两个日期分隔条了吗？这就是多日对话的效果。\n\n时间轴里这两天的格子都会被高亮，点开能看到对应的对话标题。" }
+        ]
+      }
+    ]
+  },
+  {
+    "uuid": "demo-conv-003",
+    "name": "示例对话 · 思考链堆叠",
+    "summary": "",
+    "created_at": "2026-04-07T15:00:00Z",
+    "updated_at": "2026-04-07T15:01:00Z",
+    "chat_messages": [
+      {
+        "uuid": "demo-003-m1",
+        "sender": "human",
+        "created_at": "2026-04-07T15:00:00Z",
+        "content": [
+          { "type": "text", "text": "给我看一个有很多思考块的消息。" }
+        ]
+      },
+      {
+        "uuid": "demo-003-m2",
+        "sender": "assistant",
+        "created_at": "2026-04-07T15:01:00Z",
+        "content": [
+          { "type": "thinking", "thinking": "第一段思考。\n用户想看多个思考块的样式。" },
+          { "type": "thinking", "thinking": "第二段思考。\n块之间应该只用间距分隔，没有破折号或横线。" },
+          { "type": "thinking", "thinking": "第三段思考。\n这样能验证块间距的视觉效果。" },
+          { "type": "thinking", "thinking": "第四段思考。\n药丸应显示「思考·4」。" },
+          { "type": "text", "text": "上面药丸显示「思考·4」，点开后你会看到 4 个思考块只用空白间距分隔，没有任何分隔线。" }
+        ]
+      }
+    ]
+  }
+]

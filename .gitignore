@@ -1,0 +1,20 @@
+# Private chat data
+conversations*.json
+
+# Local notes, tools and fixtures
+tools/
+phase*.json
+*.md
+!README.md
+*.html
+!index.html
+*.zip
+test-*.png
+screen-*.png
+
+# Tooling, editor and OS files
+.worktrees/
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
