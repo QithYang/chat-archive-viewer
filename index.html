@@ -209,6 +209,13 @@ input, button { font-family: inherit; }
 .msg-text pre { background:var(--surface); border-radius:8px; padding:12px 14px; overflow-x:auto; margin:10px 0; }
 .msg-text pre code { background:transparent; color:var(--text-1); padding:0; font-size:13px; }
 .msg-text blockquote { border-left:2px solid var(--orange); padding-left:14px; margin:10px 0; color:var(--text-2); font-style:italic; font-size:14.5px; }
+.msg-text h1, .msg-text h2, .msg-text h3, .msg-text h4, .msg-text h5, .msg-text h6 { font-family:'AnthropicSerif', Georgia, serif; color:var(--text-1); font-weight:600; line-height:1.35; margin:14px 0 6px; }
+.msg-text h1 { font-size:22px; }
+.msg-text h2 { font-size:19px; }
+.msg-text h3 { font-size:17px; }
+.msg-text h4 { font-size:15.5px; }
+.msg-text h5 { font-size:14.5px; color:var(--text-2); }
+.msg-text h6 { font-size:13.5px; color:var(--text-2); letter-spacing:0.3px; }
 .msg-text a { color:var(--blue); text-decoration:underline; text-decoration-color:var(--blue-soft); text-underline-offset:2px; }
 .msg-text a:hover { text-decoration-color:var(--blue); }
 .msg-text mark { background:rgba(217,119,87,0.28); color:inherit; padding:0 2px; border-radius:2px; }
@@ -217,6 +224,41 @@ input, button { font-family: inherit; }
 /* Files / attachments */
 .msg-file { font-family:'AnthropicSans',sans-serif; font-size:12px; color:var(--text-2); background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:7px 11px; display:inline-block; margin:4px 6px 6px 0; }
 .msg.user .msg-file { background:var(--white); }
+details.msg-file-text { padding:0; display:block; max-width:100%; }
+details.msg-file-text > summary { cursor:pointer; padding:7px 11px; user-select:none; list-style:none; }
+details.msg-file-text > summary::-webkit-details-marker { display:none; }
+details.msg-file-text[open] > summary { border-bottom:1px solid var(--border); }
+details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surface); border-radius:0 0 7px 7px; font-family:'AnthropicMono',monospace; font-size:12px; line-height:1.55; color:var(--text-1); white-space:pre-wrap; word-break:break-word; max-height:360px; overflow:auto; }
+.msg-file-image { color:var(--text-2); }
+.msg-file-binary { color:var(--text-2); }
+.msg-block-unknown { font-family:'AnthropicMono',monospace; font-size:11px; color:var(--text-3); background:var(--surface); border:1px dashed var(--border); border-radius:6px; padding:6px 10px; margin:6px 0; display:inline-block; }
+
+/* token_budget — minimal ghost marker (low-signal, just a quiet trail) */
+.msg-block-marker { display:inline-block; font-family:'AnthropicSans',sans-serif; font-size:10.5px; color:var(--text-3); background:transparent; border:1px dashed var(--border); border-radius:10px; padding:1px 8px; margin:4px 4px 4px 0; letter-spacing:0.3px; opacity:0.7; }
+
+/* tool_use / tool_result — reuse thinking pill/collapse aesthetic */
+.msg-tool { margin:8px 0; font-family:'AnthropicSans',sans-serif; }
+.msg-tool > summary { display:inline-flex; align-items:center; gap:6px; cursor:pointer; padding:4px 12px; border-radius:16px; background:var(--surface); border:none; font-size:11px; color:var(--text-3); user-select:none; list-style:none; }
+.msg-tool > summary::-webkit-details-marker { display:none; }
+.msg-tool > summary:hover { background:#e8e6dc; }
+.msg-tool .tool-ic { font-size:9px; width:9px; display:inline-block; text-align:center; }
+.msg-tool[open] .tool-ic::before { content:'\25BE'; }
+.msg-tool:not([open]) .tool-ic::before { content:'\25B8'; }
+.msg-tool > .tool-body { background:var(--thinking-bg); border:none; border-radius:14px; padding:12px 16px; margin-top:8px; color:var(--text-2); font-size:12.5px; line-height:1.6; }
+.msg-tool > .tool-body pre { margin:6px 0; padding:8px 10px; background:var(--surface); border-radius:6px; font-family:'AnthropicMono',monospace; font-size:12px; color:var(--text-1); white-space:pre-wrap; word-break:break-word; max-height:300px; overflow:auto; }
+.msg-tool > .tool-body .tool-meta { font-size:11px; color:var(--text-3); margin-bottom:4px; }
+.msg-tool > .tool-body img.tool-icon { width:14px; height:14px; vertical-align:-2px; margin-right:4px; border-radius:2px; }
+.msg-tool.is-error > summary { color:#a14a4a; }
+.msg-tool.is-error > .tool-body { background:#fdf0ee; color:#5a2a2a; }
+.msg-tool.is-error > .tool-body pre { background:#fff; }
+
+/* flag block — safety helpline (e.g. self-harm intervention). Amber, not red, to avoid alarm. */
+.msg-block-flag { display:block; border:1px solid #d9a55a; background:#fdf6ea; border-radius:10px; padding:12px 14px; margin:10px 0; font-family:'AnthropicSans',sans-serif; }
+.msg-block-flag .flag-name { font-size:14px; font-weight:600; color:#7a4b0d; margin-bottom:6px; }
+.msg-block-flag .flag-row { font-size:13px; color:var(--text-1); line-height:1.7; }
+.msg-block-flag .flag-row + .flag-row { margin-top:2px; }
+.msg-block-flag .flag-row a { color:#7a4b0d; text-decoration:underline; text-decoration-color:#d9a55a; text-underline-offset:2px; word-break:break-all; }
+.msg-block-flag .flag-row a:hover { text-decoration-color:#7a4b0d; }
 
 /* Thinking — pill toggle + left-bar content */
 .thinking { margin-bottom:12px; }
@@ -420,416 +462,697 @@ input, button { font-family: inherit; }
 </div>
 
 <script>
-// === State ===
-let RAW = null;
-let RAW_BY_ID = {}; // uuid → raw conversation (deduped, keep version with most messages)
-let CONVS = [];
-let curConvId = null;
-let curConv = null;
-let showThinking = false;
-let view = 'chat';
-let favs = {};
-let deletedConvs = new Set();
-let convFilter = '';
-let searchScope = 'current';
-let searchQ = '';
-let searchMatches = [];
-let searchMatchIdx = 0;
-let searchTimer = null;
 
-// === Display name customization (per-user, localStorage) ===
-const DN_USER_KEY = 'qithyang_user_name';
-const DN_ASST_KEY = 'qithyang_assistant_name';
-function getUserName() { return localStorage.getItem(DN_USER_KEY) || '你'; }
-function getAssistantName() { return localStorage.getItem(DN_ASST_KEY) || 'Claude'; }
-function setDisplayNames(u, a) {
-  const uT = (u || '').trim(), aT = (a || '').trim();
-  if (uT) localStorage.setItem(DN_USER_KEY, uT); else localStorage.removeItem(DN_USER_KEY);
-  if (aT) localStorage.setItem(DN_ASST_KEY, aT); else localStorage.removeItem(DN_ASST_KEY);
-}
+// === QithYang module ===
+window.QithYang = (() => {
 
-// === IndexedDB persistence ===
-// Stores: conversations (keyPath 'uuid'), favs (keyPath 'key'), deletedConvs (keyPath 'uuid')
-const DB_NAME = 'QithYang';
-const DB_VERSION = 1;
-const STORES = ['conversations', 'favs', 'deletedConvs'];
-let _db = null;
-let lastSaveOk = true;
+  // ===== state (simple mutable plain object) =====
+  const state = {
+    RAW: null,
+    RAW_BY_ID: {},
+    CONVS: [],
+    curConvId: null,
+    curConv: null,
+    showThinking: false,
+    view: 'chat',
+    favs: {},
+    deletedConvs: new Set(),
+    convFilter: '',
+    searchScope: 'current',
+    searchQ: '',
+    searchMatches: [],
+    searchMatchIdx: 0,
+    searchTimer: null,
+    lastSaveOk: true,
+  };
 
+  // ===== utils (verbatim from original lines 604-671) =====
+  function pad2(n) { return String(n).padStart(2,'0'); }
+  function fmtFullCN(iso) {
+    const d = new Date(iso);
+    return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  }
+  function fmtMD(iso) {
+    const d = new Date(iso);
+    return `${d.getMonth()+1}/${d.getDate()}`;
+  }
+  function fmtDateCN(iso) {
+    const d = new Date(iso);
+    return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+  }
+  function fmtDayKey(iso) {
+    const d = new Date(iso);
+    return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+  }
+
+  // === Markdown ===
+  function escHtml(s) {
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function formatSize(n) {
+    if (typeof n !== 'number' || !isFinite(n) || n < 0) return '';
+    if (n < 1024) return `${n} B`;
+    if (n < 1024 * 1024) return `${(n/1024).toFixed(1)} KB`;
+    return `${(n/(1024*1024)).toFixed(1)} MB`;
+  }
+  function inferKind(name) {
+    const ext = String(name || '').toLowerCase().match(/\.[a-z0-9]+$/);
+    const e = ext ? ext[0] : '';
+    if (['.jpg','.jpeg','.png','.webp','.gif','.bmp'].includes(e)) return 'image';
+    if (['.md','.html','.txt','.json','.yaml','.yml','.log','.csv'].includes(e)) return 'text';
+    return 'file';
+  }
+  function renderInline(s) {
+    let h = escHtml(s);
+    // links [text](url)
+    h = h.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+    // bold-italic / bold / italic
+    h = h.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');
+    h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    h = h.replace(/(?<![*\w])\*([^*\n]+?)\*(?!\w)/g,'<em>$1</em>');
+    // inline code
+    h = h.replace(/`([^`\n]+)`/g,'<code>$1</code>');
+    // strike
+    h = h.replace(/~~(.+?)~~/g,'<del>$1</del>');
+    return h;
+  }
+  function renderMarkdown(text, hl) {
+    if (!text) return '';
+    const lines = text.split('\n');
+    let h = '', bq = [], inCode = false, codeLines = [];
+    function flushBq() { if (bq.length) { h += '<blockquote>'+bq.map(l=>renderInline(l)).join('<br>')+'</blockquote>'; bq = []; } }
+    function flushCode() { if (codeLines.length) { h += '<pre><code>'+escHtml(codeLines.join('\n'))+'</code></pre>'; codeLines = []; } }
+    for (const line of lines) {
+      if (line.startsWith('```')) {
+        if (inCode) { flushCode(); inCode = false; }
+        else { flushBq(); inCode = true; }
+        continue;
+      }
+      if (inCode) { codeLines.push(line); continue; }
+      const hMatch = line.match(/^(#{1,6})\s+(.+)$/);
+      if (hMatch) {
+        flushBq();
+        const level = hMatch[1].length;
+        h += `<h${level}>${renderInline(hMatch[2])}</h${level}>`;
+        continue;
+      }
+      if (line.startsWith('> ') || line === '>') {
+        bq.push(line.replace(/^>\s?/,''));
+      } else {
+        flushBq();
+        h += line.trim()==='' ? '<div class="sp"></div>' : '<p>'+renderInline(line)+'</p>';
+      }
+    }
+    flushBq();
+    flushCode();
+    if (hl) {
+      const re = new RegExp('('+escapeRegExp(hl)+')','gi');
+      h = h.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => {
+        if (tag) return tag;
+        return txt.replace(re, '<mark>$1</mark>');
+      });
+    }
+    return h;
+  }
+
+  // ===== storage (idb + ls) =====
+  // localStorage display-name keys
+  const DN_USER_KEY = 'qithyang_user_name';
+  const DN_ASST_KEY = 'qithyang_assistant_name';
+  // IndexedDB schema (DO NOT CHANGE)
+  const DB_NAME = 'QithYang';
+  const DB_VERSION = 1;
+  const STORES = ['conversations', 'favs', 'deletedConvs'];
+  let _db = null;
+
+  function idbOpen() {
+    if (_db) return Promise.resolve(_db);
+    return new Promise((resolve, reject) => {
+      if (!('indexedDB' in window)) { reject(new Error('IndexedDB not supported')); return; }
+      const req = indexedDB.open(DB_NAME, DB_VERSION);
+      req.onupgradeneeded = e => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('conversations')) db.createObjectStore('conversations', { keyPath:'uuid' });
+        if (!db.objectStoreNames.contains('favs')) db.createObjectStore('favs', { keyPath:'key' });
+        if (!db.objectStoreNames.contains('deletedConvs')) db.createObjectStore('deletedConvs', { keyPath:'uuid' });
+      };
+      req.onsuccess = () => { _db = req.result; resolve(_db); };
+      req.onerror = () => reject(req.error);
+      req.onblocked = () => reject(new Error('IndexedDB open blocked'));
+    });
+  }
+  function idbTx(stores, mode) { return _db.transaction(stores, mode); }
+  function idbGetAll(storeName) {
+    return new Promise((resolve, reject) => {
+      const tx = idbTx([storeName], 'readonly');
+      const req = tx.objectStore(storeName).getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  function idbBulkPut(storeName, items) {
+    return new Promise((resolve, reject) => {
+      if (!items.length) { resolve(0); return; }
+      const tx = idbTx([storeName], 'readwrite');
+      const store = tx.objectStore(storeName);
+      for (const it of items) store.put(it);
+      tx.oncomplete = () => resolve(items.length);
+      tx.onerror = () => reject(tx.error);
+      tx.onabort = () => reject(tx.error);
+    });
+  }
+  function idbPut(storeName, item) {
+    return new Promise((resolve, reject) => {
+      const tx = idbTx([storeName], 'readwrite');
+      tx.objectStore(storeName).put(item);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+  function idbDelete(storeName, key) {
+    return new Promise((resolve, reject) => {
+      const tx = idbTx([storeName], 'readwrite');
+      tx.objectStore(storeName).delete(key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+  function idbClear(storeName) {
+    return new Promise((resolve, reject) => {
+      const tx = idbTx([storeName], 'readwrite');
+      tx.objectStore(storeName).clear();
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+  function idbCount(storeName) {
+    return new Promise((resolve, reject) => {
+      const tx = idbTx([storeName], 'readonly');
+      const req = tx.objectStore(storeName).count();
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  // Fav single toggle (fire-and-forget)
+  function idbSaveFav(key, on) {
+    (on ? idbPut('favs', { key }) : idbDelete('favs', key)).catch(e => console.warn('fav save', e));
+  }
+  // Deleted conv add (fire-and-forget)
+  function idbSaveDeleted(uuid) {
+    idbPut('deletedConvs', { uuid }).catch(e => console.warn('del save', e));
+  }
+
+  // localStorage helpers
+  function lsGetUserName() { return localStorage.getItem(DN_USER_KEY) || '你'; }
+  function lsGetAssistantName() { return localStorage.getItem(DN_ASST_KEY) || 'Claude'; }
+  function lsSetDisplayNames(u, a) {
+    const uT = (u || '').trim(), aT = (a || '').trim();
+    if (uT) localStorage.setItem(DN_USER_KEY, uT); else localStorage.removeItem(DN_USER_KEY);
+    if (aT) localStorage.setItem(DN_ASST_KEY, aT); else localStorage.removeItem(DN_ASST_KEY);
+  }
+  // One-time migration from old localStorage keys (xy_raw / xy_favs / xy_del)
+  async function lsMigrateLegacy() {
+    const oldRaw = localStorage.getItem('xy_raw');
+    const oldFavs = localStorage.getItem('xy_favs');
+    const oldDel = localStorage.getItem('xy_del');
+    if (!oldRaw && !oldFavs && !oldDel) return false;
+    try {
+      if (oldRaw) {
+        const arr = JSON.parse(oldRaw);
+        if (Array.isArray(arr) && arr.length) await idbBulkPut('conversations', arr);
+      }
+      if (oldFavs) {
+        const obj = JSON.parse(oldFavs) || {};
+        const items = Object.keys(obj).filter(k => obj[k]).map(k => ({ key:k }));
+        if (items.length) await idbBulkPut('favs', items);
+      }
+      if (oldDel) {
+        const arr = JSON.parse(oldDel);
+        if (Array.isArray(arr) && arr.length) await idbBulkPut('deletedConvs', arr.map(uuid => ({ uuid })));
+      }
+      localStorage.removeItem('xy_raw');
+      localStorage.removeItem('xy_favs');
+      localStorage.removeItem('xy_del');
+      return true;
+    } catch (e) { console.warn('migrate legacy failed', e); return false; }
+  }
+
+  // ===== filter: real conversation check =====
+  // A conversation is "real" iff its `name` is a non-empty string.
+  function isRealConversation(conv) {
+    return typeof conv?.name === 'string' && conv.name !== '';
+  }
+
+  // ===== filter: schema-drift detector (passive console.warn) =====
+  // Detect unexpected conv.name shapes. Behaviour unchanged — this only warns.
+  function schemaDriftDetector(conv) {
+    if (conv?.name == null) {
+      console.warn('[schema-drift] conv.name is null/undefined:', conv && conv.uuid);
+    } else if (typeof conv.name !== 'string') {
+      console.warn('[schema-drift] conv.name non-string:', conv.uuid, typeof conv.name);
+    } else if (conv.name === '') {
+      // known empty — no warn
+    } else if (conv.name.trim() === '') {
+      console.warn('[schema-drift] conv.name whitespace-only:', conv.uuid);
+    } else if (['Untitled', 'New Chat', 'New Conversation'].includes(conv.name)) {
+      console.warn('[schema-drift] possible placeholder name:', conv.uuid, conv.name);
+    }
+  }
+
+  // ===== normalizer =====
+  // getMsgData output schema (after attachment dedup): { text, thinkingBlocks, files }
+  // files merges msg.files + msg.attachments deduped by file_name / file_uuid;
+  // extracted_content (from attachments) is preserved; kind ∈ {image, text, file}.
+  function getMsgData(msg) {
+    let textParts = [], thinkingParts = [];
+    for (const c of (msg.content || [])) {
+      if (c.type === 'text' && c.text) textParts.push(c.text);
+      else if (c.type === 'thinking' && c.thinking) thinkingParts.push(c.thinking);
+    }
+    // dedup files + attachments
+    const byKey = new Map();
+    function keyOf(o) {
+      // file_name 优先 — attachments[] 没有 file_uuid 字段; 若以 uuid 优先,
+      // 同名 entity 会永远无法 merge.
+      return (typeof o.file_name === 'string' && o.file_name.length > 0 ? o.file_name : null)
+          || o.file_uuid
+          || JSON.stringify(o);
+    }
+    for (const f of (msg.files || [])) {
+      const k = keyOf(f);
+      if (!byKey.has(k)) byKey.set(k, { ...f });
+    }
+    for (const a of (msg.attachments || [])) {
+      const k = keyOf(a);
+      if (byKey.has(k)) {
+        const ex = byKey.get(k);
+        // attachments may carry extracted_content / file_size that files lacks
+        if (a.extracted_content != null && ex.extracted_content == null) ex.extracted_content = a.extracted_content;
+        if (a.file_size != null && ex.file_size == null) ex.file_size = a.file_size;
+      } else {
+        byKey.set(k, { ...a });
+      }
+    }
+    const dedupedFiles = [];
+    for (const f of byKey.values()) {
+      // attachments with extracted_content are always inline-renderable text
+      const kind = (f.extracted_content != null && f.extracted_content !== '')
+        ? 'text'
+        : inferKind(f.file_name);
+      dedupedFiles.push({ ...f, kind });
+    }
+    return {
+      text: textParts.join('\n\n'),
+      thinkingBlocks: thinkingParts,
+      files: dedupedFiles,
+    };
+  }
+  // A msg is "visible" if it would render to something non-empty. Originally
+  // only text / thinking / files counted. Now that tool_use / tool_result /
+  // flag / token_budget handlers exist, renderMessages skips a msg only when its computed extraHtml is
+  // also empty; we mirror that here so msgCount / firstDate / lastDate /
+  // timeline date-keying match what the user sees rendered. The block-type
+  // probe confirmed every block carries `type` as a string (shape invariant),
+  // so checking `msg.content[].type in known set` is safe and zero-fallback.
+  const EXTRA_VISIBLE_TYPES = new Set(['tool_use', 'tool_result', 'flag', 'token_budget']);
+  function hasExtraVisibleBlock(msg) {
+    if (!msg || !Array.isArray(msg.content)) return false;
+    for (const b of msg.content) {
+      if (b && typeof b === 'object' && EXTRA_VISIBLE_TYPES.has(b.type)) return true;
+    }
+    return false;
+  }
+  function isMsgVisible(msg) {
+    const d = getMsgData(msg);
+    if (d.text || d.thinkingBlocks.length || d.files.length) return true;
+    return hasExtraVisibleBlock(msg);
+  }
+  function extractTitle(c) {
+    if (c.name && c.name.trim()) return c.name.trim();
+    for (const m of c.chat_messages) {
+      if (m.sender === 'human') {
+        const txt = (m.content||[]).find(x => x.type==='text' && x.text)?.text || m.text;
+        if (txt) {
+          const clean = txt.replace(/\s+/g,' ').trim();
+          return clean.length > 30 ? clean.slice(0,30)+'…' : clean;
+        }
+      }
+    }
+    return '未命名对话';
+  }
+  // normalize(filteredConvs) → [{uuid, title, chat_messages, firstDate, lastDate, msgCount, updated_at, created_at}]
+  // 输入应已过 isRealConversation + deletedConvs filter。本函数内不再做防御性 filter。
+  function normalize(filteredConvs) {
+    return filteredConvs
+      .map(c => {
+        const visible = c.chat_messages.filter(isMsgVisible);
+        return {
+          uuid: c.uuid,
+          title: extractTitle(c),
+          chat_messages: c.chat_messages,
+          firstDate: visible[0].created_at,
+          lastDate: visible[visible.length-1].created_at,
+          msgCount: visible.length,
+          updated_at: c.updated_at,
+          created_at: c.created_at,
+        };
+      })
+      .sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+  }
+
+  // ===== parser: merge raw arrays into state.RAW_BY_ID,
+  // dedupe by uuid keeping the version with the most messages =====
+  function parserParse(raw) {
+    if (!Array.isArray(raw)) return { added:0, updated:0, kept:0, changedIds:[] };
+    let added = 0, updated = 0, kept = 0;
+    const changedIds = [];
+    for (const c of raw) {
+      if (!c || !c.uuid || !Array.isArray(c.chat_messages)) continue;
+      const ex = state.RAW_BY_ID[c.uuid];
+      if (!ex) {
+        state.RAW_BY_ID[c.uuid] = c;
+        added++;
+        changedIds.push(c.uuid);
+      } else if (c.chat_messages.length > ex.chat_messages.length) {
+        state.RAW_BY_ID[c.uuid] = c;
+        updated++;
+        changedIds.push(c.uuid);
+      } else {
+        kept++;
+      }
+    }
+    return { added, updated, kept, changedIds };
+  }
+
+  // ===== renderer: registry-style block handlers =====
+  // Each handler: (block, ctx) => htmlString.
+  // ctx may carry { hl } (highlight query) etc. Handlers must escape any
+  // free-form strings via escHtml; rich text goes through renderMarkdown.
+  const blockHandlers = {};
+  function registerBlock(type, handler) {
+    if (typeof type !== 'string' || typeof handler !== 'function') throw new Error('registerBlock: bad args');
+    blockHandlers[type] = handler;
+  }
+  function renderUnknownBlock(block) {
+    console.warn('[unknown block type]', block && block.type, block);
+    const t = block && block.type != null ? String(block.type) : '(no type)';
+    const n = block && typeof block === 'object' ? Object.keys(block).length : 0;
+    return `<div class="msg-block-unknown">[${escHtml(t)} block, ${n} fields]</div>`;
+  }
+  function dispatchBlock(block, ctx) {
+    if (!block || typeof block !== 'object') return '';
+    const handler = blockHandlers[block.type] || renderUnknownBlock;
+    return handler(block, ctx || {});
+  }
+
+  // text handler — markdown render (heading branch already in renderMarkdown)
+  registerBlock('text', (b, ctx) => {
+    if (!b.text) return '';
+    return `<div class="msg-text">${renderMarkdown(b.text, (ctx && ctx.hl) || '')}</div>`;
+  });
+
+  // thinking handler — collapsible block. Note: renderMessages currently
+  // aggregates msg.content[].thinking into d.thinkingBlocks and renders them
+  // together in one .thinking wrapper, so this per-block handler exists for
+  // F1's dispatch fallback path / future migration, not the current message
+  // rendering path. It still emits a sensible collapsed marker if used.
+  registerBlock('thinking', (b /* , ctx */) => {
+    if (!b.thinking) return '';
+    const inner = String(b.thinking).split('\n').map(l => l.trim() ? `<p>${escHtml(l)}</p>` : '<div class="th-sp"></div>').join('');
+    const status = b.cut_off ? ' · 已截断' : (b.truncated ? ' · 已截断' : '');
+    return `<div class="thinking">
+      <button type="button" class="th-toggle"><span class="th-ico">▸</span><span class="th-lbl">思考${status}</span></button>
+      <div class="th-content"><div class="th-block">${inner}</div></div>
+    </div>`;
+  });
+
+  // tool_use / tool_result helpers
+  // display_content is server-provided pretty rendering:
+  //   { type:'code_block', language:'bash', code:'...' }
+  //   { type:'json_block', json_block:'...' }
+  function renderDisplayContent(dc) {
+    if (!dc || typeof dc !== 'object') return '';
+    if (dc.type === 'code_block' && typeof dc.code === 'string') {
+      const lang = dc.language ? ` data-lang="${escHtml(dc.language)}"` : '';
+      const fname = dc.filename ? `<div class="tool-meta">${escHtml(dc.filename)}</div>` : '';
+      return `${fname}<pre${lang}><code>${escHtml(dc.code)}</code></pre>`;
+    }
+    if (dc.type === 'json_block' && typeof dc.json_block === 'string') {
+      return `<pre><code>${escHtml(dc.json_block)}</code></pre>`;
+    }
+    // unknown display_content shape — render as JSON
+    try { return `<pre><code>${escHtml(JSON.stringify(dc, null, 2))}</code></pre>`; }
+    catch { return ''; }
+  }
+  function renderToolIcon(b) {
+    if (b.integration_icon_url && /^https?:\/\//.test(b.integration_icon_url)) {
+      return `<img class="tool-icon" src="${escHtml(b.integration_icon_url)}" alt="">`;
+    }
+    return '';
+  }
+
+  registerBlock('tool_use', (b /* , ctx */) => {
+    if (!b) return '';
+    const icon = renderToolIcon(b);
+    const name = b.name || '(unnamed tool)';
+    const msg = b.message ? ` · ${escHtml(b.message)}` : '';
+    const integration = b.integration_name ? `<div class="tool-meta">${escHtml(b.integration_name)}${b.mcp_server_url ? ` · ${escHtml(b.mcp_server_url)}` : ''}</div>` : '';
+    // body: prefer display_content; fallback to input
+    let body = renderDisplayContent(b.display_content);
+    if (!body) {
+      if (b.input && typeof b.input === 'object' && Object.keys(b.input).length > 0) {
+        try { body = `<pre><code>${escHtml(JSON.stringify(b.input, null, 2))}</code></pre>`; }
+        catch { body = ''; }
+      }
+    }
+    const summary = `${icon}<span class="tool-ic"></span><span>🔧 ${escHtml(name)}${msg}</span>`;
+    return `<details class="msg-tool msg-tool-use"><summary>${summary}</summary><div class="tool-body">${integration}${body || '<div class="tool-meta">(无输入)</div>'}</div></details>`;
+  });
+
+  registerBlock('tool_result', (b /* , ctx */) => {
+    if (!b) return '';
+    const icon = renderToolIcon(b);
+    const name = b.name || '(result)';
+    const errCls = b.is_error ? ' is-error' : '';
+    const errMark = b.is_error ? ' · ⚠ 错误' : '';
+    // body order: display_content → structured_content → content[]
+    let body = renderDisplayContent(b.display_content);
+    if (!body && b.structured_content && typeof b.structured_content === 'object') {
+      try { body = `<pre><code>${escHtml(JSON.stringify(b.structured_content, null, 2))}</code></pre>`; }
+      catch {}
+    }
+    if (!body && Array.isArray(b.content) && b.content.length > 0) {
+      // content[] is array of sub-blocks; each is { type:'text', text:'...' } typically
+      body = b.content.map(sub => {
+        if (sub && sub.type === 'text' && typeof sub.text === 'string') {
+          return `<pre><code>${escHtml(sub.text)}</code></pre>`;
+        }
+        try { return `<pre><code>${escHtml(JSON.stringify(sub, null, 2))}</code></pre>`; }
+        catch { return ''; }
+      }).join('');
+    }
+    if (!body) body = '<div class="tool-meta">(无输出)</div>';
+    const summary = `${icon}<span class="tool-ic"></span><span>📥 ${escHtml(name)}${errMark}</span>`;
+    return `<details class="msg-tool msg-tool-result${errCls}"><summary>${summary}</summary><div class="tool-body">${body}</div></details>`;
+  });
+
+  // token_budget — per probe, every field except `type` is null (pure schema
+  // ghost slot). Render as a quiet trail marker so the user can see "the model
+  // budgeted tokens here" without it taking visual weight. Low-stakes.
+  registerBlock('token_budget', (b /* , ctx */) => {
+    const remaining = (b && b.remaining != null) ? ` · ${escHtml(String(b.remaining))}` : '';
+    return `<div class="msg-block-marker" title="token budget">⌛ token budget${remaining}</div>`;
+  });
+
+  // flag handler — HIGH-STAKES: safety / self-harm intervention helpline
+  // (e.g. Japan #いのちSOS / generic crisis hotlines). The model emits these
+  // as a structured `helpline` object alongside other content; the previous
+  // renderer silently dropped them, which means historical interventions
+  // disappeared when re-viewing past sessions. We render verbatim, never
+  // censor, and gracefully skip absent fields (no "phone: null" placeholders).
+  // Visual: amber border + soft amber background — deliberately NOT red, so
+  // re-viewing one's own past hard moments doesn't re-alarm the reader.
+  registerBlock('flag', (b /* , ctx */) => {
+    const h = (b && b.helpline) ? b.helpline : null;
+    if (!h) return '';
+    const parts = [];
+    if (h.name) parts.push(`<div class="flag-name">${escHtml(h.name)}</div>`);
+    if (h.phone_number) parts.push(`<div class="flag-row">📞 <a href="tel:${escHtml(h.phone_number)}">${escHtml(h.phone_number)}</a></div>`);
+    if (h.sms_number) parts.push(`<div class="flag-row">💬 SMS: <a href="sms:${escHtml(h.sms_number)}">${escHtml(h.sms_number)}</a></div>`);
+    if (h.web_chat_url) parts.push(`<div class="flag-row">🌐 <a href="${escHtml(h.web_chat_url)}" target="_blank" rel="noopener">${escHtml(h.web_chat_url)}</a></div>`);
+    if (h.url) parts.push(`<div class="flag-row">ℹ️ <a href="${escHtml(h.url)}" target="_blank" rel="noopener">${escHtml(h.url)}</a></div>`);
+    if (!parts.length) return '';
+    return `<div class="msg-block-flag">${parts.join('')}</div>`;
+  });
+
+  return {
+    state,
+    utils: { pad2, fmtFullCN, fmtMD, fmtDateCN, fmtDayKey, escHtml, escapeRegExp, renderInline, renderMarkdown, formatSize, inferKind },
+    storage: {
+      idb: {
+        open: idbOpen,
+        tx: idbTx,
+        getAll: idbGetAll,
+        bulkPut: idbBulkPut,
+        put: idbPut,
+        delete: idbDelete,
+        clear: idbClear,
+        count: idbCount,
+        saveFav: idbSaveFav,
+        saveDeleted: idbSaveDeleted,
+      },
+      ls: {
+        getUserName: lsGetUserName,
+        getAssistantName: lsGetAssistantName,
+        setDisplayNames: lsSetDisplayNames,
+        migrateLegacy: lsMigrateLegacy,
+      },
+    },
+    parser: { parse: parserParse },
+    filter: { isRealConversation, schemaDriftDetector },
+    normalizer: { normalize, extractTitle, isMsgVisible, getMsgData },
+    renderer: { registerBlock, dispatchBlock, blockHandlers, renderUnknownBlock },
+  };
+})();
+
+
+// === UI helper: loading status text ===
 function setLoadingText(t) {
   const el = document.querySelector('#loading .lt');
   if (el) el.textContent = t;
 }
 
-function openDB() {
-  if (_db) return Promise.resolve(_db);
-  return new Promise((resolve, reject) => {
-    if (!('indexedDB' in window)) { reject(new Error('IndexedDB not supported')); return; }
-    const req = indexedDB.open(DB_NAME, DB_VERSION);
-    req.onupgradeneeded = e => {
-      const db = e.target.result;
-      if (!db.objectStoreNames.contains('conversations')) db.createObjectStore('conversations', { keyPath:'uuid' });
-      if (!db.objectStoreNames.contains('favs')) db.createObjectStore('favs', { keyPath:'key' });
-      if (!db.objectStoreNames.contains('deletedConvs')) db.createObjectStore('deletedConvs', { keyPath:'uuid' });
-    };
-    req.onsuccess = () => { _db = req.result; resolve(_db); };
-    req.onerror = () => reject(req.error);
-    req.onblocked = () => reject(new Error('IndexedDB open blocked'));
-  });
-}
-function dbTx(stores, mode) { return _db.transaction(stores, mode); }
-function dbGetAll(storeName) {
-  return new Promise((resolve, reject) => {
-    const tx = dbTx([storeName], 'readonly');
-    const req = tx.objectStore(storeName).getAll();
-    req.onsuccess = () => resolve(req.result || []);
-    req.onerror = () => reject(req.error);
-  });
-}
-function dbBulkPut(storeName, items) {
-  return new Promise((resolve, reject) => {
-    if (!items.length) { resolve(0); return; }
-    const tx = dbTx([storeName], 'readwrite');
-    const store = tx.objectStore(storeName);
-    for (const it of items) store.put(it);
-    tx.oncomplete = () => resolve(items.length);
-    tx.onerror = () => reject(tx.error);
-    tx.onabort = () => reject(tx.error);
-  });
-}
-function dbPut(storeName, item) {
-  return new Promise((resolve, reject) => {
-    const tx = dbTx([storeName], 'readwrite');
-    tx.objectStore(storeName).put(item);
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-}
-function dbDelete(storeName, key) {
-  return new Promise((resolve, reject) => {
-    const tx = dbTx([storeName], 'readwrite');
-    tx.objectStore(storeName).delete(key);
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-}
-function dbClear(storeName) {
-  return new Promise((resolve, reject) => {
-    const tx = dbTx([storeName], 'readwrite');
-    tx.objectStore(storeName).clear();
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-}
-function dbCount(storeName) {
-  return new Promise((resolve, reject) => {
-    const tx = dbTx([storeName], 'readonly');
-    const req = tx.objectStore(storeName).count();
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  });
-}
-
-// One-time migration from old localStorage keys
-async function migrateLegacyStorage() {
-  const oldRaw = localStorage.getItem('xy_raw');
-  const oldFavs = localStorage.getItem('xy_favs');
-  const oldDel = localStorage.getItem('xy_del');
-  if (!oldRaw && !oldFavs && !oldDel) return false;
-  try {
-    if (oldRaw) {
-      const arr = JSON.parse(oldRaw);
-      if (Array.isArray(arr) && arr.length) await dbBulkPut('conversations', arr);
-    }
-    if (oldFavs) {
-      const obj = JSON.parse(oldFavs) || {};
-      const items = Object.keys(obj).filter(k => obj[k]).map(k => ({ key:k }));
-      if (items.length) await dbBulkPut('favs', items);
-    }
-    if (oldDel) {
-      const arr = JSON.parse(oldDel);
-      if (Array.isArray(arr) && arr.length) await dbBulkPut('deletedConvs', arr.map(uuid => ({ uuid })));
-    }
-    localStorage.removeItem('xy_raw');
-    localStorage.removeItem('xy_favs');
-    localStorage.removeItem('xy_del');
-    return true;
-  } catch (e) { console.warn('migrate legacy failed', e); return false; }
-}
-
-// Save N conversations (used by mergeRaw with changedIds)
+// Save N conversations (used by parser.parse with changedIds)
 async function saveConvsByIds(ids) {
   if (!ids.length) return { ok:true };
   try {
-    const items = ids.map(id => RAW_BY_ID[id]).filter(Boolean);
-    await dbBulkPut('conversations', items);
-    lastSaveOk = true;
+    const items = ids.map(id => QithYang.state.RAW_BY_ID[id]).filter(Boolean);
+    await QithYang.storage.idb.bulkPut('conversations', items);
+    QithYang.state.lastSaveOk = true;
     return { ok:true };
-  } catch (e) { lastSaveOk = false; return { ok:false, err:e }; }
-}
-// Save all (used by startApp first import)
-async function saveAllRaw() {
-  try {
-    await dbClear('conversations');
-    await dbBulkPut('conversations', Object.values(RAW_BY_ID));
-    lastSaveOk = true;
-    return { ok:true };
-  } catch (e) { lastSaveOk = false; return { ok:false, err:e }; }
-}
-// Fav single toggle (fire-and-forget)
-function saveFavSingle(key, on) {
-  (on ? dbPut('favs', { key }) : dbDelete('favs', key)).catch(e => console.warn('fav save', e));
+  } catch (e) { QithYang.state.lastSaveOk = false; return { ok:false, err:e }; }
 }
 // Bulk save favs (used after backup import that merges fav map)
 async function saveFavsBulk() {
   try {
-    await dbClear('favs');
-    const items = Object.keys(favs).filter(k => favs[k]).map(k => ({ key:k }));
-    await dbBulkPut('favs', items);
+    await QithYang.storage.idb.clear('favs');
+    const items = Object.keys(QithYang.state.favs).filter(k => QithYang.state.favs[k]).map(k => ({ key:k }));
+    await QithYang.storage.idb.bulkPut('favs', items);
   } catch (e) { console.warn('saveFavsBulk', e); }
-}
-// Deleted conv add (fire-and-forget)
-function saveDeletedSingle(uuid) {
-  dbPut('deletedConvs', { uuid }).catch(e => console.warn('del save', e));
 }
 async function saveDeletedBulk() {
   try {
-    await dbClear('deletedConvs');
-    const items = [...deletedConvs].map(uuid => ({ uuid }));
-    await dbBulkPut('deletedConvs', items);
+    await QithYang.storage.idb.clear('deletedConvs');
+    const items = [...QithYang.state.deletedConvs].map(uuid => ({ uuid }));
+    await QithYang.storage.idb.bulkPut('deletedConvs', items);
   } catch (e) { console.warn('saveDeletedBulk', e); }
 }
 
-// === Date utils ===
-function pad2(n) { return String(n).padStart(2,'0'); }
-function fmtFullCN(iso) {
-  const d = new Date(iso);
-  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-}
-function fmtMD(iso) {
-  const d = new Date(iso);
-  return `${d.getMonth()+1}/${d.getDate()}`;
-}
-function fmtDateCN(iso) {
-  const d = new Date(iso);
-  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
-}
-function fmtDayKey(iso) {
-  const d = new Date(iso);
-  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
-}
-
-// === Markdown ===
-function escHtml(s) {
-  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
-function renderInline(s) {
-  let h = escHtml(s);
-  // links [text](url)
-  h = h.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
-  // bold-italic / bold / italic
-  h = h.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');
-  h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
-  h = h.replace(/(?<![*\w])\*([^*\n]+?)\*(?!\w)/g,'<em>$1</em>');
-  // inline code
-  h = h.replace(/`([^`\n]+)`/g,'<code>$1</code>');
-  // strike
-  h = h.replace(/~~(.+?)~~/g,'<del>$1</del>');
-  return h;
-}
-function renderMarkdown(text, hl) {
-  if (!text) return '';
-  const lines = text.split('\n');
-  let h = '', bq = [], inCode = false, codeLines = [];
-  function flushBq() { if (bq.length) { h += '<blockquote>'+bq.map(l=>renderInline(l)).join('<br>')+'</blockquote>'; bq = []; } }
-  function flushCode() { if (codeLines.length) { h += '<pre><code>'+escHtml(codeLines.join('\n'))+'</code></pre>'; codeLines = []; } }
-  for (const line of lines) {
-    if (line.startsWith('```')) {
-      if (inCode) { flushCode(); inCode = false; }
-      else { flushBq(); inCode = true; }
-      continue;
-    }
-    if (inCode) { codeLines.push(line); continue; }
-    if (line.startsWith('> ') || line === '>') {
-      bq.push(line.replace(/^>\s?/,''));
-    } else {
-      flushBq();
-      h += line.trim()==='' ? '<div class="sp"></div>' : '<p>'+renderInline(line)+'</p>';
-    }
-  }
-  flushBq();
-  flushCode();
-  if (hl) {
-    const re = new RegExp('('+escapeRegExp(hl)+')','gi');
-    h = h.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => {
-      if (tag) return tag;
-      return txt.replace(re, '<mark>$1</mark>');
-    });
-  }
-  return h;
-}
-
-// === Message extraction ===
-function getMsgData(msg) {
-  let textParts = [], thinkingParts = [];
-  for (const c of (msg.content || [])) {
-    if (c.type === 'text' && c.text) textParts.push(c.text);
-    else if (c.type === 'thinking' && c.thinking) thinkingParts.push(c.thinking);
-    // tool_use, tool_result, token_budget, flag, image, etc → ignored per spec
-  }
-  return {
-    text: textParts.join('\n\n'),
-    thinkingBlocks: thinkingParts,
-    files: msg.files || [],
-    attachments: msg.attachments || [],
-  };
-}
-function isMsgVisible(msg) {
-  const d = getMsgData(msg);
-  return !!(d.text || d.thinkingBlocks.length || d.files.length || d.attachments.length);
-}
-function extractTitle(c) {
-  if (c.name && c.name.trim()) return c.name.trim();
-  for (const m of c.chat_messages) {
-    if (m.sender === 'human') {
-      const txt = (m.content||[]).find(x => x.type==='text' && x.text)?.text || m.text;
-      if (txt) {
-        const clean = txt.replace(/\s+/g,' ').trim();
-        return clean.length > 30 ? clean.slice(0,30)+'…' : clean;
-      }
-    }
-  }
-  return '未命名对话';
-}
-
-// === Merge raw arrays into RAW_BY_ID, dedupe by uuid keeping the version with the most messages ===
-function mergeRaw(raw) {
-  if (!Array.isArray(raw)) return { added:0, updated:0, kept:0, changedIds:[] };
-  let added = 0, updated = 0, kept = 0;
-  const changedIds = [];
-  for (const c of raw) {
-    if (!c || !c.uuid || !Array.isArray(c.chat_messages)) continue;
-    const ex = RAW_BY_ID[c.uuid];
-    if (!ex) {
-      RAW_BY_ID[c.uuid] = c;
-      added++;
-      changedIds.push(c.uuid);
-    } else if (c.chat_messages.length > ex.chat_messages.length) {
-      RAW_BY_ID[c.uuid] = c;
-      updated++;
-      changedIds.push(c.uuid);
-    } else {
-      kept++;
-    }
-  }
-  return { added, updated, kept, changedIds };
-}
-
-// === Process raw data ===
+// === Process raw data (thin caller over filter + normalizer) ===
 function processConvs(raw) {
-  return raw
-    .filter(c => Array.isArray(c.chat_messages) && c.chat_messages.length > 0)
-    .filter(c => !deletedConvs.has(c.uuid))
-    .map(c => {
-      const visible = c.chat_messages.filter(isMsgVisible);
-      if (!visible.length) return null;
-      return {
-        uuid: c.uuid,
-        title: extractTitle(c),
-        chat_messages: c.chat_messages,
-        firstDate: visible[0].created_at,
-        lastDate: visible[visible.length-1].created_at,
-        msgCount: visible.length,
-        updated_at: c.updated_at,
-        created_at: c.created_at,
-      };
-    })
-    .filter(Boolean)
-    .sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+  const filtered = raw
+    .filter(QithYang.filter.isRealConversation)
+    .filter(c => !QithYang.state.deletedConvs.has(c.uuid));
+  return QithYang.normalizer.normalize(filtered);
 }
 
 // === Render conv list ===
-function renderConvList() {
+QithYang.renderer.renderConvList = function renderConvList() {
   const list = document.getElementById('conv-list');
-  const f = convFilter.toLowerCase();
-  const items = CONVS.filter(c => !f || c.title.toLowerCase().includes(f));
+  const f = QithYang.state.convFilter.toLowerCase();
+  const items = QithYang.state.CONVS.filter(c => !f || c.title.toLowerCase().includes(f));
   if (!items.length) {
     list.innerHTML = '<div class="empty-list">没有找到匹配的对话</div>';
     return;
   }
   list.innerHTML = items.map(c => {
-    const a = fmtMD(c.firstDate), b = fmtMD(c.lastDate);
+    const a = QithYang.utils.fmtMD(c.firstDate), b = QithYang.utils.fmtMD(c.lastDate);
     const range = a === b ? a : `${a}-${b}`;
-    return `<div class="conv-item ${c.uuid===curConvId?'active':''}" data-id="${c.uuid}">
-      <div class="conv-title">${escHtml(c.title)}</div>
+    return `<div class="conv-item ${c.uuid===QithYang.state.curConvId?'active':''}" data-id="${c.uuid}">
+      <div class="conv-title">${QithYang.utils.escHtml(c.title)}</div>
       <div class="conv-meta">${range} · ${c.msgCount}条</div>
       <button class="conv-del" data-id="${c.uuid}" title="删除对话">×</button>
     </div>`;
   }).join('');
-}
+};
 
 // === Render messages ===
-function renderMessages() {
+QithYang.renderer.renderMessages = function renderMessages() {
   const wrap = document.getElementById('msgs-wrap');
   const ms = document.getElementById('messages');
-  if (!curConv) {
+  if (!QithYang.state.curConv) {
     document.getElementById('mh-t').textContent = 'QithYang';
     document.getElementById('mh-m').textContent = '— 此窗未关，爱意常在 —';
     ms.innerHTML = '<div class="empty">从左侧选择一个对话</div>';
     return;
   }
-  const c = curConv;
+  const c = QithYang.state.curConv;
   document.getElementById('mh-t').textContent = c.title;
-  document.getElementById('mh-m').textContent = `${fmtDateCN(c.firstDate)} — ${fmtDateCN(c.lastDate)} · ${c.msgCount} 条`;
+  document.getElementById('mh-m').textContent = `${QithYang.utils.fmtDateCN(c.firstDate)} — ${QithYang.utils.fmtDateCN(c.lastDate)} · ${c.msgCount} 条`;
 
-  const hl = (searchScope==='current' && searchQ) ? searchQ : '';
+  const hl = (QithYang.state.searchScope==='current' && QithYang.state.searchQ) ? QithYang.state.searchQ : '';
   let html = '';
   let lastDay = '';
 
-  for (const msg of c.chat_messages) {
-    const d = getMsgData(msg);
-    if (!d.text && !d.thinkingBlocks.length && !d.files.length && !d.attachments.length) continue;
+  const escHtml = QithYang.utils.escHtml;
+  const formatSize = QithYang.utils.formatSize;
+  function renderFile(f) {
+    const name = f.file_name || '未命名';
+    if (f.kind === 'text' && f.extracted_content != null && f.extracted_content !== '') {
+      return `<details class="msg-file msg-file-text"><summary>📄 ${escHtml(name)}</summary><pre>${escHtml(f.extracted_content)}</pre></details>`;
+    }
+    if (f.kind === 'image') {
+      return `<div class="msg-file msg-file-image">🖼️ ${escHtml(name)}</div>`;
+    }
+    const sz = f.file_size != null ? ` (${formatSize(f.file_size)})` : '';
+    return `<div class="msg-file msg-file-binary">📎 ${escHtml(name)}${sz}</div>`;
+  }
 
-    const day = fmtDateCN(msg.created_at);
+  for (const msg of c.chat_messages) {
+    const d = QithYang.normalizer.getMsgData(msg);
+    const extraHtml = QithYang.renderer.renderExtraBlocks(msg, { hl });
+    if (!d.text && !d.thinkingBlocks.length && !d.files.length && !extraHtml) continue;
+
+    const day = QithYang.utils.fmtDateCN(msg.created_at);
     if (day !== lastDay) {
       lastDay = day;
       html += `<div class="dsep"><span>${day}</span></div>`;
     }
     const isU = msg.sender === 'human';
     const fkey = `${c.uuid}__${msg.uuid}`;
-    const fav = !!favs[fkey];
+    const fav = !!QithYang.state.favs[fkey];
 
     if (isU) {
       html += `<div class="msg user" data-msg="${msg.uuid}">
         <div class="msg-row">
           <div class="bubble">
-            ${d.files.map(f => `<div class="msg-file">📷 图片: ${escHtml(f.file_name||'未命名')}</div>`).join('')}
-            ${d.attachments.map(a => `<div class="msg-file">📎 附件: ${escHtml(a.file_name||'未命名')}</div>`).join('')}
-            ${d.text ? `<div class="msg-text">${renderMarkdown(d.text, hl)}</div>` : ''}
+            ${d.files.map(renderFile).join('')}
+            ${d.text ? `<div class="msg-text">${QithYang.utils.renderMarkdown(d.text, hl)}</div>` : ''}
+            ${extraHtml}
           </div>
-          <div class="u-name">${escHtml(getUserName())}</div>
+          <div class="u-name">${QithYang.utils.escHtml(QithYang.storage.ls.getUserName())}</div>
         </div>
-        <div class="u-time">${fmtFullCN(msg.created_at)}</div>
+        <div class="u-time">${QithYang.utils.fmtFullCN(msg.created_at)}</div>
         <button class="msg-fav ${fav?'on':''}" data-fkey="${fkey}" title="收藏">${fav?'★':'☆'}</button>
       </div>`;
     } else {
-      const tkOpen = showThinking;
+      const tkOpen = QithYang.state.showThinking;
       html += `<div class="msg ai" data-msg="${msg.uuid}">
         <div class="a-head">
           <img class="a-av" src="assets/app-logo.png" alt="">
-          <span class="a-name">${escHtml(getAssistantName())}</span>
-          <span class="a-time">${fmtFullCN(msg.created_at)}</span>
+          <span class="a-name">${QithYang.utils.escHtml(QithYang.storage.ls.getAssistantName())}</span>
+          <span class="a-time">${QithYang.utils.fmtFullCN(msg.created_at)}</span>
         </div>
         <button class="msg-fav ${fav?'on':''}" data-fkey="${fkey}" title="收藏">${fav?'★':'☆'}</button>
         <div class="body">
           ${d.thinkingBlocks.length ? `<div class="thinking">
             <button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">思考 · ${d.thinkingBlocks.length}</span></button>
-            <div class="th-content${tkOpen?' open':''}">${renderThinkingHtml(d.thinkingBlocks)}</div>
+            <div class="th-content${tkOpen?' open':''}">${QithYang.renderer.renderThinkingHtml(d.thinkingBlocks)}</div>
           </div>` : ''}
-          ${d.files.map(f => `<div class="msg-file">📷 图片: ${escHtml(f.file_name||'未命名')}</div>`).join('')}
-          ${d.attachments.map(a => `<div class="msg-file">📎 附件: ${escHtml(a.file_name||'未命名')}</div>`).join('')}
-          ${d.text ? `<div class="msg-text">${renderMarkdown(d.text, hl)}</div>` : ''}
+          ${d.files.map(renderFile).join('')}
+          ${d.text ? `<div class="msg-text">${QithYang.utils.renderMarkdown(d.text, hl)}</div>` : ''}
+          ${extraHtml}
         </div>
       </div>`;
     }
@@ -843,42 +1166,61 @@ function renderMessages() {
   ms.innerHTML = html;
   wrap.scrollTop = 0;
 
-  if (searchScope === 'current' && searchQ) {
-    findCurrentMatches();
+  if (QithYang.state.searchScope === 'current' && QithYang.state.searchQ) {
+    QithYang.search.findCurrentMatches();
   }
-}
+};
 
-function renderThinkingHtml(blocks) {
+// Extra content blocks (non-text/non-thinking) go through the renderer
+// registry. text + thinking are still aggregated and rendered inline by
+// renderMessages. Returns concatenated HTML
+// string for the msg's non-text/non-thinking blocks.
+QithYang.renderer.renderExtraBlocks = (function () {
+  const TEXT_OR_THINK = new Set(['text', 'thinking']);
+  return function renderExtraBlocks(msg, ctx) {
+    const arr = msg && Array.isArray(msg.content) ? msg.content : null;
+    if (!arr) return '';
+    let out = '';
+    for (const b of arr) {
+      if (!b || typeof b !== 'object') continue;
+      if (TEXT_OR_THINK.has(b.type)) continue;
+      out += QithYang.renderer.dispatchBlock(b, ctx);
+    }
+    return out;
+  };
+})();
+
+QithYang.renderer.renderThinkingHtml = function renderThinkingHtml(blocks) {
   if (!Array.isArray(blocks)) blocks = [blocks];
   return blocks.map(b => {
-    const inner = b.split('\n').map(l => l.trim() ? `<p>${escHtml(l)}</p>` : '<div class="th-sp"></div>').join('');
+    const inner = b.split('\n').map(l => l.trim() ? `<p>${QithYang.utils.escHtml(l)}</p>` : '<div class="th-sp"></div>').join('');
     return `<div class="th-block">${inner}</div>`;
   }).join('');
-}
+};
 
 // === View switching ===
-function setView(v) {
-  view = v;
+QithYang.renderer.setView = function setView(v) {
+  QithYang.state.view = v;
   document.querySelectorAll('.sb-tab-top').forEach(b => b.classList.toggle('on', b.dataset.view===v));
   document.getElementById('msgs-wrap').classList.toggle('show', v==='chat');
   document.getElementById('fav-view').classList.toggle('show', v==='favorites');
   document.getElementById('tl-view').classList.toggle('show', v==='timeline');
-  closeTlPopover();
-  if (v==='favorites') renderFavorites();
-  if (v==='timeline') renderTimeline();
+  QithYang.renderer.closeTlPopover();
+  if (v==='favorites') QithYang.renderer.renderFavorites();
+  if (v==='timeline') QithYang.renderer.renderTimeline();
   // Auto-close mobile drawer when switching views
   if (window.matchMedia('(max-width: 768px)').matches) {
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sb-overlay').classList.remove('show');
   }
-}
+};
 
 // === Favorites view ===
-function renderFavorites() {
+QithYang.renderer.renderFavorites = function renderFavorites() {
   const root = document.getElementById('fav-view');
   const groups = {};
-  for (const k of Object.keys(favs)) {
-    if (!favs[k]) continue;
+  for (const k of Object.keys(QithYang.state.favs)) {
+    if (!QithYang.state.favs[k]) continue;
     const sep = k.indexOf('__');
     if (sep < 0) continue;
     const cid = k.slice(0, sep), mid = k.slice(sep+2);
@@ -893,57 +1235,57 @@ function renderFavorites() {
   }
   let html = `<div class="view-h">收藏 <span class="vh-sub">共 ${total} 条</span></div>`;
   for (const cid of Object.keys(groups)) {
-    const c = CONVS.find(x => x.uuid === cid);
+    const c = QithYang.state.CONVS.find(x => x.uuid === cid);
     if (!c) continue;
     html += `<div class="fav-group">
-      <div class="fav-conv-title"><span>${escHtml(c.title)}</span><span class="fct-cnt">${groups[cid].length} 条</span></div>`;
+      <div class="fav-conv-title"><span>${QithYang.utils.escHtml(c.title)}</span><span class="fct-cnt">${groups[cid].length} 条</span></div>`;
     for (const mid of groups[cid]) {
       const m = c.chat_messages.find(x => x.uuid === mid);
       if (!m) continue;
-      const d = getMsgData(m);
-      const snippet = (d.text || (d.files.length ? '📷 图片消息' : '(无文本)')).slice(0,260);
+      const d = QithYang.normalizer.getMsgData(m);
+      const snippet = (d.text || (d.files.length ? '📎 附件消息' : '(无文本)')).slice(0,260);
       const fkey = `${cid}__${mid}`;
       html += `<div class="fav-item" data-cid="${cid}" data-mid="${mid}">
         <button class="fav-unfav" data-fkey="${fkey}" title="取消收藏">★</button>
-        <div class="fav-snip">${escHtml(snippet)}${d.text && d.text.length>260?'…':''}</div>
-        <div class="fav-meta"><span class="who">${escHtml(m.sender==='human'?getUserName():getAssistantName())}</span><span>${fmtFullCN(m.created_at)}</span></div>
+        <div class="fav-snip">${QithYang.utils.escHtml(snippet)}${d.text && d.text.length>260?'…':''}</div>
+        <div class="fav-meta"><span class="who">${QithYang.utils.escHtml(m.sender==='human'?QithYang.storage.ls.getUserName():QithYang.storage.ls.getAssistantName())}</span><span>${QithYang.utils.fmtFullCN(m.created_at)}</span></div>
       </div>`;
     }
     html += `</div>`;
   }
   root.innerHTML = html;
-}
+};
 
 // === Display-name settings modal ===
-function openDisplayNamesModal() {
+QithYang.renderer.openDisplayNamesModal = function openDisplayNamesModal() {
   const u = document.getElementById('dn-user');
   const a = document.getElementById('dn-asst');
-  u.value = localStorage.getItem(DN_USER_KEY) || '';
-  a.value = localStorage.getItem(DN_ASST_KEY) || '';
+  u.value = localStorage.getItem('qithyang_user_name') || '';
+  a.value = localStorage.getItem('qithyang_assistant_name') || '';
   document.getElementById('dn-modal').classList.add('show');
   setTimeout(() => u.focus(), 50);
-}
-function closeDisplayNamesModal() {
+};
+QithYang.renderer.closeDisplayNamesModal = function closeDisplayNamesModal() {
   document.getElementById('dn-modal').classList.remove('show');
-}
-function saveDisplayNamesFromModal() {
-  setDisplayNames(
+};
+QithYang.renderer.saveDisplayNamesFromModal = function saveDisplayNamesFromModal() {
+  QithYang.storage.ls.setDisplayNames(
     document.getElementById('dn-user').value,
     document.getElementById('dn-asst').value
   );
-  closeDisplayNamesModal();
-  if (curConv) renderMessages();
-  if (view === 'favorites') renderFavorites();
-}
+  QithYang.renderer.closeDisplayNamesModal();
+  if (QithYang.state.curConv) QithYang.renderer.renderMessages();
+  if (QithYang.state.view === 'favorites') QithYang.renderer.renderFavorites();
+};
 
 // === Timeline ===
-function renderTimeline() {
+QithYang.renderer.renderTimeline = function renderTimeline() {
   const root = document.getElementById('tl-view');
   const dayMap = {};
-  for (const c of CONVS) {
+  for (const c of QithYang.state.CONVS) {
     for (const m of c.chat_messages) {
-      if (!isMsgVisible(m)) continue;
-      const k = fmtDayKey(m.created_at);
+      if (!QithYang.normalizer.isMsgVisible(m)) continue;
+      const k = QithYang.utils.fmtDayKey(m.created_at);
       if (!dayMap[k]) dayMap[k] = new Set();
       dayMap[k].add(c.uuid);
     }
@@ -959,7 +1301,7 @@ function renderTimeline() {
     root.innerHTML = `<div class="view-h">时间轴</div><div class="empty-view">还没有数据</div>`;
     return;
   }
-  const totalConvs = CONVS.length;
+  const totalConvs = QithYang.state.CONVS.length;
   let html = `<div class="view-h">时间轴 <span class="vh-sub">${totalConvs} 个对话 · ${months.length} 个月</span></div>`;
   const wkLabels = ['日','一','二','三','四','五','六'];
   for (const ym of months) {
@@ -973,7 +1315,7 @@ function renderTimeline() {
     for (const w of wkLabels) html += `<div class="tl-day-h">${w}</div>`;
     for (let i = 0; i < startWk; i++) html += `<div class="tl-day empty"></div>`;
     for (let d = 1; d <= days; d++) {
-      const k = `${y}-${pad2(m)}-${pad2(d)}`;
+      const k = `${y}-${QithYang.utils.pad2(m)}-${QithYang.utils.pad2(d)}`;
       const cnt = monthMap[ym][k];
       if (cnt) {
         const lvl = cnt >= 4 ? 3 : cnt >= 2 ? 2 : 1;
@@ -985,19 +1327,19 @@ function renderTimeline() {
     html += `</div></div>`;
   }
   root.innerHTML = html;
-}
+};
 
-function closeTlPopover() {
+QithYang.renderer.closeTlPopover = function closeTlPopover() {
   const ex = document.querySelector('.tl-popover');
   if (ex) ex.remove();
-}
-function showTlPopover(dayEl) {
-  closeTlPopover();
+};
+QithYang.renderer.showTlPopover = function showTlPopover(dayEl) {
+  QithYang.renderer.closeTlPopover();
   const day = dayEl.dataset.day;
   // collect all conversations that have at least one visible msg on this day
   const items = [];
-  for (const c of CONVS) {
-    const dayMsgs = c.chat_messages.filter(m => isMsgVisible(m) && fmtDayKey(m.created_at) === day);
+  for (const c of QithYang.state.CONVS) {
+    const dayMsgs = c.chat_messages.filter(m => QithYang.normalizer.isMsgVisible(m) && QithYang.utils.fmtDayKey(m.created_at) === day);
     if (dayMsgs.length) {
       items.push({ cid: c.uuid, title: c.title, mid: dayMsgs[0].uuid, count: dayMsgs.length });
     }
@@ -1011,7 +1353,7 @@ function showTlPopover(dayEl) {
     `<div class="tl-pop-h"><span>${parseInt(yy)} 年 ${parseInt(mm)} 月 ${parseInt(dd)} 日 · ${items.length} 个对话</span><button class="tl-pop-close" title="关闭">×</button></div>` +
     `<div class="tl-pop-list">` +
     items.map(it => `<div class="tl-pop-item" data-cid="${it.cid}" data-mid="${it.mid}">
-      <div>${escHtml(it.title)}</div>
+      <div>${QithYang.utils.escHtml(it.title)}</div>
       <div class="tl-pop-meta">${it.count} 条消息</div>
     </div>`).join('') +
     `</div>`;
@@ -1034,67 +1376,76 @@ function showTlPopover(dayEl) {
   }
   pop.style.left = left + 'px';
   pop.style.top = top + 'px';
-}
+};
 
 // === Search ===
-function doSearch() {
-  if (searchScope === 'current') {
+// All four entrypoints live on QithYang.search; readers and event handlers
+// flip QithYang.state.searchScope / searchQ and call search.doSearch(), which
+// branches on scope. findCurrentMatches scans the rendered #messages DOM
+// after renderMessages has highlighted via renderMarkdown's <mark> wrap.
+QithYang.search = {};
+
+QithYang.search.doSearch = function doSearch() {
+  if (QithYang.state.searchScope === 'current') {
     document.getElementById('sb-results').classList.remove('show');
-    if (curConv) renderMessages();
+    if (QithYang.state.curConv) QithYang.renderer.renderMessages();
     else document.getElementById('sb-stats').textContent = '';
   } else {
-    searchAll();
+    QithYang.search.searchAll();
   }
-}
-function findCurrentMatches() {
-  searchMatches = [];
-  if (!searchQ) {
+};
+
+QithYang.search.findCurrentMatches = function findCurrentMatches() {
+  QithYang.state.searchMatches = [];
+  if (!QithYang.state.searchQ) {
     document.getElementById('sb-stats').textContent = '';
     return;
   }
   const marks = document.querySelectorAll('#messages mark');
-  searchMatches = [...marks];
-  searchMatchIdx = 0;
-  document.getElementById('sb-stats').textContent = searchMatches.length ? `1/${searchMatches.length}` : '0';
-  if (searchMatches.length) jumpToMatch(0);
-}
-function jumpToMatch(i) {
-  if (!searchMatches.length) return;
-  searchMatchIdx = ((i % searchMatches.length) + searchMatches.length) % searchMatches.length;
-  searchMatches.forEach(m => { m.style.outline = ''; });
-  const cur = searchMatches[searchMatchIdx];
+  QithYang.state.searchMatches = [...marks];
+  QithYang.state.searchMatchIdx = 0;
+  document.getElementById('sb-stats').textContent = QithYang.state.searchMatches.length ? `1/${QithYang.state.searchMatches.length}` : '0';
+  if (QithYang.state.searchMatches.length) QithYang.search.jumpToMatch(0);
+};
+
+QithYang.search.jumpToMatch = function jumpToMatch(i) {
+  if (!QithYang.state.searchMatches.length) return;
+  QithYang.state.searchMatchIdx = ((i % QithYang.state.searchMatches.length) + QithYang.state.searchMatches.length) % QithYang.state.searchMatches.length;
+  QithYang.state.searchMatches.forEach(m => { m.style.outline = ''; });
+  const cur = QithYang.state.searchMatches[QithYang.state.searchMatchIdx];
   cur.style.outline = '2px solid var(--orange)';
   cur.scrollIntoView({behavior:'smooth', block:'center'});
-  document.getElementById('sb-stats').textContent = `${searchMatchIdx+1}/${searchMatches.length}`;
-}
-function searchAll() {
+  document.getElementById('sb-stats').textContent = `${QithYang.state.searchMatchIdx+1}/${QithYang.state.searchMatches.length}`;
+};
+
+QithYang.search.searchAll = function searchAll() {
   const root = document.getElementById('sb-results');
-  if (!searchQ) {
+  if (!QithYang.state.searchQ) {
     root.classList.remove('show');
     root.innerHTML = '';
     document.getElementById('sb-stats').textContent = '';
     return;
   }
-  const q = searchQ.toLowerCase();
+  const q = QithYang.state.searchQ.toLowerCase();
   let found = 0;
-  const re = new RegExp('('+escapeRegExp(searchQ)+')','gi');
+  const re = new RegExp('('+QithYang.utils.escapeRegExp(QithYang.state.searchQ)+')','gi');
   const parts = [];
-  for (const c of CONVS) {
+  for (const c of QithYang.state.CONVS) {
     let convMatches = 0;
     let firstHtml = '';
     for (const m of c.chat_messages) {
-      const d = getMsgData(m);
+      const d = QithYang.normalizer.getMsgData(m);
       if (d.text && d.text.toLowerCase().includes(q)) {
         convMatches++; found++;
         if (convMatches <= 2) {
           const idx = d.text.toLowerCase().indexOf(q);
           const start = Math.max(0, idx-30);
-          const end = Math.min(d.text.length, idx+searchQ.length+80);
+          const end = Math.min(d.text.length, idx+QithYang.state.searchQ.length+80);
           let snip = d.text.slice(start, end).replace(/\n+/g,' ');
-          snip = (start>0?'…':'') + escHtml(snip) + (end<d.text.length?'…':'');
+          snip = (start>0?'…':'') + QithYang.utils.escHtml(snip) + (end<d.text.length?'…':'');
           snip = snip.replace(re, '<mark>$1</mark>');
           firstHtml += `<div class="sb-result" data-cid="${c.uuid}" data-mid="${m.uuid}">
-            <div class="sb-result-title">${escHtml(c.title)}</div>
+            <div class="sb-result-title">${QithYang.utils.escHtml(c.title)}</div>
             <div class="sb-result-snip">${snip}</div>
           </div>`;
         }
@@ -1105,15 +1456,15 @@ function searchAll() {
   root.innerHTML = parts.length ? parts.join('') : '<div style="padding:18px;text-align:center;color:var(--text-3);font-size:12px;font-style:italic">没有匹配的消息</div>';
   root.classList.add('show');
   document.getElementById('sb-stats').textContent = `${found} 项`;
-}
+};
 
 // === Open conv ===
 function openConv(id, scrollToMsg) {
-  curConvId = id;
-  curConv = CONVS.find(c => c.uuid === id) || null;
-  setView('chat');
-  renderConvList();
-  renderMessages();
+  QithYang.state.curConvId = id;
+  QithYang.state.curConv = QithYang.state.CONVS.find(c => c.uuid === id) || null;
+  QithYang.renderer.setView('chat');
+  QithYang.renderer.renderConvList();
+  QithYang.renderer.renderMessages();
   if (scrollToMsg) {
     setTimeout(() => {
       const el = document.querySelector(`#messages [data-msg="${scrollToMsg}"]`);
@@ -1131,29 +1482,37 @@ function openConv(id, scrollToMsg) {
 }
 
 // === Events ===
-function bindEvents() {
-  // Sidebar conv filter
+// QithYang.events.bindAll wires every DOM listener at startup (one-shot,
+// called by app.init). Handlers mutate state then call the matching
+// renderer.* to repaint; nothing here renders directly. Split into named
+// helpers so each surface (sidebar / messages / toolbar / modal / picker /
+// keyboard) is grep-locatable.
+QithYang.events = {};
+
+QithYang.events.bindSidebar = function bindSidebar() {
+  // Conv-title filter input
   document.getElementById('conv-filter').addEventListener('input', e => {
-    convFilter = e.target.value.trim();
-    renderConvList();
+    QithYang.state.convFilter = e.target.value.trim();
+    QithYang.renderer.renderConvList();
   });
 
-  // Conv list (delete + open)
+  // Conv list (delete + open). The delete button uses a two-step
+  // confirm pattern (× → "确认删除") gated by .confirm class.
   document.getElementById('conv-list').addEventListener('click', e => {
     const del = e.target.closest('.conv-del');
     if (del) {
       e.stopPropagation();
       if (del.classList.contains('confirm')) {
         const id = del.dataset.id;
-        deletedConvs.add(id);
-        saveDeletedSingle(id);
-        CONVS = CONVS.filter(c => c.uuid !== id);
-        if (curConvId === id) {
-          curConvId = null;
-          curConv = null;
-          renderMessages();
+        QithYang.state.deletedConvs.add(id);
+        QithYang.storage.idb.saveDeleted(id);
+        QithYang.state.CONVS = QithYang.state.CONVS.filter(c => c.uuid !== id);
+        if (QithYang.state.curConvId === id) {
+          QithYang.state.curConvId = null;
+          QithYang.state.curConv = null;
+          QithYang.renderer.renderMessages();
         }
-        renderConvList();
+        QithYang.renderer.renderConvList();
       } else {
         document.querySelectorAll('.conv-del.confirm').forEach(b => { b.classList.remove('confirm'); b.textContent = '×'; });
         del.classList.add('confirm');
@@ -1166,88 +1525,22 @@ function bindEvents() {
     if (item) openConv(item.dataset.id);
   });
 
-  // Sidebar top tabs
+  // Sidebar top tabs (chat / favorites / timeline)
   document.querySelectorAll('.sb-tab-top').forEach(b => {
-    b.addEventListener('click', () => setView(b.dataset.view));
+    b.addEventListener('click', () => QithYang.renderer.setView(b.dataset.view));
   });
+};
 
-  // Thinking global toggle: expand/collapse all without re-rendering
-  document.getElementById('thinking-btn').addEventListener('click', () => {
-    showThinking = !showThinking;
-    document.getElementById('thinking-btn').classList.toggle('on', showThinking);
-    document.querySelectorAll('#messages .thinking').forEach(t => {
-      const c = t.querySelector('.th-content');
-      const ic = t.querySelector('.th-ico');
-      if (!c || !ic) return;
-      c.classList.toggle('open', showThinking);
-      ic.textContent = showThinking ? '▾' : '▸';
-    });
-  });
-
-  // Search button
-  document.getElementById('search-btn').addEventListener('click', () => {
-    const bar = document.getElementById('search-bar');
-    const showing = bar.classList.toggle('show');
-    document.getElementById('search-btn').classList.toggle('on', showing);
-    if (showing) {
-      document.getElementById('msg-search').focus();
-    } else {
-      searchQ = '';
-      document.getElementById('msg-search').value = '';
-      document.getElementById('sb-results').classList.remove('show');
-      document.getElementById('sb-stats').textContent = '';
-      if (curConv) renderMessages();
-    }
-  });
-  document.getElementById('sb-close').addEventListener('click', () => {
-    document.getElementById('search-btn').click();
-  });
-
-  // Search tabs
-  document.querySelectorAll('.sb-tab').forEach(t => {
-    t.addEventListener('click', () => {
-      document.querySelectorAll('.sb-tab').forEach(x => x.classList.remove('on'));
-      t.classList.add('on');
-      searchScope = t.dataset.scope;
-      doSearch();
-    });
-  });
-
-  // Search input (debounced)
-  document.getElementById('msg-search').addEventListener('input', e => {
-    searchQ = e.target.value.trim();
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(doSearch, 220);
-  });
-  document.getElementById('msg-search').addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      if (searchScope === 'current' && searchMatches.length) jumpToMatch(searchMatchIdx + (e.shiftKey ? -1 : 1));
-    } else if (e.key === 'Escape') {
-      document.getElementById('search-btn').click();
-    }
-  });
-
-  // Search nav buttons
-  document.getElementById('sb-prev').addEventListener('click', () => { if (searchScope==='current') jumpToMatch(searchMatchIdx-1); });
-  document.getElementById('sb-next').addEventListener('click', () => { if (searchScope==='current') jumpToMatch(searchMatchIdx+1); });
-
-  // Search result clicks (all-mode jump)
-  document.getElementById('sb-results').addEventListener('click', e => {
-    const r = e.target.closest('.sb-result');
-    if (!r) return;
-    openConv(r.dataset.cid, r.dataset.mid);
-  });
-
-  // Message clicks (favorite + thinking expand)
+QithYang.events.bindMessages = function bindMessages() {
+  // Favorite toggle + thinking-block expand
   document.getElementById('messages').addEventListener('click', e => {
     const fav = e.target.closest('.msg-fav');
     if (fav) {
       e.stopPropagation();
       const k = fav.dataset.fkey;
-      if (favs[k]) delete favs[k]; else favs[k] = true;
-      const on = !!favs[k];
-      saveFavSingle(k, on);
+      if (QithYang.state.favs[k]) delete QithYang.state.favs[k]; else QithYang.state.favs[k] = true;
+      const on = !!QithYang.state.favs[k];
+      QithYang.storage.idb.saveFav(k, on);
       fav.classList.toggle('on', on);
       fav.textContent = on ? '★' : '☆';
       return;
@@ -1265,57 +1558,115 @@ function bindEvents() {
     }
   });
 
-  // Favorites view click → unfavorite or jump
+  // Favorites view: unfavorite or jump back to source msg
   document.getElementById('fav-view').addEventListener('click', e => {
     const un = e.target.closest('.fav-unfav');
     if (un) {
       e.stopPropagation();
       const k = un.dataset.fkey;
-      delete favs[k];
-      saveFavSingle(k, false);
-      renderFavorites();
+      delete QithYang.state.favs[k];
+      QithYang.storage.idb.saveFav(k, false);
+      QithYang.renderer.renderFavorites();
       return;
     }
     const it = e.target.closest('.fav-item');
     if (it) openConv(it.dataset.cid, it.dataset.mid);
   });
 
-  // Timeline day click → show popover with conversations on that day
+  // Timeline day click → popover with that day's conversations
   document.getElementById('tl-view').addEventListener('click', e => {
-    // popover item click
     const pi = e.target.closest('.tl-pop-item');
     if (pi) {
       e.stopPropagation();
       const cid = pi.dataset.cid;
       const mid = pi.dataset.mid;
-      closeTlPopover();
+      QithYang.renderer.closeTlPopover();
       openConv(cid, mid || undefined);
       return;
     }
-    // popover close click
-    if (e.target.closest('.tl-pop-close')) { closeTlPopover(); return; }
-    // day click
+    if (e.target.closest('.tl-pop-close')) { QithYang.renderer.closeTlPopover(); return; }
     const d = e.target.closest('.tl-day.has');
-    if (!d) { closeTlPopover(); return; }
-    showTlPopover(d);
+    if (!d) { QithYang.renderer.closeTlPopover(); return; }
+    QithYang.renderer.showTlPopover(d);
   });
-  // outside click closes popover
+  // Outside-of-popover click closes it
   document.addEventListener('click', e => {
-    if (!e.target.closest('.tl-popover') && !e.target.closest('.tl-day.has')) closeTlPopover();
+    if (!e.target.closest('.tl-popover') && !e.target.closest('.tl-day.has')) QithYang.renderer.closeTlPopover();
+  });
+};
+
+QithYang.events.bindToolbar = function bindToolbar() {
+  // Global thinking toggle: expand/collapse all in-place (no re-render)
+  document.getElementById('thinking-btn').addEventListener('click', () => {
+    QithYang.state.showThinking = !QithYang.state.showThinking;
+    document.getElementById('thinking-btn').classList.toggle('on', QithYang.state.showThinking);
+    document.querySelectorAll('#messages .thinking').forEach(t => {
+      const c = t.querySelector('.th-content');
+      const ic = t.querySelector('.th-ico');
+      if (!c || !ic) return;
+      c.classList.toggle('open', QithYang.state.showThinking);
+      ic.textContent = QithYang.state.showThinking ? '▾' : '▸';
+    });
   });
 
-  // Import more (merge)
-  const importBtn = document.getElementById('import-btn');
-  const mergeInput = document.getElementById('merge-input');
-  if (importBtn && mergeInput) {
-    importBtn.addEventListener('click', () => mergeInput.click());
-    mergeInput.addEventListener('change', e => {
-      mergeMoreFiles(e.target.files);
-      e.target.value = '';
-    });
-  }
+  // Search bar open/close
+  document.getElementById('search-btn').addEventListener('click', () => {
+    const bar = document.getElementById('search-bar');
+    const showing = bar.classList.toggle('show');
+    document.getElementById('search-btn').classList.toggle('on', showing);
+    if (showing) {
+      document.getElementById('msg-search').focus();
+    } else {
+      QithYang.state.searchQ = '';
+      document.getElementById('msg-search').value = '';
+      document.getElementById('sb-results').classList.remove('show');
+      document.getElementById('sb-stats').textContent = '';
+      if (QithYang.state.curConv) QithYang.renderer.renderMessages();
+    }
+  });
+  document.getElementById('sb-close').addEventListener('click', () => {
+    document.getElementById('search-btn').click();
+  });
 
-  // Settings menu (data management)
+  // Search scope tabs (current vs all)
+  document.querySelectorAll('.sb-tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.sb-tab').forEach(x => x.classList.remove('on'));
+      t.classList.add('on');
+      QithYang.state.searchScope = t.dataset.scope;
+      QithYang.search.doSearch();
+    });
+  });
+
+  // Search input (debounced) + keyboard nav (Enter / Shift+Enter / Esc)
+  document.getElementById('msg-search').addEventListener('input', e => {
+    QithYang.state.searchQ = e.target.value.trim();
+    clearTimeout(QithYang.state.searchTimer);
+    QithYang.state.searchTimer = setTimeout(QithYang.search.doSearch, 220);
+  });
+  document.getElementById('msg-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (QithYang.state.searchScope === 'current' && QithYang.state.searchMatches.length) {
+        QithYang.search.jumpToMatch(QithYang.state.searchMatchIdx + (e.shiftKey ? -1 : 1));
+      }
+    } else if (e.key === 'Escape') {
+      document.getElementById('search-btn').click();
+    }
+  });
+
+  // Search nav buttons (current-scope only)
+  document.getElementById('sb-prev').addEventListener('click', () => { if (QithYang.state.searchScope==='current') QithYang.search.jumpToMatch(QithYang.state.searchMatchIdx-1); });
+  document.getElementById('sb-next').addEventListener('click', () => { if (QithYang.state.searchScope==='current') QithYang.search.jumpToMatch(QithYang.state.searchMatchIdx+1); });
+
+  // Search result clicks (all-scope jump-to-msg)
+  document.getElementById('sb-results').addEventListener('click', e => {
+    const r = e.target.closest('.sb-result');
+    if (!r) return;
+    openConv(r.dataset.cid, r.dataset.mid);
+  });
+
+  // Settings (gear) menu
   const settingsBtn = document.getElementById('settings-btn');
   const smMenu = document.getElementById('sm-menu');
   const backupInput = document.getElementById('backup-input');
@@ -1334,7 +1685,7 @@ function bindEvents() {
   }
   const exportBtn = document.getElementById('sm-export');
   if (exportBtn) exportBtn.addEventListener('click', () => {
-    exportBackup();
+    QithYang.app.importExport.exportBackup();
     smMenu && smMenu.classList.remove('show');
   });
   const importBackupBtn = document.getElementById('sm-import-backup');
@@ -1345,39 +1696,55 @@ function bindEvents() {
     });
     backupInput.addEventListener('change', e => {
       const f = e.target.files && e.target.files[0];
-      importBackup(f);
+      QithYang.app.importExport.importBackup(f);
       e.target.value = '';
     });
   }
   const clearBtn = document.getElementById('sm-clear');
   if (clearBtn) clearBtn.addEventListener('click', () => {
     smMenu && smMenu.classList.remove('show');
-    clearAllData();
+    QithYang.app.importExport.clearAllData();
   });
+};
 
-  // Display-name settings (lives in the gear menu)
+QithYang.events.bindModal = function bindModal() {
+  // Display-name settings modal (opened from gear menu)
+  const smMenu = document.getElementById('sm-menu');
   const dnOpen = document.getElementById('sm-display-names');
   const dnModal = document.getElementById('dn-modal');
   if (dnOpen) dnOpen.addEventListener('click', () => {
     smMenu && smMenu.classList.remove('show');
-    openDisplayNamesModal();
+    QithYang.renderer.openDisplayNamesModal();
   });
   const dnSave = document.getElementById('dn-save');
   const dnCancel = document.getElementById('dn-cancel');
-  if (dnSave) dnSave.addEventListener('click', saveDisplayNamesFromModal);
-  if (dnCancel) dnCancel.addEventListener('click', closeDisplayNamesModal);
+  if (dnSave) dnSave.addEventListener('click', QithYang.renderer.saveDisplayNamesFromModal);
+  if (dnCancel) dnCancel.addEventListener('click', QithYang.renderer.closeDisplayNamesModal);
   if (dnModal) dnModal.addEventListener('click', e => {
-    if (e.target.id === 'dn-modal') closeDisplayNamesModal();
+    if (e.target.id === 'dn-modal') QithYang.renderer.closeDisplayNamesModal();
   });
   ['dn-user', 'dn-asst'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('keydown', e => {
-      if (e.key === 'Enter') saveDisplayNamesFromModal();
-      else if (e.key === 'Escape') closeDisplayNamesModal();
+      if (e.key === 'Enter') QithYang.renderer.saveDisplayNamesFromModal();
+      else if (e.key === 'Escape') QithYang.renderer.closeDisplayNamesModal();
     });
   });
+};
 
-  // Mobile hamburger + overlay
+QithYang.events.bindPicker = function bindPicker() {
+  // "Import more" button (sidebar) — merges additional JSON files into IDB
+  const importBtn = document.getElementById('import-btn');
+  const mergeInput = document.getElementById('merge-input');
+  if (importBtn && mergeInput) {
+    importBtn.addEventListener('click', () => mergeInput.click());
+    mergeInput.addEventListener('change', e => {
+      QithYang.app.importExport.mergeMoreFiles(e.target.files);
+      e.target.value = '';
+    });
+  }
+
+  // Mobile hamburger + overlay (drawer mode)
   document.getElementById('hb').addEventListener('click', () => {
     document.getElementById('sidebar').classList.add('open');
     document.getElementById('sb-overlay').classList.add('show');
@@ -1386,53 +1753,73 @@ function bindEvents() {
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sb-overlay').classList.remove('show');
   });
-}
+};
+
+QithYang.events.bindAll = function bindAll() {
+  QithYang.events.bindSidebar();
+  QithYang.events.bindMessages();
+  QithYang.events.bindToolbar();
+  QithYang.events.bindModal();
+  QithYang.events.bindPicker();
+};
 
 // === Data management ===
+// Counts are derived from state.CONVS (post-filter, post-soft-delete), so
+// the gear panel reflects what the user actually sees. Using RAW_BY_ID
+// would over-count by including empty-name conversations filtered
+// out by isRealConversation and any soft-deleted conversations still cached in IDB.
 function totalMsgCount() {
   let n = 0;
-  for (const c of Object.values(RAW_BY_ID)) {
-    if (Array.isArray(c.chat_messages)) n += c.chat_messages.length;
+  for (const c of QithYang.state.CONVS) {
+    if (typeof c.msgCount === 'number') n += c.msgCount;
   }
   return n;
 }
 function totalFavCount() {
   let n = 0;
-  for (const k in favs) if (favs[k]) n++;
+  for (const k in QithYang.state.favs) if (QithYang.state.favs[k]) n++;
   return n;
 }
 function updateStorageStats() {
   const cn = document.getElementById('sm-conv-n');
   const mn = document.getElementById('sm-msg-n');
   const note = document.getElementById('sm-store-note');
-  if (cn) cn.textContent = Object.keys(RAW_BY_ID).length;
+  if (cn) cn.textContent = QithYang.state.CONVS.length;
   if (mn) mn.textContent = totalMsgCount();
   if (note) {
     const fn = totalFavCount();
-    if (lastSaveOk) note.textContent = `已自动保存到本地数据库 · ${fn} 条收藏`;
+    if (QithYang.state.lastSaveOk) note.textContent = `已自动保存到本地数据库 · ${fn} 条收藏`;
     else note.textContent = `⚠ 保存失败 · ${fn} 条收藏`;
   }
 }
-function exportBackup() {
+// === app + importExport ===
+// QithYang.app.init bootstraps the whole UI (storage open, legacy migrate,
+// IDB load, picker fallback, first-render). QithYang.app.importExport
+// gathers every entry point that takes JSON in or pushes JSON out.
+QithYang.app = {};
+QithYang.app.importExport = {};
+
+QithYang.app.importExport.exportBackup = function exportBackup() {
   const payload = {
     app: 'QithYang',
     version: 1,
     exportedAt: new Date().toISOString(),
-    conversations: Object.values(RAW_BY_ID),
-    favs: favs,
-    deletedConvs: [...deletedConvs],
+    conversations: Object.values(QithYang.state.RAW_BY_ID),
+    favs: QithYang.state.favs,
+    deletedConvs: [...QithYang.state.deletedConvs],
   };
   const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
   const d = new Date();
-  const stamp = `${d.getFullYear()}${pad2(d.getMonth()+1)}${pad2(d.getDate())}-${pad2(d.getHours())}${pad2(d.getMinutes())}${pad2(d.getSeconds())}`;
+  const stamp = `${d.getFullYear()}${QithYang.utils.pad2(d.getMonth()+1)}${QithYang.utils.pad2(d.getDate())}-${QithYang.utils.pad2(d.getHours())}${QithYang.utils.pad2(d.getMinutes())}${QithYang.utils.pad2(d.getSeconds())}`;
   const fname = `QithYang-backup-${stamp}.json`;
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = fname;
   document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 100);
-}
-function importBackup(file) {
+};
+
+QithYang.app.importExport.importBackup = function importBackup(file) {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = async e => {
@@ -1443,146 +1830,31 @@ function importBackup(file) {
     if (Array.isArray(data)) arr = data;
     else if (Array.isArray(data.conversations)) arr = data.conversations;
     if (!arr) { alert('无法识别的备份文件（缺少 conversations 数组）'); return; }
-    const r = mergeRaw(arr);
+    arr.forEach(QithYang.filter.schemaDriftDetector);
+    const r = QithYang.parser.parse(arr);
     if (data.favs && typeof data.favs === 'object') {
-      Object.assign(favs, data.favs);
+      Object.assign(QithYang.state.favs, data.favs);
       await saveFavsBulk();
     }
     if (Array.isArray(data.deletedConvs)) {
-      data.deletedConvs.forEach(id => deletedConvs.add(id));
+      data.deletedConvs.forEach(id => QithYang.state.deletedConvs.add(id));
       await saveDeletedBulk();
     }
-    RAW = Object.values(RAW_BY_ID);
-    CONVS = processConvs(RAW);
+    QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
+    QithYang.state.CONVS = processConvs(QithYang.state.RAW);
     const sv = await saveConvsByIds(r.changedIds);
-    renderConvList();
-    if (view === 'favorites') renderFavorites();
-    if (view === 'timeline') renderTimeline();
+    QithYang.renderer.renderConvList();
+    if (QithYang.state.view === 'favorites') QithYang.renderer.renderFavorites();
+    if (QithYang.state.view === 'timeline') QithYang.renderer.renderTimeline();
     updateStorageStats();
     let msg = `备份已恢复：新增 ${r.added}，更新 ${r.updated}，跳过 ${r.kept}`;
     if (!sv.ok) msg += '\n⚠ 保存到本地数据库失败：' + (sv.err && sv.err.message || '未知错误');
     alert(msg);
   };
   reader.readAsText(file);
-}
-async function clearAllData() {
-  if (!confirm('确定清空所有数据吗？\n\n将删除：所有对话、收藏、已隐藏对话。')) return;
-  if (!confirm('⚠ 最后确认\n\n此操作不可撤销。是否继续？')) return;
-  try {
-    await dbClear('conversations');
-    await dbClear('favs');
-    await dbClear('deletedConvs');
-  } catch (e) { console.warn('clear IDB failed', e); }
-  try {
-    localStorage.removeItem('xy_raw');
-    localStorage.removeItem('xy_favs');
-    localStorage.removeItem('xy_del');
-  } catch(e) {}
-  RAW_BY_ID = {};
-  RAW = [];
-  CONVS = [];
-  favs = {};
-  deletedConvs = new Set();
-  curConvId = null; curConv = null;
-  alert('已清空所有数据，页面将刷新。');
-  location.reload();
-}
+};
 
-// === Init ===
-async function init() {
-  setLoadingText('正在打开本地数据库…');
-  try {
-    await openDB();
-  } catch (e) {
-    console.error('IndexedDB 不可用', e);
-    setLoadingText('本地数据库不可用，请改用文件导入…');
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('picker').classList.add('show');
-    setupPicker();
-    return;
-  }
-
-  // One-time migration from old localStorage layout (xy_raw / xy_favs / xy_del)
-  setLoadingText('正在迁移旧数据…');
-  const migrated = await migrateLegacyStorage();
-
-  // Load all stores from IndexedDB
-  setLoadingText('正在加载本地数据…');
-  let convs, favRows, delRows;
-  try {
-    [convs, favRows, delRows] = await Promise.all([
-      dbGetAll('conversations'),
-      dbGetAll('favs'),
-      dbGetAll('deletedConvs'),
-    ]);
-  } catch (e) {
-    console.error('IDB getAll failed', e);
-    convs = []; favRows = []; delRows = [];
-  }
-
-  // Clean up demo conversations that older builds accidentally persisted.
-  // Demo uuids are stable (`demo-conv-001`..`003`); never keep them in IDB.
-  const demoIdsInDb = (convs || []).filter(c => isDemoUuid(c.uuid)).map(c => c.uuid);
-  if (demoIdsInDb.length) {
-    for (const id of demoIdsInDb) { try { await dbDelete('conversations', id); } catch(e){} }
-    convs = convs.filter(c => !isDemoUuid(c.uuid));
-  }
-
-  favs = {};
-  for (const f of favRows) favs[f.key] = true;
-  deletedConvs = new Set(delRows.map(d => d.uuid));
-
-  if (convs && convs.length) {
-    setLoadingText(`正在恢复 ${convs.length} 个对话…`);
-    await startApp(convs, { fromCache: true });
-    return;
-  }
-
-  // 2. No cached data — try user's private conversations.json (persist),
-  //    then the public demo (don't persist — it's just a placeholder).
-  setLoadingText('正在读取数据文件…');
-  let data = null;
-  let persistFetched = true;
-  try {
-    const r = await fetch('./conversations.json');
-    if (r.ok) data = await r.json();
-  } catch(e) {}
-  if (!data) {
-    try {
-      const r = await fetch('./demo-conversations.json');
-      if (r.ok) { data = await r.json(); persistFetched = false; }
-    } catch(e) {}
-  }
-  if (!data) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('picker').classList.add('show');
-    setupPicker();
-    return;
-  }
-  await startApp(data, { noPersist: !persistFetched });
-}
-function isDemoUuid(uuid) { return typeof uuid === 'string' && uuid.startsWith('demo-conv-'); }
-async function startApp(data, opts) {
-  opts = opts || {};
-  RAW_BY_ID = {};
-  const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : []);
-  const r = mergeRaw(arr);
-  RAW = Object.values(RAW_BY_ID);
-  CONVS = processConvs(RAW);
-  if (!opts.fromCache && !opts.noPersist && r.changedIds.length) {
-    setLoadingText(`正在保存 ${r.changedIds.length} 个对话到本地数据库…`);
-    await saveConvsByIds(r.changedIds);
-  }
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('picker').classList.remove('show');
-  document.getElementById('app').classList.add('show');
-  bindEvents();
-  renderConvList();
-  if (CONVS.length) openConv(CONVS[0].uuid);
-  updateStorageStats();
-}
-
-function mergeMoreFiles(fileList) {
+QithYang.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
   const files = Array.from(fileList || []);
   if (!files.length) return;
   let pending = files.length;
@@ -1595,17 +1867,18 @@ function mergeMoreFiles(fileList) {
         const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : null);
         if (!arr) { totals.errors++; }
         else {
-          const r = mergeRaw(arr);
+          arr.forEach(QithYang.filter.schemaDriftDetector);
+          const r = QithYang.parser.parse(arr);
           totals.added += r.added; totals.updated += r.updated; totals.kept += r.kept;
           totals.changedIds.push(...r.changedIds);
         }
       } catch(err) { totals.errors++; }
       if (--pending === 0) {
-        RAW = Object.values(RAW_BY_ID);
-        CONVS = processConvs(RAW);
-        renderConvList();
-        if (view === 'favorites') renderFavorites();
-        if (view === 'timeline') renderTimeline();
+        QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
+        QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+        QithYang.renderer.renderConvList();
+        if (QithYang.state.view === 'favorites') QithYang.renderer.renderFavorites();
+        if (QithYang.state.view === 'timeline') QithYang.renderer.renderTimeline();
         const sv = await saveConvsByIds(totals.changedIds);
         updateStorageStats();
         let msg = `导入完成：新增 ${totals.added}，更新 ${totals.updated}，跳过 ${totals.kept}` + (totals.errors ? `，失败 ${totals.errors}` : '');
@@ -1616,9 +1889,9 @@ function mergeMoreFiles(fileList) {
     reader.onerror = async () => {
       totals.errors++;
       if (--pending === 0) {
-        RAW = Object.values(RAW_BY_ID);
-        CONVS = processConvs(RAW);
-        renderConvList();
+        QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
+        QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+        QithYang.renderer.renderConvList();
         await saveConvsByIds(totals.changedIds);
         updateStorageStats();
         alert('导入完成（含错误）');
@@ -1626,8 +1899,31 @@ function mergeMoreFiles(fileList) {
     };
     reader.readAsText(f);
   }
-}
-function setupPicker() {
+};
+
+QithYang.app.importExport.clearAllData = async function clearAllData() {
+  if (!confirm('确定清空所有数据吗？\n\n将删除：所有对话、收藏、已隐藏对话。')) return;
+  if (!confirm('⚠ 最后确认\n\n此操作不可撤销。是否继续？')) return;
+  try {
+    await QithYang.storage.idb.clear('conversations');
+    await QithYang.storage.idb.clear('favs');
+    await QithYang.storage.idb.clear('deletedConvs');
+  } catch (e) { console.warn('clear IDB failed', e); }
+  // Legacy LS keys were one-time-migrated then removed by migrateLegacy at
+  // startup (see QithYang.storage.ls.migrateLegacy); we don't re-remove them
+  // here. localStorage display-name keys are intentionally preserved across
+  // clearAllData so the user doesn't have to re-enter them.
+  QithYang.state.RAW_BY_ID = {};
+  QithYang.state.RAW = [];
+  QithYang.state.CONVS = [];
+  QithYang.state.favs = {};
+  QithYang.state.deletedConvs = new Set();
+  QithYang.state.curConvId = null; QithYang.state.curConv = null;
+  alert('已清空所有数据，页面将刷新。');
+  location.reload();
+};
+
+QithYang.app.importExport.setupPicker = function setupPicker() {
   const drop = document.getElementById('drop');
   const input = document.getElementById('file-input');
   function handle(file) {
@@ -1657,9 +1953,105 @@ function setupPicker() {
   drop.addEventListener('dragleave', () => drop.classList.remove('on'));
   drop.addEventListener('drop', e => { e.preventDefault(); drop.classList.remove('on'); handle(e.dataTransfer.files[0]); });
   input.addEventListener('change', e => handle(e.target.files[0]));
+};
+
+function isDemoUuid(uuid) { return typeof uuid === 'string' && uuid.startsWith('demo-conv-'); }
+
+async function startApp(data, opts) {
+  opts = opts || {};
+  QithYang.state.RAW_BY_ID = {};
+  const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : []);
+  arr.forEach(QithYang.filter.schemaDriftDetector);
+  const r = QithYang.parser.parse(arr);
+  QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
+  QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+  if (!opts.fromCache && !opts.noPersist && r.changedIds.length) {
+    setLoadingText(`正在保存 ${r.changedIds.length} 个对话到本地数据库…`);
+    await saveConvsByIds(r.changedIds);
+  }
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('picker').classList.remove('show');
+  document.getElementById('app').classList.add('show');
+  QithYang.events.bindAll();
+  QithYang.renderer.renderConvList();
+  if (QithYang.state.CONVS.length) openConv(QithYang.state.CONVS[0].uuid);
+  updateStorageStats();
 }
 
-init();
+QithYang.app.init = async function init() {
+  setLoadingText('正在打开本地数据库…');
+  try {
+    await QithYang.storage.idb.open();
+  } catch (e) {
+    console.error('IndexedDB 不可用', e);
+    setLoadingText('本地数据库不可用，请改用文件导入…');
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('picker').classList.add('show');
+    QithYang.app.importExport.setupPicker();
+    return;
+  }
+
+  // One-time migration from old localStorage layout (xy_raw / xy_favs / xy_del)
+  setLoadingText('正在迁移旧数据…');
+  await QithYang.storage.ls.migrateLegacy();
+
+  // Load all stores from IndexedDB
+  setLoadingText('正在加载本地数据…');
+  let convs, favRows, delRows;
+  try {
+    [convs, favRows, delRows] = await Promise.all([
+      QithYang.storage.idb.getAll('conversations'),
+      QithYang.storage.idb.getAll('favs'),
+      QithYang.storage.idb.getAll('deletedConvs'),
+    ]);
+  } catch (e) {
+    console.error('IDB getAll failed', e);
+    convs = []; favRows = []; delRows = [];
+  }
+
+  // Clean up demo conversations that older builds accidentally persisted.
+  // Demo uuids are stable (`demo-conv-001`..`003`); never keep them in IDB.
+  const demoIdsInDb = (convs || []).filter(c => isDemoUuid(c.uuid)).map(c => c.uuid);
+  if (demoIdsInDb.length) {
+    for (const id of demoIdsInDb) { try { await QithYang.storage.idb.delete('conversations', id); } catch(e){} }
+    convs = convs.filter(c => !isDemoUuid(c.uuid));
+  }
+
+  QithYang.state.favs = {};
+  for (const f of favRows) QithYang.state.favs[f.key] = true;
+  QithYang.state.deletedConvs = new Set(delRows.map(d => d.uuid));
+
+  if (convs && convs.length) {
+    setLoadingText(`正在恢复 ${convs.length} 个对话…`);
+    await startApp(convs, { fromCache: true });
+    return;
+  }
+
+  // No cached data — try user's private conversations.json (persist),
+  // then the public demo (don't persist — it's just a placeholder).
+  setLoadingText('正在读取数据文件…');
+  let data = null;
+  let persistFetched = true;
+  try {
+    const r = await fetch('./conversations.json');
+    if (r.ok) data = await r.json();
+  } catch(e) {}
+  if (!data) {
+    try {
+      const r = await fetch('./demo-conversations.json');
+      if (r.ok) { data = await r.json(); persistFetched = false; }
+    } catch(e) {}
+  }
+  if (!data) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('picker').classList.add('show');
+    QithYang.app.importExport.setupPicker();
+    return;
+  }
+  await startApp(data, { noPersist: !persistFetched });
+};
+
+QithYang.app.init();
 </script>
 </body>
 </html>
