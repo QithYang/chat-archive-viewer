@@ -177,7 +177,7 @@ input, button { font-family: inherit; }
 .fav-view, .tl-view { padding:24px 24px 60px; }
 .tl-view { position:relative; }
 .msgs-in { max-width:760px; margin:0 auto; padding-top:18px; }
-.empty { display:flex; align-items:center; justify-content:center; height:100%; min-height:300px; color:var(--text-3); font-style:italic; font-size:14px; }
+.msgs-in > .empty { display:flex; align-items:center; justify-content:center; height:100%; min-height:300px; color:var(--text-3); font-style:italic; font-size:14px; }
 
 .dsep { text-align:center; padding:30px 0 10px; }
 .dsep span { font-family:'AnthropicSans',sans-serif; font-size:11px; color:var(--text-3); letter-spacing:0.8px; text-transform:uppercase; }
@@ -248,9 +248,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 .msg-tool > .tool-body pre { margin:6px 0; padding:8px 10px; background:var(--surface); border-radius:6px; font-family:'AnthropicMono',monospace; font-size:12px; color:var(--text-1); white-space:pre-wrap; word-break:break-word; max-height:300px; overflow:auto; }
 .msg-tool > .tool-body .tool-meta { font-size:11px; color:var(--text-3); margin-bottom:4px; }
 .msg-tool > .tool-body img.tool-icon { width:14px; height:14px; vertical-align:-2px; margin-right:4px; border-radius:2px; }
-.msg-tool.is-error > summary { color:#a14a4a; }
-.msg-tool.is-error > .tool-body { background:#fdf0ee; color:#5a2a2a; }
-.msg-tool.is-error > .tool-body pre { background:#fff; }
+/* is-error 不再翻红 — "(失败)" 小标已表达，无需再突出 */
 
 /* flag block — safety helpline (e.g. self-harm intervention). Amber, not red, to avoid alarm. */
 .msg-block-flag { display:block; border:1px solid #d9a55a; background:#fdf6ea; border-radius:10px; padding:12px 14px; margin:10px 0; font-family:'AnthropicSans',sans-serif; }
@@ -307,7 +305,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 .empty-view .ev-h { font-size:13px; color:var(--text-3); margin-top:8px; font-style:normal; opacity:0.7; }
 
 /* Timeline */
-.tl-month { max-width:760px; margin:0 auto 32px; }
+.tl-month { max-width:760px; margin:0 auto 16px; }
 .tl-month-title { font-family:'AnthropicSans',sans-serif; font-size:14px; color:var(--text-2); margin-bottom:14px; padding-bottom:6px; border-bottom:1px solid var(--border-light); }
 .tl-grid { display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:6px; }
 .tl-day-h { font-family:'AnthropicSans',sans-serif; font-size:10px; color:var(--text-3); text-align:center; padding:4px 0 6px; letter-spacing:0.5px; }
@@ -935,7 +933,7 @@ window.QithYang = (() => {
     const icon = renderToolIcon(b);
     const name = b.name || '(result)';
     const errCls = b.is_error ? ' is-error' : '';
-    const errMark = b.is_error ? ' · ⚠ 错误' : '';
+    const errMark = b.is_error ? ' (失败)' : '';
     // body order: display_content → structured_content → content[]
     let body = renderDisplayContent(b.display_content);
     if (!body && b.structured_content && typeof b.structured_content === 'object') {
@@ -1109,10 +1107,66 @@ QithYang.renderer.renderMessages = function renderMessages() {
     return `<div class="msg-file msg-file-binary">📎 ${escHtml(name)}${sz}</div>`;
   }
 
-  for (const msg of c.chat_messages) {
+  // 按 content[] 原顺序渲染 + 统一过程折叠段
+  // - 过程类 (thinking / tool_use / tool_result / token_budget / unknown) 连续段聚合为统一折叠
+  // - 内容类 (text) 正常显示
+  // - safety (flag) 永远可见, 不进折叠段 — self-harm helpline 死规则
+  // - 折叠标签数字: N=thinking count, M=tool_use+tool_result count, token_budget/unknown 不计入
+  const PROCESS_TYPES = new Set(['thinking', 'tool_use', 'tool_result', 'token_budget']);
+  function renderMsgInner(msg, ctx) {
     const d = QithYang.normalizer.getMsgData(msg);
-    const extraHtml = QithYang.renderer.renderExtraBlocks(msg, { hl });
-    if (!d.text && !d.thinkingBlocks.length && !d.files.length && !extraHtml) continue;
+    const parts = [];
+    let processBlocks = [];
+
+    function flushProcess() {
+      if (!processBlocks.length) return;
+      // label 永远显示纯 "思考": 曾试过 "思考·N(含工具调用·M)",
+      // 信息密度过高显得杂乱, 用户展开即看全部 content, label 无需 N/M preview.
+      // inner: thinking 直接 inline (避免 nested fold button); others dispatchBlock
+      const inner = processBlocks.map(b => {
+        if (b.type === 'thinking') {
+          const lines = String(b.thinking || '').split('\n')
+            .map(l => l.trim() ? `<p>${escHtml(l)}</p>` : '<div class="th-sp"></div>')
+            .join('');
+          const status = (b.cut_off || b.truncated) ? '<div class="tool-meta">已截断</div>' : '';
+          return `<div class="th-block">${lines}${status}</div>`;
+        }
+        return QithYang.renderer.dispatchBlock(b, ctx);
+      }).join('');
+      const tkOpen = QithYang.state.showThinking;
+      parts.push(
+        `<div class="thinking">` +
+          `<button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">思考</span></button>` +
+          `<div class="th-content${tkOpen?' open':''}">${inner}</div>` +
+        `</div>`
+      );
+      processBlocks = [];
+    }
+
+    // files (msg-level dedup) 放最前
+    if (d.files.length) parts.push(d.files.map(renderFile).join(''));
+
+    const arr = Array.isArray(msg.content) ? msg.content : [];
+    for (const b of arr) {
+      if (!b || typeof b !== 'object') continue;
+      if (b.type === 'text') {
+        flushProcess();
+        if (b.text) parts.push(`<div class="msg-text">${QithYang.utils.renderMarkdown(b.text, ctx.hl)}</div>`);
+      } else if (b.type === 'flag') {
+        flushProcess();
+        parts.push(QithYang.renderer.dispatchBlock(b, ctx));  // 永远可见
+      } else {
+        // thinking / tool_use / tool_result / token_budget / unknown 全进过程段
+        processBlocks.push(b);
+      }
+    }
+    flushProcess();
+    return parts.join('');
+  }
+
+  for (const msg of c.chat_messages) {
+    const inner = renderMsgInner(msg, { hl });
+    if (!inner) continue;
 
     const day = QithYang.utils.fmtDateCN(msg.created_at);
     if (day !== lastDay) {
@@ -1126,18 +1180,13 @@ QithYang.renderer.renderMessages = function renderMessages() {
     if (isU) {
       html += `<div class="msg user" data-msg="${msg.uuid}">
         <div class="msg-row">
-          <div class="bubble">
-            ${d.files.map(renderFile).join('')}
-            ${d.text ? `<div class="msg-text">${QithYang.utils.renderMarkdown(d.text, hl)}</div>` : ''}
-            ${extraHtml}
-          </div>
+          <div class="bubble">${inner}</div>
           <div class="u-name">${QithYang.utils.escHtml(QithYang.storage.ls.getUserName())}</div>
         </div>
         <div class="u-time">${QithYang.utils.fmtFullCN(msg.created_at)}</div>
         <button class="msg-fav ${fav?'on':''}" data-fkey="${fkey}" title="收藏">${fav?'★':'☆'}</button>
       </div>`;
     } else {
-      const tkOpen = QithYang.state.showThinking;
       html += `<div class="msg ai" data-msg="${msg.uuid}">
         <div class="a-head">
           <img class="a-av" src="assets/app-logo.png" alt="">
@@ -1145,15 +1194,7 @@ QithYang.renderer.renderMessages = function renderMessages() {
           <span class="a-time">${QithYang.utils.fmtFullCN(msg.created_at)}</span>
         </div>
         <button class="msg-fav ${fav?'on':''}" data-fkey="${fkey}" title="收藏">${fav?'★':'☆'}</button>
-        <div class="body">
-          ${d.thinkingBlocks.length ? `<div class="thinking">
-            <button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">思考 · ${d.thinkingBlocks.length}</span></button>
-            <div class="th-content${tkOpen?' open':''}">${QithYang.renderer.renderThinkingHtml(d.thinkingBlocks)}</div>
-          </div>` : ''}
-          ${d.files.map(renderFile).join('')}
-          ${d.text ? `<div class="msg-text">${QithYang.utils.renderMarkdown(d.text, hl)}</div>` : ''}
-          ${extraHtml}
-        </div>
+        <div class="body">${inner}</div>
       </div>`;
     }
   }
@@ -1171,32 +1212,9 @@ QithYang.renderer.renderMessages = function renderMessages() {
   }
 };
 
-// Extra content blocks (non-text/non-thinking) go through the renderer
-// registry. text + thinking are still aggregated and rendered inline by
-// renderMessages. Returns concatenated HTML
-// string for the msg's non-text/non-thinking blocks.
-QithYang.renderer.renderExtraBlocks = (function () {
-  const TEXT_OR_THINK = new Set(['text', 'thinking']);
-  return function renderExtraBlocks(msg, ctx) {
-    const arr = msg && Array.isArray(msg.content) ? msg.content : null;
-    if (!arr) return '';
-    let out = '';
-    for (const b of arr) {
-      if (!b || typeof b !== 'object') continue;
-      if (TEXT_OR_THINK.has(b.type)) continue;
-      out += QithYang.renderer.dispatchBlock(b, ctx);
-    }
-    return out;
-  };
-})();
-
-QithYang.renderer.renderThinkingHtml = function renderThinkingHtml(blocks) {
-  if (!Array.isArray(blocks)) blocks = [blocks];
-  return blocks.map(b => {
-    const inner = b.split('\n').map(l => l.trim() ? `<p>${QithYang.utils.escHtml(l)}</p>` : '<div class="th-sp"></div>').join('');
-    return `<div class="th-block">${inner}</div>`;
-  }).join('');
-};
+/* renderExtraBlocks + renderThinkingHtml 已删 — 被 renderMsgInner (按 content[] 原顺序 +
+   process segment 聚合) 取代, 无 caller. thinking handler 仍 register 留 dispatchBlock
+   fallback 调用路径; thinking 块在 process segment 内 inline 渲染 (避免 nested fold). */
 
 // === View switching ===
 QithYang.renderer.setView = function setView(v) {
