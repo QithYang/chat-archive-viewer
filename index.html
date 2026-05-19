@@ -346,6 +346,21 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
   .sb-row { flex-wrap:wrap; }
   .sb-row > input { order:10; flex:1 1 100%; margin-top:6px; }
 }
+
+/* Preload-choice modal: shown on boot when this HTML carries
+   embedded conversations (window.QithYang_preloaded). User picks import-to-IDB
+   vs in-memory only. */
+.preload-modal { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; }
+.preload-modal-bg { position:absolute; inset:0; background:rgba(20,20,19,0.45); backdrop-filter:blur(4px); }
+.preload-modal-card { position:relative; background:var(--canvas); border:1px solid var(--border); border-radius:14px; padding:26px 28px 22px; max-width:440px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.18); }
+.preload-modal-title { font-family:'AnthropicSans',sans-serif; font-size:16px; font-weight:600; color:var(--text-1); margin-bottom:12px; }
+.preload-modal-body { font-size:14px; color:var(--text-2); line-height:1.7; margin-bottom:20px; }
+.preload-modal-note { display:block; margin-top:8px; color:var(--text-3); font-size:13px; font-style:italic; }
+.preload-modal-acts { display:flex; gap:10px; justify-content:flex-end; }
+.preload-btn { font-family:'AnthropicSans',sans-serif; padding:8px 16px; border-radius:8px; cursor:pointer; border:1px solid var(--border); background:var(--canvas); font-size:13px; color:var(--text-2); transition:all 0.2s; }
+.preload-btn:hover { border-color:var(--orange); color:var(--orange); }
+.preload-btn-primary { background:var(--orange); color:white; border-color:var(--orange); }
+.preload-btn-primary:hover { filter:brightness(1.05); color:white; }
 </style>
 </head>
 <body>
@@ -382,6 +397,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
               <div class="sm-note" id="sm-store-note">已自动保存到本地数据库</div>
             </div>
             <button class="sm-item" id="sm-export"><span class="sm-ic">⬇</span>导出备份…</button>
+            <button class="sm-item" id="sm-export-html"><span class="sm-ic">📄</span>导出独立 HTML…</button>
             <button class="sm-item" id="sm-import-backup"><span class="sm-ic">⬆</span>导入备份…</button>
             <button class="sm-item" id="sm-display-names"><span class="sm-ic">✎</span>显示名设置…</button>
             <hr class="sm-sep">
@@ -1706,6 +1722,11 @@ QithYang.events.bindToolbar = function bindToolbar() {
     QithYang.app.importExport.exportBackup();
     smMenu && smMenu.classList.remove('show');
   });
+  const exportHtmlBtn = document.getElementById('sm-export-html');
+  if (exportHtmlBtn) exportHtmlBtn.addEventListener('click', () => {
+    QithYang.app.importExport.exportSelfContainedHtml();
+    smMenu && smMenu.classList.remove('show');
+  });
   const importBackupBtn = document.getElementById('sm-import-backup');
   if (importBackupBtn && backupInput) {
     importBackupBtn.addEventListener('click', () => {
@@ -1835,6 +1856,128 @@ QithYang.app.importExport.exportBackup = function exportBackup() {
   a.href = url; a.download = fname;
   document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 100);
+};
+
+// Inline font + logo asset references as base64 data: URLs so the
+// returned HTML stays viewable offline or after being shared. Same-origin
+// HTTP fetch only — caller must guard against file:// (cross-origin fail).
+QithYang.app.importExport.inlineAssets = async function inlineAssets(htmlText) {
+  const fontFiles = [
+    'fonts/AnthropicSans-Roman.woff2',
+    'fonts/AnthropicSans-Italic.woff2',
+    'fonts/AnthropicSerif-Roman.woff2',
+    'fonts/AnthropicSerif-Italic.woff2',
+    'fonts/AnthropicMono-Roman.woff2',
+    'fonts/AnthropicMono-Italic.woff2',
+  ];
+  const logoPath = 'assets/app-logo.png';
+
+  async function fetchAsDataUrl(path, mime) {
+    const r = await fetch(path);
+    if (!r.ok) throw new Error(`Fetch ${path} failed: ${r.status}`);
+    const buf = await r.arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    // Chunk binary→string to avoid stack overflow on >100KB font files
+    let bin = '';
+    const CHUNK = 0x8000;
+    for (let i = 0; i < bytes.length; i += CHUNK) {
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
+    }
+    return `data:${mime};base64,${btoa(bin)}`;
+  }
+
+  const [logoDataUrl, ...fontDataUrls] = await Promise.all([
+    fetchAsDataUrl(logoPath, 'image/png'),
+    ...fontFiles.map(f => fetchAsDataUrl(f, 'font/woff2')),
+  ]);
+
+  let out = htmlText;
+  for (let i = 0; i < fontFiles.length; i++) {
+    out = out.split(`url('${fontFiles[i]}')`).join(`url('${fontDataUrls[i]}')`);
+  }
+  out = out.split(logoPath).join(logoDataUrl);
+  return out;
+};
+
+// Export a single self-contained HTML file: current page + inlined assets
+// + user data as window.QithYang_preloaded. Opens identically when double-
+// clicked or hosted, with a boot dialog asking import vs in-memory.
+QithYang.app.importExport.exportSelfContainedHtml = async function exportSelfContainedHtml() {
+  // file:// 协议 fetch 自身 HTML 会被绝大多数浏览器以 CORS 拒绝, 同时
+  // inlineAssets() 也无法 fetch fonts. 提示用户回到在线版导出, 不 silent fail.
+  if (location.protocol === 'file:') {
+    alert(
+      '当前是离线浏览模式 (file://)，无法导出独立 HTML。\n\n' +
+      '原因：浏览器禁止本地 file:// 页面 fetch 同目录其他文件。\n\n' +
+      '请回到在线版（https://qithyang.github.io/QithYang/ 或本机 http 服务器）后再导出。'
+    );
+    return;
+  }
+
+  const exportHtmlBtn = document.getElementById('sm-export-html');
+  const oldText = exportHtmlBtn ? exportHtmlBtn.textContent : '';
+  if (exportHtmlBtn) { exportHtmlBtn.textContent = '正在生成…'; exportHtmlBtn.disabled = true; }
+  try {
+    const payload = {
+      app: 'QithYang',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      conversations: Object.values(QithYang.state.RAW_BY_ID),
+      favs: QithYang.state.favs,
+      deletedConvs: [...QithYang.state.deletedConvs],
+    };
+    // 用 <script type="application/json"> 装 payload, 不走 JS 解析路径 —
+    // 避免 inline JS 字面量里 U+2028/2029 等字符触发 "Invalid or unexpected
+    // token" 导致 boot 全停 (旧路径 window.X={JS literal} 在大体量数据上会挂掉).
+    // 改为 type=application/json 隔离 JS 词法, payload 仅作
+    // 字符数据, boot 走 textContent + JSON.parse 读取.
+    //
+    // HTML 解析器仍按字节匹配 <\/script>(case-insensitive)关闭 script 标签,
+    // 必须 escape. 同时防 <!-- / --> 触发 script element 的 escaped-text
+    // 状态切换 (belt-and-suspenders).
+    // Only escape the script-closing byte sequence (case-insensitive) — that's
+    // the sole sequence the HTML parser uses to close a script-element tag.
+    // Earlier drafts also escaped <!-- / --> ("belt-and-suspenders"), but those
+    // produce <\!-- / --\> which are INVALID JSON escape sequences, breaking
+    // JSON.parse on the receiving side. Dropped.
+    const safeJson = JSON.stringify(payload)
+      .replace(/<\/script/gi, '<\\/script');
+
+    const baseHtml = await fetch(location.href).then(r => {
+      if (!r.ok) throw new Error(`fetch self HTML failed: ${r.status}`);
+      return r.text();
+    });
+    const inlined = await QithYang.app.importExport.inlineAssets(baseHtml);
+
+    // CRITICAL: use slice-based injection, NOT String.prototype.replace.
+    // String.replace's second-arg replacement string interprets $&, $`, $' even
+    // when the first arg is a literal string. User data containing those byte
+    // sequences (common in chat content) would get substituted with chunks of
+    // the surrounding HTML, corrupting the payload (a large export once came out
+    // with raw CRLF + duplicated end-of-document markup from $' substitutions,
+    // and JSON.parse failed on the receiver).
+    const headIdx = inlined.indexOf('</head>');
+    if (headIdx < 0) throw new Error('exportSelfContainedHtml: no </head> in fetched index.html');
+    const injected =
+      inlined.slice(0, headIdx) +
+      `<script type="application/json" id="qithyang-payload">${safeJson}<\/script>\n` +
+      inlined.slice(headIdx);
+
+    const blob = new Blob([injected], { type: 'text/html;charset=utf-8' });
+    const d = new Date();
+    const stamp = `${d.getFullYear()}${QithYang.utils.pad2(d.getMonth()+1)}${QithYang.utils.pad2(d.getDate())}-${QithYang.utils.pad2(d.getHours())}${QithYang.utils.pad2(d.getMinutes())}${QithYang.utils.pad2(d.getSeconds())}`;
+    const fname = `QithYang-${stamp}.html`;
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = fname;
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 100);
+  } catch (e) {
+    alert('导出失败: ' + (e && e.message || e));
+    console.error(e);
+  } finally {
+    if (exportHtmlBtn) { exportHtmlBtn.textContent = oldText; exportHtmlBtn.disabled = false; }
+  }
 };
 
 QithYang.app.importExport.importBackup = function importBackup(file) {
@@ -1996,7 +2139,122 @@ async function startApp(data, opts) {
   updateStorageStats();
 }
 
+// Show modal asking user how to handle preloaded data. Returns 'persist'
+// (import to local IDB) or 'memory' (this session only). User picks once at
+// boot — there's no auto-persist, by design: shared HTMLs shouldn't silently
+// pollute a recipient's local viewer.
+function showPreloadChoiceModal(n) {
+  return new Promise(resolve => {
+    const modal = document.createElement('div');
+    modal.className = 'preload-modal';
+    modal.innerHTML =
+      '<div class="preload-modal-bg"></div>' +
+      '<div class="preload-modal-card">' +
+        '<div class="preload-modal-title">这份 HTML 嵌入了 ' + n + ' 条对话</div>' +
+        '<div class="preload-modal-body">' +
+          '要把它导入到本机数据库吗？' +
+          '<span class="preload-modal-note">导入后下次打开本机 viewer 还能看到；' +
+          '仅本次浏览则关闭页面就丢失。</span>' +
+        '</div>' +
+        '<div class="preload-modal-acts">' +
+          '<button class="preload-btn" data-act="memory">仅本次浏览</button>' +
+          '<button class="preload-btn preload-btn-primary" data-act="persist">导入到本地</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    modal.addEventListener('click', e => {
+      const act = e.target && e.target.dataset && e.target.dataset.act;
+      if (!act) return;
+      modal.remove();
+      resolve(act);
+    });
+  });
+}
+
+QithYang.app.handlePreloaded = async function handlePreloaded(preloaded) {
+  if (!preloaded || !Array.isArray(preloaded.conversations)) return false;
+  // Hide initial loading immediately so the modal sits on a calm canvas
+  const loading = document.getElementById('loading');
+  if (loading) loading.style.display = 'none';
+
+  // Open IDB regardless of user choice — 'persist' uses it for save, 'memory'
+  // skips writes but startApp's downstream still expects state shape to be
+  // consistent. open() failure is non-fatal here (we just won't persist).
+  let idbOk = true;
+  try { await QithYang.storage.idb.open(); }
+  catch (e) { console.warn('IDB open failed; persist disabled', e); idbOk = false; }
+
+  const n = preloaded.conversations.length;
+  let choice = await showPreloadChoiceModal(n);
+  if (choice === 'persist' && !idbOk) {
+    alert('本地数据库不可用，将仅本次浏览。');
+    choice = 'memory';
+  }
+
+  // Parse + populate state (same shape importBackup uses)
+  const arr = preloaded.conversations;
+  arr.forEach(QithYang.filter.schemaDriftDetector);
+  const r = QithYang.parser.parse(arr);
+  if (preloaded.favs && typeof preloaded.favs === 'object') {
+    Object.assign(QithYang.state.favs, preloaded.favs);
+  }
+  if (Array.isArray(preloaded.deletedConvs)) {
+    preloaded.deletedConvs.forEach(id => QithYang.state.deletedConvs.add(id));
+  }
+  QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
+  QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+
+  if (choice === 'persist' && r.changedIds.length) {
+    try {
+      await saveConvsByIds(r.changedIds);
+      if (preloaded.favs) await saveFavsBulk();
+      if (Array.isArray(preloaded.deletedConvs)) await saveDeletedBulk();
+    } catch (e) { console.warn('persist preloaded data failed', e); }
+  }
+
+  // Reveal app
+  document.getElementById('picker').classList.remove('show');
+  document.getElementById('app').classList.add('show');
+  QithYang.events.bindAll();
+  QithYang.renderer.renderConvList();
+  if (QithYang.state.CONVS.length) openConv(QithYang.state.CONVS[0].uuid);
+  updateStorageStats();
+  return true;
+};
+
+// Read preloaded payload: prefer <script type=application/json id=qithyang-payload>
+// (robust against weird user data); fallback to window.QithYang_
+// preloaded (legacy form, kept for backward compat with existing HTML
+// exports). Returns parsed object or null.
+function readPreloadedPayload() {
+  // 1. New path: script tag with JSON content
+  const el = document.getElementById('qithyang-payload');
+  if (el && el.textContent && el.textContent.trim()) {
+    try {
+      return JSON.parse(el.textContent);
+    } catch (e) {
+      console.warn('qithyang-payload JSON.parse failed; falling back to window.QithYang_preloaded', e);
+    }
+  }
+  // 2. Legacy path
+  if (window.QithYang_preloaded) return window.QithYang_preloaded;
+  return null;
+}
+
 QithYang.app.init = async function init() {
+  // Preloaded shortcut: HTML carries embedded data (self-contained export).
+  // Skip the normal IDB-load → fetch demo cascade and ask user how to handle it.
+  const preloaded = readPreloadedPayload();
+  if (preloaded) {
+    try {
+      const handled = await QithYang.app.handlePreloaded(preloaded);
+      if (handled) return;
+    } catch (e) {
+      console.error('preloaded handler failed', e);
+      // Fall through to normal init
+    }
+  }
+
   setLoadingText('正在打开本地数据库…');
   try {
     await QithYang.storage.idb.open();
