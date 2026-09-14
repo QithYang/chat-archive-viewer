@@ -4,6 +4,10 @@ A lightweight, local-only viewer for Claude conversation exports. It renders the
 
 [Live demo →](https://qithyang.github.io/QithYang/) · [中文说明](#中文说明)
 
+![QithYang showing the bundled sample conversation](assets/screenshot.jpg)
+
+*The interface is in Chinese. The screenshot shows the bundled sample conversation, not real data.*
+
 ## Features
 
 - **Conversation list**: sorted by last update, with title search and delete (local soft delete)
@@ -47,12 +51,16 @@ A single-file front end (HTML + CSS + JavaScript) with no framework and no build
 ```
 .
 ├── index.html               # the whole app (HTML + CSS + JS in one file)
-├── assets/                  # icons
+├── assets/                  # icons and screenshot
 ├── fonts/                   # fonts
 ├── demo-conversations.json  # sample data
 ├── LICENSE
 └── .gitignore
 ```
+
+## How it was built
+
+Built with AI coding tools. I defined the features, tested the behaviour in the browser and reviewed the result; I am a beginner programmer.
 
 ## License
 
@@ -65,6 +73,8 @@ A single-file front end (HTML + CSS + JavaScript) with no framework and no build
 轻量、本地的 Claude 对话查看器 —— 把 Claude 导出的 `conversations.json` 渲染成清晰的聊天界面。所有数据在浏览器本地处理，不上传任何东西。
 
 [在线体验 →](https://qithyang.github.io/QithYang/)
+
+![QithYang 示例对话界面](assets/screenshot.jpg)
 
 ### 功能
 
@@ -105,12 +115,16 @@ python -m http.server 8765
 ```
 .
 ├── index.html               # 整个应用（HTML + CSS + JS 单文件）
-├── assets/                  # 图标
+├── assets/                  # 图标与截图
 ├── fonts/                   # 字体
 ├── demo-conversations.json  # 演示数据
 ├── LICENSE
 └── .gitignore
 ```
+
+### 开发方式
+
+借助 AI 编程工具完成：功能由我定义，我在浏览器里测试行为并审核结果；我是编程初学者。
 
 ### 许可证
 
