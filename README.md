@@ -60,7 +60,7 @@ A single-file front end (HTML + CSS + JavaScript) with no framework and no build
 
 ## How it was built
 
-Built with AI coding tools. I defined the features, tested the behaviour in the browser and reviewed the result; I am a beginner programmer.
+Built with AI coding tools. I specified the features and the privacy model (fully client-side; no data leaves the browser) and verified the behaviour through browser testing.
 
 ## License
 
@@ -124,7 +124,7 @@ python -m http.server 8765
 
 ### 开发方式
 
-借助 AI 编程工具完成：功能由我定义，我在浏览器里测试行为并审核结果；我是编程初学者。
+借助 AI 编程工具完成：功能与隐私模型（完全在浏览器本地运行，数据不外传）由我定义，行为经我在浏览器中测试验证。
 
 ### 许可证
 
