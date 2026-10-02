@@ -6,7 +6,7 @@ A lightweight, local-only viewer for Claude conversation exports. It renders the
 
 ![QithYang showing the bundled sample conversation](assets/screenshot.jpg)
 
-*The interface is in Chinese. The screenshot shows the bundled sample conversation, not real data.*
+*The interface is in Chinese. The screenshot shows one of the bundled sample conversations, not real data.*
 
 ## Features
 
@@ -25,7 +25,7 @@ A lightweight, local-only viewer for Claude conversation exports. It renders the
 
 Open <https://qithyang.github.io/QithYang/>
 
-- With no data loaded, a sample conversation is shown
+- With no data loaded, three sample conversations are shown
 - To view your own data, drag the `conversations.json` exported from Claude onto the upload box
 
 ### Local
@@ -93,7 +93,7 @@ Built with AI coding tools. I specified the features and the privacy model (full
 
 打开 <https://qithyang.github.io/QithYang/>
 
-- 没有数据时会展示一份示例对话
+- 没有数据时会展示三段示例对话
 - 想看自己的数据：把从 Claude 导出的 `conversations.json` 拖进上传框
 
 #### 本地
