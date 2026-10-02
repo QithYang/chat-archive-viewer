@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>QithYang · 我们的回忆</title>
+<title>QithYang · 对话归档查看器</title>
 <link rel="icon" type="image/png" href="assets/app-logo.png">
 <style>
 /* === Fonts: relative paths, no embed === */
@@ -423,7 +423,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
       <button class="mh-hb" id="hb" aria-label="菜单">☰</button>
       <div class="mh-c">
         <div class="mh-t" id="mh-t">QithYang</div>
-        <div class="mh-m" id="mh-m">— 此窗未关，爱意常在 —</div>
+        <div class="mh-m" id="mh-m">— 对话归档查看器 —</div>
       </div>
       <div class="mh-acts">
         <button class="ibtn" id="search-btn" title="搜索消息">🔍</button>
@@ -1097,7 +1097,7 @@ QithYang.renderer.renderMessages = function renderMessages() {
   const ms = document.getElementById('messages');
   if (!QithYang.state.curConv) {
     document.getElementById('mh-t').textContent = 'QithYang';
-    document.getElementById('mh-m').textContent = '— 此窗未关，爱意常在 —';
+    document.getElementById('mh-m').textContent = '— 对话归档查看器 —';
     ms.innerHTML = '<div class="empty">从左侧选择一个对话</div>';
     return;
   }
