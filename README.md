@@ -1,10 +1,10 @@
-# QithYang
+# Chat Archive Viewer
 
 A lightweight, local-only viewer for Claude conversation exports. It renders the `conversations.json` file exported from Claude as a clean chat interface. Everything is processed in your browser; nothing is uploaded anywhere.
 
 [Live demo →](https://qithyang.github.io/chat-archive-viewer/) · [中文说明](#中文说明)
 
-![QithYang showing the bundled sample conversation](assets/screenshot.jpg)
+![The viewer showing the bundled sample conversation](assets/screenshot.jpg)
 
 *The interface is in Chinese. The screenshot shows one of the bundled sample conversations, not real data.*
 
@@ -74,7 +74,7 @@ Built with AI coding tools. I specified the features and the privacy model (full
 
 [在线体验 →](https://qithyang.github.io/chat-archive-viewer/)
 
-![QithYang 示例对话界面](assets/screenshot.jpg)
+![示例对话界面](assets/screenshot.jpg)
 
 ### 功能
 
