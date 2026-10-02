@@ -2,7 +2,7 @@
 
 A lightweight, local-only viewer for Claude conversation exports. It renders the `conversations.json` file exported from Claude as a clean chat interface. Everything is processed in your browser; nothing is uploaded anywhere.
 
-[Live demo →](https://qithyang.github.io/QithYang/) · [中文说明](#中文说明)
+[Live demo →](https://qithyang.github.io/chat-archive-viewer/) · [中文说明](#中文说明)
 
 ![QithYang showing the bundled sample conversation](assets/screenshot.jpg)
 
@@ -23,7 +23,7 @@ A lightweight, local-only viewer for Claude conversation exports. It renders the
 
 ### Online (recommended)
 
-Open <https://qithyang.github.io/QithYang/>
+Open <https://qithyang.github.io/chat-archive-viewer/>
 
 - With no data loaded, three sample conversations are shown
 - To view your own data, drag the `conversations.json` exported from Claude onto the upload box
@@ -31,8 +31,8 @@ Open <https://qithyang.github.io/QithYang/>
 ### Local
 
 ```bash
-git clone https://github.com/QithYang/QithYang.git
-cd QithYang
+git clone https://github.com/QithYang/chat-archive-viewer.git
+cd chat-archive-viewer
 python -m http.server 8765
 ```
 
@@ -72,7 +72,7 @@ Built with AI coding tools. I specified the features and the privacy model (full
 
 轻量、本地的 Claude 对话查看器 —— 把 Claude 导出的 `conversations.json` 渲染成清晰的聊天界面。所有数据在浏览器本地处理，不上传任何东西。
 
-[在线体验 →](https://qithyang.github.io/QithYang/)
+[在线体验 →](https://qithyang.github.io/chat-archive-viewer/)
 
 ![QithYang 示例对话界面](assets/screenshot.jpg)
 
@@ -91,7 +91,7 @@ Built with AI coding tools. I specified the features and the privacy model (full
 
 #### 在线（推荐）
 
-打开 <https://qithyang.github.io/QithYang/>
+打开 <https://qithyang.github.io/chat-archive-viewer/>
 
 - 没有数据时会展示三段示例对话
 - 想看自己的数据：把从 Claude 导出的 `conversations.json` 拖进上传框
@@ -99,8 +99,8 @@ Built with AI coding tools. I specified the features and the privacy model (full
 #### 本地
 
 ```bash
-git clone https://github.com/QithYang/QithYang.git
-cd QithYang
+git clone https://github.com/QithYang/chat-archive-viewer.git
+cd chat-archive-viewer
 python -m http.server 8765
 ```
 
