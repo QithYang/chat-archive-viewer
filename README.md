@@ -51,8 +51,8 @@ A single-file front end (HTML + CSS + JavaScript) with no framework and no build
 ```
 .
 ├── index.html               # the whole app (HTML + CSS + JS in one file)
-├── assets/                  # icons and screenshot
-├── fonts/                   # fonts
+├── assets/                  # icon and screenshot
+├── fonts/                   # bundled fonts; licenses in fonts/licenses/
 ├── demo-conversations.json  # sample data
 ├── LICENSE
 └── .gitignore
@@ -64,7 +64,13 @@ Built with AI coding tools. I specified the features and the privacy model (full
 
 ## License
 
-[MIT](LICENSE)
+The code is released under the [MIT License](LICENSE).
+
+The bundled fonts are licensed under the [SIL Open Font License 1.1](https://openfontlicense.org), not MIT:
+
+- [Source Serif 4](https://github.com/adobe-fonts/source-serif) ([license](fonts/licenses/SourceSerif4-OFL.txt))
+- [Instrument Sans](https://github.com/Instrument/instrument-sans) ([license](fonts/licenses/InstrumentSans-OFL.txt))
+- [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) ([license](fonts/licenses/JetBrainsMono-OFL.txt))
 
 ---
 
@@ -116,7 +122,7 @@ python -m http.server 8765
 .
 ├── index.html               # 整个应用（HTML + CSS + JS 单文件）
 ├── assets/                  # 图标与截图
-├── fonts/                   # 字体
+├── fonts/                   # 内置字体，许可证在 fonts/licenses/
 ├── demo-conversations.json  # 演示数据
 ├── LICENSE
 └── .gitignore
@@ -128,4 +134,6 @@ python -m http.server 8765
 
 ### 许可证
 
-[MIT](LICENSE)
+代码采用 [MIT 许可证](LICENSE)。
+
+内置字体采用 [SIL Open Font License 1.1](https://openfontlicense.org)，不属于 MIT：Source Serif 4、Instrument Sans、JetBrains Mono，许可证全文见 `fonts/licenses/`。
