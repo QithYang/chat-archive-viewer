@@ -1,5 +1,5 @@
 // Tests for the stats computation in index.html.
-// Run: node --test tests/
+// Run: node --test
 // The block between the <stats-core> markers is extracted and evaluated
 // on its own, so these tests need no browser. Local time is pinned to UTC+8.
 process.env.TZ = 'Asia/Shanghai';
@@ -105,4 +105,25 @@ test('top words: stopwords, code and links are dropped; case folds; CJK words ke
   const got = Object.fromEntries(s.words.human.map(x => [x.w, x.n]));
   assert.deepEqual(got, { python: 3, '咖啡': 3 });
   assert.deepEqual(s.words.assistant, []);
+});
+
+test('title topics: once per title, shared words only, ties broken by messages', () => {
+  const s = computeStats([
+    conv('a', 'Python python basics', [msg('human', '2026-03-01T10:00:00', 'x'), msg('assistant', '2026-03-01T10:01:00', 'y')]),
+    conv('b', 'Python tips', [msg('human', '2026-03-02T10:00:00', 'x')]),
+    conv('c', 'Regex tips', [msg('human', '2026-03-03T10:00:00', 'x'), msg('assistant', '2026-03-03T10:01:00', 'y'), msg('human', '2026-03-03T10:02:00', 'z')]),
+    conv('d', 'Solo topic', [msg('human', '2026-03-04T10:00:00', 'x')]),
+  ], norm);
+  assert.deepEqual(s.titleTopics, [
+    { w: 'tips', convs: 2, msgs: 4 },
+    { w: 'python', convs: 2, msgs: 3 },
+  ]);
+});
+
+test('title topics: mixed Chinese and English titles, stopwords removed', () => {
+  const s = computeStats([
+    conv('a', 'Python 正则', [msg('human', '2026-03-01T10:00:00', 'x')]),
+    conv('b', 'The Python 正则 guide', [msg('human', '2026-03-02T10:00:00', 'x')]),
+  ], norm);
+  assert.deepEqual(s.titleTopics.map(x => x.w), ['python', '正则']);
 });

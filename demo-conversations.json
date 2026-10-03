@@ -266,7 +266,7 @@
  },
  {
   "uuid": "demo-conv-g003",
-  "name": "An IndexError",
+  "name": "Python IndexError",
   "summary": "",
   "created_at": "2025-12-28T12:31:00Z",
   "updated_at": "2025-12-28T12:33:44Z",
@@ -319,7 +319,7 @@
  },
  {
   "uuid": "demo-conv-g004",
-  "name": "Greedy regex matching",
+  "name": "Python regex: greedy matching",
   "summary": "",
   "created_at": "2025-11-09T14:05:00Z",
   "updated_at": "2025-11-09T14:06:01Z",
@@ -446,7 +446,7 @@
  },
  {
   "uuid": "demo-conv-g007",
-  "name": "A long if/elif chain",
+  "name": "Python if/elif chain",
   "summary": "",
   "created_at": "2026-03-07T11:47:00Z",
   "updated_at": "2026-03-07T11:49:56Z",
@@ -499,7 +499,7 @@
  },
  {
   "uuid": "demo-conv-g008",
-  "name": "Writing a scraper",
+  "name": "Writing a Python scraper",
   "summary": "",
   "created_at": "2026-01-23T04:12:00Z",
   "updated_at": "2026-01-23T04:14:26Z",
@@ -589,7 +589,7 @@
  },
  {
   "uuid": "demo-conv-g010",
-  "name": "Fixing one sentence",
+  "name": "Fixing an English sentence",
   "summary": "",
   "created_at": "2026-01-24T13:22:00Z",
   "updated_at": "2026-01-24T13:22:50Z",
@@ -626,7 +626,7 @@
  },
  {
   "uuid": "demo-conv-g011",
-  "name": "Opening an essay",
+  "name": "Opening an English essay",
   "summary": "",
   "created_at": "2025-12-06T15:09:00Z",
   "updated_at": "2025-12-06T15:14:46Z",
@@ -679,7 +679,7 @@
  },
  {
   "uuid": "demo-conv-g012",
-  "name": "Daily speaking practice",
+  "name": "Daily English speaking practice",
   "summary": "",
   "created_at": "2025-11-08T04:46:00Z",
   "updated_at": "2025-11-08T04:49:28Z",
@@ -732,7 +732,7 @@
  },
  {
   "uuid": "demo-conv-g013",
-  "name": "Ending an email",
+  "name": "Ending an English email",
   "summary": "",
   "created_at": "2025-12-27T09:43:00Z",
   "updated_at": "2025-12-27T09:44:23Z",
@@ -1127,7 +1127,7 @@
  },
  {
   "uuid": "demo-conv-g022",
-  "name": "Three days in Kyoto",
+  "name": "Kyoto travel plan",
   "summary": "",
   "created_at": "2026-01-10T14:47:00Z",
   "updated_at": "2026-01-10T14:51:07Z",
@@ -1239,7 +1239,7 @@
  },
  {
   "uuid": "demo-conv-g024",
-  "name": "Packing list",
+  "name": "Travel packing list",
   "summary": "",
   "created_at": "2025-11-05T13:11:00Z",
   "updated_at": "2025-11-05T13:12:58Z",
@@ -1429,7 +1429,7 @@
  },
  {
   "uuid": "demo-conv-g028",
-  "name": "No time to read",
+  "name": "No time for reading",
   "summary": "",
   "created_at": "2025-12-13T11:20:00Z",
   "updated_at": "2025-12-13T11:27:20Z",
@@ -1572,7 +1572,7 @@
  },
  {
   "uuid": "demo-conv-g031",
-  "name": "Paper or e-books",
+  "name": "Reading on paper or e-books",
   "summary": "",
   "created_at": "2026-01-29T11:14:00Z",
   "updated_at": "2026-01-29T11:18:43Z",
@@ -1625,7 +1625,7 @@
  },
  {
   "uuid": "demo-conv-g032",
-  "name": "Starting to run",
+  "name": "Running for beginners",
   "summary": "",
   "created_at": "2025-12-27T18:25:00Z",
   "updated_at": "2025-12-27T18:26:03Z",

@@ -394,6 +394,12 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 .sr-i { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--orange); width:12px; flex:0 0 auto; }
 .sr-t { flex:1; min-width:0; color:var(--text-1); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .sr-m { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); flex:0 0 auto; font-variant-numeric:tabular-nums; }
+.st-topics { display:flex; flex-direction:column; gap:2px; margin-top:4px; }
+.tp-row { display:grid; grid-template-columns:minmax(72px, 150px) 1fr 132px; align-items:center; gap:12px; padding:7px 8px; margin:0 -8px; border-radius:8px; cursor:pointer; transition:background 0.15s; }
+.tp-row:hover { background:var(--orange-bg); }
+.tp-row:hover .tp-w { color:var(--orange); }
+.tp-w { font-size:14px; color:var(--text-1); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tp-m { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
 .wc { display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline; gap:4px 12px; padding:6px 2px 2px; line-height:1.35; }
 .wc-w { white-space:nowrap; }
 .wc-w.top { font-weight:600; }
@@ -417,6 +423,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
   .fav-view, .tl-view, .stats-view { padding:18px 16px 60px; }
   .st-g3 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
   .st-g2 { grid-template-columns:1fr; }
+  .tp-row { grid-template-columns:60px 1fr 118px; gap:8px; }
   .st-v { font-size:22px; }
   .msg.user .bubble { max-width:88%; }
   .msg-fav { opacity:0.6 !important; background:var(--white); }
@@ -649,6 +656,9 @@ const I18N = {
       ranks: 'Rankings', longest: 'Longest conversations', deepest: 'Late-night conversations',
       emoji: 'Most-used emoji',
       words: 'Top words',
+      topics: 'Topics',
+      topicMeta: (c, m) => `${c.toLocaleString()} chats · ${m.toLocaleString()} msgs`,
+      topicHint: 'Words shared by conversation titles · click one to filter the chat list',
       weekdays: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
     },
   },
@@ -730,6 +740,9 @@ const I18N = {
       ranks: '排行', longest: '最长的 5 段对话', deepest: '深夜对话榜',
       emoji: '常用 Emoji',
       words: '高频词',
+      topics: '话题',
+      topicMeta: (c, m) => `${c} 个对话 · ${m} 条消息`,
+      topicHint: '多个对话标题里共同出现的词 · 点击按标题筛选对话',
       weekdays: ['周一','周二','周三','周四','周五','周六','周日'],
     },
   },
@@ -1682,7 +1695,10 @@ function computeStats(convs, norm) {
     }
   }
 
-  function countWords(text, map) {
+  // Words worth counting in a piece of text: code and links removed, case
+  // folded, numbers, very short words and stopwords dropped. Shared by the
+  // top-words cloud and the title topics.
+  function* wordsOf(text) {
     if (!wordSeg) return;
     const clean = text.replace(/```[\s\S]*?```/g, ' ').replace(/`[^`\n]*`/g, ' ').replace(/(?:https?:\/\/|www\.)\S+/g, ' ');
     for (const part of wordSeg.segment(clean)) {
@@ -1691,8 +1707,11 @@ function computeStats(convs, norm) {
       if (/^[\d.,:]+$/.test(w)) continue;
       if (/[\u3400-\u9fff]/.test(w) ? w.length < 2 : w.length < 3) continue;
       if (STOP.has(w)) continue;
-      map.set(w, (map.get(w) || 0) + 1);
+      yield w;
     }
+  }
+  function countWords(text, map) {
+    for (const w of wordsOf(text)) map.set(w, (map.get(w) || 0) + 1);
   }
 
   for (const c of convs) {
@@ -1726,6 +1745,18 @@ function computeStats(convs, norm) {
 
   if (!msgCount) return { empty:true };
   // ties broken alphabetically so the output is stable
+  // Title topics: each word once per conversation; keep words shared by at
+  // least two conversations; rank by conversations, then their messages.
+  const topics = new Map();
+  for (const c of perConv) {
+    for (const w of new Set(wordsOf(c.title || ''))) {
+      const x = topics.get(w) || { w, convs:0, msgs:0 };
+      x.convs++; x.msgs += c.msgs;
+      topics.set(w, x);
+    }
+  }
+  const titleTopics = Array.from(topics.values()).filter(x => x.convs >= 2)
+    .sort((a, b) => b.convs - a.convs || b.msgs - a.msgs || (a.w < b.w ? -1 : 1)).slice(0, 10);
   const topWords = m => Array.from(m, ([w, n]) => ({ w, n })).filter(x => x.n > 1).sort((a, b) => b.n - a.n || (a.w < b.w ? -1 : 1)).slice(0, 40);
 
   // streak + span over local calendar days (noon avoids DST edge cases)
@@ -1768,6 +1799,7 @@ function computeStats(convs, norm) {
     topLongest: perConv.slice().sort((a, b) => b.msgs - a.msgs || b.chars - a.chars).slice(0, 5).map(brief),
     topDeep: perConv.filter(c => c.deep > 0).sort((a, b) => b.deep - a.deep || b.msgs - a.msgs).slice(0, 5).map(brief),
     emoji: Array.from(emoji, ([e, n]) => ({ e, n })).sort((a, b) => b.n - a.n).slice(0, 15),
+    titleTopics,
     words: {
       human: topWords(words.human),
       assistant: topWords(words.assistant),
@@ -1941,6 +1973,11 @@ CAV.renderer.renderStats = function renderStats() {
     <div class="st-card st-pad"><div class="st-l">${T.longest}</div>${rank(s.topLongest, c => `${n(c.msgs)} ${T.unitMsg} · ${n(c.chars)} ${T.unitChar}`)}</div>
     <div class="st-card st-pad"><div class="st-l">${T.deepest}</div>${s.topDeep.length ? rank(s.topDeep, c => `${n(c.deep)} ${T.unitMsg}`) : `<div class="st-none">—</div>`}</div>
   </div>`;
+  if (s.titleTopics.length) {
+    const max = s.titleTopics[0].convs;
+    h += sec(T.topics) + `<div class="st-card st-pad"><div class="st-l">${T.topicHint}</div><div class="st-topics">${s.titleTopics.map(x =>
+      `<div class="tp-row" data-topic="${esc(x.w)}"><span class="tp-w">${esc(x.w)}</span><span class="cb-track"><span class="cb-fill" style="width:${(x.convs / max * 100).toFixed(1)}%"></span></span><span class="tp-m">${T.topicMeta(x.convs, x.msgs)}</span></div>`).join('')}</div></div>`;
+  }
   if (s.words.human.length || s.words.assistant.length) {
     h += sec(T.words) + `<div class="st-grid st-g2">
       <div class="st-card st-pad"><div class="st-l">${esc(names.u)}</div>${CAV.charts.cloud(s.words.human, 'wc-u')}</div>
@@ -2395,12 +2432,26 @@ CAV.events.bindAll = function bindAll() {
   CAV.events.bindStats();
 };
 
-// Stats view: conversation cards/rows open the conversation; a heatmap cell
-// switches to the timeline and scrolls to that month.
+// Stats view: conversation cards/rows open the conversation; a topic filters
+// the list by title; a heatmap cell switches to the timeline at that month.
 CAV.events.bindStats = function bindStats() {
   document.getElementById('stats-view').addEventListener('click', e => {
     const c = e.target.closest('[data-cid]');
     if (c) { openConv(c.dataset.cid); return; }
+    // a title topic filters the conversation list by that word
+    const tp = e.target.closest('[data-topic]');
+    if (tp) {
+      const input = document.getElementById('conv-filter');
+      input.value = tp.dataset.topic;
+      CAV.state.convFilter = tp.dataset.topic;
+      CAV.renderer.setView('chat');
+      CAV.renderer.renderConvList();
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        document.getElementById('sidebar').classList.add('open');
+        document.getElementById('sb-overlay').classList.add('show');
+      }
+      return;
+    }
     const cell = e.target.closest('[data-month]');
     if (cell) {
       CAV.renderer.setView('timeline');

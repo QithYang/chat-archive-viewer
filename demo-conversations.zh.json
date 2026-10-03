@@ -1,7 +1,7 @@
 [
  {
   "uuid": "demo-conv-001",
-  "name": "示例对话 · 样式与功能演示",
+  "name": "示例 · 样式与功能演示",
   "summary": "",
   "created_at": "2026-04-05T14:00:00Z",
   "updated_at": "2026-04-05T14:08:00Z",
@@ -66,7 +66,7 @@
  },
  {
   "uuid": "demo-conv-002",
-  "name": "示例对话 · 多日跨度",
+  "name": "示例 · 多日跨度",
   "summary": "",
   "created_at": "2026-04-06T10:00:00Z",
   "updated_at": "2026-04-07T11:30:00Z",
@@ -123,7 +123,7 @@
  },
  {
   "uuid": "demo-conv-003",
-  "name": "示例对话 · 思考链堆叠",
+  "name": "示例 · 思考链堆叠",
   "summary": "",
   "created_at": "2026-04-07T15:00:00Z",
   "updated_at": "2026-04-07T15:01:00Z",
@@ -266,7 +266,7 @@
  },
  {
   "uuid": "demo-conv-g003",
-  "name": "IndexError 报错",
+  "name": "Python IndexError 报错",
   "summary": "",
   "created_at": "2025-12-28T12:31:00Z",
   "updated_at": "2025-12-28T12:33:44Z",
@@ -319,7 +319,7 @@
  },
  {
   "uuid": "demo-conv-g004",
-  "name": "正则的贪婪匹配",
+  "name": "Python 正则的贪婪匹配",
   "summary": "",
   "created_at": "2025-11-09T14:05:00Z",
   "updated_at": "2025-11-09T14:06:01Z",
@@ -446,7 +446,7 @@
  },
  {
   "uuid": "demo-conv-g007",
-  "name": "一长串 if/elif",
+  "name": "Python 里一长串 if/elif",
   "summary": "",
   "created_at": "2026-03-07T11:47:00Z",
   "updated_at": "2026-03-07T11:49:56Z",
@@ -499,7 +499,7 @@
  },
  {
   "uuid": "demo-conv-g008",
-  "name": "写爬虫的注意事项",
+  "name": "Python 爬虫注意事项",
   "summary": "",
   "created_at": "2026-01-23T04:12:00Z",
   "updated_at": "2026-01-23T04:14:26Z",
@@ -626,7 +626,7 @@
  },
  {
   "uuid": "demo-conv-g011",
-  "name": "雅思大作文开头",
+  "name": "英文作文开头",
   "summary": "",
   "created_at": "2025-12-06T15:09:00Z",
   "updated_at": "2025-12-06T15:14:46Z",
@@ -679,7 +679,7 @@
  },
  {
   "uuid": "demo-conv-g012",
-  "name": "每天练口语",
+  "name": "每天练英文口语",
   "summary": "",
   "created_at": "2025-11-08T04:46:00Z",
   "updated_at": "2025-11-08T04:49:28Z",
@@ -1127,7 +1127,7 @@
  },
  {
   "uuid": "demo-conv-g022",
-  "name": "京都三日行程",
+  "name": "京都旅行三日行程",
   "summary": "",
   "created_at": "2026-01-10T14:47:00Z",
   "updated_at": "2026-01-10T14:51:07Z",
@@ -1239,7 +1239,7 @@
  },
  {
   "uuid": "demo-conv-g024",
-  "name": "行李清单",
+  "name": "旅行行李清单",
   "summary": "",
   "created_at": "2025-11-05T13:11:00Z",
   "updated_at": "2025-11-05T13:12:58Z",
@@ -1572,7 +1572,7 @@
  },
  {
   "uuid": "demo-conv-g031",
-  "name": "纸质书还是电子书",
+  "name": "读书用纸质书还是电子书",
   "summary": "",
   "created_at": "2026-01-29T11:14:00Z",
   "updated_at": "2026-01-29T11:18:43Z",
@@ -1709,7 +1709,7 @@
  },
  {
   "uuid": "demo-conv-g034",
-  "name": "跑后膝盖疼",
+  "name": "跑步后膝盖疼",
   "summary": "",
   "created_at": "2026-02-06T00:14:00Z",
   "updated_at": "2026-02-06T00:19:48Z",
