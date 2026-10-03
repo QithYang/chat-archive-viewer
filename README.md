@@ -8,7 +8,9 @@ A lightweight, local-only viewer for Claude conversation exports. It renders the
 
 *The interface is in English or Chinese (switch with the 中 / EN button in the sidebar). Screenshots show the bundled sample data, not real conversations.*
 
-![The statistics view](assets/screenshot-stats.jpg)
+![The statistics view: totals and daily heatmap](assets/screenshot-stats.jpg)
+
+![The statistics view: weekly and daily rhythm, and top words](assets/screenshot-stats-2.jpg)
 
 ## Features
 

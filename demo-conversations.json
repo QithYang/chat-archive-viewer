@@ -172,13 +172,13 @@
   "uuid": "demo-conv-g001",
   "name": "Python list comprehensions",
   "summary": "",
-  "created_at": "2025-12-21T01:42:00Z",
-  "updated_at": "2025-12-21T01:43:20Z",
+  "created_at": "2025-11-08T12:00:00Z",
+  "updated_at": "2025-11-08T12:01:03Z",
   "chat_messages": [
    {
     "uuid": "demo-g001-m1",
     "sender": "human",
-    "created_at": "2025-12-21T01:42:00Z",
+    "created_at": "2025-11-08T12:00:00Z",
     "content": [
      {
       "type": "text",
@@ -189,13 +189,13 @@
    {
     "uuid": "demo-g001-m2",
     "sender": "assistant",
-    "created_at": "2025-12-21T01:43:20Z",
+    "created_at": "2025-11-08T12:01:03Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "This is a basic concept; lead with the answer, then one small example.",
-      "start_timestamp": "2025-12-21T01:43:05Z",
-      "stop_timestamp": "2025-12-21T01:43:20Z"
+      "start_timestamp": "2025-11-08T12:00:56Z",
+      "stop_timestamp": "2025-11-08T12:01:03Z"
      },
      {
       "type": "text",
@@ -209,13 +209,13 @@
   "uuid": "demo-conv-g002",
   "name": "Merge or rebase",
   "summary": "",
-  "created_at": "2026-02-13T04:53:00Z",
-  "updated_at": "2026-02-13T04:55:35Z",
+  "created_at": "2026-02-08T12:03:00Z",
+  "updated_at": "2026-02-08T12:05:28Z",
   "chat_messages": [
    {
     "uuid": "demo-g002-m1",
     "sender": "human",
-    "created_at": "2026-02-13T04:53:00Z",
+    "created_at": "2026-02-08T12:03:00Z",
     "content": [
      {
       "type": "text",
@@ -226,13 +226,13 @@
    {
     "uuid": "demo-g002-m2",
     "sender": "assistant",
-    "created_at": "2026-02-13T04:54:22Z",
+    "created_at": "2026-02-08T12:03:22Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "The usual confusion is when to use which, so answer by situation.",
-      "start_timestamp": "2026-02-13T04:54:15Z",
-      "stop_timestamp": "2026-02-13T04:54:22Z"
+      "start_timestamp": "2026-02-08T12:02:58Z",
+      "stop_timestamp": "2026-02-08T12:03:22Z"
      },
      {
       "type": "text",
@@ -243,60 +243,7 @@
    {
     "uuid": "demo-g002-m3",
     "sender": "human",
-    "created_at": "2026-02-13T04:55:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "OK, thanks!"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-13T04:55:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Any time."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g003",
-  "name": "An IndexError",
-  "summary": "",
-  "created_at": "2025-11-22T11:44:00Z",
-  "updated_at": "2025-11-22T11:45:39Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g003-m1",
-    "sender": "human",
-    "created_at": "2025-11-22T11:44:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "What does this error mean: `IndexError: list index out of range`"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:44:24Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "You accessed an index past the end of the list. If the list has 3 items, the highest index is 2, but the code asked for `items[3]`. Try `print(len(items))` to see the real length."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m3",
-    "sender": "human",
-    "created_at": "2025-11-22T11:45:24Z",
+    "created_at": "2026-02-08T12:05:22Z",
     "content": [
      {
       "type": "text",
@@ -305,9 +252,9 @@
     ]
    },
    {
-    "uuid": "demo-g003-m4",
+    "uuid": "demo-g002-m4",
     "sender": "assistant",
-    "created_at": "2025-11-22T11:45:39Z",
+    "created_at": "2026-02-08T12:05:28Z",
     "content": [
      {
       "type": "text",
@@ -318,16 +265,69 @@
   ]
  },
  {
+  "uuid": "demo-conv-g003",
+  "name": "An IndexError",
+  "summary": "",
+  "created_at": "2025-12-28T12:31:00Z",
+  "updated_at": "2025-12-28T12:33:44Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g003-m1",
+    "sender": "human",
+    "created_at": "2025-12-28T12:31:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "What does this error mean: `IndexError: list index out of range`"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-28T12:31:38Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "You accessed an index past the end of the list. If the list has 3 items, the highest index is 2, but the code asked for `items[3]`. Try `print(len(items))` to see the real length."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m3",
+    "sender": "human",
+    "created_at": "2025-12-28T12:33:38Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Thanks, that's really helpful ✨"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-28T12:33:44Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Glad it helped."
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g004",
   "name": "Greedy regex matching",
   "summary": "",
-  "created_at": "2025-11-30T13:33:00Z",
-  "updated_at": "2025-11-30T13:34:00Z",
+  "created_at": "2025-11-09T14:05:00Z",
+  "updated_at": "2025-11-09T14:06:01Z",
   "chat_messages": [
    {
     "uuid": "demo-g004-m1",
     "sender": "human",
-    "created_at": "2025-11-30T13:33:00Z",
+    "created_at": "2025-11-09T14:05:00Z",
     "content": [
      {
       "type": "text",
@@ -338,13 +338,13 @@
    {
     "uuid": "demo-g004-m2",
     "sender": "assistant",
-    "created_at": "2025-11-30T13:34:00Z",
+    "created_at": "2025-11-09T14:06:01Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "Comparing both on one concrete string shows it best.",
-      "start_timestamp": "2025-11-30T13:33:45Z",
-      "stop_timestamp": "2025-11-30T13:34:00Z"
+      "start_timestamp": "2025-11-09T14:05:40Z",
+      "stop_timestamp": "2025-11-09T14:06:01Z"
      },
      {
       "type": "text",
@@ -358,13 +358,13 @@
   "uuid": "demo-conv-g005",
   "name": "A slow SQL query",
   "summary": "",
-  "created_at": "2025-12-23T18:33:00Z",
-  "updated_at": "2025-12-23T18:34:29Z",
+  "created_at": "2026-03-12T18:11:00Z",
+  "updated_at": "2026-03-12T18:11:35Z",
   "chat_messages": [
    {
     "uuid": "demo-g005-m1",
     "sender": "human",
-    "created_at": "2025-12-23T18:33:00Z",
+    "created_at": "2026-03-12T18:11:00Z",
     "content": [
      {
       "type": "text",
@@ -375,7 +375,7 @@
    {
     "uuid": "demo-g005-m2",
     "sender": "assistant",
-    "created_at": "2025-12-23T18:34:29Z",
+    "created_at": "2026-03-12T18:11:35Z",
     "content": [
      {
       "type": "text",
@@ -389,13 +389,13 @@
   "uuid": "demo-conv-g006",
   "name": "Vertical centering with flexbox",
   "summary": "",
-  "created_at": "2026-02-14T13:27:00Z",
-  "updated_at": "2026-02-14T13:27:21Z",
+  "created_at": "2026-02-17T15:48:00Z",
+  "updated_at": "2026-02-17T15:49:43Z",
   "chat_messages": [
    {
     "uuid": "demo-g006-m1",
     "sender": "human",
-    "created_at": "2026-02-14T13:27:00Z",
+    "created_at": "2026-02-17T15:48:00Z",
     "content": [
      {
       "type": "text",
@@ -406,17 +406,39 @@
    {
     "uuid": "demo-g006-m2",
     "sender": "assistant",
-    "created_at": "2026-02-14T13:27:21Z",
+    "created_at": "2026-02-17T15:48:23Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "A snippet they can copy will help most.",
-      "start_timestamp": "2026-02-14T13:27:09Z",
-      "stop_timestamp": "2026-02-14T13:27:21Z"
+      "start_timestamp": "2026-02-17T15:47:58Z",
+      "stop_timestamp": "2026-02-17T15:48:23Z"
      },
      {
       "type": "text",
       "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g006-m3",
+    "sender": "human",
+    "created_at": "2026-02-17T15:49:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Thanks, that's really helpful"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g006-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-17T15:49:43Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Glad it helped."
      }
     ]
    }
@@ -426,13 +448,13 @@
   "uuid": "demo-conv-g007",
   "name": "A long if/elif chain",
   "summary": "",
-  "created_at": "2025-12-02T14:46:00Z",
-  "updated_at": "2025-12-02T14:50:43Z",
+  "created_at": "2026-03-07T11:47:00Z",
+  "updated_at": "2026-03-07T11:49:56Z",
   "chat_messages": [
    {
     "uuid": "demo-g007-m1",
     "sender": "human",
-    "created_at": "2025-12-02T14:46:00Z",
+    "created_at": "2026-03-07T11:47:00Z",
     "content": [
      {
       "type": "text",
@@ -443,7 +465,7 @@
    {
     "uuid": "demo-g007-m2",
     "sender": "assistant",
-    "created_at": "2025-12-02T14:46:31Z",
+    "created_at": "2026-03-07T11:47:51Z",
     "content": [
      {
       "type": "text",
@@ -454,22 +476,22 @@
    {
     "uuid": "demo-g007-m3",
     "sender": "human",
-    "created_at": "2025-12-02T14:50:31Z",
+    "created_at": "2026-03-07T11:49:51Z",
     "content": [
      {
       "type": "text",
-      "text": "Got it, thanks!"
+      "text": "OK, thanks! 😊"
      }
     ]
    },
    {
     "uuid": "demo-g007-m4",
     "sender": "assistant",
-    "created_at": "2025-12-02T14:50:43Z",
+    "created_at": "2026-03-07T11:49:56Z",
     "content": [
      {
       "type": "text",
-      "text": "You're welcome, ask any time."
+      "text": "Any time."
      }
     ]
    }
@@ -479,13 +501,13 @@
   "uuid": "demo-conv-g008",
   "name": "Writing a scraper",
   "summary": "",
-  "created_at": "2026-01-21T01:01:00Z",
-  "updated_at": "2026-01-21T01:02:01Z",
+  "created_at": "2026-01-23T04:12:00Z",
+  "updated_at": "2026-01-23T04:14:26Z",
   "chat_messages": [
    {
     "uuid": "demo-g008-m1",
     "sender": "human",
-    "created_at": "2026-01-21T01:01:00Z",
+    "created_at": "2026-01-23T04:12:00Z",
     "content": [
      {
       "type": "text",
@@ -496,11 +518,33 @@
    {
     "uuid": "demo-g008-m2",
     "sender": "assistant",
-    "created_at": "2026-01-21T01:02:01Z",
+    "created_at": "2026-01-23T04:13:13Z",
     "content": [
      {
       "type": "text",
       "text": "A few things: read the site's robots.txt and terms first; space out your requests so you don't load their server; handle errors and retries; and only use the data in ways you're allowed to."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g008-m3",
+    "sender": "human",
+    "created_at": "2026-01-23T04:14:13Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g008-m4",
+    "sender": "assistant",
+    "created_at": "2026-01-23T04:14:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
      }
     ]
    }
@@ -510,13 +554,13 @@
   "uuid": "demo-conv-g009",
   "name": "Affect or effect",
   "summary": "",
-  "created_at": "2026-02-10T04:47:00Z",
-  "updated_at": "2026-02-10T04:53:23Z",
+  "created_at": "2026-03-17T02:11:00Z",
+  "updated_at": "2026-03-17T02:11:30Z",
   "chat_messages": [
    {
     "uuid": "demo-g009-m1",
     "sender": "human",
-    "created_at": "2026-02-10T04:47:00Z",
+    "created_at": "2026-03-17T02:11:00Z",
     "content": [
      {
       "type": "text",
@@ -527,39 +571,17 @@
    {
     "uuid": "demo-g009-m2",
     "sender": "assistant",
-    "created_at": "2026-02-10T04:48:16Z",
+    "created_at": "2026-03-17T02:11:30Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "A memory aid will stick better than a grammar rule here.",
-      "start_timestamp": "2026-02-10T04:47:58Z",
-      "stop_timestamp": "2026-02-10T04:48:16Z"
+      "start_timestamp": "2026-03-17T02:11:11Z",
+      "stop_timestamp": "2026-03-17T02:11:30Z"
      },
      {
       "type": "text",
       "text": "Most of the time **affect** is the verb and **effect** is the noun. A memory aid: *A for action*, so the action word is affect."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g009-m3",
-    "sender": "human",
-    "created_at": "2026-02-10T04:53:16Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Got it, thanks!"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g009-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-10T04:53:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "You're welcome, ask any time."
      }
     ]
    }
@@ -569,13 +591,13 @@
   "uuid": "demo-conv-g010",
   "name": "Fixing one sentence",
   "summary": "",
-  "created_at": "2025-11-08T13:44:00Z",
-  "updated_at": "2025-11-08T13:44:30Z",
+  "created_at": "2026-01-24T13:22:00Z",
+  "updated_at": "2026-01-24T13:22:50Z",
   "chat_messages": [
    {
     "uuid": "demo-g010-m1",
     "sender": "human",
-    "created_at": "2025-11-08T13:44:00Z",
+    "created_at": "2026-01-24T13:22:00Z",
     "content": [
      {
       "type": "text",
@@ -586,13 +608,13 @@
    {
     "uuid": "demo-g010-m2",
     "sender": "assistant",
-    "created_at": "2025-11-08T13:44:30Z",
+    "created_at": "2026-01-24T13:22:50Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "One rewritten example says more than an explanation.",
-      "start_timestamp": "2025-11-08T13:44:11Z",
-      "stop_timestamp": "2025-11-08T13:44:30Z"
+      "start_timestamp": "2026-01-24T13:22:41Z",
+      "stop_timestamp": "2026-01-24T13:22:50Z"
      },
      {
       "type": "text",
@@ -606,13 +628,13 @@
   "uuid": "demo-conv-g011",
   "name": "Opening an essay",
   "summary": "",
-  "created_at": "2026-03-24T13:21:00Z",
-  "updated_at": "2026-03-24T13:25:14Z",
+  "created_at": "2025-12-06T15:09:00Z",
+  "updated_at": "2025-12-06T15:14:46Z",
   "chat_messages": [
    {
     "uuid": "demo-g011-m1",
     "sender": "human",
-    "created_at": "2026-03-24T13:21:00Z",
+    "created_at": "2025-12-06T15:09:00Z",
     "content": [
      {
       "type": "text",
@@ -623,7 +645,7 @@
    {
     "uuid": "demo-g011-m2",
     "sender": "assistant",
-    "created_at": "2026-03-24T13:22:05Z",
+    "created_at": "2025-12-06T15:09:31Z",
     "content": [
      {
       "type": "text",
@@ -634,18 +656,18 @@
    {
     "uuid": "demo-g011-m3",
     "sender": "human",
-    "created_at": "2026-03-24T13:25:05Z",
+    "created_at": "2025-12-06T15:14:31Z",
     "content": [
      {
       "type": "text",
-      "text": "Got it, thanks! 🙏"
+      "text": "Got it, thanks!"
      }
     ]
    },
    {
     "uuid": "demo-g011-m4",
     "sender": "assistant",
-    "created_at": "2026-03-24T13:25:14Z",
+    "created_at": "2025-12-06T15:14:46Z",
     "content": [
      {
       "type": "text",
@@ -659,13 +681,13 @@
   "uuid": "demo-conv-g012",
   "name": "Daily speaking practice",
   "summary": "",
-  "created_at": "2026-02-09T04:00:00Z",
-  "updated_at": "2026-02-09T04:02:07Z",
+  "created_at": "2025-11-08T04:46:00Z",
+  "updated_at": "2025-11-08T04:49:28Z",
   "chat_messages": [
    {
     "uuid": "demo-g012-m1",
     "sender": "human",
-    "created_at": "2026-02-09T04:00:00Z",
+    "created_at": "2025-11-08T04:46:00Z",
     "content": [
      {
       "type": "text",
@@ -676,7 +698,7 @@
    {
     "uuid": "demo-g012-m2",
     "sender": "assistant",
-    "created_at": "2026-02-09T04:01:00Z",
+    "created_at": "2025-11-08T04:47:19Z",
     "content": [
      {
       "type": "text",
@@ -687,22 +709,22 @@
    {
     "uuid": "demo-g012-m3",
     "sender": "human",
-    "created_at": "2026-02-09T04:02:00Z",
+    "created_at": "2025-11-08T04:49:19Z",
     "content": [
      {
       "type": "text",
-      "text": "Thanks, that's really helpful"
+      "text": "Got it, thanks!"
      }
     ]
    },
    {
     "uuid": "demo-g012-m4",
     "sender": "assistant",
-    "created_at": "2026-02-09T04:02:07Z",
+    "created_at": "2025-11-08T04:49:28Z",
     "content": [
      {
       "type": "text",
-      "text": "Glad it helped."
+      "text": "You're welcome, ask any time."
      }
     ]
    }
@@ -712,13 +734,13 @@
   "uuid": "demo-conv-g013",
   "name": "Ending an email",
   "summary": "",
-  "created_at": "2026-03-21T05:33:00Z",
-  "updated_at": "2026-03-21T05:33:37Z",
+  "created_at": "2025-12-27T09:43:00Z",
+  "updated_at": "2025-12-27T09:44:23Z",
   "chat_messages": [
    {
     "uuid": "demo-g013-m1",
     "sender": "human",
-    "created_at": "2026-03-21T05:33:00Z",
+    "created_at": "2025-12-27T09:43:00Z",
     "content": [
      {
       "type": "text",
@@ -729,7 +751,7 @@
    {
     "uuid": "demo-g013-m2",
     "sender": "assistant",
-    "created_at": "2026-03-21T05:33:37Z",
+    "created_at": "2025-12-27T09:44:23Z",
     "content": [
      {
       "type": "text",
@@ -743,13 +765,13 @@
   "uuid": "demo-conv-g014",
   "name": "Look forward to",
   "summary": "",
-  "created_at": "2026-02-21T19:28:00Z",
-  "updated_at": "2026-02-21T19:31:04Z",
+  "created_at": "2025-12-13T19:23:00Z",
+  "updated_at": "2025-12-13T19:23:54Z",
   "chat_messages": [
    {
     "uuid": "demo-g014-m1",
     "sender": "human",
-    "created_at": "2026-02-21T19:28:00Z",
+    "created_at": "2025-12-13T19:23:00Z",
     "content": [
      {
       "type": "text",
@@ -760,33 +782,11 @@
    {
     "uuid": "demo-g014-m2",
     "sender": "assistant",
-    "created_at": "2026-02-21T19:28:48Z",
+    "created_at": "2025-12-13T19:23:54Z",
     "content": [
      {
       "type": "text",
       "text": "A noun or an -ing form: *I look forward to hearing from you.* The to here is a preposition, not part of an infinitive."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m3",
-    "sender": "human",
-    "created_at": "2026-02-21T19:30:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Thanks, that's really helpful"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-21T19:31:04Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Glad it helped."
      }
     ]
    }
@@ -796,13 +796,13 @@
   "uuid": "demo-conv-g015",
   "name": "Is by the way formal?",
   "summary": "",
-  "created_at": "2026-02-07T13:30:00Z",
-  "updated_at": "2026-02-07T13:31:04Z",
+  "created_at": "2026-02-08T05:27:00Z",
+  "updated_at": "2026-02-08T05:27:41Z",
   "chat_messages": [
    {
     "uuid": "demo-g015-m1",
     "sender": "human",
-    "created_at": "2026-02-07T13:30:00Z",
+    "created_at": "2026-02-08T05:27:00Z",
     "content": [
      {
       "type": "text",
@@ -813,7 +813,7 @@
    {
     "uuid": "demo-g015-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T13:31:04Z",
+    "created_at": "2026-02-08T05:27:41Z",
     "content": [
      {
       "type": "text",
@@ -827,13 +827,13 @@
   "uuid": "demo-conv-g016",
   "name": "Tomato and egg stir-fry",
   "summary": "",
-  "created_at": "2026-02-15T15:56:00Z",
-  "updated_at": "2026-02-15T15:57:09Z",
+  "created_at": "2026-01-11T14:27:00Z",
+  "updated_at": "2026-01-11T14:30:35Z",
   "chat_messages": [
    {
     "uuid": "demo-g016-m1",
     "sender": "human",
-    "created_at": "2026-02-15T15:56:00Z",
+    "created_at": "2026-01-11T14:27:00Z",
     "content": [
      {
       "type": "text",
@@ -844,108 +844,18 @@
    {
     "uuid": "demo-g016-m2",
     "sender": "assistant",
-    "created_at": "2026-02-15T15:57:09Z",
+    "created_at": "2026-01-11T14:27:27Z",
     "content": [
      {
       "type": "text",
       "text": "Eggs first: pour them into hot oil and take them out when they're about 70% set. Then cook the tomatoes until they release their juice and fold the eggs back in. The eggs stay tender and the sauce stays juicy."
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g017",
-  "name": "Eggs, potatoes, onion",
-  "summary": "",
-  "created_at": "2026-01-25T02:38:00Z",
-  "updated_at": "2026-01-25T02:44:06Z",
-  "chat_messages": [
+   },
    {
-    "uuid": "demo-g017-m1",
+    "uuid": "demo-g016-m3",
     "sender": "human",
-    "created_at": "2026-01-25T02:38:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "I only have eggs, potatoes and an onion. What can I make?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-25T02:38:55Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "They have few ingredients, so suggest one dish they can make right now.",
-      "start_timestamp": "2026-01-25T02:38:38Z",
-      "stop_timestamp": "2026-01-25T02:38:55Z"
-     },
-     {
-      "type": "text",
-      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m3",
-    "sender": "human",
-    "created_at": "2026-01-25T02:43:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Got it, thanks! 👍"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-25T02:44:06Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "You're welcome, ask any time."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g018",
-  "name": "Preheating the oven",
-  "summary": "",
-  "created_at": "2026-03-09T13:32:00Z",
-  "updated_at": "2026-03-09T13:34:03Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g018-m1",
-    "sender": "human",
-    "created_at": "2026-03-09T13:32:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "How long should I preheat the oven?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m2",
-    "sender": "assistant",
-    "created_at": "2026-03-09T13:32:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Usually 10–15 minutes, until the indicator says it has reached temperature. For cakes and other temperature-sensitive bakes, make sure it's fully preheated."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m3",
-    "sender": "human",
-    "created_at": "2026-03-09T13:33:48Z",
+    "created_at": "2026-01-11T14:30:27Z",
     "content": [
      {
       "type": "text",
@@ -954,9 +864,9 @@
     ]
    },
    {
-    "uuid": "demo-g018-m4",
+    "uuid": "demo-g016-m4",
     "sender": "assistant",
-    "created_at": "2026-03-09T13:34:03Z",
+    "created_at": "2026-01-11T14:30:35Z",
     "content": [
      {
       "type": "text",
@@ -967,148 +877,86 @@
   ]
  },
  {
-  "uuid": "demo-conv-g019",
-  "name": "Undercooked rice",
+  "uuid": "demo-conv-g017",
+  "name": "Eggs, potatoes, onion",
   "summary": "",
-  "created_at": "2026-03-24T01:58:00Z",
-  "updated_at": "2026-03-24T01:58:55Z",
+  "created_at": "2025-12-27T12:04:00Z",
+  "updated_at": "2025-12-27T12:04:34Z",
   "chat_messages": [
    {
-    "uuid": "demo-g019-m1",
+    "uuid": "demo-g017-m1",
     "sender": "human",
-    "created_at": "2026-03-24T01:58:00Z",
+    "created_at": "2025-12-27T12:04:00Z",
     "content": [
      {
       "type": "text",
-      "text": "My rice keeps coming out undercooked. What am I doing wrong?"
+      "text": "I only have eggs, potatoes and an onion. What can I make?"
      }
     ]
    },
    {
-    "uuid": "demo-g019-m2",
+    "uuid": "demo-g017-m2",
     "sender": "assistant",
-    "created_at": "2026-03-24T01:58:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Usually too little water or no soaking. Use about 1:1.2 rice to water, soak for 20 minutes, and let it rest covered for 10 minutes after cooking."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g020",
-  "name": "A 15-minute dinner",
-  "summary": "",
-  "created_at": "2025-12-28T13:59:00Z",
-  "updated_at": "2025-12-28T13:59:55Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g020-m1",
-    "sender": "human",
-    "created_at": "2025-12-28T13:59:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Any dinner I can make in 15 minutes?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-28T13:59:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Scallion oil noodles: cook the noodles, pour hot oil over chopped scallions, soy sauce and a pinch of sugar, then toss. Add a fried egg and it's a full meal."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g021",
-  "name": "Keeping greens green",
-  "summary": "",
-  "created_at": "2025-12-14T14:08:00Z",
-  "updated_at": "2025-12-14T14:08:38Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g021-m1",
-    "sender": "human",
-    "created_at": "2025-12-14T14:08:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "How do I keep stir-fried greens bright green?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g021-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-14T14:08:38Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "High heat and a quick toss in a properly hot pan; salt at the end; or blanch them for 10 seconds first."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g022",
-  "name": "Three days in Kyoto",
-  "summary": "",
-  "created_at": "2025-11-09T05:28:00Z",
-  "updated_at": "2025-11-09T05:33:39Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g022-m1",
-    "sender": "human",
-    "created_at": "2025-11-09T05:28:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "How can I plan three days in Kyoto without rushing?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g022-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-09T05:28:25Z",
+    "created_at": "2025-12-27T12:04:34Z",
     "content": [
      {
       "type": "thinking",
-      "thinking": "An itinerary reads best split by area.",
-      "start_timestamp": "2025-11-09T05:28:04Z",
-      "stop_timestamp": "2025-11-09T05:28:25Z"
+      "thinking": "They have few ingredients, so suggest one dish they can make right now.",
+      "start_timestamp": "2025-12-27T12:04:27Z",
+      "stop_timestamp": "2025-12-27T12:04:34Z"
      },
      {
       "type": "text",
-      "text": "Split it by area: day one Higashiyama (Kiyomizu-dera, Ninenzaka), day two Arashiyama, day three Fushimi Inari plus the city centre. Head out early to beat the crowds."
+      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g018",
+  "name": "Preheating the oven",
+  "summary": "",
+  "created_at": "2026-03-06T12:19:00Z",
+  "updated_at": "2026-03-06T12:22:52Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g022-m3",
+    "uuid": "demo-g018-m1",
     "sender": "human",
-    "created_at": "2025-11-09T05:33:25Z",
+    "created_at": "2026-03-06T12:19:00Z",
     "content": [
      {
       "type": "text",
-      "text": "OK, thanks!"
+      "text": "How long should I preheat the oven?"
      }
     ]
    },
    {
-    "uuid": "demo-g022-m4",
+    "uuid": "demo-g018-m2",
     "sender": "assistant",
-    "created_at": "2025-11-09T05:33:39Z",
+    "created_at": "2026-03-06T12:19:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Usually 10–15 minutes, until the indicator says it has reached temperature. For cakes and other temperature-sensitive bakes, make sure it's fully preheated."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g018-m3",
+    "sender": "human",
+    "created_at": "2026-03-06T12:22:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks! 😊"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g018-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-06T12:22:52Z",
     "content": [
      {
       "type": "text",
@@ -1119,16 +967,234 @@
   ]
  },
  {
+  "uuid": "demo-conv-g019",
+  "name": "Undercooked rice",
+  "summary": "",
+  "created_at": "2026-01-10T04:53:00Z",
+  "updated_at": "2026-01-10T04:56:07Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g019-m1",
+    "sender": "human",
+    "created_at": "2026-01-10T04:53:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "My rice keeps coming out undercooked. What am I doing wrong?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g019-m2",
+    "sender": "assistant",
+    "created_at": "2026-01-10T04:53:54Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Usually too little water or no soaking. Use about 1:1.2 rice to water, soak for 20 minutes, and let it rest covered for 10 minutes after cooking."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g019-m3",
+    "sender": "human",
+    "created_at": "2026-01-10T04:55:54Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g019-m4",
+    "sender": "assistant",
+    "created_at": "2026-01-10T04:56:07Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g020",
+  "name": "A 15-minute dinner",
+  "summary": "",
+  "created_at": "2026-02-23T02:19:00Z",
+  "updated_at": "2026-02-23T02:24:56Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g020-m1",
+    "sender": "human",
+    "created_at": "2026-02-23T02:19:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any dinner I can make in 15 minutes?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g020-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-23T02:19:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Scallion oil noodles: cook the noodles, pour hot oil over chopped scallions, soy sauce and a pinch of sugar, then toss. Add a fried egg and it's a full meal."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g020-m3",
+    "sender": "human",
+    "created_at": "2026-02-23T02:24:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Thanks, that's really helpful"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g020-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-23T02:24:56Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Glad it helped."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g021",
+  "name": "Keeping greens green",
+  "summary": "",
+  "created_at": "2025-12-13T14:40:00Z",
+  "updated_at": "2025-12-13T14:41:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g021-m1",
+    "sender": "human",
+    "created_at": "2025-12-13T14:40:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "How do I keep stir-fried greens bright green?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g021-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-13T14:40:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "High heat and a quick toss in a properly hot pan; salt at the end; or blanch them for 10 seconds first."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g021-m3",
+    "sender": "human",
+    "created_at": "2025-12-13T14:41:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Thanks, that's really helpful"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g021-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-13T14:41:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Glad it helped."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g022",
+  "name": "Three days in Kyoto",
+  "summary": "",
+  "created_at": "2026-01-10T14:47:00Z",
+  "updated_at": "2026-01-10T14:51:07Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g022-m1",
+    "sender": "human",
+    "created_at": "2026-01-10T14:47:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "How can I plan three days in Kyoto without rushing?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g022-m2",
+    "sender": "assistant",
+    "created_at": "2026-01-10T14:48:01Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "An itinerary reads best split by area.",
+      "start_timestamp": "2026-01-10T14:47:50Z",
+      "stop_timestamp": "2026-01-10T14:48:01Z"
+     },
+     {
+      "type": "text",
+      "text": "Split it by area: day one Higashiyama (Kiyomizu-dera, Ninenzaka), day two Arashiyama, day three Fushimi Inari plus the city centre. Head out early to beat the crowds."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g022-m3",
+    "sender": "human",
+    "created_at": "2026-01-10T14:51:01Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Got it, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g022-m4",
+    "sender": "assistant",
+    "created_at": "2026-01-10T14:51:07Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "You're welcome, ask any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g023",
   "name": "Driving in Iceland",
   "summary": "",
-  "created_at": "2025-12-26T18:22:00Z",
-  "updated_at": "2025-12-26T18:22:43Z",
+  "created_at": "2025-11-26T20:30:00Z",
+  "updated_at": "2025-11-26T20:31:56Z",
   "chat_messages": [
    {
     "uuid": "demo-g023-m1",
     "sender": "human",
-    "created_at": "2025-12-26T18:22:00Z",
+    "created_at": "2025-11-26T20:30:00Z",
     "content": [
      {
       "type": "text",
@@ -1139,11 +1205,33 @@
    {
     "uuid": "demo-g023-m2",
     "sender": "assistant",
-    "created_at": "2025-12-26T18:22:43Z",
+    "created_at": "2025-11-26T20:30:46Z",
     "content": [
      {
       "type": "text",
       "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g023-m3",
+    "sender": "human",
+    "created_at": "2025-11-26T20:31:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g023-m4",
+    "sender": "assistant",
+    "created_at": "2025-11-26T20:31:56Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
      }
     ]
    }
@@ -1153,13 +1241,13 @@
   "uuid": "demo-conv-g024",
   "name": "Packing list",
   "summary": "",
-  "created_at": "2026-03-17T00:40:00Z",
-  "updated_at": "2026-03-17T00:40:21Z",
+  "created_at": "2025-11-05T13:11:00Z",
+  "updated_at": "2025-11-05T13:12:58Z",
   "chat_messages": [
    {
     "uuid": "demo-g024-m1",
     "sender": "human",
-    "created_at": "2026-03-17T00:40:00Z",
+    "created_at": "2025-11-05T13:11:00Z",
     "content": [
      {
       "type": "text",
@@ -1170,11 +1258,33 @@
    {
     "uuid": "demo-g024-m2",
     "sender": "assistant",
-    "created_at": "2026-03-17T00:40:21Z",
+    "created_at": "2025-11-05T13:11:47Z",
     "content": [
      {
       "type": "text",
       "text": "Chargers, regular medication, copies of your documents and a folding shopping bag. Keep a fixed checklist and run through it each time."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g024-m3",
+    "sender": "human",
+    "created_at": "2025-11-05T13:12:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Thanks, that's really helpful"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g024-m4",
+    "sender": "assistant",
+    "created_at": "2025-11-05T13:12:58Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Glad it helped."
      }
     ]
    }
@@ -1184,13 +1294,13 @@
   "uuid": "demo-conv-g025",
   "name": "Travel photos",
   "summary": "",
-  "created_at": "2025-12-28T14:07:00Z",
-  "updated_at": "2025-12-28T14:08:30Z",
+  "created_at": "2026-02-01T12:48:00Z",
+  "updated_at": "2026-02-01T12:53:08Z",
   "chat_messages": [
    {
     "uuid": "demo-g025-m1",
     "sender": "human",
-    "created_at": "2025-12-28T14:07:00Z",
+    "created_at": "2026-02-01T12:48:00Z",
     "content": [
      {
       "type": "text",
@@ -1201,11 +1311,33 @@
    {
     "uuid": "demo-g025-m2",
     "sender": "assistant",
-    "created_at": "2025-12-28T14:08:30Z",
+    "created_at": "2026-02-01T12:48:48Z",
     "content": [
      {
       "type": "text",
       "text": "Use early morning and late afternoon light; don't always centre people, try the rule of thirds; take a few shots and pick the best."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g025-m3",
+    "sender": "human",
+    "created_at": "2026-02-01T12:52:48Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Got it, thanks! ✨"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g025-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-01T12:53:08Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "You're welcome, ask any time."
      }
     ]
    }
@@ -1215,13 +1347,13 @@
   "uuid": "demo-conv-g026",
   "name": "Travel insurance",
   "summary": "",
-  "created_at": "2026-03-11T13:30:00Z",
-  "updated_at": "2026-03-11T13:31:56Z",
+  "created_at": "2026-02-08T14:17:00Z",
+  "updated_at": "2026-02-08T14:19:14Z",
   "chat_messages": [
    {
     "uuid": "demo-g026-m1",
     "sender": "human",
-    "created_at": "2026-03-11T13:30:00Z",
+    "created_at": "2026-02-08T14:17:00Z",
     "content": [
      {
       "type": "text",
@@ -1232,7 +1364,7 @@
    {
     "uuid": "demo-g026-m2",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:30:46Z",
+    "created_at": "2026-02-08T14:18:05Z",
     "content": [
      {
       "type": "text",
@@ -1243,7 +1375,7 @@
    {
     "uuid": "demo-g026-m3",
     "sender": "human",
-    "created_at": "2026-03-11T13:31:46Z",
+    "created_at": "2026-02-08T14:19:05Z",
     "content": [
      {
       "type": "text",
@@ -1254,7 +1386,7 @@
    {
     "uuid": "demo-g026-m4",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:31:56Z",
+    "created_at": "2026-02-08T14:19:14Z",
     "content": [
      {
       "type": "text",
@@ -1268,13 +1400,13 @@
   "uuid": "demo-conv-g027",
   "name": "Names in One Hundred Years of Solitude",
   "summary": "",
-  "created_at": "2025-10-10T13:11:00Z",
-  "updated_at": "2025-10-10T13:12:58Z",
+  "created_at": "2025-11-15T05:32:00Z",
+  "updated_at": "2025-11-15T05:33:10Z",
   "chat_messages": [
    {
     "uuid": "demo-g027-m1",
     "sender": "human",
-    "created_at": "2025-10-10T13:11:00Z",
+    "created_at": "2025-11-15T05:32:00Z",
     "content": [
      {
       "type": "text",
@@ -1285,33 +1417,11 @@
    {
     "uuid": "demo-g027-m2",
     "sender": "assistant",
-    "created_at": "2025-10-10T13:11:47Z",
+    "created_at": "2025-11-15T05:33:10Z",
     "content": [
      {
       "type": "text",
       "text": "Sketch a family tree as you go, or keep a printed one beside you. Halfway through you'll notice the repeating names are part of the point."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g027-m3",
-    "sender": "human",
-    "created_at": "2025-10-10T13:12:47Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Thanks, that's really helpful"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g027-m4",
-    "sender": "assistant",
-    "created_at": "2025-10-10T13:12:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Glad it helped."
      }
     ]
    }
@@ -1321,13 +1431,13 @@
   "uuid": "demo-conv-g028",
   "name": "No time to read",
   "summary": "",
-  "created_at": "2026-02-07T11:53:00Z",
-  "updated_at": "2026-02-07T11:54:18Z",
+  "created_at": "2025-12-13T11:20:00Z",
+  "updated_at": "2025-12-13T11:27:20Z",
   "chat_messages": [
    {
     "uuid": "demo-g028-m1",
     "sender": "human",
-    "created_at": "2026-02-07T11:53:00Z",
+    "created_at": "2025-12-13T11:20:00Z",
     "content": [
      {
       "type": "text",
@@ -1338,66 +1448,35 @@
    {
     "uuid": "demo-g028-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T11:54:18Z",
+    "created_at": "2025-12-13T11:21:11Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "They need a method they can act on, not general advice.",
-      "start_timestamp": "2026-02-07T11:54:04Z",
-      "stop_timestamp": "2026-02-07T11:54:18Z"
+      "start_timestamp": "2025-12-13T11:20:48Z",
+      "stop_timestamp": "2025-12-13T11:21:11Z"
      },
      {
       "type": "text",
       "text": "Make the goal small: 10 pages a day, or 15 minutes before bed. Carry a book with you so spare minutes count."
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g029",
-  "name": "Popular science picks",
-  "summary": "",
-  "created_at": "2026-03-06T13:40:00Z",
-  "updated_at": "2026-03-06T13:42:40Z",
-  "chat_messages": [
+   },
    {
-    "uuid": "demo-g029-m1",
+    "uuid": "demo-g028-m3",
     "sender": "human",
-    "created_at": "2026-03-06T13:40:00Z",
+    "created_at": "2025-12-13T11:27:11Z",
     "content": [
      {
       "type": "text",
-      "text": "Can you recommend a few popular science books for beginners?"
+      "text": "Thanks, that's really helpful ✨"
      }
     ]
    },
    {
-    "uuid": "demo-g029-m2",
+    "uuid": "demo-g028-m4",
     "sender": "assistant",
-    "created_at": "2026-03-06T13:41:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m3",
-    "sender": "human",
-    "created_at": "2026-03-06T13:42:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Thanks, that's really helpful"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-06T13:42:40Z",
+    "created_at": "2025-12-13T11:27:20Z",
     "content": [
      {
       "type": "text",
@@ -1408,16 +1487,69 @@
   ]
  },
  {
+  "uuid": "demo-conv-g029",
+  "name": "Popular science picks",
+  "summary": "",
+  "created_at": "2026-02-11T11:04:00Z",
+  "updated_at": "2026-02-11T11:09:24Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g029-m1",
+    "sender": "human",
+    "created_at": "2026-02-11T11:04:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Can you recommend a few popular science books for beginners?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-11T11:05:09Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m3",
+    "sender": "human",
+    "created_at": "2026-02-11T11:09:09Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-11T11:09:24Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g030",
   "name": "Reading notes",
   "summary": "",
-  "created_at": "2026-03-19T05:40:00Z",
-  "updated_at": "2026-03-19T05:40:24Z",
+  "created_at": "2026-02-22T14:24:00Z",
+  "updated_at": "2026-02-22T14:24:30Z",
   "chat_messages": [
    {
     "uuid": "demo-g030-m1",
     "sender": "human",
-    "created_at": "2026-03-19T05:40:00Z",
+    "created_at": "2026-02-22T14:24:00Z",
     "content": [
      {
       "type": "text",
@@ -1428,7 +1560,7 @@
    {
     "uuid": "demo-g030-m2",
     "sender": "assistant",
-    "created_at": "2026-03-19T05:40:24Z",
+    "created_at": "2026-02-22T14:24:30Z",
     "content": [
      {
       "type": "text",
@@ -1442,13 +1574,13 @@
   "uuid": "demo-conv-g031",
   "name": "Paper or e-books",
   "summary": "",
-  "created_at": "2026-03-21T01:24:00Z",
-  "updated_at": "2026-03-21T01:29:37Z",
+  "created_at": "2026-01-29T11:14:00Z",
+  "updated_at": "2026-01-29T11:18:43Z",
   "chat_messages": [
    {
     "uuid": "demo-g031-m1",
     "sender": "human",
-    "created_at": "2026-03-21T01:24:00Z",
+    "created_at": "2026-01-29T11:14:00Z",
     "content": [
      {
       "type": "text",
@@ -1459,7 +1591,7 @@
    {
     "uuid": "demo-g031-m2",
     "sender": "assistant",
-    "created_at": "2026-03-21T01:25:24Z",
+    "created_at": "2026-01-29T11:14:34Z",
     "content": [
      {
       "type": "text",
@@ -1470,22 +1602,22 @@
    {
     "uuid": "demo-g031-m3",
     "sender": "human",
-    "created_at": "2026-03-21T01:29:24Z",
+    "created_at": "2026-01-29T11:18:34Z",
     "content": [
      {
       "type": "text",
-      "text": "OK, thanks! 🙏"
+      "text": "Thanks, that's really helpful"
      }
     ]
    },
    {
     "uuid": "demo-g031-m4",
     "sender": "assistant",
-    "created_at": "2026-03-21T01:29:37Z",
+    "created_at": "2026-01-29T11:18:43Z",
     "content": [
      {
       "type": "text",
-      "text": "Any time."
+      "text": "Glad it helped."
      }
     ]
    }
@@ -1495,13 +1627,13 @@
   "uuid": "demo-conv-g032",
   "name": "Starting to run",
   "summary": "",
-  "created_at": "2025-12-26T19:40:00Z",
-  "updated_at": "2025-12-26T19:41:12Z",
+  "created_at": "2025-12-27T18:25:00Z",
+  "updated_at": "2025-12-27T18:26:03Z",
   "chat_messages": [
    {
     "uuid": "demo-g032-m1",
     "sender": "human",
-    "created_at": "2025-12-26T19:40:00Z",
+    "created_at": "2025-12-27T18:25:00Z",
     "content": [
      {
       "type": "text",
@@ -1512,7 +1644,7 @@
    {
     "uuid": "demo-g032-m2",
     "sender": "assistant",
-    "created_at": "2025-12-26T19:41:12Z",
+    "created_at": "2025-12-27T18:26:03Z",
     "content": [
      {
       "type": "text",
@@ -1526,13 +1658,13 @@
   "uuid": "demo-conv-g033",
   "name": "Workouts without equipment",
   "summary": "",
-  "created_at": "2026-03-18T07:09:00Z",
-  "updated_at": "2026-03-18T07:10:11Z",
+  "created_at": "2025-12-05T05:25:00Z",
+  "updated_at": "2025-12-05T05:30:47Z",
   "chat_messages": [
    {
     "uuid": "demo-g033-m1",
     "sender": "human",
-    "created_at": "2026-03-18T07:09:00Z",
+    "created_at": "2025-12-05T05:25:00Z",
     "content": [
      {
       "type": "text",
@@ -1543,117 +1675,18 @@
    {
     "uuid": "demo-g033-m2",
     "sender": "assistant",
-    "created_at": "2026-03-18T07:10:11Z",
+    "created_at": "2025-12-05T05:25:35Z",
     "content": [
      {
       "type": "text",
       "text": "Squats, push-ups, planks and lunges. Three sets of each with a minute of rest between sets."
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g034",
-  "name": "Knee pain after running",
-  "summary": "",
-  "created_at": "2025-12-03T13:06:00Z",
-  "updated_at": "2025-12-03T13:07:08Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g034-m1",
-    "sender": "human",
-    "created_at": "2025-12-03T13:06:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "My knee hurts a bit after running. Is that normal?"
-     }
-    ]
    },
    {
-    "uuid": "demo-g034-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-03T13:07:08Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "This involves pain, so mention seeing a doctor when needed.",
-      "start_timestamp": "2025-12-03T13:06:55Z",
-      "stop_timestamp": "2025-12-03T13:07:08Z"
-     },
-     {
-      "type": "text",
-      "text": "Mild soreness can just be your body adjusting, but sharp or lasting pain means stop and see a doctor. Check your shoes and stride length too."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g035",
-  "name": "Stretching after a workout",
-  "summary": "",
-  "created_at": "2025-12-27T15:56:00Z",
-  "updated_at": "2025-12-27T15:57:09Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g035-m1",
+    "uuid": "demo-g033-m3",
     "sender": "human",
-    "created_at": "2025-12-27T15:56:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "How long should I stretch after a workout?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-27T15:57:09Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "20–30 seconds per area, focusing on the front and back of the thighs, calves and glutes; 5–10 minutes in total is plenty."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g036",
-  "name": "Can't fall asleep",
-  "summary": "",
-  "created_at": "2025-12-20T14:08:00Z",
-  "updated_at": "2025-12-20T14:13:26Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g036-m1",
-    "sender": "human",
-    "created_at": "2025-12-20T14:08:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "I can't fall asleep at night. What helps?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-20T14:09:17Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Keep a regular wake-up time, put screens away an hour before bed, and skip coffee after lunch. If it goes on for a long time, talk to a doctor."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m3",
-    "sender": "human",
-    "created_at": "2025-12-20T14:13:17Z",
+    "created_at": "2025-12-05T05:30:35Z",
     "content": [
      {
       "type": "text",
@@ -1662,9 +1695,9 @@
     ]
    },
    {
-    "uuid": "demo-g036-m4",
+    "uuid": "demo-g033-m4",
     "sender": "assistant",
-    "created_at": "2025-12-20T14:13:26Z",
+    "created_at": "2025-12-05T05:30:47Z",
     "content": [
      {
       "type": "text",
@@ -1675,16 +1708,181 @@
   ]
  },
  {
+  "uuid": "demo-conv-g034",
+  "name": "Knee pain after running",
+  "summary": "",
+  "created_at": "2026-02-06T00:14:00Z",
+  "updated_at": "2026-02-06T00:19:48Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g034-m1",
+    "sender": "human",
+    "created_at": "2026-02-06T00:14:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "My knee hurts a bit after running. Is that normal?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g034-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-06T00:14:35Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "This involves pain, so mention seeing a doctor when needed.",
+      "start_timestamp": "2026-02-06T00:14:21Z",
+      "stop_timestamp": "2026-02-06T00:14:35Z"
+     },
+     {
+      "type": "text",
+      "text": "Mild soreness can just be your body adjusting, but sharp or lasting pain means stop and see a doctor. Check your shoes and stride length too."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g034-m3",
+    "sender": "human",
+    "created_at": "2026-02-06T00:19:35Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g034-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-06T00:19:48Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g035",
+  "name": "Stretching after a workout",
+  "summary": "",
+  "created_at": "2025-12-31T13:38:00Z",
+  "updated_at": "2025-12-31T13:44:27Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g035-m1",
+    "sender": "human",
+    "created_at": "2025-12-31T13:38:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "How long should I stretch after a workout?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g035-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-31T13:39:22Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "20–30 seconds per area, focusing on the front and back of the thighs, calves and glutes; 5–10 minutes in total is plenty."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g035-m3",
+    "sender": "human",
+    "created_at": "2025-12-31T13:44:22Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Got it, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g035-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-31T13:44:27Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "You're welcome, ask any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g036",
+  "name": "Can't fall asleep",
+  "summary": "",
+  "created_at": "2026-02-14T12:46:00Z",
+  "updated_at": "2026-02-14T12:50:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g036-m1",
+    "sender": "human",
+    "created_at": "2026-02-14T12:46:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "I can't fall asleep at night. What helps?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-14T12:46:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Keep a regular wake-up time, put screens away an hour before bed, and skip coffee after lunch. If it goes on for a long time, talk to a doctor."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m3",
+    "sender": "human",
+    "created_at": "2026-02-14T12:50:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Got it, thanks! 🙏"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-14T12:50:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "You're welcome, ask any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g037",
   "name": "Meeting notes template",
   "summary": "",
-  "created_at": "2025-12-27T13:40:00Z",
-  "updated_at": "2025-12-27T13:44:11Z",
+  "created_at": "2026-03-01T14:59:00Z",
+  "updated_at": "2026-03-01T15:00:13Z",
   "chat_messages": [
    {
     "uuid": "demo-g037-m1",
     "sender": "human",
-    "created_at": "2025-12-27T13:40:00Z",
+    "created_at": "2026-03-01T14:59:00Z",
     "content": [
      {
       "type": "text",
@@ -1695,39 +1893,17 @@
    {
     "uuid": "demo-g037-m2",
     "sender": "assistant",
-    "created_at": "2025-12-27T13:40:56Z",
+    "created_at": "2026-03-01T15:00:13Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "Give a structure they can reuse as is.",
-      "start_timestamp": "2025-12-27T13:40:39Z",
-      "stop_timestamp": "2025-12-27T13:40:56Z"
+      "start_timestamp": "2026-03-01T14:59:48Z",
+      "stop_timestamp": "2026-03-01T15:00:13Z"
      },
      {
       "type": "text",
       "text": "It could include:\n\n1. Date and attendees\n2. Topics\n3. Decisions\n4. Action items (owner + due date)\n\nThe action items matter most."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m3",
-    "sender": "human",
-    "created_at": "2025-12-27T13:43:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Got it, thanks!"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-27T13:44:11Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "You're welcome, ask any time."
      }
     ]
    }
@@ -1737,13 +1913,13 @@
   "uuid": "demo-conv-g038",
   "name": "Weekly updates",
   "summary": "",
-  "created_at": "2026-04-01T11:15:00Z",
-  "updated_at": "2026-04-01T11:16:12Z",
+  "created_at": "2026-03-07T12:52:00Z",
+  "updated_at": "2026-03-07T12:56:34Z",
   "chat_messages": [
    {
     "uuid": "demo-g038-m1",
     "sender": "human",
-    "created_at": "2026-04-01T11:15:00Z",
+    "created_at": "2026-03-07T12:52:00Z",
     "content": [
      {
       "type": "text",
@@ -1754,228 +1930,29 @@
    {
     "uuid": "demo-g038-m2",
     "sender": "assistant",
-    "created_at": "2026-04-01T11:16:12Z",
+    "created_at": "2026-03-07T12:53:25Z",
     "content": [
      {
       "type": "text",
       "text": "Use three parts: results, problems, next week's plan, with only the two or three most important points in each. Use numbers wherever you can."
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g039",
-  "name": "What to do first",
-  "summary": "",
-  "created_at": "2025-12-27T04:06:00Z",
-  "updated_at": "2025-12-27T04:09:27Z",
-  "chat_messages": [
+   },
    {
-    "uuid": "demo-g039-m1",
+    "uuid": "demo-g038-m3",
     "sender": "human",
-    "created_at": "2025-12-27T04:06:00Z",
+    "created_at": "2026-03-07T12:56:25Z",
     "content": [
      {
       "type": "text",
-      "text": "I have too much to do. What comes first?"
+      "text": "Got it, thanks!"
      }
     ]
    },
    {
-    "uuid": "demo-g039-m2",
+    "uuid": "demo-g038-m4",
     "sender": "assistant",
-    "created_at": "2025-12-27T04:07:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Sort things roughly by urgent and important, and do the important-and-urgent ones first. Schedule the important-but-not-urgent ones ahead of time, or they'll turn urgent."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g039-m3",
-    "sender": "human",
-    "created_at": "2025-12-27T04:09:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Thanks, that's really helpful ✨"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g039-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-27T04:09:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Glad it helped."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g040",
-  "name": "Text on a slide",
-  "summary": "",
-  "created_at": "2025-11-05T12:19:00Z",
-  "updated_at": "2025-11-05T12:19:28Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g040-m1",
-    "sender": "human",
-    "created_at": "2025-11-05T12:19:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "How much text should one slide have?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g040-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-05T12:19:28Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "One idea per slide, with the conclusion as the title. Keep the body to three lines or fewer and put details in your speaker notes."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g041",
-  "name": "Yellow pothos leaves",
-  "summary": "",
-  "created_at": "2026-01-10T18:10:00Z",
-  "updated_at": "2026-01-10T18:13:34Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g041-m1",
-    "sender": "human",
-    "created_at": "2026-01-10T18:10:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Why are my pothos leaves turning yellow?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-10T18:10:20Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Usually too much water or too little light. Water only once the topsoil is dry and move it somewhere with bright, indirect light."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m3",
-    "sender": "human",
-    "created_at": "2026-01-10T18:13:20Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Thanks, that's really helpful"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-10T18:13:34Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Glad it helped."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g042",
-  "name": "A gift for a friend",
-  "summary": "",
-  "created_at": "2025-12-09T14:38:00Z",
-  "updated_at": "2025-12-09T14:38:50Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g042-m1",
-    "sender": "human",
-    "created_at": "2025-12-09T14:38:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "My friend loves painting. What's a good birthday gift?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-09T14:38:50Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "A good set of watercolours, a sketchbook, or a trial class. A handwritten card makes it more personal."
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g043",
-  "name": "Learning guitar",
-  "summary": "",
-  "created_at": "2026-02-19T09:09:00Z",
-  "updated_at": "2026-02-19T09:13:42Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g043-m1",
-    "sender": "human",
-    "created_at": "2026-02-19T09:09:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "What should I practise first on guitar?"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-19T09:09:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "A few basic chords: C, G, Am and F (F is hard, so start with the simplified version). Fifteen minutes a day and your fingertips will toughen up."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m3",
-    "sender": "human",
-    "created_at": "2026-02-19T09:13:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "Got it, thanks! 🙏"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-19T09:13:42Z",
+    "created_at": "2026-03-07T12:56:34Z",
     "content": [
      {
       "type": "text",
@@ -1986,38 +1963,153 @@
   ]
  },
  {
-  "uuid": "demo-conv-g044",
-  "name": "Why cats knead",
+  "uuid": "demo-conv-g039",
+  "name": "What to do first",
   "summary": "",
-  "created_at": "2026-03-15T09:02:00Z",
-  "updated_at": "2026-03-15T09:05:37Z",
+  "created_at": "2026-03-24T14:36:00Z",
+  "updated_at": "2026-03-24T14:37:00Z",
   "chat_messages": [
    {
-    "uuid": "demo-g044-m1",
+    "uuid": "demo-g039-m1",
     "sender": "human",
-    "created_at": "2026-03-15T09:02:00Z",
+    "created_at": "2026-03-24T14:36:00Z",
     "content": [
      {
       "type": "text",
-      "text": "Why do cats knead?"
+      "text": "I have too much to do. What comes first?"
      }
     ]
    },
    {
-    "uuid": "demo-g044-m2",
+    "uuid": "demo-g039-m2",
     "sender": "assistant",
-    "created_at": "2026-03-15T09:02:26Z",
+    "created_at": "2026-03-24T14:37:00Z",
     "content": [
      {
       "type": "text",
-      "text": "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."
+      "text": "Sort things roughly by urgent and important, and do the important-and-urgent ones first. Schedule the important-but-not-urgent ones ahead of time, or they'll turn urgent."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g040",
+  "name": "Text on a slide",
+  "summary": "",
+  "created_at": "2026-02-01T09:19:00Z",
+  "updated_at": "2026-02-01T09:22:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g040-m1",
+    "sender": "human",
+    "created_at": "2026-02-01T09:19:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "How much text should one slide have?"
      }
     ]
    },
    {
-    "uuid": "demo-g044-m3",
+    "uuid": "demo-g040-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-01T09:19:34Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "One idea per slide, with the conclusion as the title. Keep the body to three lines or fewer and put details in your speaker notes."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g040-m3",
     "sender": "human",
-    "created_at": "2026-03-15T09:05:26Z",
+    "created_at": "2026-02-01T09:22:34Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g040-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-01T09:22:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g041",
+  "name": "Yellow pothos leaves",
+  "summary": "",
+  "created_at": "2025-11-10T20:49:00Z",
+  "updated_at": "2025-11-10T20:49:52Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g041-m1",
+    "sender": "human",
+    "created_at": "2025-11-10T20:49:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Why are my pothos leaves turning yellow?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g041-m2",
+    "sender": "assistant",
+    "created_at": "2025-11-10T20:49:52Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Usually too much water or too little light. Water only once the topsoil is dry and move it somewhere with bright, indirect light."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g042",
+  "name": "A gift for a friend",
+  "summary": "",
+  "created_at": "2026-02-28T15:41:00Z",
+  "updated_at": "2026-02-28T15:45:25Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g042-m1",
+    "sender": "human",
+    "created_at": "2026-02-28T15:41:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "My friend loves painting. What's a good birthday gift?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g042-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-28T15:42:13Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "A good set of watercolours, a sketchbook, or a trial class. A handwritten card makes it more personal."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g042-m3",
+    "sender": "human",
+    "created_at": "2026-02-28T15:45:13Z",
     "content": [
      {
       "type": "text",
@@ -2026,9 +2118,9 @@
     ]
    },
    {
-    "uuid": "demo-g044-m4",
+    "uuid": "demo-g042-m4",
     "sender": "assistant",
-    "created_at": "2026-03-15T09:05:37Z",
+    "created_at": "2026-02-28T15:45:25Z",
     "content": [
      {
       "type": "text",
@@ -2039,16 +2131,122 @@
   ]
  },
  {
+  "uuid": "demo-conv-g043",
+  "name": "Learning guitar",
+  "summary": "",
+  "created_at": "2026-03-29T12:26:00Z",
+  "updated_at": "2026-03-29T12:28:46Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g043-m1",
+    "sender": "human",
+    "created_at": "2026-03-29T12:26:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "What should I practise first on guitar?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m2",
+    "sender": "assistant",
+    "created_at": "2026-03-29T12:26:40Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "A few basic chords: C, G, Am and F (F is hard, so start with the simplified version). Fifteen minutes a day and your fingertips will toughen up."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m3",
+    "sender": "human",
+    "created_at": "2026-03-29T12:28:40Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks!"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-29T12:28:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g044",
+  "name": "Why cats knead",
+  "summary": "",
+  "created_at": "2025-12-12T13:58:00Z",
+  "updated_at": "2025-12-12T14:00:58Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g044-m1",
+    "sender": "human",
+    "created_at": "2025-12-12T13:58:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Why do cats knead?"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-12T13:58:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m3",
+    "sender": "human",
+    "created_at": "2025-12-12T14:00:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "OK, thanks! 🙏"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-12T14:00:58Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Any time."
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g045",
   "name": "A rainy day",
   "summary": "",
-  "created_at": "2025-12-07T09:31:00Z",
-  "updated_at": "2025-12-07T09:32:14Z",
+  "created_at": "2026-02-04T12:13:00Z",
+  "updated_at": "2026-02-04T12:15:39Z",
   "chat_messages": [
    {
     "uuid": "demo-g045-m1",
     "sender": "human",
-    "created_at": "2025-12-07T09:31:00Z",
+    "created_at": "2026-02-04T12:13:00Z",
     "content": [
      {
       "type": "text",
@@ -2059,11 +2257,33 @@
    {
     "uuid": "demo-g045-m2",
     "sender": "assistant",
-    "created_at": "2025-12-07T09:32:14Z",
+    "created_at": "2026-02-04T12:13:32Z",
     "content": [
      {
       "type": "text",
       "text": "Watch a film, tidy a room, cook a pot of soup, or just read with the rain in the background."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g045-m3",
+    "sender": "human",
+    "created_at": "2026-02-04T12:15:32Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Thanks, that's really helpful"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g045-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-04T12:15:39Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "Glad it helped."
      }
     ]
    }
@@ -2073,13 +2293,13 @@
   "uuid": "demo-conv-g046",
   "name": "Word of the day",
   "summary": "",
-  "created_at": "2025-11-03T14:54:00Z",
-  "updated_at": "2025-11-30T01:53:23Z",
+  "created_at": "2025-11-03T05:57:00Z",
+  "updated_at": "2025-12-01T05:48:25Z",
   "chat_messages": [
    {
     "uuid": "demo-g046-m1",
     "sender": "human",
-    "created_at": "2025-11-03T14:54:00Z",
+    "created_at": "2025-11-03T05:57:00Z",
     "content": [
      {
       "type": "text",
@@ -2090,7 +2310,7 @@
    {
     "uuid": "demo-g046-m2",
     "sender": "assistant",
-    "created_at": "2025-11-03T14:54:30Z",
+    "created_at": "2025-11-03T05:57:23Z",
     "content": [
      {
       "type": "text",
@@ -2101,7 +2321,7 @@
    {
     "uuid": "demo-g046-m3",
     "sender": "human",
-    "created_at": "2025-11-05T07:09:00Z",
+    "created_at": "2025-11-04T11:55:00Z",
     "content": [
      {
       "type": "text",
@@ -2112,7 +2332,7 @@
    {
     "uuid": "demo-g046-m4",
     "sender": "assistant",
-    "created_at": "2025-11-05T07:09:50Z",
+    "created_at": "2025-11-04T11:55:50Z",
     "content": [
      {
       "type": "text",
@@ -2123,7 +2343,7 @@
    {
     "uuid": "demo-g046-m5",
     "sender": "human",
-    "created_at": "2025-11-06T12:20:00Z",
+    "created_at": "2025-11-05T11:27:00Z",
     "content": [
      {
       "type": "text",
@@ -2134,7 +2354,7 @@
    {
     "uuid": "demo-g046-m6",
     "sender": "assistant",
-    "created_at": "2025-11-06T12:20:51Z",
+    "created_at": "2025-11-05T11:27:33Z",
     "content": [
      {
       "type": "text",
@@ -2145,7 +2365,7 @@
    {
     "uuid": "demo-g046-m7",
     "sender": "human",
-    "created_at": "2025-11-07T02:34:00Z",
+    "created_at": "2025-11-06T13:19:00Z",
     "content": [
      {
       "type": "text",
@@ -2156,7 +2376,7 @@
    {
     "uuid": "demo-g046-m8",
     "sender": "assistant",
-    "created_at": "2025-11-07T02:34:43Z",
+    "created_at": "2025-11-06T13:19:17Z",
     "content": [
      {
       "type": "text",
@@ -2167,7 +2387,7 @@
    {
     "uuid": "demo-g046-m9",
     "sender": "human",
-    "created_at": "2025-11-08T12:21:00Z",
+    "created_at": "2025-11-07T13:22:00Z",
     "content": [
      {
       "type": "text",
@@ -2178,7 +2398,7 @@
    {
     "uuid": "demo-g046-m10",
     "sender": "assistant",
-    "created_at": "2025-11-08T12:21:22Z",
+    "created_at": "2025-11-07T13:22:29Z",
     "content": [
      {
       "type": "text",
@@ -2189,7 +2409,7 @@
    {
     "uuid": "demo-g046-m11",
     "sender": "human",
-    "created_at": "2025-11-09T14:29:00Z",
+    "created_at": "2025-11-08T11:26:00Z",
     "content": [
      {
       "type": "text",
@@ -2200,7 +2420,7 @@
    {
     "uuid": "demo-g046-m12",
     "sender": "assistant",
-    "created_at": "2025-11-09T14:29:56Z",
+    "created_at": "2025-11-08T11:26:58Z",
     "content": [
      {
       "type": "text",
@@ -2211,7 +2431,7 @@
    {
     "uuid": "demo-g046-m13",
     "sender": "human",
-    "created_at": "2025-11-10T09:19:00Z",
+    "created_at": "2025-11-10T14:51:00Z",
     "content": [
      {
       "type": "text",
@@ -2222,7 +2442,7 @@
    {
     "uuid": "demo-g046-m14",
     "sender": "assistant",
-    "created_at": "2025-11-10T09:19:22Z",
+    "created_at": "2025-11-10T14:51:15Z",
     "content": [
      {
       "type": "text",
@@ -2233,7 +2453,7 @@
    {
     "uuid": "demo-g046-m15",
     "sender": "human",
-    "created_at": "2025-11-12T11:49:00Z",
+    "created_at": "2025-11-11T00:36:00Z",
     "content": [
      {
       "type": "text",
@@ -2244,7 +2464,7 @@
    {
     "uuid": "demo-g046-m16",
     "sender": "assistant",
-    "created_at": "2025-11-12T11:49:38Z",
+    "created_at": "2025-11-11T00:36:28Z",
     "content": [
      {
       "type": "text",
@@ -2255,7 +2475,7 @@
    {
     "uuid": "demo-g046-m17",
     "sender": "human",
-    "created_at": "2025-11-13T02:18:00Z",
+    "created_at": "2025-11-12T01:37:00Z",
     "content": [
      {
       "type": "text",
@@ -2266,7 +2486,7 @@
    {
     "uuid": "demo-g046-m18",
     "sender": "assistant",
-    "created_at": "2025-11-13T02:18:25Z",
+    "created_at": "2025-11-12T01:37:33Z",
     "content": [
      {
       "type": "text",
@@ -2277,7 +2497,7 @@
    {
     "uuid": "demo-g046-m19",
     "sender": "human",
-    "created_at": "2025-11-14T04:27:00Z",
+    "created_at": "2025-11-13T09:37:00Z",
     "content": [
      {
       "type": "text",
@@ -2288,7 +2508,7 @@
    {
     "uuid": "demo-g046-m20",
     "sender": "assistant",
-    "created_at": "2025-11-14T04:27:54Z",
+    "created_at": "2025-11-13T09:37:32Z",
     "content": [
      {
       "type": "text",
@@ -2299,7 +2519,7 @@
    {
     "uuid": "demo-g046-m21",
     "sender": "human",
-    "created_at": "2025-11-15T12:48:00Z",
+    "created_at": "2025-11-14T12:14:00Z",
     "content": [
      {
       "type": "text",
@@ -2310,7 +2530,7 @@
    {
     "uuid": "demo-g046-m22",
     "sender": "assistant",
-    "created_at": "2025-11-15T12:48:35Z",
+    "created_at": "2025-11-14T12:14:28Z",
     "content": [
      {
       "type": "text",
@@ -2321,7 +2541,7 @@
    {
     "uuid": "demo-g046-m23",
     "sender": "human",
-    "created_at": "2025-11-16T15:29:00Z",
+    "created_at": "2025-11-15T15:59:00Z",
     "content": [
      {
       "type": "text",
@@ -2332,7 +2552,7 @@
    {
     "uuid": "demo-g046-m24",
     "sender": "assistant",
-    "created_at": "2025-11-16T15:29:56Z",
+    "created_at": "2025-11-15T15:59:53Z",
     "content": [
      {
       "type": "text",
@@ -2343,7 +2563,7 @@
    {
     "uuid": "demo-g046-m25",
     "sender": "human",
-    "created_at": "2025-11-18T01:12:00Z",
+    "created_at": "2025-11-16T12:02:00Z",
     "content": [
      {
       "type": "text",
@@ -2354,7 +2574,7 @@
    {
     "uuid": "demo-g046-m26",
     "sender": "assistant",
-    "created_at": "2025-11-18T01:12:49Z",
+    "created_at": "2025-11-16T12:02:33Z",
     "content": [
      {
       "type": "text",
@@ -2365,7 +2585,7 @@
    {
     "uuid": "demo-g046-m27",
     "sender": "human",
-    "created_at": "2025-11-19T14:17:00Z",
+    "created_at": "2025-11-17T14:25:00Z",
     "content": [
      {
       "type": "text",
@@ -2376,7 +2596,7 @@
    {
     "uuid": "demo-g046-m28",
     "sender": "assistant",
-    "created_at": "2025-11-19T14:17:29Z",
+    "created_at": "2025-11-17T14:25:30Z",
     "content": [
      {
       "type": "text",
@@ -2387,7 +2607,7 @@
    {
     "uuid": "demo-g046-m29",
     "sender": "human",
-    "created_at": "2025-11-20T14:55:00Z",
+    "created_at": "2025-11-19T13:26:00Z",
     "content": [
      {
       "type": "text",
@@ -2398,7 +2618,7 @@
    {
     "uuid": "demo-g046-m30",
     "sender": "assistant",
-    "created_at": "2025-11-20T14:55:29Z",
+    "created_at": "2025-11-19T13:26:49Z",
     "content": [
      {
       "type": "text",
@@ -2409,7 +2629,7 @@
    {
     "uuid": "demo-g046-m31",
     "sender": "human",
-    "created_at": "2025-11-21T09:37:00Z",
+    "created_at": "2025-11-21T04:12:00Z",
     "content": [
      {
       "type": "text",
@@ -2420,7 +2640,7 @@
    {
     "uuid": "demo-g046-m32",
     "sender": "assistant",
-    "created_at": "2025-11-21T09:37:25Z",
+    "created_at": "2025-11-21T04:12:34Z",
     "content": [
      {
       "type": "text",
@@ -2431,7 +2651,7 @@
    {
     "uuid": "demo-g046-m33",
     "sender": "human",
-    "created_at": "2025-11-22T05:23:00Z",
+    "created_at": "2025-11-22T14:36:00Z",
     "content": [
      {
       "type": "text",
@@ -2442,7 +2662,7 @@
    {
     "uuid": "demo-g046-m34",
     "sender": "assistant",
-    "created_at": "2025-11-22T05:24:00Z",
+    "created_at": "2025-11-22T14:36:34Z",
     "content": [
      {
       "type": "text",
@@ -2453,7 +2673,7 @@
    {
     "uuid": "demo-g046-m35",
     "sender": "human",
-    "created_at": "2025-11-23T02:10:00Z",
+    "created_at": "2025-11-24T07:47:00Z",
     "content": [
      {
       "type": "text",
@@ -2464,7 +2684,7 @@
    {
     "uuid": "demo-g046-m36",
     "sender": "assistant",
-    "created_at": "2025-11-23T02:10:31Z",
+    "created_at": "2025-11-24T07:47:43Z",
     "content": [
      {
       "type": "text",
@@ -2475,7 +2695,7 @@
    {
     "uuid": "demo-g046-m37",
     "sender": "human",
-    "created_at": "2025-11-25T13:58:00Z",
+    "created_at": "2025-11-25T11:35:00Z",
     "content": [
      {
       "type": "text",
@@ -2486,7 +2706,7 @@
    {
     "uuid": "demo-g046-m38",
     "sender": "assistant",
-    "created_at": "2025-11-25T13:58:28Z",
+    "created_at": "2025-11-25T11:35:45Z",
     "content": [
      {
       "type": "text",
@@ -2497,7 +2717,7 @@
    {
     "uuid": "demo-g046-m39",
     "sender": "human",
-    "created_at": "2025-11-26T02:19:00Z",
+    "created_at": "2025-11-27T15:59:00Z",
     "content": [
      {
       "type": "text",
@@ -2508,7 +2728,7 @@
    {
     "uuid": "demo-g046-m40",
     "sender": "assistant",
-    "created_at": "2025-11-26T02:19:16Z",
+    "created_at": "2025-11-27T15:59:56Z",
     "content": [
      {
       "type": "text",
@@ -2519,7 +2739,7 @@
    {
     "uuid": "demo-g046-m41",
     "sender": "human",
-    "created_at": "2025-11-27T04:15:00Z",
+    "created_at": "2025-11-28T07:27:00Z",
     "content": [
      {
       "type": "text",
@@ -2530,7 +2750,7 @@
    {
     "uuid": "demo-g046-m42",
     "sender": "assistant",
-    "created_at": "2025-11-27T04:15:38Z",
+    "created_at": "2025-11-28T07:27:59Z",
     "content": [
      {
       "type": "text",
@@ -2541,7 +2761,7 @@
    {
     "uuid": "demo-g046-m43",
     "sender": "human",
-    "created_at": "2025-11-28T14:49:00Z",
+    "created_at": "2025-11-29T11:59:00Z",
     "content": [
      {
       "type": "text",
@@ -2552,7 +2772,7 @@
    {
     "uuid": "demo-g046-m44",
     "sender": "assistant",
-    "created_at": "2025-11-28T14:49:28Z",
+    "created_at": "2025-11-29T11:59:42Z",
     "content": [
      {
       "type": "text",
@@ -2563,7 +2783,7 @@
    {
     "uuid": "demo-g046-m45",
     "sender": "human",
-    "created_at": "2025-11-29T04:11:00Z",
+    "created_at": "2025-11-30T12:52:00Z",
     "content": [
      {
       "type": "text",
@@ -2574,7 +2794,7 @@
    {
     "uuid": "demo-g046-m46",
     "sender": "assistant",
-    "created_at": "2025-11-29T04:11:53Z",
+    "created_at": "2025-11-30T12:52:39Z",
     "content": [
      {
       "type": "text",
@@ -2585,7 +2805,7 @@
    {
     "uuid": "demo-g046-m47",
     "sender": "human",
-    "created_at": "2025-11-30T01:53:00Z",
+    "created_at": "2025-12-01T05:48:00Z",
     "content": [
      {
       "type": "text",
@@ -2596,7 +2816,7 @@
    {
     "uuid": "demo-g046-m48",
     "sender": "assistant",
-    "created_at": "2025-11-30T01:53:23Z",
+    "created_at": "2025-12-01T05:48:25Z",
     "content": [
      {
       "type": "text",
@@ -2610,13 +2830,13 @@
   "uuid": "demo-conv-g047",
   "name": "Running log",
   "summary": "",
-  "created_at": "2026-01-05T11:55:00Z",
-  "updated_at": "2026-02-15T14:43:50Z",
+  "created_at": "2026-01-05T12:56:00Z",
+  "updated_at": "2026-02-15T13:55:19Z",
   "chat_messages": [
    {
     "uuid": "demo-g047-m1",
     "sender": "human",
-    "created_at": "2026-01-05T11:55:00Z",
+    "created_at": "2026-01-05T12:56:00Z",
     "content": [
      {
       "type": "text",
@@ -2627,7 +2847,7 @@
    {
     "uuid": "demo-g047-m2",
     "sender": "assistant",
-    "created_at": "2026-01-05T11:55:50Z",
+    "created_at": "2026-01-05T12:56:27Z",
     "content": [
      {
       "type": "text",
@@ -2638,7 +2858,7 @@
    {
     "uuid": "demo-g047-m3",
     "sender": "human",
-    "created_at": "2026-01-06T11:27:00Z",
+    "created_at": "2026-01-07T04:47:00Z",
     "content": [
      {
       "type": "text",
@@ -2649,7 +2869,7 @@
    {
     "uuid": "demo-g047-m4",
     "sender": "assistant",
-    "created_at": "2026-01-06T11:27:33Z",
+    "created_at": "2026-01-07T04:47:58Z",
     "content": [
      {
       "type": "text",
@@ -2660,7 +2880,7 @@
    {
     "uuid": "demo-g047-m5",
     "sender": "human",
-    "created_at": "2026-01-07T13:19:00Z",
+    "created_at": "2026-01-08T02:03:00Z",
     "content": [
      {
       "type": "text",
@@ -2671,7 +2891,7 @@
    {
     "uuid": "demo-g047-m6",
     "sender": "assistant",
-    "created_at": "2026-01-07T13:19:17Z",
+    "created_at": "2026-01-08T02:03:15Z",
     "content": [
      {
       "type": "text",
@@ -2682,7 +2902,7 @@
    {
     "uuid": "demo-g047-m7",
     "sender": "human",
-    "created_at": "2026-01-08T13:22:00Z",
+    "created_at": "2026-01-09T02:43:00Z",
     "content": [
      {
       "type": "text",
@@ -2693,7 +2913,7 @@
    {
     "uuid": "demo-g047-m8",
     "sender": "assistant",
-    "created_at": "2026-01-08T13:22:29Z",
+    "created_at": "2026-01-09T02:43:36Z",
     "content": [
      {
       "type": "text",
@@ -2704,7 +2924,7 @@
    {
     "uuid": "demo-g047-m9",
     "sender": "human",
-    "created_at": "2026-01-09T11:26:00Z",
+    "created_at": "2026-01-11T13:26:00Z",
     "content": [
      {
       "type": "text",
@@ -2715,7 +2935,7 @@
    {
     "uuid": "demo-g047-m10",
     "sender": "assistant",
-    "created_at": "2026-01-09T11:26:58Z",
+    "created_at": "2026-01-11T13:26:28Z",
     "content": [
      {
       "type": "text",
@@ -2726,7 +2946,7 @@
    {
     "uuid": "demo-g047-m11",
     "sender": "human",
-    "created_at": "2026-01-11T14:51:00Z",
+    "created_at": "2026-01-12T11:01:00Z",
     "content": [
      {
       "type": "text",
@@ -2737,7 +2957,7 @@
    {
     "uuid": "demo-g047-m12",
     "sender": "assistant",
-    "created_at": "2026-01-11T14:51:15Z",
+    "created_at": "2026-01-12T11:01:40Z",
     "content": [
      {
       "type": "text",
@@ -2748,7 +2968,7 @@
    {
     "uuid": "demo-g047-m13",
     "sender": "human",
-    "created_at": "2026-01-12T00:36:00Z",
+    "created_at": "2026-01-13T11:23:00Z",
     "content": [
      {
       "type": "text",
@@ -2759,7 +2979,7 @@
    {
     "uuid": "demo-g047-m14",
     "sender": "assistant",
-    "created_at": "2026-01-12T00:36:28Z",
+    "created_at": "2026-01-13T11:23:18Z",
     "content": [
      {
       "type": "text",
@@ -2770,7 +2990,7 @@
    {
     "uuid": "demo-g047-m15",
     "sender": "human",
-    "created_at": "2026-01-13T01:37:00Z",
+    "created_at": "2026-01-14T11:06:00Z",
     "content": [
      {
       "type": "text",
@@ -2781,7 +3001,7 @@
    {
     "uuid": "demo-g047-m16",
     "sender": "assistant",
-    "created_at": "2026-01-13T01:37:33Z",
+    "created_at": "2026-01-14T11:06:53Z",
     "content": [
      {
       "type": "text",
@@ -2792,7 +3012,7 @@
    {
     "uuid": "demo-g047-m17",
     "sender": "human",
-    "created_at": "2026-01-14T09:37:00Z",
+    "created_at": "2026-01-15T07:48:00Z",
     "content": [
      {
       "type": "text",
@@ -2803,7 +3023,7 @@
    {
     "uuid": "demo-g047-m18",
     "sender": "assistant",
-    "created_at": "2026-01-14T09:37:32Z",
+    "created_at": "2026-01-15T07:48:54Z",
     "content": [
      {
       "type": "text",
@@ -2814,7 +3034,7 @@
    {
     "uuid": "demo-g047-m19",
     "sender": "human",
-    "created_at": "2026-01-15T12:14:00Z",
+    "created_at": "2026-01-16T15:54:00Z",
     "content": [
      {
       "type": "text",
@@ -2825,7 +3045,7 @@
    {
     "uuid": "demo-g047-m20",
     "sender": "assistant",
-    "created_at": "2026-01-15T12:14:28Z",
+    "created_at": "2026-01-16T15:54:51Z",
     "content": [
      {
       "type": "text",
@@ -2836,7 +3056,7 @@
    {
     "uuid": "demo-g047-m21",
     "sender": "human",
-    "created_at": "2026-01-16T15:59:00Z",
+    "created_at": "2026-01-18T14:43:00Z",
     "content": [
      {
       "type": "text",
@@ -2847,7 +3067,7 @@
    {
     "uuid": "demo-g047-m22",
     "sender": "assistant",
-    "created_at": "2026-01-16T15:59:53Z",
+    "created_at": "2026-01-18T14:43:50Z",
     "content": [
      {
       "type": "text",
@@ -2858,7 +3078,7 @@
    {
     "uuid": "demo-g047-m23",
     "sender": "human",
-    "created_at": "2026-01-17T12:02:00Z",
+    "created_at": "2026-01-19T13:25:00Z",
     "content": [
      {
       "type": "text",
@@ -2869,7 +3089,7 @@
    {
     "uuid": "demo-g047-m24",
     "sender": "assistant",
-    "created_at": "2026-01-17T12:02:33Z",
+    "created_at": "2026-01-19T13:25:42Z",
     "content": [
      {
       "type": "text",
@@ -2880,7 +3100,7 @@
    {
     "uuid": "demo-g047-m25",
     "sender": "human",
-    "created_at": "2026-01-18T14:25:00Z",
+    "created_at": "2026-01-20T13:04:00Z",
     "content": [
      {
       "type": "text",
@@ -2891,7 +3111,7 @@
    {
     "uuid": "demo-g047-m26",
     "sender": "assistant",
-    "created_at": "2026-01-18T14:25:30Z",
+    "created_at": "2026-01-20T13:04:41Z",
     "content": [
      {
       "type": "text",
@@ -2902,7 +3122,7 @@
    {
     "uuid": "demo-g047-m27",
     "sender": "human",
-    "created_at": "2026-01-20T13:26:00Z",
+    "created_at": "2026-01-21T07:16:00Z",
     "content": [
      {
       "type": "text",
@@ -2913,7 +3133,7 @@
    {
     "uuid": "demo-g047-m28",
     "sender": "assistant",
-    "created_at": "2026-01-20T13:26:49Z",
+    "created_at": "2026-01-21T07:16:31Z",
     "content": [
      {
       "type": "text",
@@ -2924,7 +3144,7 @@
    {
     "uuid": "demo-g047-m29",
     "sender": "human",
-    "created_at": "2026-01-22T04:12:00Z",
+    "created_at": "2026-01-22T00:22:00Z",
     "content": [
      {
       "type": "text",
@@ -2935,7 +3155,7 @@
    {
     "uuid": "demo-g047-m30",
     "sender": "assistant",
-    "created_at": "2026-01-22T04:12:34Z",
+    "created_at": "2026-01-22T00:22:51Z",
     "content": [
      {
       "type": "text",
@@ -2946,7 +3166,7 @@
    {
     "uuid": "demo-g047-m31",
     "sender": "human",
-    "created_at": "2026-01-23T14:36:00Z",
+    "created_at": "2026-01-23T12:11:00Z",
     "content": [
      {
       "type": "text",
@@ -2957,7 +3177,7 @@
    {
     "uuid": "demo-g047-m32",
     "sender": "assistant",
-    "created_at": "2026-01-23T14:36:34Z",
+    "created_at": "2026-01-23T12:11:31Z",
     "content": [
      {
       "type": "text",
@@ -2968,7 +3188,7 @@
    {
     "uuid": "demo-g047-m33",
     "sender": "human",
-    "created_at": "2026-01-25T07:47:00Z",
+    "created_at": "2026-01-25T00:20:00Z",
     "content": [
      {
       "type": "text",
@@ -2979,7 +3199,7 @@
    {
     "uuid": "demo-g047-m34",
     "sender": "assistant",
-    "created_at": "2026-01-25T07:47:43Z",
+    "created_at": "2026-01-25T00:20:35Z",
     "content": [
      {
       "type": "text",
@@ -2990,7 +3210,7 @@
    {
     "uuid": "demo-g047-m35",
     "sender": "human",
-    "created_at": "2026-01-26T11:35:00Z",
+    "created_at": "2026-01-26T05:54:00Z",
     "content": [
      {
       "type": "text",
@@ -3001,7 +3221,7 @@
    {
     "uuid": "demo-g047-m36",
     "sender": "assistant",
-    "created_at": "2026-01-26T11:35:45Z",
+    "created_at": "2026-01-26T05:54:49Z",
     "content": [
      {
       "type": "text",
@@ -3012,7 +3232,7 @@
    {
     "uuid": "demo-g047-m37",
     "sender": "human",
-    "created_at": "2026-01-28T15:59:00Z",
+    "created_at": "2026-01-27T12:48:00Z",
     "content": [
      {
       "type": "text",
@@ -3023,7 +3243,7 @@
    {
     "uuid": "demo-g047-m38",
     "sender": "assistant",
-    "created_at": "2026-01-28T15:59:56Z",
+    "created_at": "2026-01-27T12:48:21Z",
     "content": [
      {
       "type": "text",
@@ -3034,7 +3254,7 @@
    {
     "uuid": "demo-g047-m39",
     "sender": "human",
-    "created_at": "2026-01-29T07:27:00Z",
+    "created_at": "2026-01-28T00:54:00Z",
     "content": [
      {
       "type": "text",
@@ -3045,7 +3265,7 @@
    {
     "uuid": "demo-g047-m40",
     "sender": "assistant",
-    "created_at": "2026-01-29T07:27:59Z",
+    "created_at": "2026-01-28T00:54:36Z",
     "content": [
      {
       "type": "text",
@@ -3056,7 +3276,7 @@
    {
     "uuid": "demo-g047-m41",
     "sender": "human",
-    "created_at": "2026-01-30T11:59:00Z",
+    "created_at": "2026-01-30T13:47:00Z",
     "content": [
      {
       "type": "text",
@@ -3067,7 +3287,7 @@
    {
     "uuid": "demo-g047-m42",
     "sender": "assistant",
-    "created_at": "2026-01-30T11:59:42Z",
+    "created_at": "2026-01-30T13:47:26Z",
     "content": [
      {
       "type": "text",
@@ -3078,7 +3298,7 @@
    {
     "uuid": "demo-g047-m43",
     "sender": "human",
-    "created_at": "2026-01-31T12:52:00Z",
+    "created_at": "2026-01-31T01:03:00Z",
     "content": [
      {
       "type": "text",
@@ -3089,7 +3309,7 @@
    {
     "uuid": "demo-g047-m44",
     "sender": "assistant",
-    "created_at": "2026-01-31T12:52:39Z",
+    "created_at": "2026-01-31T01:03:33Z",
     "content": [
      {
       "type": "text",
@@ -3100,7 +3320,7 @@
    {
     "uuid": "demo-g047-m45",
     "sender": "human",
-    "created_at": "2026-02-01T05:48:00Z",
+    "created_at": "2026-02-01T02:58:00Z",
     "content": [
      {
       "type": "text",
@@ -3111,7 +3331,7 @@
    {
     "uuid": "demo-g047-m46",
     "sender": "assistant",
-    "created_at": "2026-02-01T05:48:25Z",
+    "created_at": "2026-02-01T02:58:21Z",
     "content": [
      {
       "type": "text",
@@ -3122,7 +3342,7 @@
    {
     "uuid": "demo-g047-m47",
     "sender": "human",
-    "created_at": "2026-02-02T12:56:00Z",
+    "created_at": "2026-02-02T13:51:00Z",
     "content": [
      {
       "type": "text",
@@ -3133,7 +3353,7 @@
    {
     "uuid": "demo-g047-m48",
     "sender": "assistant",
-    "created_at": "2026-02-02T12:56:27Z",
+    "created_at": "2026-02-02T13:51:19Z",
     "content": [
      {
       "type": "text",
@@ -3144,7 +3364,7 @@
    {
     "uuid": "demo-g047-m49",
     "sender": "human",
-    "created_at": "2026-02-04T04:47:00Z",
+    "created_at": "2026-02-03T01:19:00Z",
     "content": [
      {
       "type": "text",
@@ -3155,7 +3375,7 @@
    {
     "uuid": "demo-g047-m50",
     "sender": "assistant",
-    "created_at": "2026-02-04T04:47:58Z",
+    "created_at": "2026-02-03T01:19:39Z",
     "content": [
      {
       "type": "text",
@@ -3166,7 +3386,7 @@
    {
     "uuid": "demo-g047-m51",
     "sender": "human",
-    "created_at": "2026-02-05T02:03:00Z",
+    "created_at": "2026-02-04T13:01:00Z",
     "content": [
      {
       "type": "text",
@@ -3177,7 +3397,7 @@
    {
     "uuid": "demo-g047-m52",
     "sender": "assistant",
-    "created_at": "2026-02-05T02:03:15Z",
+    "created_at": "2026-02-04T13:01:55Z",
     "content": [
      {
       "type": "text",
@@ -3188,7 +3408,7 @@
    {
     "uuid": "demo-g047-m53",
     "sender": "human",
-    "created_at": "2026-02-06T02:43:00Z",
+    "created_at": "2026-02-06T13:55:00Z",
     "content": [
      {
       "type": "text",
@@ -3199,7 +3419,7 @@
    {
     "uuid": "demo-g047-m54",
     "sender": "assistant",
-    "created_at": "2026-02-06T02:43:36Z",
+    "created_at": "2026-02-06T13:55:43Z",
     "content": [
      {
       "type": "text",
@@ -3210,7 +3430,7 @@
    {
     "uuid": "demo-g047-m55",
     "sender": "human",
-    "created_at": "2026-02-08T13:26:00Z",
+    "created_at": "2026-02-07T14:14:00Z",
     "content": [
      {
       "type": "text",
@@ -3221,7 +3441,7 @@
    {
     "uuid": "demo-g047-m56",
     "sender": "assistant",
-    "created_at": "2026-02-08T13:26:28Z",
+    "created_at": "2026-02-07T14:14:56Z",
     "content": [
      {
       "type": "text",
@@ -3232,7 +3452,7 @@
    {
     "uuid": "demo-g047-m57",
     "sender": "human",
-    "created_at": "2026-02-09T11:01:00Z",
+    "created_at": "2026-02-09T04:19:00Z",
     "content": [
      {
       "type": "text",
@@ -3243,7 +3463,7 @@
    {
     "uuid": "demo-g047-m58",
     "sender": "assistant",
-    "created_at": "2026-02-09T11:01:40Z",
+    "created_at": "2026-02-09T04:19:18Z",
     "content": [
      {
       "type": "text",
@@ -3254,7 +3474,7 @@
    {
     "uuid": "demo-g047-m59",
     "sender": "human",
-    "created_at": "2026-02-10T11:23:00Z",
+    "created_at": "2026-02-10T05:49:00Z",
     "content": [
      {
       "type": "text",
@@ -3265,7 +3485,7 @@
    {
     "uuid": "demo-g047-m60",
     "sender": "assistant",
-    "created_at": "2026-02-10T11:23:18Z",
+    "created_at": "2026-02-10T05:49:43Z",
     "content": [
      {
       "type": "text",
@@ -3276,7 +3496,7 @@
    {
     "uuid": "demo-g047-m61",
     "sender": "human",
-    "created_at": "2026-02-11T11:06:00Z",
+    "created_at": "2026-02-11T04:39:00Z",
     "content": [
      {
       "type": "text",
@@ -3287,7 +3507,7 @@
    {
     "uuid": "demo-g047-m62",
     "sender": "assistant",
-    "created_at": "2026-02-11T11:06:53Z",
+    "created_at": "2026-02-11T04:39:51Z",
     "content": [
      {
       "type": "text",
@@ -3298,7 +3518,7 @@
    {
     "uuid": "demo-g047-m63",
     "sender": "human",
-    "created_at": "2026-02-12T07:48:00Z",
+    "created_at": "2026-02-12T09:08:00Z",
     "content": [
      {
       "type": "text",
@@ -3309,7 +3529,7 @@
    {
     "uuid": "demo-g047-m64",
     "sender": "assistant",
-    "created_at": "2026-02-12T07:48:54Z",
+    "created_at": "2026-02-12T09:08:19Z",
     "content": [
      {
       "type": "text",
@@ -3320,7 +3540,7 @@
    {
     "uuid": "demo-g047-m65",
     "sender": "human",
-    "created_at": "2026-02-13T15:54:00Z",
+    "created_at": "2026-02-14T12:14:00Z",
     "content": [
      {
       "type": "text",
@@ -3331,7 +3551,7 @@
    {
     "uuid": "demo-g047-m66",
     "sender": "assistant",
-    "created_at": "2026-02-13T15:54:51Z",
+    "created_at": "2026-02-14T12:14:30Z",
     "content": [
      {
       "type": "text",
@@ -3342,7 +3562,7 @@
    {
     "uuid": "demo-g047-m67",
     "sender": "human",
-    "created_at": "2026-02-15T14:43:00Z",
+    "created_at": "2026-02-15T13:55:00Z",
     "content": [
      {
       "type": "text",
@@ -3353,7 +3573,7 @@
    {
     "uuid": "demo-g047-m68",
     "sender": "assistant",
-    "created_at": "2026-02-15T14:43:50Z",
+    "created_at": "2026-02-15T13:55:19Z",
     "content": [
      {
       "type": "text",
@@ -3367,13 +3587,13 @@
   "uuid": "demo-conv-g048",
   "name": "Word of the day · round two",
   "summary": "",
-  "created_at": "2026-02-16T13:25:00Z",
-  "updated_at": "2026-03-06T13:55:43Z",
+  "created_at": "2026-02-16T13:12:00Z",
+  "updated_at": "2026-03-05T15:46:25Z",
   "chat_messages": [
    {
     "uuid": "demo-g048-m1",
     "sender": "human",
-    "created_at": "2026-02-16T13:25:00Z",
+    "created_at": "2026-02-16T13:12:00Z",
     "content": [
      {
       "type": "text",
@@ -3384,7 +3604,7 @@
    {
     "uuid": "demo-g048-m2",
     "sender": "assistant",
-    "created_at": "2026-02-16T13:25:42Z",
+    "created_at": "2026-02-16T13:12:32Z",
     "content": [
      {
       "type": "text",
@@ -3395,7 +3615,7 @@
    {
     "uuid": "demo-g048-m3",
     "sender": "human",
-    "created_at": "2026-02-17T13:04:00Z",
+    "created_at": "2026-02-18T00:59:00Z",
     "content": [
      {
       "type": "text",
@@ -3406,7 +3626,7 @@
    {
     "uuid": "demo-g048-m4",
     "sender": "assistant",
-    "created_at": "2026-02-17T13:04:41Z",
+    "created_at": "2026-02-18T01:00:00Z",
     "content": [
      {
       "type": "text",
@@ -3417,7 +3637,7 @@
    {
     "uuid": "demo-g048-m5",
     "sender": "human",
-    "created_at": "2026-02-18T07:16:00Z",
+    "created_at": "2026-02-19T00:18:00Z",
     "content": [
      {
       "type": "text",
@@ -3428,7 +3648,7 @@
    {
     "uuid": "demo-g048-m6",
     "sender": "assistant",
-    "created_at": "2026-02-18T07:16:31Z",
+    "created_at": "2026-02-19T00:18:58Z",
     "content": [
      {
       "type": "text",
@@ -3439,7 +3659,7 @@
    {
     "uuid": "demo-g048-m7",
     "sender": "human",
-    "created_at": "2026-02-19T00:22:00Z",
+    "created_at": "2026-02-20T00:01:00Z",
     "content": [
      {
       "type": "text",
@@ -3450,7 +3670,7 @@
    {
     "uuid": "demo-g048-m8",
     "sender": "assistant",
-    "created_at": "2026-02-19T00:22:51Z",
+    "created_at": "2026-02-20T00:01:45Z",
     "content": [
      {
       "type": "text",
@@ -3461,7 +3681,7 @@
    {
     "uuid": "demo-g048-m9",
     "sender": "human",
-    "created_at": "2026-02-20T12:11:00Z",
+    "created_at": "2026-02-21T01:53:00Z",
     "content": [
      {
       "type": "text",
@@ -3472,7 +3692,7 @@
    {
     "uuid": "demo-g048-m10",
     "sender": "assistant",
-    "created_at": "2026-02-20T12:11:31Z",
+    "created_at": "2026-02-21T01:53:51Z",
     "content": [
      {
       "type": "text",
@@ -3483,7 +3703,7 @@
    {
     "uuid": "demo-g048-m11",
     "sender": "human",
-    "created_at": "2026-02-22T00:20:00Z",
+    "created_at": "2026-02-22T00:31:00Z",
     "content": [
      {
       "type": "text",
@@ -3494,7 +3714,7 @@
    {
     "uuid": "demo-g048-m12",
     "sender": "assistant",
-    "created_at": "2026-02-22T00:20:35Z",
+    "created_at": "2026-02-22T00:31:24Z",
     "content": [
      {
       "type": "text",
@@ -3505,7 +3725,7 @@
    {
     "uuid": "demo-g048-m13",
     "sender": "human",
-    "created_at": "2026-02-23T05:54:00Z",
+    "created_at": "2026-02-24T04:37:00Z",
     "content": [
      {
       "type": "text",
@@ -3516,7 +3736,7 @@
    {
     "uuid": "demo-g048-m14",
     "sender": "assistant",
-    "created_at": "2026-02-23T05:54:49Z",
+    "created_at": "2026-02-24T04:37:50Z",
     "content": [
      {
       "type": "text",
@@ -3527,7 +3747,7 @@
    {
     "uuid": "demo-g048-m15",
     "sender": "human",
-    "created_at": "2026-02-24T12:48:00Z",
+    "created_at": "2026-02-25T04:29:00Z",
     "content": [
      {
       "type": "text",
@@ -3538,7 +3758,7 @@
    {
     "uuid": "demo-g048-m16",
     "sender": "assistant",
-    "created_at": "2026-02-24T12:48:21Z",
+    "created_at": "2026-02-25T04:29:25Z",
     "content": [
      {
       "type": "text",
@@ -3549,7 +3769,7 @@
    {
     "uuid": "demo-g048-m17",
     "sender": "human",
-    "created_at": "2026-02-25T00:54:00Z",
+    "created_at": "2026-02-26T14:28:00Z",
     "content": [
      {
       "type": "text",
@@ -3560,7 +3780,7 @@
    {
     "uuid": "demo-g048-m18",
     "sender": "assistant",
-    "created_at": "2026-02-25T00:54:36Z",
+    "created_at": "2026-02-26T14:28:47Z",
     "content": [
      {
       "type": "text",
@@ -3571,7 +3791,7 @@
    {
     "uuid": "demo-g048-m19",
     "sender": "human",
-    "created_at": "2026-02-27T13:47:00Z",
+    "created_at": "2026-02-27T02:43:00Z",
     "content": [
      {
       "type": "text",
@@ -3582,7 +3802,7 @@
    {
     "uuid": "demo-g048-m20",
     "sender": "assistant",
-    "created_at": "2026-02-27T13:47:26Z",
+    "created_at": "2026-02-27T02:44:00Z",
     "content": [
      {
       "type": "text",
@@ -3593,7 +3813,7 @@
    {
     "uuid": "demo-g048-m21",
     "sender": "human",
-    "created_at": "2026-02-28T01:03:00Z",
+    "created_at": "2026-02-28T07:42:00Z",
     "content": [
      {
       "type": "text",
@@ -3604,7 +3824,7 @@
    {
     "uuid": "demo-g048-m22",
     "sender": "assistant",
-    "created_at": "2026-02-28T01:03:33Z",
+    "created_at": "2026-02-28T07:42:42Z",
     "content": [
      {
       "type": "text",
@@ -3615,7 +3835,7 @@
    {
     "uuid": "demo-g048-m23",
     "sender": "human",
-    "created_at": "2026-03-01T02:58:00Z",
+    "created_at": "2026-03-01T04:50:00Z",
     "content": [
      {
       "type": "text",
@@ -3626,7 +3846,7 @@
    {
     "uuid": "demo-g048-m24",
     "sender": "assistant",
-    "created_at": "2026-03-01T02:58:21Z",
+    "created_at": "2026-03-01T04:50:19Z",
     "content": [
      {
       "type": "text",
@@ -3637,7 +3857,7 @@
    {
     "uuid": "demo-g048-m25",
     "sender": "human",
-    "created_at": "2026-03-02T13:51:00Z",
+    "created_at": "2026-03-02T12:19:00Z",
     "content": [
      {
       "type": "text",
@@ -3648,7 +3868,7 @@
    {
     "uuid": "demo-g048-m26",
     "sender": "assistant",
-    "created_at": "2026-03-02T13:51:19Z",
+    "created_at": "2026-03-02T12:19:37Z",
     "content": [
      {
       "type": "text",
@@ -3659,7 +3879,7 @@
    {
     "uuid": "demo-g048-m27",
     "sender": "human",
-    "created_at": "2026-03-03T01:19:00Z",
+    "created_at": "2026-03-03T13:13:00Z",
     "content": [
      {
       "type": "text",
@@ -3670,7 +3890,7 @@
    {
     "uuid": "demo-g048-m28",
     "sender": "assistant",
-    "created_at": "2026-03-03T01:19:39Z",
+    "created_at": "2026-03-03T13:13:28Z",
     "content": [
      {
       "type": "text",
@@ -3681,7 +3901,7 @@
    {
     "uuid": "demo-g048-m29",
     "sender": "human",
-    "created_at": "2026-03-04T13:01:00Z",
+    "created_at": "2026-03-04T09:07:00Z",
     "content": [
      {
       "type": "text",
@@ -3692,7 +3912,7 @@
    {
     "uuid": "demo-g048-m30",
     "sender": "assistant",
-    "created_at": "2026-03-04T13:01:55Z",
+    "created_at": "2026-03-04T09:07:45Z",
     "content": [
      {
       "type": "text",
@@ -3703,7 +3923,7 @@
    {
     "uuid": "demo-g048-m31",
     "sender": "human",
-    "created_at": "2026-03-06T13:55:00Z",
+    "created_at": "2026-03-05T15:46:00Z",
     "content": [
      {
       "type": "text",
@@ -3714,7 +3934,7 @@
    {
     "uuid": "demo-g048-m32",
     "sender": "assistant",
-    "created_at": "2026-03-06T13:55:43Z",
+    "created_at": "2026-03-05T15:46:25Z",
     "content": [
      {
       "type": "text",

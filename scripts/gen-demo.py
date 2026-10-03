@@ -25,7 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUTS = {"en": ROOT / "demo-conversations.json", "zh": ROOT / "demo-conversations.zh.json"}
 CN = timezone(timedelta(hours=8))
-START = datetime(2025, 10, 6, tzinfo=CN)
+START = datetime(2025, 11, 1, tzinfo=CN)
 END = datetime(2026, 4, 3, tzinfo=CN)  # hand-written samples start 2026-04-05
 SEED = 20261003
 

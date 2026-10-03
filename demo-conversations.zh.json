@@ -172,13 +172,13 @@
   "uuid": "demo-conv-g001",
   "name": "Python 列表推导式",
   "summary": "",
-  "created_at": "2025-12-21T01:42:00Z",
-  "updated_at": "2025-12-21T01:43:20Z",
+  "created_at": "2025-11-08T12:00:00Z",
+  "updated_at": "2025-11-08T12:01:03Z",
   "chat_messages": [
    {
     "uuid": "demo-g001-m1",
     "sender": "human",
-    "created_at": "2025-12-21T01:42:00Z",
+    "created_at": "2025-11-08T12:00:00Z",
     "content": [
      {
       "type": "text",
@@ -189,13 +189,13 @@
    {
     "uuid": "demo-g001-m2",
     "sender": "assistant",
-    "created_at": "2025-12-21T01:43:20Z",
+    "created_at": "2025-11-08T12:01:03Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "用户在问基础概念，先给结论再举一个小例子。",
-      "start_timestamp": "2025-12-21T01:43:05Z",
-      "stop_timestamp": "2025-12-21T01:43:20Z"
+      "start_timestamp": "2025-11-08T12:00:56Z",
+      "stop_timestamp": "2025-11-08T12:01:03Z"
      },
      {
       "type": "text",
@@ -209,13 +209,13 @@
   "uuid": "demo-conv-g002",
   "name": "merge 还是 rebase",
   "summary": "",
-  "created_at": "2026-02-13T04:53:00Z",
-  "updated_at": "2026-02-13T04:55:35Z",
+  "created_at": "2026-02-08T12:03:00Z",
+  "updated_at": "2026-02-08T12:05:28Z",
   "chat_messages": [
    {
     "uuid": "demo-g002-m1",
     "sender": "human",
-    "created_at": "2026-02-13T04:53:00Z",
+    "created_at": "2026-02-08T12:03:00Z",
     "content": [
      {
       "type": "text",
@@ -226,13 +226,13 @@
    {
     "uuid": "demo-g002-m2",
     "sender": "assistant",
-    "created_at": "2026-02-13T04:54:22Z",
+    "created_at": "2026-02-08T12:03:22Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "这里最容易混淆的是使用场景，按场景回答。",
-      "start_timestamp": "2026-02-13T04:54:15Z",
-      "stop_timestamp": "2026-02-13T04:54:22Z"
+      "start_timestamp": "2026-02-08T12:02:58Z",
+      "stop_timestamp": "2026-02-08T12:03:22Z"
      },
      {
       "type": "text",
@@ -243,60 +243,7 @@
    {
     "uuid": "demo-g002-m3",
     "sender": "human",
-    "created_at": "2026-02-13T04:55:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，谢谢！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-13T04:55:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气～"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g003",
-  "name": "IndexError 报错",
-  "summary": "",
-  "created_at": "2025-11-22T11:44:00Z",
-  "updated_at": "2025-11-22T11:45:39Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g003-m1",
-    "sender": "human",
-    "created_at": "2025-11-22T11:44:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "这个报错是什么意思：`IndexError: list index out of range`"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:44:24Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "说明你访问的下标超出了列表长度。比如列表只有 3 个元素，下标最大是 2，却访问了 `items[3]`。可以先 `print(len(items))` 看看实际长度。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m3",
-    "sender": "human",
-    "created_at": "2025-11-22T11:45:24Z",
+    "created_at": "2026-02-08T12:05:22Z",
     "content": [
      {
       "type": "text",
@@ -305,9 +252,9 @@
     ]
    },
    {
-    "uuid": "demo-g003-m4",
+    "uuid": "demo-g002-m4",
     "sender": "assistant",
-    "created_at": "2025-11-22T11:45:39Z",
+    "created_at": "2026-02-08T12:05:28Z",
     "content": [
      {
       "type": "text",
@@ -318,16 +265,69 @@
   ]
  },
  {
+  "uuid": "demo-conv-g003",
+  "name": "IndexError 报错",
+  "summary": "",
+  "created_at": "2025-12-28T12:31:00Z",
+  "updated_at": "2025-12-28T12:33:44Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g003-m1",
+    "sender": "human",
+    "created_at": "2025-12-28T12:31:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "这个报错是什么意思：`IndexError: list index out of range`"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-28T12:31:38Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "说明你访问的下标超出了列表长度。比如列表只有 3 个元素，下标最大是 2，却访问了 `items[3]`。可以先 `print(len(items))` 看看实际长度。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m3",
+    "sender": "human",
+    "created_at": "2025-12-28T12:33:38Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助 ✨"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-28T12:33:44Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g004",
   "name": "正则的贪婪匹配",
   "summary": "",
-  "created_at": "2025-11-30T13:33:00Z",
-  "updated_at": "2025-11-30T13:34:00Z",
+  "created_at": "2025-11-09T14:05:00Z",
+  "updated_at": "2025-11-09T14:06:01Z",
   "chat_messages": [
    {
     "uuid": "demo-g004-m1",
     "sender": "human",
-    "created_at": "2025-11-30T13:33:00Z",
+    "created_at": "2025-11-09T14:05:00Z",
     "content": [
      {
       "type": "text",
@@ -338,13 +338,13 @@
    {
     "uuid": "demo-g004-m2",
     "sender": "assistant",
-    "created_at": "2025-11-30T13:34:00Z",
+    "created_at": "2025-11-09T14:06:01Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "用一个具体字符串对比两种结果，最直观。",
-      "start_timestamp": "2025-11-30T13:33:45Z",
-      "stop_timestamp": "2025-11-30T13:34:00Z"
+      "start_timestamp": "2025-11-09T14:05:40Z",
+      "stop_timestamp": "2025-11-09T14:06:01Z"
      },
      {
       "type": "text",
@@ -358,13 +358,13 @@
   "uuid": "demo-conv-g005",
   "name": "SQL 查询变慢",
   "summary": "",
-  "created_at": "2025-12-23T18:33:00Z",
-  "updated_at": "2025-12-23T18:34:29Z",
+  "created_at": "2026-03-12T18:11:00Z",
+  "updated_at": "2026-03-12T18:11:35Z",
   "chat_messages": [
    {
     "uuid": "demo-g005-m1",
     "sender": "human",
-    "created_at": "2025-12-23T18:33:00Z",
+    "created_at": "2026-03-12T18:11:00Z",
     "content": [
      {
       "type": "text",
@@ -375,7 +375,7 @@
    {
     "uuid": "demo-g005-m2",
     "sender": "assistant",
-    "created_at": "2025-12-23T18:34:29Z",
+    "created_at": "2026-03-12T18:11:35Z",
     "content": [
      {
       "type": "text",
@@ -389,13 +389,13 @@
   "uuid": "demo-conv-g006",
   "name": "flex 垂直居中",
   "summary": "",
-  "created_at": "2026-02-14T13:27:00Z",
-  "updated_at": "2026-02-14T13:27:21Z",
+  "created_at": "2026-02-17T15:48:00Z",
+  "updated_at": "2026-02-17T15:49:43Z",
   "chat_messages": [
    {
     "uuid": "demo-g006-m1",
     "sender": "human",
-    "created_at": "2026-02-14T13:27:00Z",
+    "created_at": "2026-02-17T15:48:00Z",
     "content": [
      {
       "type": "text",
@@ -406,17 +406,39 @@
    {
     "uuid": "demo-g006-m2",
     "sender": "assistant",
-    "created_at": "2026-02-14T13:27:21Z",
+    "created_at": "2026-02-17T15:48:23Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "给出可以直接复制的代码片段会更有用。",
-      "start_timestamp": "2026-02-14T13:27:09Z",
-      "stop_timestamp": "2026-02-14T13:27:21Z"
+      "start_timestamp": "2026-02-17T15:47:58Z",
+      "stop_timestamp": "2026-02-17T15:48:23Z"
      },
      {
       "type": "text",
       "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g006-m3",
+    "sender": "human",
+    "created_at": "2026-02-17T15:49:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g006-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-17T15:49:43Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -426,13 +448,13 @@
   "uuid": "demo-conv-g007",
   "name": "一长串 if/elif",
   "summary": "",
-  "created_at": "2025-12-02T14:46:00Z",
-  "updated_at": "2025-12-02T14:50:43Z",
+  "created_at": "2026-03-07T11:47:00Z",
+  "updated_at": "2026-03-07T11:49:56Z",
   "chat_messages": [
    {
     "uuid": "demo-g007-m1",
     "sender": "human",
-    "created_at": "2025-12-02T14:46:00Z",
+    "created_at": "2026-03-07T11:47:00Z",
     "content": [
      {
       "type": "text",
@@ -443,7 +465,7 @@
    {
     "uuid": "demo-g007-m2",
     "sender": "assistant",
-    "created_at": "2025-12-02T14:46:31Z",
+    "created_at": "2026-03-07T11:47:51Z",
     "content": [
      {
       "type": "text",
@@ -454,22 +476,22 @@
    {
     "uuid": "demo-g007-m3",
     "sender": "human",
-    "created_at": "2025-12-02T14:50:31Z",
+    "created_at": "2026-03-07T11:49:51Z",
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！"
+      "text": "好的，谢谢！ 😊"
      }
     ]
    },
    {
     "uuid": "demo-g007-m4",
     "sender": "assistant",
-    "created_at": "2025-12-02T14:50:43Z",
+    "created_at": "2026-03-07T11:49:56Z",
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "不客气～"
      }
     ]
    }
@@ -479,13 +501,13 @@
   "uuid": "demo-conv-g008",
   "name": "写爬虫的注意事项",
   "summary": "",
-  "created_at": "2026-01-21T01:01:00Z",
-  "updated_at": "2026-01-21T01:02:01Z",
+  "created_at": "2026-01-23T04:12:00Z",
+  "updated_at": "2026-01-23T04:14:26Z",
   "chat_messages": [
    {
     "uuid": "demo-g008-m1",
     "sender": "human",
-    "created_at": "2026-01-21T01:01:00Z",
+    "created_at": "2026-01-23T04:12:00Z",
     "content": [
      {
       "type": "text",
@@ -496,11 +518,33 @@
    {
     "uuid": "demo-g008-m2",
     "sender": "assistant",
-    "created_at": "2026-01-21T01:02:01Z",
+    "created_at": "2026-01-23T04:13:13Z",
     "content": [
      {
       "type": "text",
       "text": "几件事：先看网站的 robots.txt 和使用条款；请求之间加间隔，别给对方服务器压力；做好异常处理和重试；数据只用于自己被允许的用途。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g008-m3",
+    "sender": "human",
+    "created_at": "2026-01-23T04:14:13Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g008-m4",
+    "sender": "assistant",
+    "created_at": "2026-01-23T04:14:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
      }
     ]
    }
@@ -510,13 +554,13 @@
   "uuid": "demo-conv-g009",
   "name": "affect 和 effect",
   "summary": "",
-  "created_at": "2026-02-10T04:47:00Z",
-  "updated_at": "2026-02-10T04:53:23Z",
+  "created_at": "2026-03-17T02:11:00Z",
+  "updated_at": "2026-03-17T02:11:30Z",
   "chat_messages": [
    {
     "uuid": "demo-g009-m1",
     "sender": "human",
-    "created_at": "2026-02-10T04:47:00Z",
+    "created_at": "2026-03-17T02:11:00Z",
     "content": [
      {
       "type": "text",
@@ -527,39 +571,17 @@
    {
     "uuid": "demo-g009-m2",
     "sender": "assistant",
-    "created_at": "2026-02-10T04:48:16Z",
+    "created_at": "2026-03-17T02:11:30Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "用户的语法点比较基础，用记忆口诀会更好记。",
-      "start_timestamp": "2026-02-10T04:47:58Z",
-      "stop_timestamp": "2026-02-10T04:48:16Z"
+      "start_timestamp": "2026-03-17T02:11:11Z",
+      "stop_timestamp": "2026-03-17T02:11:30Z"
      },
      {
       "type": "text",
       "text": "多数情况下 **affect** 是动词（影响），**effect** 是名词（效果）。记法：*A for action*，动作用 affect。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g009-m3",
-    "sender": "human",
-    "created_at": "2026-02-10T04:53:16Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g009-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-10T04:53:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -569,13 +591,13 @@
   "uuid": "demo-conv-g010",
   "name": "改一个英文句子",
   "summary": "",
-  "created_at": "2025-11-08T13:44:00Z",
-  "updated_at": "2025-11-08T13:44:30Z",
+  "created_at": "2026-01-24T13:22:00Z",
+  "updated_at": "2026-01-24T13:22:50Z",
   "chat_messages": [
    {
     "uuid": "demo-g010-m1",
     "sender": "human",
-    "created_at": "2025-11-08T13:44:00Z",
+    "created_at": "2026-01-24T13:22:00Z",
     "content": [
      {
       "type": "text",
@@ -586,13 +608,13 @@
    {
     "uuid": "demo-g010-m2",
     "sender": "assistant",
-    "created_at": "2025-11-08T13:44:30Z",
+    "created_at": "2026-01-24T13:22:50Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "给一个改写示例，比讲规则更直观。",
-      "start_timestamp": "2025-11-08T13:44:11Z",
-      "stop_timestamp": "2025-11-08T13:44:30Z"
+      "start_timestamp": "2026-01-24T13:22:41Z",
+      "stop_timestamp": "2026-01-24T13:22:50Z"
      },
      {
       "type": "text",
@@ -606,13 +628,13 @@
   "uuid": "demo-conv-g011",
   "name": "雅思大作文开头",
   "summary": "",
-  "created_at": "2026-03-24T13:21:00Z",
-  "updated_at": "2026-03-24T13:25:14Z",
+  "created_at": "2025-12-06T15:09:00Z",
+  "updated_at": "2025-12-06T15:14:46Z",
   "chat_messages": [
    {
     "uuid": "demo-g011-m1",
     "sender": "human",
-    "created_at": "2026-03-24T13:21:00Z",
+    "created_at": "2025-12-06T15:09:00Z",
     "content": [
      {
       "type": "text",
@@ -623,7 +645,7 @@
    {
     "uuid": "demo-g011-m2",
     "sender": "assistant",
-    "created_at": "2026-03-24T13:22:05Z",
+    "created_at": "2025-12-06T15:09:31Z",
     "content": [
      {
       "type": "text",
@@ -634,18 +656,18 @@
    {
     "uuid": "demo-g011-m3",
     "sender": "human",
-    "created_at": "2026-03-24T13:25:05Z",
+    "created_at": "2025-12-06T15:14:31Z",
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！ 🙏"
+      "text": "明白了，谢谢！"
      }
     ]
    },
    {
     "uuid": "demo-g011-m4",
     "sender": "assistant",
-    "created_at": "2026-03-24T13:25:14Z",
+    "created_at": "2025-12-06T15:14:46Z",
     "content": [
      {
       "type": "text",
@@ -659,13 +681,13 @@
   "uuid": "demo-conv-g012",
   "name": "每天练口语",
   "summary": "",
-  "created_at": "2026-02-09T04:00:00Z",
-  "updated_at": "2026-02-09T04:02:07Z",
+  "created_at": "2025-11-08T04:46:00Z",
+  "updated_at": "2025-11-08T04:49:28Z",
   "chat_messages": [
    {
     "uuid": "demo-g012-m1",
     "sender": "human",
-    "created_at": "2026-02-09T04:00:00Z",
+    "created_at": "2025-11-08T04:46:00Z",
     "content": [
      {
       "type": "text",
@@ -676,7 +698,7 @@
    {
     "uuid": "demo-g012-m2",
     "sender": "assistant",
-    "created_at": "2026-02-09T04:01:00Z",
+    "created_at": "2025-11-08T04:47:19Z",
     "content": [
      {
       "type": "text",
@@ -687,22 +709,22 @@
    {
     "uuid": "demo-g012-m3",
     "sender": "human",
-    "created_at": "2026-02-09T04:02:00Z",
+    "created_at": "2025-11-08T04:49:19Z",
     "content": [
      {
       "type": "text",
-      "text": "谢谢，很有帮助"
+      "text": "明白了，谢谢！"
      }
     ]
    },
    {
     "uuid": "demo-g012-m4",
     "sender": "assistant",
-    "created_at": "2026-02-09T04:02:07Z",
+    "created_at": "2025-11-08T04:49:28Z",
     "content": [
      {
       "type": "text",
-      "text": "很高兴能帮上忙。"
+      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -712,13 +734,13 @@
   "uuid": "demo-conv-g013",
   "name": "英文邮件结尾",
   "summary": "",
-  "created_at": "2026-03-21T05:33:00Z",
-  "updated_at": "2026-03-21T05:33:37Z",
+  "created_at": "2025-12-27T09:43:00Z",
+  "updated_at": "2025-12-27T09:44:23Z",
   "chat_messages": [
    {
     "uuid": "demo-g013-m1",
     "sender": "human",
-    "created_at": "2026-03-21T05:33:00Z",
+    "created_at": "2025-12-27T09:43:00Z",
     "content": [
      {
       "type": "text",
@@ -729,7 +751,7 @@
    {
     "uuid": "demo-g013-m2",
     "sender": "assistant",
-    "created_at": "2026-03-21T05:33:37Z",
+    "created_at": "2025-12-27T09:44:23Z",
     "content": [
      {
       "type": "text",
@@ -743,13 +765,13 @@
   "uuid": "demo-conv-g014",
   "name": "look forward to 的用法",
   "summary": "",
-  "created_at": "2026-02-21T19:28:00Z",
-  "updated_at": "2026-02-21T19:31:04Z",
+  "created_at": "2025-12-13T19:23:00Z",
+  "updated_at": "2025-12-13T19:23:54Z",
   "chat_messages": [
    {
     "uuid": "demo-g014-m1",
     "sender": "human",
-    "created_at": "2026-02-21T19:28:00Z",
+    "created_at": "2025-12-13T19:23:00Z",
     "content": [
      {
       "type": "text",
@@ -760,33 +782,11 @@
    {
     "uuid": "demo-g014-m2",
     "sender": "assistant",
-    "created_at": "2026-02-21T19:28:48Z",
+    "created_at": "2025-12-13T19:23:54Z",
     "content": [
      {
       "type": "text",
       "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m3",
-    "sender": "human",
-    "created_at": "2026-02-21T19:30:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "谢谢，很有帮助"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-21T19:31:04Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -796,13 +796,13 @@
   "uuid": "demo-conv-g015",
   "name": "by the way 正式吗",
   "summary": "",
-  "created_at": "2026-02-07T13:30:00Z",
-  "updated_at": "2026-02-07T13:31:04Z",
+  "created_at": "2026-02-08T05:27:00Z",
+  "updated_at": "2026-02-08T05:27:41Z",
   "chat_messages": [
    {
     "uuid": "demo-g015-m1",
     "sender": "human",
-    "created_at": "2026-02-07T13:30:00Z",
+    "created_at": "2026-02-08T05:27:00Z",
     "content": [
      {
       "type": "text",
@@ -813,7 +813,7 @@
    {
     "uuid": "demo-g015-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T13:31:04Z",
+    "created_at": "2026-02-08T05:27:41Z",
     "content": [
      {
       "type": "text",
@@ -827,13 +827,13 @@
   "uuid": "demo-conv-g016",
   "name": "番茄炒蛋的顺序",
   "summary": "",
-  "created_at": "2026-02-15T15:56:00Z",
-  "updated_at": "2026-02-15T15:57:09Z",
+  "created_at": "2026-01-11T14:27:00Z",
+  "updated_at": "2026-01-11T14:30:35Z",
   "chat_messages": [
    {
     "uuid": "demo-g016-m1",
     "sender": "human",
-    "created_at": "2026-02-15T15:56:00Z",
+    "created_at": "2026-01-11T14:27:00Z",
     "content": [
      {
       "type": "text",
@@ -844,108 +844,18 @@
    {
     "uuid": "demo-g016-m2",
     "sender": "assistant",
-    "created_at": "2026-02-15T15:57:09Z",
+    "created_at": "2026-01-11T14:27:27Z",
     "content": [
      {
       "type": "text",
       "text": "先炒蛋：油热下蛋液，凝固到七成就盛出。再炒番茄出汁，最后把蛋倒回去翻匀。这样蛋嫩、汁多。"
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g017",
-  "name": "鸡蛋土豆洋葱",
-  "summary": "",
-  "created_at": "2026-01-25T02:38:00Z",
-  "updated_at": "2026-01-25T02:44:06Z",
-  "chat_messages": [
+   },
    {
-    "uuid": "demo-g017-m1",
+    "uuid": "demo-g016-m3",
     "sender": "human",
-    "created_at": "2026-01-25T02:38:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-25T02:38:55Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
-      "start_timestamp": "2026-01-25T02:38:38Z",
-      "stop_timestamp": "2026-01-25T02:38:55Z"
-     },
-     {
-      "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m3",
-    "sender": "human",
-    "created_at": "2026-01-25T02:43:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ 👍"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-25T02:44:06Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g018",
-  "name": "烤箱预热",
-  "summary": "",
-  "created_at": "2026-03-09T13:32:00Z",
-  "updated_at": "2026-03-09T13:34:03Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g018-m1",
-    "sender": "human",
-    "created_at": "2026-03-09T13:32:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "烤箱要预热多久？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m2",
-    "sender": "assistant",
-    "created_at": "2026-03-09T13:32:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m3",
-    "sender": "human",
-    "created_at": "2026-03-09T13:33:48Z",
+    "created_at": "2026-01-11T14:30:27Z",
     "content": [
      {
       "type": "text",
@@ -954,9 +864,9 @@
     ]
    },
    {
-    "uuid": "demo-g018-m4",
+    "uuid": "demo-g016-m4",
     "sender": "assistant",
-    "created_at": "2026-03-09T13:34:03Z",
+    "created_at": "2026-01-11T14:30:35Z",
     "content": [
      {
       "type": "text",
@@ -967,148 +877,86 @@
   ]
  },
  {
-  "uuid": "demo-conv-g019",
-  "name": "米饭夹生",
+  "uuid": "demo-conv-g017",
+  "name": "鸡蛋土豆洋葱",
   "summary": "",
-  "created_at": "2026-03-24T01:58:00Z",
-  "updated_at": "2026-03-24T01:58:55Z",
+  "created_at": "2025-12-27T12:04:00Z",
+  "updated_at": "2025-12-27T12:04:34Z",
   "chat_messages": [
    {
-    "uuid": "demo-g019-m1",
+    "uuid": "demo-g017-m1",
     "sender": "human",
-    "created_at": "2026-03-24T01:58:00Z",
+    "created_at": "2025-12-27T12:04:00Z",
     "content": [
      {
       "type": "text",
-      "text": "米饭总是夹生，怎么办？"
+      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
      }
     ]
    },
    {
-    "uuid": "demo-g019-m2",
+    "uuid": "demo-g017-m2",
     "sender": "assistant",
-    "created_at": "2026-03-24T01:58:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "多数是水少了或者没泡。大米和水大约 1:1.2，先泡 20 分钟再煮，煮好焖 10 分钟别急着开盖。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g020",
-  "name": "15 分钟晚饭",
-  "summary": "",
-  "created_at": "2025-12-28T13:59:00Z",
-  "updated_at": "2025-12-28T13:59:55Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g020-m1",
-    "sender": "human",
-    "created_at": "2025-12-28T13:59:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "有没有 15 分钟能做完的晚饭？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-28T13:59:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g021",
-  "name": "炒青菜变黄",
-  "summary": "",
-  "created_at": "2025-12-14T14:08:00Z",
-  "updated_at": "2025-12-14T14:08:38Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g021-m1",
-    "sender": "human",
-    "created_at": "2025-12-14T14:08:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "怎么让炒青菜保持翠绿？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g021-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-14T14:08:38Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "大火快炒，下锅前确保锅够热；盐最后放；也可以先焯水 10 秒再炒。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g022",
-  "name": "京都三日行程",
-  "summary": "",
-  "created_at": "2025-11-09T05:28:00Z",
-  "updated_at": "2025-11-09T05:33:39Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g022-m1",
-    "sender": "human",
-    "created_at": "2025-11-09T05:28:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "京都三天怎么安排比较不赶？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g022-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-09T05:28:25Z",
+    "created_at": "2025-12-27T12:04:34Z",
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2025-11-09T05:28:04Z",
-      "stop_timestamp": "2025-11-09T05:28:25Z"
+      "thinking": "用户手边食材有限，给一道能直接做的菜。",
+      "start_timestamp": "2025-12-27T12:04:27Z",
+      "stop_timestamp": "2025-12-27T12:04:34Z"
      },
      {
       "type": "text",
-      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
+      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g018",
+  "name": "烤箱预热",
+  "summary": "",
+  "created_at": "2026-03-06T12:19:00Z",
+  "updated_at": "2026-03-06T12:22:52Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g022-m3",
+    "uuid": "demo-g018-m1",
     "sender": "human",
-    "created_at": "2025-11-09T05:33:25Z",
+    "created_at": "2026-03-06T12:19:00Z",
     "content": [
      {
       "type": "text",
-      "text": "好的，谢谢！"
+      "text": "烤箱要预热多久？"
      }
     ]
    },
    {
-    "uuid": "demo-g022-m4",
+    "uuid": "demo-g018-m2",
     "sender": "assistant",
-    "created_at": "2025-11-09T05:33:39Z",
+    "created_at": "2026-03-06T12:19:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g018-m3",
+    "sender": "human",
+    "created_at": "2026-03-06T12:22:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！ 😊"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g018-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-06T12:22:52Z",
     "content": [
      {
       "type": "text",
@@ -1119,16 +967,234 @@
   ]
  },
  {
+  "uuid": "demo-conv-g019",
+  "name": "米饭夹生",
+  "summary": "",
+  "created_at": "2026-01-10T04:53:00Z",
+  "updated_at": "2026-01-10T04:56:07Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g019-m1",
+    "sender": "human",
+    "created_at": "2026-01-10T04:53:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "米饭总是夹生，怎么办？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g019-m2",
+    "sender": "assistant",
+    "created_at": "2026-01-10T04:53:54Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "多数是水少了或者没泡。大米和水大约 1:1.2，先泡 20 分钟再煮，煮好焖 10 分钟别急着开盖。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g019-m3",
+    "sender": "human",
+    "created_at": "2026-01-10T04:55:54Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g019-m4",
+    "sender": "assistant",
+    "created_at": "2026-01-10T04:56:07Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g020",
+  "name": "15 分钟晚饭",
+  "summary": "",
+  "created_at": "2026-02-23T02:19:00Z",
+  "updated_at": "2026-02-23T02:24:56Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g020-m1",
+    "sender": "human",
+    "created_at": "2026-02-23T02:19:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "有没有 15 分钟能做完的晚饭？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g020-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-23T02:19:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g020-m3",
+    "sender": "human",
+    "created_at": "2026-02-23T02:24:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g020-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-23T02:24:56Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g021",
+  "name": "炒青菜变黄",
+  "summary": "",
+  "created_at": "2025-12-13T14:40:00Z",
+  "updated_at": "2025-12-13T14:41:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g021-m1",
+    "sender": "human",
+    "created_at": "2025-12-13T14:40:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "怎么让炒青菜保持翠绿？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g021-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-13T14:40:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "大火快炒，下锅前确保锅够热；盐最后放；也可以先焯水 10 秒再炒。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g021-m3",
+    "sender": "human",
+    "created_at": "2025-12-13T14:41:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g021-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-13T14:41:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g022",
+  "name": "京都三日行程",
+  "summary": "",
+  "created_at": "2026-01-10T14:47:00Z",
+  "updated_at": "2026-01-10T14:51:07Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g022-m1",
+    "sender": "human",
+    "created_at": "2026-01-10T14:47:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "京都三天怎么安排比较不赶？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g022-m2",
+    "sender": "assistant",
+    "created_at": "2026-01-10T14:48:01Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "行程问题按区域拆分最清楚。",
+      "start_timestamp": "2026-01-10T14:47:50Z",
+      "stop_timestamp": "2026-01-10T14:48:01Z"
+     },
+     {
+      "type": "text",
+      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g022-m3",
+    "sender": "human",
+    "created_at": "2026-01-10T14:51:01Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g022-m4",
+    "sender": "assistant",
+    "created_at": "2026-01-10T14:51:07Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g023",
   "name": "冰岛自驾",
   "summary": "",
-  "created_at": "2025-12-26T18:22:00Z",
-  "updated_at": "2025-12-26T18:22:43Z",
+  "created_at": "2025-11-26T20:30:00Z",
+  "updated_at": "2025-11-26T20:31:56Z",
   "chat_messages": [
    {
     "uuid": "demo-g023-m1",
     "sender": "human",
-    "created_at": "2025-12-26T18:22:00Z",
+    "created_at": "2025-11-26T20:30:00Z",
     "content": [
      {
       "type": "text",
@@ -1139,11 +1205,33 @@
    {
     "uuid": "demo-g023-m2",
     "sender": "assistant",
-    "created_at": "2025-12-26T18:22:43Z",
+    "created_at": "2025-11-26T20:30:46Z",
     "content": [
      {
       "type": "text",
       "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g023-m3",
+    "sender": "human",
+    "created_at": "2025-11-26T20:31:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g023-m4",
+    "sender": "assistant",
+    "created_at": "2025-11-26T20:31:56Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
      }
     ]
    }
@@ -1153,13 +1241,13 @@
   "uuid": "demo-conv-g024",
   "name": "行李清单",
   "summary": "",
-  "created_at": "2026-03-17T00:40:00Z",
-  "updated_at": "2026-03-17T00:40:21Z",
+  "created_at": "2025-11-05T13:11:00Z",
+  "updated_at": "2025-11-05T13:12:58Z",
   "chat_messages": [
    {
     "uuid": "demo-g024-m1",
     "sender": "human",
-    "created_at": "2026-03-17T00:40:00Z",
+    "created_at": "2025-11-05T13:11:00Z",
     "content": [
      {
       "type": "text",
@@ -1170,11 +1258,33 @@
    {
     "uuid": "demo-g024-m2",
     "sender": "assistant",
-    "created_at": "2026-03-17T00:40:21Z",
+    "created_at": "2025-11-05T13:11:47Z",
     "content": [
      {
       "type": "text",
       "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g024-m3",
+    "sender": "human",
+    "created_at": "2025-11-05T13:12:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g024-m4",
+    "sender": "assistant",
+    "created_at": "2025-11-05T13:12:58Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -1184,13 +1294,13 @@
   "uuid": "demo-conv-g025",
   "name": "旅行拍照",
   "summary": "",
-  "created_at": "2025-12-28T14:07:00Z",
-  "updated_at": "2025-12-28T14:08:30Z",
+  "created_at": "2026-02-01T12:48:00Z",
+  "updated_at": "2026-02-01T12:53:08Z",
   "chat_messages": [
    {
     "uuid": "demo-g025-m1",
     "sender": "human",
-    "created_at": "2025-12-28T14:07:00Z",
+    "created_at": "2026-02-01T12:48:00Z",
     "content": [
      {
       "type": "text",
@@ -1201,11 +1311,33 @@
    {
     "uuid": "demo-g025-m2",
     "sender": "assistant",
-    "created_at": "2025-12-28T14:08:30Z",
+    "created_at": "2026-02-01T12:48:48Z",
     "content": [
      {
       "type": "text",
       "text": "多利用早晨和傍晚的光线；人物不一定放正中，试试三分构图；多拍几张再挑。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g025-m3",
+    "sender": "human",
+    "created_at": "2026-02-01T12:52:48Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！ ✨"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g025-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-01T12:53:08Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -1215,13 +1347,13 @@
   "uuid": "demo-conv-g026",
   "name": "旅行保险",
   "summary": "",
-  "created_at": "2026-03-11T13:30:00Z",
-  "updated_at": "2026-03-11T13:31:56Z",
+  "created_at": "2026-02-08T14:17:00Z",
+  "updated_at": "2026-02-08T14:19:14Z",
   "chat_messages": [
    {
     "uuid": "demo-g026-m1",
     "sender": "human",
-    "created_at": "2026-03-11T13:30:00Z",
+    "created_at": "2026-02-08T14:17:00Z",
     "content": [
      {
       "type": "text",
@@ -1232,7 +1364,7 @@
    {
     "uuid": "demo-g026-m2",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:30:46Z",
+    "created_at": "2026-02-08T14:18:05Z",
     "content": [
      {
       "type": "text",
@@ -1243,7 +1375,7 @@
    {
     "uuid": "demo-g026-m3",
     "sender": "human",
-    "created_at": "2026-03-11T13:31:46Z",
+    "created_at": "2026-02-08T14:19:05Z",
     "content": [
      {
       "type": "text",
@@ -1254,7 +1386,7 @@
    {
     "uuid": "demo-g026-m4",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:31:56Z",
+    "created_at": "2026-02-08T14:19:14Z",
     "content": [
      {
       "type": "text",
@@ -1268,13 +1400,13 @@
   "uuid": "demo-conv-g027",
   "name": "《百年孤独》人名",
   "summary": "",
-  "created_at": "2025-10-10T13:11:00Z",
-  "updated_at": "2025-10-10T13:12:58Z",
+  "created_at": "2025-11-15T05:32:00Z",
+  "updated_at": "2025-11-15T05:33:10Z",
   "chat_messages": [
    {
     "uuid": "demo-g027-m1",
     "sender": "human",
-    "created_at": "2025-10-10T13:11:00Z",
+    "created_at": "2025-11-15T05:32:00Z",
     "content": [
      {
       "type": "text",
@@ -1285,33 +1417,11 @@
    {
     "uuid": "demo-g027-m2",
     "sender": "assistant",
-    "created_at": "2025-10-10T13:11:47Z",
+    "created_at": "2025-11-15T05:33:10Z",
     "content": [
      {
       "type": "text",
       "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g027-m3",
-    "sender": "human",
-    "created_at": "2025-10-10T13:12:47Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "谢谢，很有帮助"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g027-m4",
-    "sender": "assistant",
-    "created_at": "2025-10-10T13:12:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -1321,13 +1431,13 @@
   "uuid": "demo-conv-g028",
   "name": "没时间读书",
   "summary": "",
-  "created_at": "2026-02-07T11:53:00Z",
-  "updated_at": "2026-02-07T11:54:18Z",
+  "created_at": "2025-12-13T11:20:00Z",
+  "updated_at": "2025-12-13T11:27:20Z",
   "chat_messages": [
    {
     "uuid": "demo-g028-m1",
     "sender": "human",
-    "created_at": "2026-02-07T11:53:00Z",
+    "created_at": "2025-12-13T11:20:00Z",
     "content": [
      {
       "type": "text",
@@ -1338,66 +1448,35 @@
    {
     "uuid": "demo-g028-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T11:54:18Z",
+    "created_at": "2025-12-13T11:21:11Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
-      "start_timestamp": "2026-02-07T11:54:04Z",
-      "stop_timestamp": "2026-02-07T11:54:18Z"
+      "start_timestamp": "2025-12-13T11:20:48Z",
+      "stop_timestamp": "2025-12-13T11:21:11Z"
      },
      {
       "type": "text",
       "text": "把目标定小：每天 10 页，或者睡前 15 分钟。随身带一本，零碎时间也能读几页。"
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g029",
-  "name": "科普书推荐",
-  "summary": "",
-  "created_at": "2026-03-06T13:40:00Z",
-  "updated_at": "2026-03-06T13:42:40Z",
-  "chat_messages": [
+   },
    {
-    "uuid": "demo-g029-m1",
+    "uuid": "demo-g028-m3",
     "sender": "human",
-    "created_at": "2026-03-06T13:40:00Z",
+    "created_at": "2025-12-13T11:27:11Z",
     "content": [
      {
       "type": "text",
-      "text": "推荐几本入门科普书？"
+      "text": "谢谢，很有帮助 ✨"
      }
     ]
    },
    {
-    "uuid": "demo-g029-m2",
+    "uuid": "demo-g028-m4",
     "sender": "assistant",
-    "created_at": "2026-03-06T13:41:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m3",
-    "sender": "human",
-    "created_at": "2026-03-06T13:42:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "谢谢，很有帮助"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-06T13:42:40Z",
+    "created_at": "2025-12-13T11:27:20Z",
     "content": [
      {
       "type": "text",
@@ -1408,16 +1487,69 @@
   ]
  },
  {
+  "uuid": "demo-conv-g029",
+  "name": "科普书推荐",
+  "summary": "",
+  "created_at": "2026-02-11T11:04:00Z",
+  "updated_at": "2026-02-11T11:09:24Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g029-m1",
+    "sender": "human",
+    "created_at": "2026-02-11T11:04:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "推荐几本入门科普书？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-11T11:05:09Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m3",
+    "sender": "human",
+    "created_at": "2026-02-11T11:09:09Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-11T11:09:24Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g030",
   "name": "读书笔记",
   "summary": "",
-  "created_at": "2026-03-19T05:40:00Z",
-  "updated_at": "2026-03-19T05:40:24Z",
+  "created_at": "2026-02-22T14:24:00Z",
+  "updated_at": "2026-02-22T14:24:30Z",
   "chat_messages": [
    {
     "uuid": "demo-g030-m1",
     "sender": "human",
-    "created_at": "2026-03-19T05:40:00Z",
+    "created_at": "2026-02-22T14:24:00Z",
     "content": [
      {
       "type": "text",
@@ -1428,7 +1560,7 @@
    {
     "uuid": "demo-g030-m2",
     "sender": "assistant",
-    "created_at": "2026-03-19T05:40:24Z",
+    "created_at": "2026-02-22T14:24:30Z",
     "content": [
      {
       "type": "text",
@@ -1442,13 +1574,13 @@
   "uuid": "demo-conv-g031",
   "name": "纸质书还是电子书",
   "summary": "",
-  "created_at": "2026-03-21T01:24:00Z",
-  "updated_at": "2026-03-21T01:29:37Z",
+  "created_at": "2026-01-29T11:14:00Z",
+  "updated_at": "2026-01-29T11:18:43Z",
   "chat_messages": [
    {
     "uuid": "demo-g031-m1",
     "sender": "human",
-    "created_at": "2026-03-21T01:24:00Z",
+    "created_at": "2026-01-29T11:14:00Z",
     "content": [
      {
       "type": "text",
@@ -1459,7 +1591,7 @@
    {
     "uuid": "demo-g031-m2",
     "sender": "assistant",
-    "created_at": "2026-03-21T01:25:24Z",
+    "created_at": "2026-01-29T11:14:34Z",
     "content": [
      {
       "type": "text",
@@ -1470,22 +1602,22 @@
    {
     "uuid": "demo-g031-m3",
     "sender": "human",
-    "created_at": "2026-03-21T01:29:24Z",
+    "created_at": "2026-01-29T11:18:34Z",
     "content": [
      {
       "type": "text",
-      "text": "好的，谢谢！ 🙏"
+      "text": "谢谢，很有帮助"
      }
     ]
    },
    {
     "uuid": "demo-g031-m4",
     "sender": "assistant",
-    "created_at": "2026-03-21T01:29:37Z",
+    "created_at": "2026-01-29T11:18:43Z",
     "content": [
      {
       "type": "text",
-      "text": "不客气～"
+      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -1495,13 +1627,13 @@
   "uuid": "demo-conv-g032",
   "name": "零基础跑步",
   "summary": "",
-  "created_at": "2025-12-26T19:40:00Z",
-  "updated_at": "2025-12-26T19:41:12Z",
+  "created_at": "2025-12-27T18:25:00Z",
+  "updated_at": "2025-12-27T18:26:03Z",
   "chat_messages": [
    {
     "uuid": "demo-g032-m1",
     "sender": "human",
-    "created_at": "2025-12-26T19:40:00Z",
+    "created_at": "2025-12-27T18:25:00Z",
     "content": [
      {
       "type": "text",
@@ -1512,7 +1644,7 @@
    {
     "uuid": "demo-g032-m2",
     "sender": "assistant",
-    "created_at": "2025-12-26T19:41:12Z",
+    "created_at": "2025-12-27T18:26:03Z",
     "content": [
      {
       "type": "text",
@@ -1526,13 +1658,13 @@
   "uuid": "demo-conv-g033",
   "name": "在家无器械训练",
   "summary": "",
-  "created_at": "2026-03-18T07:09:00Z",
-  "updated_at": "2026-03-18T07:10:11Z",
+  "created_at": "2025-12-05T05:25:00Z",
+  "updated_at": "2025-12-05T05:30:47Z",
   "chat_messages": [
    {
     "uuid": "demo-g033-m1",
     "sender": "human",
-    "created_at": "2026-03-18T07:09:00Z",
+    "created_at": "2025-12-05T05:25:00Z",
     "content": [
      {
       "type": "text",
@@ -1543,117 +1675,18 @@
    {
     "uuid": "demo-g033-m2",
     "sender": "assistant",
-    "created_at": "2026-03-18T07:10:11Z",
+    "created_at": "2025-12-05T05:25:35Z",
     "content": [
      {
       "type": "text",
       "text": "深蹲、俯卧撑、平板支撑、弓步蹲。每个动作 3 组，组间休息 1 分钟。"
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g034",
-  "name": "跑后膝盖疼",
-  "summary": "",
-  "created_at": "2025-12-03T13:06:00Z",
-  "updated_at": "2025-12-03T13:07:08Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g034-m1",
-    "sender": "human",
-    "created_at": "2025-12-03T13:06:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "跑完步膝盖有点疼，正常吗？"
-     }
-    ]
    },
    {
-    "uuid": "demo-g034-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-03T13:07:08Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
-      "start_timestamp": "2025-12-03T13:06:55Z",
-      "stop_timestamp": "2025-12-03T13:07:08Z"
-     },
-     {
-      "type": "text",
-      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g035",
-  "name": "运动后拉伸",
-  "summary": "",
-  "created_at": "2025-12-27T15:56:00Z",
-  "updated_at": "2025-12-27T15:57:09Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g035-m1",
+    "uuid": "demo-g033-m3",
     "sender": "human",
-    "created_at": "2025-12-27T15:56:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "运动后要拉伸多久？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-27T15:57:09Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g036",
-  "name": "睡不着",
-  "summary": "",
-  "created_at": "2025-12-20T14:08:00Z",
-  "updated_at": "2025-12-20T14:13:26Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g036-m1",
-    "sender": "human",
-    "created_at": "2025-12-20T14:08:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "晚上总是睡不着怎么办？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-20T14:09:17Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "尽量固定起床时间，睡前一小时少看屏幕，下午之后少喝咖啡。如果长期失眠，最好咨询医生。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m3",
-    "sender": "human",
-    "created_at": "2025-12-20T14:13:17Z",
+    "created_at": "2025-12-05T05:30:35Z",
     "content": [
      {
       "type": "text",
@@ -1662,9 +1695,9 @@
     ]
    },
    {
-    "uuid": "demo-g036-m4",
+    "uuid": "demo-g033-m4",
     "sender": "assistant",
-    "created_at": "2025-12-20T14:13:26Z",
+    "created_at": "2025-12-05T05:30:47Z",
     "content": [
      {
       "type": "text",
@@ -1675,16 +1708,181 @@
   ]
  },
  {
+  "uuid": "demo-conv-g034",
+  "name": "跑后膝盖疼",
+  "summary": "",
+  "created_at": "2026-02-06T00:14:00Z",
+  "updated_at": "2026-02-06T00:19:48Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g034-m1",
+    "sender": "human",
+    "created_at": "2026-02-06T00:14:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "跑完步膝盖有点疼，正常吗？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g034-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-06T00:14:35Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "涉及身体不适，提醒必要时就医。",
+      "start_timestamp": "2026-02-06T00:14:21Z",
+      "stop_timestamp": "2026-02-06T00:14:35Z"
+     },
+     {
+      "type": "text",
+      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g034-m3",
+    "sender": "human",
+    "created_at": "2026-02-06T00:19:35Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g034-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-06T00:19:48Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g035",
+  "name": "运动后拉伸",
+  "summary": "",
+  "created_at": "2025-12-31T13:38:00Z",
+  "updated_at": "2025-12-31T13:44:27Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g035-m1",
+    "sender": "human",
+    "created_at": "2025-12-31T13:38:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "运动后要拉伸多久？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g035-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-31T13:39:22Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g035-m3",
+    "sender": "human",
+    "created_at": "2025-12-31T13:44:22Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g035-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-31T13:44:27Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g036",
+  "name": "睡不着",
+  "summary": "",
+  "created_at": "2026-02-14T12:46:00Z",
+  "updated_at": "2026-02-14T12:50:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g036-m1",
+    "sender": "human",
+    "created_at": "2026-02-14T12:46:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "晚上总是睡不着怎么办？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-14T12:46:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "尽量固定起床时间，睡前一小时少看屏幕，下午之后少喝咖啡。如果长期失眠，最好咨询医生。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m3",
+    "sender": "human",
+    "created_at": "2026-02-14T12:50:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！ 🙏"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-14T12:50:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g037",
   "name": "会议纪要模板",
   "summary": "",
-  "created_at": "2025-12-27T13:40:00Z",
-  "updated_at": "2025-12-27T13:44:11Z",
+  "created_at": "2026-03-01T14:59:00Z",
+  "updated_at": "2026-03-01T15:00:13Z",
   "chat_messages": [
    {
     "uuid": "demo-g037-m1",
     "sender": "human",
-    "created_at": "2025-12-27T13:40:00Z",
+    "created_at": "2026-03-01T14:59:00Z",
     "content": [
      {
       "type": "text",
@@ -1695,39 +1893,17 @@
    {
     "uuid": "demo-g037-m2",
     "sender": "assistant",
-    "created_at": "2025-12-27T13:40:56Z",
+    "created_at": "2026-03-01T15:00:13Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "给一个能直接套用的结构。",
-      "start_timestamp": "2025-12-27T13:40:39Z",
-      "stop_timestamp": "2025-12-27T13:40:56Z"
+      "start_timestamp": "2026-03-01T14:59:48Z",
+      "stop_timestamp": "2026-03-01T15:00:13Z"
      },
      {
       "type": "text",
       "text": "可以包含：\n\n1. 时间、参会人\n2. 议题\n3. 结论\n4. 待办（负责人 + 截止时间）\n\n待办那一栏最重要。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m3",
-    "sender": "human",
-    "created_at": "2025-12-27T13:43:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-27T13:44:11Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -1737,13 +1913,13 @@
   "uuid": "demo-conv-g038",
   "name": "周报写成流水账",
   "summary": "",
-  "created_at": "2026-04-01T11:15:00Z",
-  "updated_at": "2026-04-01T11:16:12Z",
+  "created_at": "2026-03-07T12:52:00Z",
+  "updated_at": "2026-03-07T12:56:34Z",
   "chat_messages": [
    {
     "uuid": "demo-g038-m1",
     "sender": "human",
-    "created_at": "2026-04-01T11:15:00Z",
+    "created_at": "2026-03-07T12:52:00Z",
     "content": [
      {
       "type": "text",
@@ -1754,228 +1930,29 @@
    {
     "uuid": "demo-g038-m2",
     "sender": "assistant",
-    "created_at": "2026-04-01T11:16:12Z",
+    "created_at": "2026-03-07T12:53:25Z",
     "content": [
      {
       "type": "text",
       "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
      }
     ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g039",
-  "name": "先做哪件事",
-  "summary": "",
-  "created_at": "2025-12-27T04:06:00Z",
-  "updated_at": "2025-12-27T04:09:27Z",
-  "chat_messages": [
+   },
    {
-    "uuid": "demo-g039-m1",
+    "uuid": "demo-g038-m3",
     "sender": "human",
-    "created_at": "2025-12-27T04:06:00Z",
+    "created_at": "2026-03-07T12:56:25Z",
     "content": [
      {
       "type": "text",
-      "text": "事情太多，先做哪个？"
+      "text": "明白了，谢谢！"
      }
     ]
    },
    {
-    "uuid": "demo-g039-m2",
+    "uuid": "demo-g038-m4",
     "sender": "assistant",
-    "created_at": "2025-12-27T04:07:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g039-m3",
-    "sender": "human",
-    "created_at": "2025-12-27T04:09:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "谢谢，很有帮助 ✨"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g039-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-27T04:09:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "很高兴能帮上忙。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g040",
-  "name": "一页 PPT 的字数",
-  "summary": "",
-  "created_at": "2025-11-05T12:19:00Z",
-  "updated_at": "2025-11-05T12:19:28Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g040-m1",
-    "sender": "human",
-    "created_at": "2025-11-05T12:19:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一页 PPT 放多少字合适？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g040-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-05T12:19:28Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g041",
-  "name": "绿萝叶子发黄",
-  "summary": "",
-  "created_at": "2026-01-10T18:10:00Z",
-  "updated_at": "2026-01-10T18:13:34Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g041-m1",
-    "sender": "human",
-    "created_at": "2026-01-10T18:10:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "绿萝叶子发黄是怎么回事？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-10T18:10:20Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m3",
-    "sender": "human",
-    "created_at": "2026-01-10T18:13:20Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "谢谢，很有帮助"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-10T18:13:34Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "很高兴能帮上忙。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g042",
-  "name": "给朋友的生日礼物",
-  "summary": "",
-  "created_at": "2025-12-09T14:38:00Z",
-  "updated_at": "2025-12-09T14:38:50Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g042-m1",
-    "sender": "human",
-    "created_at": "2025-12-09T14:38:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "朋友喜欢画画，送什么生日礼物好？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-09T14:38:50Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以考虑一套好一点的水彩、速写本，或者一节体验课。附一张手写卡片会更走心。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g043",
-  "name": "学吉他",
-  "summary": "",
-  "created_at": "2026-02-19T09:09:00Z",
-  "updated_at": "2026-02-19T09:13:42Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g043-m1",
-    "sender": "human",
-    "created_at": "2026-02-19T09:09:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "学吉他先练什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-19T09:09:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m3",
-    "sender": "human",
-    "created_at": "2026-02-19T09:13:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ 🙏"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-19T09:13:42Z",
+    "created_at": "2026-03-07T12:56:34Z",
     "content": [
      {
       "type": "text",
@@ -1986,38 +1963,153 @@
   ]
  },
  {
-  "uuid": "demo-conv-g044",
-  "name": "猫为什么踩奶",
+  "uuid": "demo-conv-g039",
+  "name": "先做哪件事",
   "summary": "",
-  "created_at": "2026-03-15T09:02:00Z",
-  "updated_at": "2026-03-15T09:05:37Z",
+  "created_at": "2026-03-24T14:36:00Z",
+  "updated_at": "2026-03-24T14:37:00Z",
   "chat_messages": [
    {
-    "uuid": "demo-g044-m1",
+    "uuid": "demo-g039-m1",
     "sender": "human",
-    "created_at": "2026-03-15T09:02:00Z",
+    "created_at": "2026-03-24T14:36:00Z",
     "content": [
      {
       "type": "text",
-      "text": "猫为什么会踩奶？"
+      "text": "事情太多，先做哪个？"
      }
     ]
    },
    {
-    "uuid": "demo-g044-m2",
+    "uuid": "demo-g039-m2",
     "sender": "assistant",
-    "created_at": "2026-03-15T09:02:26Z",
+    "created_at": "2026-03-24T14:37:00Z",
     "content": [
      {
       "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g040",
+  "name": "一页 PPT 的字数",
+  "summary": "",
+  "created_at": "2026-02-01T09:19:00Z",
+  "updated_at": "2026-02-01T09:22:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g040-m1",
+    "sender": "human",
+    "created_at": "2026-02-01T09:19:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "一页 PPT 放多少字合适？"
      }
     ]
    },
    {
-    "uuid": "demo-g044-m3",
+    "uuid": "demo-g040-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-01T09:19:34Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g040-m3",
     "sender": "human",
-    "created_at": "2026-03-15T09:05:26Z",
+    "created_at": "2026-02-01T09:22:34Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g040-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-01T09:22:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g041",
+  "name": "绿萝叶子发黄",
+  "summary": "",
+  "created_at": "2025-11-10T20:49:00Z",
+  "updated_at": "2025-11-10T20:49:52Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g041-m1",
+    "sender": "human",
+    "created_at": "2025-11-10T20:49:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "绿萝叶子发黄是怎么回事？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g041-m2",
+    "sender": "assistant",
+    "created_at": "2025-11-10T20:49:52Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g042",
+  "name": "给朋友的生日礼物",
+  "summary": "",
+  "created_at": "2026-02-28T15:41:00Z",
+  "updated_at": "2026-02-28T15:45:25Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g042-m1",
+    "sender": "human",
+    "created_at": "2026-02-28T15:41:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "朋友喜欢画画，送什么生日礼物好？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g042-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-28T15:42:13Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "可以考虑一套好一点的水彩、速写本，或者一节体验课。附一张手写卡片会更走心。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g042-m3",
+    "sender": "human",
+    "created_at": "2026-02-28T15:45:13Z",
     "content": [
      {
       "type": "text",
@@ -2026,9 +2118,9 @@
     ]
    },
    {
-    "uuid": "demo-g044-m4",
+    "uuid": "demo-g042-m4",
     "sender": "assistant",
-    "created_at": "2026-03-15T09:05:37Z",
+    "created_at": "2026-02-28T15:45:25Z",
     "content": [
      {
       "type": "text",
@@ -2039,16 +2131,122 @@
   ]
  },
  {
+  "uuid": "demo-conv-g043",
+  "name": "学吉他",
+  "summary": "",
+  "created_at": "2026-03-29T12:26:00Z",
+  "updated_at": "2026-03-29T12:28:46Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g043-m1",
+    "sender": "human",
+    "created_at": "2026-03-29T12:26:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "学吉他先练什么？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m2",
+    "sender": "assistant",
+    "created_at": "2026-03-29T12:26:40Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m3",
+    "sender": "human",
+    "created_at": "2026-03-29T12:28:40Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-29T12:28:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g044",
+  "name": "猫为什么踩奶",
+  "summary": "",
+  "created_at": "2025-12-12T13:58:00Z",
+  "updated_at": "2025-12-12T14:00:58Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g044-m1",
+    "sender": "human",
+    "created_at": "2025-12-12T13:58:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "猫为什么会踩奶？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-12T13:58:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m3",
+    "sender": "human",
+    "created_at": "2025-12-12T14:00:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！ 🙏"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-12T14:00:58Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
   "uuid": "demo-conv-g045",
   "name": "下雨天做什么",
   "summary": "",
-  "created_at": "2025-12-07T09:31:00Z",
-  "updated_at": "2025-12-07T09:32:14Z",
+  "created_at": "2026-02-04T12:13:00Z",
+  "updated_at": "2026-02-04T12:15:39Z",
   "chat_messages": [
    {
     "uuid": "demo-g045-m1",
     "sender": "human",
-    "created_at": "2025-12-07T09:31:00Z",
+    "created_at": "2026-02-04T12:13:00Z",
     "content": [
      {
       "type": "text",
@@ -2059,11 +2257,33 @@
    {
     "uuid": "demo-g045-m2",
     "sender": "assistant",
-    "created_at": "2025-12-07T09:32:14Z",
+    "created_at": "2026-02-04T12:13:32Z",
     "content": [
      {
       "type": "text",
       "text": "看一部电影、整理房间、做一锅汤，或者就听着雨声读本书。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g045-m3",
+    "sender": "human",
+    "created_at": "2026-02-04T12:15:32Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g045-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-04T12:15:39Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -2073,13 +2293,13 @@
   "uuid": "demo-conv-g046",
   "name": "每日一词",
   "summary": "",
-  "created_at": "2025-11-03T14:54:00Z",
-  "updated_at": "2025-11-30T01:53:23Z",
+  "created_at": "2025-11-03T05:57:00Z",
+  "updated_at": "2025-12-01T05:48:25Z",
   "chat_messages": [
    {
     "uuid": "demo-g046-m1",
     "sender": "human",
-    "created_at": "2025-11-03T14:54:00Z",
+    "created_at": "2025-11-03T05:57:00Z",
     "content": [
      {
       "type": "text",
@@ -2090,7 +2310,7 @@
    {
     "uuid": "demo-g046-m2",
     "sender": "assistant",
-    "created_at": "2025-11-03T14:54:30Z",
+    "created_at": "2025-11-03T05:57:23Z",
     "content": [
      {
       "type": "text",
@@ -2101,7 +2321,7 @@
    {
     "uuid": "demo-g046-m3",
     "sender": "human",
-    "created_at": "2025-11-05T07:09:00Z",
+    "created_at": "2025-11-04T11:55:00Z",
     "content": [
      {
       "type": "text",
@@ -2112,7 +2332,7 @@
    {
     "uuid": "demo-g046-m4",
     "sender": "assistant",
-    "created_at": "2025-11-05T07:09:50Z",
+    "created_at": "2025-11-04T11:55:50Z",
     "content": [
      {
       "type": "text",
@@ -2123,7 +2343,7 @@
    {
     "uuid": "demo-g046-m5",
     "sender": "human",
-    "created_at": "2025-11-06T12:20:00Z",
+    "created_at": "2025-11-05T11:27:00Z",
     "content": [
      {
       "type": "text",
@@ -2134,7 +2354,7 @@
    {
     "uuid": "demo-g046-m6",
     "sender": "assistant",
-    "created_at": "2025-11-06T12:20:51Z",
+    "created_at": "2025-11-05T11:27:33Z",
     "content": [
      {
       "type": "text",
@@ -2145,7 +2365,7 @@
    {
     "uuid": "demo-g046-m7",
     "sender": "human",
-    "created_at": "2025-11-07T02:34:00Z",
+    "created_at": "2025-11-06T13:19:00Z",
     "content": [
      {
       "type": "text",
@@ -2156,7 +2376,7 @@
    {
     "uuid": "demo-g046-m8",
     "sender": "assistant",
-    "created_at": "2025-11-07T02:34:43Z",
+    "created_at": "2025-11-06T13:19:17Z",
     "content": [
      {
       "type": "text",
@@ -2167,7 +2387,7 @@
    {
     "uuid": "demo-g046-m9",
     "sender": "human",
-    "created_at": "2025-11-08T12:21:00Z",
+    "created_at": "2025-11-07T13:22:00Z",
     "content": [
      {
       "type": "text",
@@ -2178,7 +2398,7 @@
    {
     "uuid": "demo-g046-m10",
     "sender": "assistant",
-    "created_at": "2025-11-08T12:21:22Z",
+    "created_at": "2025-11-07T13:22:29Z",
     "content": [
      {
       "type": "text",
@@ -2189,7 +2409,7 @@
    {
     "uuid": "demo-g046-m11",
     "sender": "human",
-    "created_at": "2025-11-09T14:29:00Z",
+    "created_at": "2025-11-08T11:26:00Z",
     "content": [
      {
       "type": "text",
@@ -2200,7 +2420,7 @@
    {
     "uuid": "demo-g046-m12",
     "sender": "assistant",
-    "created_at": "2025-11-09T14:29:56Z",
+    "created_at": "2025-11-08T11:26:58Z",
     "content": [
      {
       "type": "text",
@@ -2211,7 +2431,7 @@
    {
     "uuid": "demo-g046-m13",
     "sender": "human",
-    "created_at": "2025-11-10T09:19:00Z",
+    "created_at": "2025-11-10T14:51:00Z",
     "content": [
      {
       "type": "text",
@@ -2222,7 +2442,7 @@
    {
     "uuid": "demo-g046-m14",
     "sender": "assistant",
-    "created_at": "2025-11-10T09:19:22Z",
+    "created_at": "2025-11-10T14:51:15Z",
     "content": [
      {
       "type": "text",
@@ -2233,7 +2453,7 @@
    {
     "uuid": "demo-g046-m15",
     "sender": "human",
-    "created_at": "2025-11-12T11:49:00Z",
+    "created_at": "2025-11-11T00:36:00Z",
     "content": [
      {
       "type": "text",
@@ -2244,7 +2464,7 @@
    {
     "uuid": "demo-g046-m16",
     "sender": "assistant",
-    "created_at": "2025-11-12T11:49:38Z",
+    "created_at": "2025-11-11T00:36:28Z",
     "content": [
      {
       "type": "text",
@@ -2255,7 +2475,7 @@
    {
     "uuid": "demo-g046-m17",
     "sender": "human",
-    "created_at": "2025-11-13T02:18:00Z",
+    "created_at": "2025-11-12T01:37:00Z",
     "content": [
      {
       "type": "text",
@@ -2266,7 +2486,7 @@
    {
     "uuid": "demo-g046-m18",
     "sender": "assistant",
-    "created_at": "2025-11-13T02:18:25Z",
+    "created_at": "2025-11-12T01:37:33Z",
     "content": [
      {
       "type": "text",
@@ -2277,7 +2497,7 @@
    {
     "uuid": "demo-g046-m19",
     "sender": "human",
-    "created_at": "2025-11-14T04:27:00Z",
+    "created_at": "2025-11-13T09:37:00Z",
     "content": [
      {
       "type": "text",
@@ -2288,7 +2508,7 @@
    {
     "uuid": "demo-g046-m20",
     "sender": "assistant",
-    "created_at": "2025-11-14T04:27:54Z",
+    "created_at": "2025-11-13T09:37:32Z",
     "content": [
      {
       "type": "text",
@@ -2299,7 +2519,7 @@
    {
     "uuid": "demo-g046-m21",
     "sender": "human",
-    "created_at": "2025-11-15T12:48:00Z",
+    "created_at": "2025-11-14T12:14:00Z",
     "content": [
      {
       "type": "text",
@@ -2310,7 +2530,7 @@
    {
     "uuid": "demo-g046-m22",
     "sender": "assistant",
-    "created_at": "2025-11-15T12:48:35Z",
+    "created_at": "2025-11-14T12:14:28Z",
     "content": [
      {
       "type": "text",
@@ -2321,7 +2541,7 @@
    {
     "uuid": "demo-g046-m23",
     "sender": "human",
-    "created_at": "2025-11-16T15:29:00Z",
+    "created_at": "2025-11-15T15:59:00Z",
     "content": [
      {
       "type": "text",
@@ -2332,7 +2552,7 @@
    {
     "uuid": "demo-g046-m24",
     "sender": "assistant",
-    "created_at": "2025-11-16T15:29:56Z",
+    "created_at": "2025-11-15T15:59:53Z",
     "content": [
      {
       "type": "text",
@@ -2343,7 +2563,7 @@
    {
     "uuid": "demo-g046-m25",
     "sender": "human",
-    "created_at": "2025-11-18T01:12:00Z",
+    "created_at": "2025-11-16T12:02:00Z",
     "content": [
      {
       "type": "text",
@@ -2354,7 +2574,7 @@
    {
     "uuid": "demo-g046-m26",
     "sender": "assistant",
-    "created_at": "2025-11-18T01:12:49Z",
+    "created_at": "2025-11-16T12:02:33Z",
     "content": [
      {
       "type": "text",
@@ -2365,7 +2585,7 @@
    {
     "uuid": "demo-g046-m27",
     "sender": "human",
-    "created_at": "2025-11-19T14:17:00Z",
+    "created_at": "2025-11-17T14:25:00Z",
     "content": [
      {
       "type": "text",
@@ -2376,7 +2596,7 @@
    {
     "uuid": "demo-g046-m28",
     "sender": "assistant",
-    "created_at": "2025-11-19T14:17:29Z",
+    "created_at": "2025-11-17T14:25:30Z",
     "content": [
      {
       "type": "text",
@@ -2387,7 +2607,7 @@
    {
     "uuid": "demo-g046-m29",
     "sender": "human",
-    "created_at": "2025-11-20T14:55:00Z",
+    "created_at": "2025-11-19T13:26:00Z",
     "content": [
      {
       "type": "text",
@@ -2398,7 +2618,7 @@
    {
     "uuid": "demo-g046-m30",
     "sender": "assistant",
-    "created_at": "2025-11-20T14:55:29Z",
+    "created_at": "2025-11-19T13:26:49Z",
     "content": [
      {
       "type": "text",
@@ -2409,7 +2629,7 @@
    {
     "uuid": "demo-g046-m31",
     "sender": "human",
-    "created_at": "2025-11-21T09:37:00Z",
+    "created_at": "2025-11-21T04:12:00Z",
     "content": [
      {
       "type": "text",
@@ -2420,7 +2640,7 @@
    {
     "uuid": "demo-g046-m32",
     "sender": "assistant",
-    "created_at": "2025-11-21T09:37:25Z",
+    "created_at": "2025-11-21T04:12:34Z",
     "content": [
      {
       "type": "text",
@@ -2431,7 +2651,7 @@
    {
     "uuid": "demo-g046-m33",
     "sender": "human",
-    "created_at": "2025-11-22T05:23:00Z",
+    "created_at": "2025-11-22T14:36:00Z",
     "content": [
      {
       "type": "text",
@@ -2442,7 +2662,7 @@
    {
     "uuid": "demo-g046-m34",
     "sender": "assistant",
-    "created_at": "2025-11-22T05:24:00Z",
+    "created_at": "2025-11-22T14:36:34Z",
     "content": [
      {
       "type": "text",
@@ -2453,7 +2673,7 @@
    {
     "uuid": "demo-g046-m35",
     "sender": "human",
-    "created_at": "2025-11-23T02:10:00Z",
+    "created_at": "2025-11-24T07:47:00Z",
     "content": [
      {
       "type": "text",
@@ -2464,7 +2684,7 @@
    {
     "uuid": "demo-g046-m36",
     "sender": "assistant",
-    "created_at": "2025-11-23T02:10:31Z",
+    "created_at": "2025-11-24T07:47:43Z",
     "content": [
      {
       "type": "text",
@@ -2475,7 +2695,7 @@
    {
     "uuid": "demo-g046-m37",
     "sender": "human",
-    "created_at": "2025-11-25T13:58:00Z",
+    "created_at": "2025-11-25T11:35:00Z",
     "content": [
      {
       "type": "text",
@@ -2486,7 +2706,7 @@
    {
     "uuid": "demo-g046-m38",
     "sender": "assistant",
-    "created_at": "2025-11-25T13:58:28Z",
+    "created_at": "2025-11-25T11:35:45Z",
     "content": [
      {
       "type": "text",
@@ -2497,7 +2717,7 @@
    {
     "uuid": "demo-g046-m39",
     "sender": "human",
-    "created_at": "2025-11-26T02:19:00Z",
+    "created_at": "2025-11-27T15:59:00Z",
     "content": [
      {
       "type": "text",
@@ -2508,7 +2728,7 @@
    {
     "uuid": "demo-g046-m40",
     "sender": "assistant",
-    "created_at": "2025-11-26T02:19:16Z",
+    "created_at": "2025-11-27T15:59:56Z",
     "content": [
      {
       "type": "text",
@@ -2519,7 +2739,7 @@
    {
     "uuid": "demo-g046-m41",
     "sender": "human",
-    "created_at": "2025-11-27T04:15:00Z",
+    "created_at": "2025-11-28T07:27:00Z",
     "content": [
      {
       "type": "text",
@@ -2530,7 +2750,7 @@
    {
     "uuid": "demo-g046-m42",
     "sender": "assistant",
-    "created_at": "2025-11-27T04:15:38Z",
+    "created_at": "2025-11-28T07:27:59Z",
     "content": [
      {
       "type": "text",
@@ -2541,7 +2761,7 @@
    {
     "uuid": "demo-g046-m43",
     "sender": "human",
-    "created_at": "2025-11-28T14:49:00Z",
+    "created_at": "2025-11-29T11:59:00Z",
     "content": [
      {
       "type": "text",
@@ -2552,7 +2772,7 @@
    {
     "uuid": "demo-g046-m44",
     "sender": "assistant",
-    "created_at": "2025-11-28T14:49:28Z",
+    "created_at": "2025-11-29T11:59:42Z",
     "content": [
      {
       "type": "text",
@@ -2563,7 +2783,7 @@
    {
     "uuid": "demo-g046-m45",
     "sender": "human",
-    "created_at": "2025-11-29T04:11:00Z",
+    "created_at": "2025-11-30T12:52:00Z",
     "content": [
      {
       "type": "text",
@@ -2574,7 +2794,7 @@
    {
     "uuid": "demo-g046-m46",
     "sender": "assistant",
-    "created_at": "2025-11-29T04:11:53Z",
+    "created_at": "2025-11-30T12:52:39Z",
     "content": [
      {
       "type": "text",
@@ -2585,7 +2805,7 @@
    {
     "uuid": "demo-g046-m47",
     "sender": "human",
-    "created_at": "2025-11-30T01:53:00Z",
+    "created_at": "2025-12-01T05:48:00Z",
     "content": [
      {
       "type": "text",
@@ -2596,7 +2816,7 @@
    {
     "uuid": "demo-g046-m48",
     "sender": "assistant",
-    "created_at": "2025-11-30T01:53:23Z",
+    "created_at": "2025-12-01T05:48:25Z",
     "content": [
      {
       "type": "text",
@@ -2610,13 +2830,13 @@
   "uuid": "demo-conv-g047",
   "name": "跑步记录",
   "summary": "",
-  "created_at": "2026-01-05T11:55:00Z",
-  "updated_at": "2026-02-15T14:43:50Z",
+  "created_at": "2026-01-05T12:56:00Z",
+  "updated_at": "2026-02-15T13:55:19Z",
   "chat_messages": [
    {
     "uuid": "demo-g047-m1",
     "sender": "human",
-    "created_at": "2026-01-05T11:55:00Z",
+    "created_at": "2026-01-05T12:56:00Z",
     "content": [
      {
       "type": "text",
@@ -2627,7 +2847,7 @@
    {
     "uuid": "demo-g047-m2",
     "sender": "assistant",
-    "created_at": "2026-01-05T11:55:50Z",
+    "created_at": "2026-01-05T12:56:27Z",
     "content": [
      {
       "type": "text",
@@ -2638,7 +2858,7 @@
    {
     "uuid": "demo-g047-m3",
     "sender": "human",
-    "created_at": "2026-01-06T11:27:00Z",
+    "created_at": "2026-01-07T04:47:00Z",
     "content": [
      {
       "type": "text",
@@ -2649,7 +2869,7 @@
    {
     "uuid": "demo-g047-m4",
     "sender": "assistant",
-    "created_at": "2026-01-06T11:27:33Z",
+    "created_at": "2026-01-07T04:47:58Z",
     "content": [
      {
       "type": "text",
@@ -2660,7 +2880,7 @@
    {
     "uuid": "demo-g047-m5",
     "sender": "human",
-    "created_at": "2026-01-07T13:19:00Z",
+    "created_at": "2026-01-08T02:03:00Z",
     "content": [
      {
       "type": "text",
@@ -2671,7 +2891,7 @@
    {
     "uuid": "demo-g047-m6",
     "sender": "assistant",
-    "created_at": "2026-01-07T13:19:17Z",
+    "created_at": "2026-01-08T02:03:15Z",
     "content": [
      {
       "type": "text",
@@ -2682,7 +2902,7 @@
    {
     "uuid": "demo-g047-m7",
     "sender": "human",
-    "created_at": "2026-01-08T13:22:00Z",
+    "created_at": "2026-01-09T02:43:00Z",
     "content": [
      {
       "type": "text",
@@ -2693,7 +2913,7 @@
    {
     "uuid": "demo-g047-m8",
     "sender": "assistant",
-    "created_at": "2026-01-08T13:22:29Z",
+    "created_at": "2026-01-09T02:43:36Z",
     "content": [
      {
       "type": "text",
@@ -2704,7 +2924,7 @@
    {
     "uuid": "demo-g047-m9",
     "sender": "human",
-    "created_at": "2026-01-09T11:26:00Z",
+    "created_at": "2026-01-11T13:26:00Z",
     "content": [
      {
       "type": "text",
@@ -2715,7 +2935,7 @@
    {
     "uuid": "demo-g047-m10",
     "sender": "assistant",
-    "created_at": "2026-01-09T11:26:58Z",
+    "created_at": "2026-01-11T13:26:28Z",
     "content": [
      {
       "type": "text",
@@ -2726,7 +2946,7 @@
    {
     "uuid": "demo-g047-m11",
     "sender": "human",
-    "created_at": "2026-01-11T14:51:00Z",
+    "created_at": "2026-01-12T11:01:00Z",
     "content": [
      {
       "type": "text",
@@ -2737,7 +2957,7 @@
    {
     "uuid": "demo-g047-m12",
     "sender": "assistant",
-    "created_at": "2026-01-11T14:51:15Z",
+    "created_at": "2026-01-12T11:01:40Z",
     "content": [
      {
       "type": "text",
@@ -2748,7 +2968,7 @@
    {
     "uuid": "demo-g047-m13",
     "sender": "human",
-    "created_at": "2026-01-12T00:36:00Z",
+    "created_at": "2026-01-13T11:23:00Z",
     "content": [
      {
       "type": "text",
@@ -2759,7 +2979,7 @@
    {
     "uuid": "demo-g047-m14",
     "sender": "assistant",
-    "created_at": "2026-01-12T00:36:28Z",
+    "created_at": "2026-01-13T11:23:18Z",
     "content": [
      {
       "type": "text",
@@ -2770,7 +2990,7 @@
    {
     "uuid": "demo-g047-m15",
     "sender": "human",
-    "created_at": "2026-01-13T01:37:00Z",
+    "created_at": "2026-01-14T11:06:00Z",
     "content": [
      {
       "type": "text",
@@ -2781,7 +3001,7 @@
    {
     "uuid": "demo-g047-m16",
     "sender": "assistant",
-    "created_at": "2026-01-13T01:37:33Z",
+    "created_at": "2026-01-14T11:06:53Z",
     "content": [
      {
       "type": "text",
@@ -2792,7 +3012,7 @@
    {
     "uuid": "demo-g047-m17",
     "sender": "human",
-    "created_at": "2026-01-14T09:37:00Z",
+    "created_at": "2026-01-15T07:48:00Z",
     "content": [
      {
       "type": "text",
@@ -2803,7 +3023,7 @@
    {
     "uuid": "demo-g047-m18",
     "sender": "assistant",
-    "created_at": "2026-01-14T09:37:32Z",
+    "created_at": "2026-01-15T07:48:54Z",
     "content": [
      {
       "type": "text",
@@ -2814,7 +3034,7 @@
    {
     "uuid": "demo-g047-m19",
     "sender": "human",
-    "created_at": "2026-01-15T12:14:00Z",
+    "created_at": "2026-01-16T15:54:00Z",
     "content": [
      {
       "type": "text",
@@ -2825,7 +3045,7 @@
    {
     "uuid": "demo-g047-m20",
     "sender": "assistant",
-    "created_at": "2026-01-15T12:14:28Z",
+    "created_at": "2026-01-16T15:54:51Z",
     "content": [
      {
       "type": "text",
@@ -2836,7 +3056,7 @@
    {
     "uuid": "demo-g047-m21",
     "sender": "human",
-    "created_at": "2026-01-16T15:59:00Z",
+    "created_at": "2026-01-18T14:43:00Z",
     "content": [
      {
       "type": "text",
@@ -2847,7 +3067,7 @@
    {
     "uuid": "demo-g047-m22",
     "sender": "assistant",
-    "created_at": "2026-01-16T15:59:53Z",
+    "created_at": "2026-01-18T14:43:50Z",
     "content": [
      {
       "type": "text",
@@ -2858,7 +3078,7 @@
    {
     "uuid": "demo-g047-m23",
     "sender": "human",
-    "created_at": "2026-01-17T12:02:00Z",
+    "created_at": "2026-01-19T13:25:00Z",
     "content": [
      {
       "type": "text",
@@ -2869,7 +3089,7 @@
    {
     "uuid": "demo-g047-m24",
     "sender": "assistant",
-    "created_at": "2026-01-17T12:02:33Z",
+    "created_at": "2026-01-19T13:25:42Z",
     "content": [
      {
       "type": "text",
@@ -2880,7 +3100,7 @@
    {
     "uuid": "demo-g047-m25",
     "sender": "human",
-    "created_at": "2026-01-18T14:25:00Z",
+    "created_at": "2026-01-20T13:04:00Z",
     "content": [
      {
       "type": "text",
@@ -2891,7 +3111,7 @@
    {
     "uuid": "demo-g047-m26",
     "sender": "assistant",
-    "created_at": "2026-01-18T14:25:30Z",
+    "created_at": "2026-01-20T13:04:41Z",
     "content": [
      {
       "type": "text",
@@ -2902,7 +3122,7 @@
    {
     "uuid": "demo-g047-m27",
     "sender": "human",
-    "created_at": "2026-01-20T13:26:00Z",
+    "created_at": "2026-01-21T07:16:00Z",
     "content": [
      {
       "type": "text",
@@ -2913,7 +3133,7 @@
    {
     "uuid": "demo-g047-m28",
     "sender": "assistant",
-    "created_at": "2026-01-20T13:26:49Z",
+    "created_at": "2026-01-21T07:16:31Z",
     "content": [
      {
       "type": "text",
@@ -2924,7 +3144,7 @@
    {
     "uuid": "demo-g047-m29",
     "sender": "human",
-    "created_at": "2026-01-22T04:12:00Z",
+    "created_at": "2026-01-22T00:22:00Z",
     "content": [
      {
       "type": "text",
@@ -2935,7 +3155,7 @@
    {
     "uuid": "demo-g047-m30",
     "sender": "assistant",
-    "created_at": "2026-01-22T04:12:34Z",
+    "created_at": "2026-01-22T00:22:51Z",
     "content": [
      {
       "type": "text",
@@ -2946,7 +3166,7 @@
    {
     "uuid": "demo-g047-m31",
     "sender": "human",
-    "created_at": "2026-01-23T14:36:00Z",
+    "created_at": "2026-01-23T12:11:00Z",
     "content": [
      {
       "type": "text",
@@ -2957,7 +3177,7 @@
    {
     "uuid": "demo-g047-m32",
     "sender": "assistant",
-    "created_at": "2026-01-23T14:36:34Z",
+    "created_at": "2026-01-23T12:11:31Z",
     "content": [
      {
       "type": "text",
@@ -2968,7 +3188,7 @@
    {
     "uuid": "demo-g047-m33",
     "sender": "human",
-    "created_at": "2026-01-25T07:47:00Z",
+    "created_at": "2026-01-25T00:20:00Z",
     "content": [
      {
       "type": "text",
@@ -2979,7 +3199,7 @@
    {
     "uuid": "demo-g047-m34",
     "sender": "assistant",
-    "created_at": "2026-01-25T07:47:43Z",
+    "created_at": "2026-01-25T00:20:35Z",
     "content": [
      {
       "type": "text",
@@ -2990,7 +3210,7 @@
    {
     "uuid": "demo-g047-m35",
     "sender": "human",
-    "created_at": "2026-01-26T11:35:00Z",
+    "created_at": "2026-01-26T05:54:00Z",
     "content": [
      {
       "type": "text",
@@ -3001,7 +3221,7 @@
    {
     "uuid": "demo-g047-m36",
     "sender": "assistant",
-    "created_at": "2026-01-26T11:35:45Z",
+    "created_at": "2026-01-26T05:54:49Z",
     "content": [
      {
       "type": "text",
@@ -3012,7 +3232,7 @@
    {
     "uuid": "demo-g047-m37",
     "sender": "human",
-    "created_at": "2026-01-28T15:59:00Z",
+    "created_at": "2026-01-27T12:48:00Z",
     "content": [
      {
       "type": "text",
@@ -3023,7 +3243,7 @@
    {
     "uuid": "demo-g047-m38",
     "sender": "assistant",
-    "created_at": "2026-01-28T15:59:56Z",
+    "created_at": "2026-01-27T12:48:21Z",
     "content": [
      {
       "type": "text",
@@ -3034,7 +3254,7 @@
    {
     "uuid": "demo-g047-m39",
     "sender": "human",
-    "created_at": "2026-01-29T07:27:00Z",
+    "created_at": "2026-01-28T00:54:00Z",
     "content": [
      {
       "type": "text",
@@ -3045,7 +3265,7 @@
    {
     "uuid": "demo-g047-m40",
     "sender": "assistant",
-    "created_at": "2026-01-29T07:27:59Z",
+    "created_at": "2026-01-28T00:54:36Z",
     "content": [
      {
       "type": "text",
@@ -3056,7 +3276,7 @@
    {
     "uuid": "demo-g047-m41",
     "sender": "human",
-    "created_at": "2026-01-30T11:59:00Z",
+    "created_at": "2026-01-30T13:47:00Z",
     "content": [
      {
       "type": "text",
@@ -3067,7 +3287,7 @@
    {
     "uuid": "demo-g047-m42",
     "sender": "assistant",
-    "created_at": "2026-01-30T11:59:42Z",
+    "created_at": "2026-01-30T13:47:26Z",
     "content": [
      {
       "type": "text",
@@ -3078,7 +3298,7 @@
    {
     "uuid": "demo-g047-m43",
     "sender": "human",
-    "created_at": "2026-01-31T12:52:00Z",
+    "created_at": "2026-01-31T01:03:00Z",
     "content": [
      {
       "type": "text",
@@ -3089,7 +3309,7 @@
    {
     "uuid": "demo-g047-m44",
     "sender": "assistant",
-    "created_at": "2026-01-31T12:52:39Z",
+    "created_at": "2026-01-31T01:03:33Z",
     "content": [
      {
       "type": "text",
@@ -3100,7 +3320,7 @@
    {
     "uuid": "demo-g047-m45",
     "sender": "human",
-    "created_at": "2026-02-01T05:48:00Z",
+    "created_at": "2026-02-01T02:58:00Z",
     "content": [
      {
       "type": "text",
@@ -3111,7 +3331,7 @@
    {
     "uuid": "demo-g047-m46",
     "sender": "assistant",
-    "created_at": "2026-02-01T05:48:25Z",
+    "created_at": "2026-02-01T02:58:21Z",
     "content": [
      {
       "type": "text",
@@ -3122,7 +3342,7 @@
    {
     "uuid": "demo-g047-m47",
     "sender": "human",
-    "created_at": "2026-02-02T12:56:00Z",
+    "created_at": "2026-02-02T13:51:00Z",
     "content": [
      {
       "type": "text",
@@ -3133,7 +3353,7 @@
    {
     "uuid": "demo-g047-m48",
     "sender": "assistant",
-    "created_at": "2026-02-02T12:56:27Z",
+    "created_at": "2026-02-02T13:51:19Z",
     "content": [
      {
       "type": "text",
@@ -3144,7 +3364,7 @@
    {
     "uuid": "demo-g047-m49",
     "sender": "human",
-    "created_at": "2026-02-04T04:47:00Z",
+    "created_at": "2026-02-03T01:19:00Z",
     "content": [
      {
       "type": "text",
@@ -3155,7 +3375,7 @@
    {
     "uuid": "demo-g047-m50",
     "sender": "assistant",
-    "created_at": "2026-02-04T04:47:58Z",
+    "created_at": "2026-02-03T01:19:39Z",
     "content": [
      {
       "type": "text",
@@ -3166,7 +3386,7 @@
    {
     "uuid": "demo-g047-m51",
     "sender": "human",
-    "created_at": "2026-02-05T02:03:00Z",
+    "created_at": "2026-02-04T13:01:00Z",
     "content": [
      {
       "type": "text",
@@ -3177,7 +3397,7 @@
    {
     "uuid": "demo-g047-m52",
     "sender": "assistant",
-    "created_at": "2026-02-05T02:03:15Z",
+    "created_at": "2026-02-04T13:01:55Z",
     "content": [
      {
       "type": "text",
@@ -3188,7 +3408,7 @@
    {
     "uuid": "demo-g047-m53",
     "sender": "human",
-    "created_at": "2026-02-06T02:43:00Z",
+    "created_at": "2026-02-06T13:55:00Z",
     "content": [
      {
       "type": "text",
@@ -3199,7 +3419,7 @@
    {
     "uuid": "demo-g047-m54",
     "sender": "assistant",
-    "created_at": "2026-02-06T02:43:36Z",
+    "created_at": "2026-02-06T13:55:43Z",
     "content": [
      {
       "type": "text",
@@ -3210,7 +3430,7 @@
    {
     "uuid": "demo-g047-m55",
     "sender": "human",
-    "created_at": "2026-02-08T13:26:00Z",
+    "created_at": "2026-02-07T14:14:00Z",
     "content": [
      {
       "type": "text",
@@ -3221,7 +3441,7 @@
    {
     "uuid": "demo-g047-m56",
     "sender": "assistant",
-    "created_at": "2026-02-08T13:26:28Z",
+    "created_at": "2026-02-07T14:14:56Z",
     "content": [
      {
       "type": "text",
@@ -3232,7 +3452,7 @@
    {
     "uuid": "demo-g047-m57",
     "sender": "human",
-    "created_at": "2026-02-09T11:01:00Z",
+    "created_at": "2026-02-09T04:19:00Z",
     "content": [
      {
       "type": "text",
@@ -3243,7 +3463,7 @@
    {
     "uuid": "demo-g047-m58",
     "sender": "assistant",
-    "created_at": "2026-02-09T11:01:40Z",
+    "created_at": "2026-02-09T04:19:18Z",
     "content": [
      {
       "type": "text",
@@ -3254,7 +3474,7 @@
    {
     "uuid": "demo-g047-m59",
     "sender": "human",
-    "created_at": "2026-02-10T11:23:00Z",
+    "created_at": "2026-02-10T05:49:00Z",
     "content": [
      {
       "type": "text",
@@ -3265,7 +3485,7 @@
    {
     "uuid": "demo-g047-m60",
     "sender": "assistant",
-    "created_at": "2026-02-10T11:23:18Z",
+    "created_at": "2026-02-10T05:49:43Z",
     "content": [
      {
       "type": "text",
@@ -3276,7 +3496,7 @@
    {
     "uuid": "demo-g047-m61",
     "sender": "human",
-    "created_at": "2026-02-11T11:06:00Z",
+    "created_at": "2026-02-11T04:39:00Z",
     "content": [
      {
       "type": "text",
@@ -3287,7 +3507,7 @@
    {
     "uuid": "demo-g047-m62",
     "sender": "assistant",
-    "created_at": "2026-02-11T11:06:53Z",
+    "created_at": "2026-02-11T04:39:51Z",
     "content": [
      {
       "type": "text",
@@ -3298,7 +3518,7 @@
    {
     "uuid": "demo-g047-m63",
     "sender": "human",
-    "created_at": "2026-02-12T07:48:00Z",
+    "created_at": "2026-02-12T09:08:00Z",
     "content": [
      {
       "type": "text",
@@ -3309,7 +3529,7 @@
    {
     "uuid": "demo-g047-m64",
     "sender": "assistant",
-    "created_at": "2026-02-12T07:48:54Z",
+    "created_at": "2026-02-12T09:08:19Z",
     "content": [
      {
       "type": "text",
@@ -3320,7 +3540,7 @@
    {
     "uuid": "demo-g047-m65",
     "sender": "human",
-    "created_at": "2026-02-13T15:54:00Z",
+    "created_at": "2026-02-14T12:14:00Z",
     "content": [
      {
       "type": "text",
@@ -3331,7 +3551,7 @@
    {
     "uuid": "demo-g047-m66",
     "sender": "assistant",
-    "created_at": "2026-02-13T15:54:51Z",
+    "created_at": "2026-02-14T12:14:30Z",
     "content": [
      {
       "type": "text",
@@ -3342,7 +3562,7 @@
    {
     "uuid": "demo-g047-m67",
     "sender": "human",
-    "created_at": "2026-02-15T14:43:00Z",
+    "created_at": "2026-02-15T13:55:00Z",
     "content": [
      {
       "type": "text",
@@ -3353,7 +3573,7 @@
    {
     "uuid": "demo-g047-m68",
     "sender": "assistant",
-    "created_at": "2026-02-15T14:43:50Z",
+    "created_at": "2026-02-15T13:55:19Z",
     "content": [
      {
       "type": "text",
@@ -3367,13 +3587,13 @@
   "uuid": "demo-conv-g048",
   "name": "每日一词 · 第二轮",
   "summary": "",
-  "created_at": "2026-02-16T13:25:00Z",
-  "updated_at": "2026-03-06T13:55:43Z",
+  "created_at": "2026-02-16T13:12:00Z",
+  "updated_at": "2026-03-05T15:46:25Z",
   "chat_messages": [
    {
     "uuid": "demo-g048-m1",
     "sender": "human",
-    "created_at": "2026-02-16T13:25:00Z",
+    "created_at": "2026-02-16T13:12:00Z",
     "content": [
      {
       "type": "text",
@@ -3384,7 +3604,7 @@
    {
     "uuid": "demo-g048-m2",
     "sender": "assistant",
-    "created_at": "2026-02-16T13:25:42Z",
+    "created_at": "2026-02-16T13:12:32Z",
     "content": [
      {
       "type": "text",
@@ -3395,7 +3615,7 @@
    {
     "uuid": "demo-g048-m3",
     "sender": "human",
-    "created_at": "2026-02-17T13:04:00Z",
+    "created_at": "2026-02-18T00:59:00Z",
     "content": [
      {
       "type": "text",
@@ -3406,7 +3626,7 @@
    {
     "uuid": "demo-g048-m4",
     "sender": "assistant",
-    "created_at": "2026-02-17T13:04:41Z",
+    "created_at": "2026-02-18T01:00:00Z",
     "content": [
      {
       "type": "text",
@@ -3417,7 +3637,7 @@
    {
     "uuid": "demo-g048-m5",
     "sender": "human",
-    "created_at": "2026-02-18T07:16:00Z",
+    "created_at": "2026-02-19T00:18:00Z",
     "content": [
      {
       "type": "text",
@@ -3428,7 +3648,7 @@
    {
     "uuid": "demo-g048-m6",
     "sender": "assistant",
-    "created_at": "2026-02-18T07:16:31Z",
+    "created_at": "2026-02-19T00:18:58Z",
     "content": [
      {
       "type": "text",
@@ -3439,7 +3659,7 @@
    {
     "uuid": "demo-g048-m7",
     "sender": "human",
-    "created_at": "2026-02-19T00:22:00Z",
+    "created_at": "2026-02-20T00:01:00Z",
     "content": [
      {
       "type": "text",
@@ -3450,7 +3670,7 @@
    {
     "uuid": "demo-g048-m8",
     "sender": "assistant",
-    "created_at": "2026-02-19T00:22:51Z",
+    "created_at": "2026-02-20T00:01:45Z",
     "content": [
      {
       "type": "text",
@@ -3461,7 +3681,7 @@
    {
     "uuid": "demo-g048-m9",
     "sender": "human",
-    "created_at": "2026-02-20T12:11:00Z",
+    "created_at": "2026-02-21T01:53:00Z",
     "content": [
      {
       "type": "text",
@@ -3472,7 +3692,7 @@
    {
     "uuid": "demo-g048-m10",
     "sender": "assistant",
-    "created_at": "2026-02-20T12:11:31Z",
+    "created_at": "2026-02-21T01:53:51Z",
     "content": [
      {
       "type": "text",
@@ -3483,7 +3703,7 @@
    {
     "uuid": "demo-g048-m11",
     "sender": "human",
-    "created_at": "2026-02-22T00:20:00Z",
+    "created_at": "2026-02-22T00:31:00Z",
     "content": [
      {
       "type": "text",
@@ -3494,7 +3714,7 @@
    {
     "uuid": "demo-g048-m12",
     "sender": "assistant",
-    "created_at": "2026-02-22T00:20:35Z",
+    "created_at": "2026-02-22T00:31:24Z",
     "content": [
      {
       "type": "text",
@@ -3505,7 +3725,7 @@
    {
     "uuid": "demo-g048-m13",
     "sender": "human",
-    "created_at": "2026-02-23T05:54:00Z",
+    "created_at": "2026-02-24T04:37:00Z",
     "content": [
      {
       "type": "text",
@@ -3516,7 +3736,7 @@
    {
     "uuid": "demo-g048-m14",
     "sender": "assistant",
-    "created_at": "2026-02-23T05:54:49Z",
+    "created_at": "2026-02-24T04:37:50Z",
     "content": [
      {
       "type": "text",
@@ -3527,7 +3747,7 @@
    {
     "uuid": "demo-g048-m15",
     "sender": "human",
-    "created_at": "2026-02-24T12:48:00Z",
+    "created_at": "2026-02-25T04:29:00Z",
     "content": [
      {
       "type": "text",
@@ -3538,7 +3758,7 @@
    {
     "uuid": "demo-g048-m16",
     "sender": "assistant",
-    "created_at": "2026-02-24T12:48:21Z",
+    "created_at": "2026-02-25T04:29:25Z",
     "content": [
      {
       "type": "text",
@@ -3549,7 +3769,7 @@
    {
     "uuid": "demo-g048-m17",
     "sender": "human",
-    "created_at": "2026-02-25T00:54:00Z",
+    "created_at": "2026-02-26T14:28:00Z",
     "content": [
      {
       "type": "text",
@@ -3560,7 +3780,7 @@
    {
     "uuid": "demo-g048-m18",
     "sender": "assistant",
-    "created_at": "2026-02-25T00:54:36Z",
+    "created_at": "2026-02-26T14:28:47Z",
     "content": [
      {
       "type": "text",
@@ -3571,7 +3791,7 @@
    {
     "uuid": "demo-g048-m19",
     "sender": "human",
-    "created_at": "2026-02-27T13:47:00Z",
+    "created_at": "2026-02-27T02:43:00Z",
     "content": [
      {
       "type": "text",
@@ -3582,7 +3802,7 @@
    {
     "uuid": "demo-g048-m20",
     "sender": "assistant",
-    "created_at": "2026-02-27T13:47:26Z",
+    "created_at": "2026-02-27T02:44:00Z",
     "content": [
      {
       "type": "text",
@@ -3593,7 +3813,7 @@
    {
     "uuid": "demo-g048-m21",
     "sender": "human",
-    "created_at": "2026-02-28T01:03:00Z",
+    "created_at": "2026-02-28T07:42:00Z",
     "content": [
      {
       "type": "text",
@@ -3604,7 +3824,7 @@
    {
     "uuid": "demo-g048-m22",
     "sender": "assistant",
-    "created_at": "2026-02-28T01:03:33Z",
+    "created_at": "2026-02-28T07:42:42Z",
     "content": [
      {
       "type": "text",
@@ -3615,7 +3835,7 @@
    {
     "uuid": "demo-g048-m23",
     "sender": "human",
-    "created_at": "2026-03-01T02:58:00Z",
+    "created_at": "2026-03-01T04:50:00Z",
     "content": [
      {
       "type": "text",
@@ -3626,7 +3846,7 @@
    {
     "uuid": "demo-g048-m24",
     "sender": "assistant",
-    "created_at": "2026-03-01T02:58:21Z",
+    "created_at": "2026-03-01T04:50:19Z",
     "content": [
      {
       "type": "text",
@@ -3637,7 +3857,7 @@
    {
     "uuid": "demo-g048-m25",
     "sender": "human",
-    "created_at": "2026-03-02T13:51:00Z",
+    "created_at": "2026-03-02T12:19:00Z",
     "content": [
      {
       "type": "text",
@@ -3648,7 +3868,7 @@
    {
     "uuid": "demo-g048-m26",
     "sender": "assistant",
-    "created_at": "2026-03-02T13:51:19Z",
+    "created_at": "2026-03-02T12:19:37Z",
     "content": [
      {
       "type": "text",
@@ -3659,7 +3879,7 @@
    {
     "uuid": "demo-g048-m27",
     "sender": "human",
-    "created_at": "2026-03-03T01:19:00Z",
+    "created_at": "2026-03-03T13:13:00Z",
     "content": [
      {
       "type": "text",
@@ -3670,7 +3890,7 @@
    {
     "uuid": "demo-g048-m28",
     "sender": "assistant",
-    "created_at": "2026-03-03T01:19:39Z",
+    "created_at": "2026-03-03T13:13:28Z",
     "content": [
      {
       "type": "text",
@@ -3681,7 +3901,7 @@
    {
     "uuid": "demo-g048-m29",
     "sender": "human",
-    "created_at": "2026-03-04T13:01:00Z",
+    "created_at": "2026-03-04T09:07:00Z",
     "content": [
      {
       "type": "text",
@@ -3692,7 +3912,7 @@
    {
     "uuid": "demo-g048-m30",
     "sender": "assistant",
-    "created_at": "2026-03-04T13:01:55Z",
+    "created_at": "2026-03-04T09:07:45Z",
     "content": [
      {
       "type": "text",
@@ -3703,7 +3923,7 @@
    {
     "uuid": "demo-g048-m31",
     "sender": "human",
-    "created_at": "2026-03-06T13:55:00Z",
+    "created_at": "2026-03-05T15:46:00Z",
     "content": [
      {
       "type": "text",
@@ -3714,7 +3934,7 @@
    {
     "uuid": "demo-g048-m32",
     "sender": "assistant",
-    "created_at": "2026-03-06T13:55:43Z",
+    "created_at": "2026-03-05T15:46:25Z",
     "content": [
      {
       "type": "text",
