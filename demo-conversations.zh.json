@@ -172,13 +172,13 @@
   "uuid": "demo-conv-g001",
   "name": "Python 列表推导式",
   "summary": "",
-  "created_at": "2026-02-10T01:24:00Z",
-  "updated_at": "2026-02-10T01:35:07Z",
+  "created_at": "2025-12-21T01:42:00Z",
+  "updated_at": "2025-12-21T01:43:20Z",
   "chat_messages": [
    {
     "uuid": "demo-g001-m1",
     "sender": "human",
-    "created_at": "2026-02-10T01:24:00Z",
+    "created_at": "2025-12-21T01:42:00Z",
     "content": [
      {
       "type": "text",
@@ -189,79 +189,230 @@
    {
     "uuid": "demo-g001-m2",
     "sender": "assistant",
-    "created_at": "2026-02-10T01:24:35Z",
+    "created_at": "2025-12-21T01:43:20Z",
     "content": [
+     {
+      "type": "thinking",
+      "thinking": "用户在问基础概念，先给结论再举一个小例子。",
+      "start_timestamp": "2025-12-21T01:43:05Z",
+      "stop_timestamp": "2025-12-21T01:43:20Z"
+     },
      {
       "type": "text",
       "text": "主要是简洁：`[x*2 for x in nums]` 一行就能表达「把每个元素翻倍」。性能上通常也略快一些，因为循环在解释器内部完成。不过逻辑复杂时，普通 for 循环更好读。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g002",
+  "name": "merge 还是 rebase",
+  "summary": "",
+  "created_at": "2026-02-13T04:53:00Z",
+  "updated_at": "2026-02-13T04:55:35Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g001-m3",
+    "uuid": "demo-g002-m1",
     "sender": "human",
-    "created_at": "2026-02-10T01:26:35Z",
+    "created_at": "2026-02-13T04:53:00Z",
     "content": [
      {
       "type": "text",
-      "text": "写爬虫要注意什么？"
+      "text": "git merge 和 rebase 该用哪个？"
      }
     ]
    },
    {
-    "uuid": "demo-g001-m4",
+    "uuid": "demo-g002-m2",
     "sender": "assistant",
-    "created_at": "2026-02-10T01:27:23Z",
+    "created_at": "2026-02-13T04:54:22Z",
     "content": [
      {
+      "type": "thinking",
+      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
+      "start_timestamp": "2026-02-13T04:54:15Z",
+      "stop_timestamp": "2026-02-13T04:54:22Z"
+     },
+     {
       "type": "text",
-      "text": "几件事：先看网站的 robots.txt 和使用条款；请求之间加间隔，别给对方服务器压力；做好异常处理和重试；数据只用于自己被允许的用途。"
+      "text": "简单原则：\n\n- **merge** 保留真实的分支历史，适合合并到公共分支\n- **rebase** 让历史变成一条直线，适合整理自己还没推送的提交\n\n别对已经推送、别人也在用的分支做 rebase。"
      }
     ]
    },
    {
-    "uuid": "demo-g001-m5",
+    "uuid": "demo-g002-m3",
     "sender": "human",
-    "created_at": "2026-02-10T01:31:23Z",
+    "created_at": "2026-02-13T04:55:22Z",
     "content": [
      {
       "type": "text",
-      "text": "原来如此"
+      "text": "好的，谢谢！"
      }
     ]
    },
    {
-    "uuid": "demo-g001-m6",
+    "uuid": "demo-g002-m4",
     "sender": "assistant",
-    "created_at": "2026-02-10T01:31:43Z",
+    "created_at": "2026-02-13T04:55:35Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g003",
+  "name": "IndexError 报错",
+  "summary": "",
+  "created_at": "2025-11-22T11:44:00Z",
+  "updated_at": "2025-11-22T11:45:39Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g003-m1",
+    "sender": "human",
+    "created_at": "2025-11-22T11:44:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "这个报错是什么意思：`IndexError: list index out of range`"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m2",
+    "sender": "assistant",
+    "created_at": "2025-11-22T11:44:24Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "说明你访问的下标超出了列表长度。比如列表只有 3 个元素，下标最大是 2，却访问了 `items[3]`。可以先 `print(len(items))` 看看实际长度。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m3",
+    "sender": "human",
+    "created_at": "2025-11-22T11:45:24Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g003-m4",
+    "sender": "assistant",
+    "created_at": "2025-11-22T11:45:39Z",
     "content": [
      {
       "type": "text",
       "text": "不客气，有问题随时问。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g004",
+  "name": "正则的贪婪匹配",
+  "summary": "",
+  "created_at": "2025-11-30T13:33:00Z",
+  "updated_at": "2025-11-30T13:34:00Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g001-m7",
+    "uuid": "demo-g004-m1",
     "sender": "human",
-    "created_at": "2026-02-10T01:34:43Z",
+    "created_at": "2025-11-30T13:33:00Z",
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？ 👨‍💻"
+      "text": "正则里 `.*?` 和 `.*` 有什么区别？"
      }
     ]
    },
    {
-    "uuid": "demo-g001-m8",
+    "uuid": "demo-g004-m2",
     "sender": "assistant",
-    "created_at": "2026-02-10T01:35:07Z",
+    "created_at": "2025-11-30T13:34:00Z",
     "content": [
      {
       "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
-      "start_timestamp": "2026-02-10T01:35:03Z",
-      "stop_timestamp": "2026-02-10T01:35:07Z"
+      "thinking": "用一个具体字符串对比两种结果，最直观。",
+      "start_timestamp": "2025-11-30T13:33:45Z",
+      "stop_timestamp": "2025-11-30T13:34:00Z"
+     },
+     {
+      "type": "text",
+      "text": "`.*` 是贪婪匹配，会尽可能多地吃字符；`.*?` 是非贪婪，匹配到最短就停。比如在 `<a><b>` 里用 `<.*>` 会匹配整串，用 `<.*?>` 只匹配 `<a>`。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g005",
+  "name": "SQL 查询变慢",
+  "summary": "",
+  "created_at": "2025-12-23T18:33:00Z",
+  "updated_at": "2025-12-23T18:34:29Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g005-m1",
+    "sender": "human",
+    "created_at": "2025-12-23T18:33:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "SQL 查询很慢，先从哪里查？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g005-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-23T18:34:29Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g006",
+  "name": "flex 垂直居中",
+  "summary": "",
+  "created_at": "2026-02-14T13:27:00Z",
+  "updated_at": "2026-02-14T13:27:21Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g006-m1",
+    "sender": "human",
+    "created_at": "2026-02-14T13:27:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "flex 布局里怎么让元素垂直居中？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g006-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-14T13:27:21Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "给出可以直接复制的代码片段会更有用。",
+      "start_timestamp": "2026-02-14T13:27:09Z",
+      "stop_timestamp": "2026-02-14T13:27:21Z"
      },
      {
       "type": "text",
@@ -272,521 +423,38 @@
   ]
  },
  {
-  "uuid": "demo-conv-g002",
-  "name": "英语口语练习",
-  "summary": "",
-  "created_at": "2026-03-29T14:37:00Z",
-  "updated_at": "2026-03-29T14:49:22Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g002-m1",
-    "sender": "human",
-    "created_at": "2026-03-29T14:37:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "雅思大作文开头怎么写比较稳？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m2",
-    "sender": "assistant",
-    "created_at": "2026-03-29T14:38:26Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户的语法点比较基础，用记忆口诀会更好记。",
-      "start_timestamp": "2026-03-29T14:38:14Z",
-      "stop_timestamp": "2026-03-29T14:38:26Z"
-     },
-     {
-      "type": "text",
-      "text": "一个稳妥的结构：一句改写题目 + 一句表明立场。不用追求华丽，清楚比复杂更重要。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m3",
-    "sender": "human",
-    "created_at": "2026-03-29T14:43:26Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ 👍"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-29T14:43:52Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m5",
-    "sender": "human",
-    "created_at": "2026-03-29T14:44:52Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "我想练口语，每天该怎么安排？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m6",
-    "sender": "assistant",
-    "created_at": "2026-03-29T14:45:34Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "建议每天 20 分钟：5 分钟跟读、10 分钟就一个话题自言自语并录音、5 分钟回听找问题。坚持比时长更重要。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m7",
-    "sender": "human",
-    "created_at": "2026-03-29T14:48:34Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "帮我把这句话改得更自然：I very like this book."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g002-m8",
-    "sender": "assistant",
-    "created_at": "2026-03-29T14:49:22Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户的语法点比较基础，用记忆口诀会更好记。",
-      "start_timestamp": "2026-03-29T14:48:59Z",
-      "stop_timestamp": "2026-03-29T14:49:22Z"
-     },
-     {
-      "type": "text",
-      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g003",
-  "name": "番茄炒蛋怎么更好吃",
-  "summary": "",
-  "created_at": "2025-12-07T12:37:00Z",
-  "updated_at": "2025-12-07T12:52:44Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g003-m1",
-    "sender": "human",
-    "created_at": "2025-12-07T12:37:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "烤箱要预热多久？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-07T12:37:26Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m3",
-    "sender": "human",
-    "created_at": "2025-12-07T12:41:26Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-07T12:42:03Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，有需要再来找我。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m5",
-    "sender": "human",
-    "created_at": "2025-12-07T12:43:03Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "番茄炒蛋要先炒蛋还是先炒番茄？ ❤️"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m6",
-    "sender": "assistant",
-    "created_at": "2025-12-07T12:44:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "先炒蛋：油热下蛋液，凝固到七成就盛出。再炒番茄出汁，最后把蛋倒回去翻匀。这样蛋嫩、汁多。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m7",
-    "sender": "human",
-    "created_at": "2025-12-07T12:46:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m8",
-    "sender": "assistant",
-    "created_at": "2025-12-07T12:47:53Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m9",
-    "sender": "human",
-    "created_at": "2025-12-07T12:51:53Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "有没有 15 分钟能做完的晚饭？ 😊"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g003-m10",
-    "sender": "assistant",
-    "created_at": "2025-12-07T12:52:44Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g004",
-  "name": "周末短途去哪",
-  "summary": "",
-  "created_at": "2025-12-05T14:20:00Z",
-  "updated_at": "2025-12-05T14:33:25Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g004-m1",
-    "sender": "human",
-    "created_at": "2025-12-05T14:20:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "冰岛自驾要注意什么？ 🧑‍🍳"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-05T14:21:23Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2025-12-05T14:21:20Z",
-      "stop_timestamp": "2025-12-05T14:21:23Z"
-     },
-     {
-      "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m3",
-    "sender": "human",
-    "created_at": "2025-12-05T14:26:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "短途旅行带什么最容易忘？ 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-05T14:27:42Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2025-12-05T14:27:19Z",
-      "stop_timestamp": "2025-12-05T14:27:42Z"
-     },
-     {
-      "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m5",
-    "sender": "human",
-    "created_at": "2025-12-05T14:30:42Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "收到～"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m6",
-    "sender": "assistant",
-    "created_at": "2025-12-05T14:30:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m7",
-    "sender": "human",
-    "created_at": "2025-12-05T14:31:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "京都三天怎么安排比较不赶？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g004-m8",
-    "sender": "assistant",
-    "created_at": "2025-12-05T14:33:25Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2025-12-05T14:33:10Z",
-      "stop_timestamp": "2025-12-05T14:33:25Z"
-     },
-     {
-      "type": "text",
-      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g005",
-  "name": "读书笔记方法",
-  "summary": "",
-  "created_at": "2026-02-06T19:22:00Z",
-  "updated_at": "2026-02-06T19:29:36Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g005-m1",
-    "sender": "human",
-    "created_at": "2026-02-06T19:22:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "读书笔记怎么做才有用？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g005-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-06T19:22:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "别只抄原文。读完一章，用自己的话写三句：讲了什么、我同意什么、我能用在哪里。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g005-m3",
-    "sender": "human",
-    "created_at": "2026-02-06T19:28:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "推荐几本入门科普书？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g005-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-06T19:29:36Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
-      "start_timestamp": "2026-02-06T19:29:28Z",
-      "stop_timestamp": "2026-02-06T19:29:36Z"
-     },
-     {
-      "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g006",
-  "name": "拉伸动作",
-  "summary": "",
-  "created_at": "2025-10-21T09:34:00Z",
-  "updated_at": "2025-10-21T09:39:48Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g006-m1",
-    "sender": "human",
-    "created_at": "2025-10-21T09:34:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "跑完步膝盖有点疼，正常吗？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g006-m2",
-    "sender": "assistant",
-    "created_at": "2025-10-21T09:34:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g006-m3",
-    "sender": "human",
-    "created_at": "2025-10-21T09:35:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "有道理"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g006-m4",
-    "sender": "assistant",
-    "created_at": "2025-10-21T09:36:01Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "试过之后可以告诉我效果。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g006-m5",
-    "sender": "human",
-    "created_at": "2025-10-21T09:39:01Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "零基础想开始跑步，怎么开始？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g006-m6",
-    "sender": "assistant",
-    "created_at": "2025-10-21T09:39:48Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
-     }
-    ]
-   }
-  ]
- },
- {
   "uuid": "demo-conv-g007",
-  "name": "时间管理",
+  "name": "一长串 if/elif",
   "summary": "",
-  "created_at": "2025-12-28T13:59:00Z",
-  "updated_at": "2025-12-28T14:14:30Z",
+  "created_at": "2025-12-02T14:46:00Z",
+  "updated_at": "2025-12-02T14:50:43Z",
   "chat_messages": [
    {
     "uuid": "demo-g007-m1",
     "sender": "human",
-    "created_at": "2025-12-28T13:59:00Z",
+    "created_at": "2025-12-02T14:46:00Z",
     "content": [
      {
       "type": "text",
-      "text": "周报总写成流水账，怎么改？"
+      "text": "我的代码里有一长串 if/elif，按类型返回不同的提示语，怎么简化？"
      }
     ]
    },
    {
     "uuid": "demo-g007-m2",
     "sender": "assistant",
-    "created_at": "2025-12-28T13:59:37Z",
+    "created_at": "2025-12-02T14:46:31Z",
     "content": [
      {
-      "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
-      "start_timestamp": "2025-12-28T13:59:26Z",
-      "stop_timestamp": "2025-12-28T13:59:37Z"
-     },
-     {
       "type": "text",
-      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
+      "text": "可以用字典把类型映射到提示语：`MESSAGES = {'a': '…', 'b': '…'}`，然后 `MESSAGES.get(kind, '默认提示')`。以后新增一种类型只要加一行。"
      }
     ]
    },
    {
     "uuid": "demo-g007-m3",
     "sender": "human",
-    "created_at": "2025-12-28T14:03:37Z",
+    "created_at": "2025-12-02T14:50:31Z",
     "content": [
      {
       "type": "text",
@@ -797,61 +465,11 @@
    {
     "uuid": "demo-g007-m4",
     "sender": "assistant",
-    "created_at": "2025-12-28T14:04:08Z",
+    "created_at": "2025-12-02T14:50:43Z",
     "content": [
      {
       "type": "text",
-      "text": "加油！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g007-m5",
-    "sender": "human",
-    "created_at": "2025-12-28T14:07:08Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "事情太多，先做哪个？ 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g007-m6",
-    "sender": "assistant",
-    "created_at": "2025-12-28T14:07:49Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
-      "start_timestamp": "2025-12-28T14:07:35Z",
-      "stop_timestamp": "2025-12-28T14:07:49Z"
-     },
-     {
-      "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g007-m7",
-    "sender": "human",
-    "created_at": "2025-12-28T14:13:49Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一页 PPT 放多少字合适？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g007-m8",
-    "sender": "assistant",
-    "created_at": "2025-12-28T14:14:30Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
+      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -859,30 +477,30 @@
  },
  {
   "uuid": "demo-conv-g008",
-  "name": "养绿萝的问题",
+  "name": "写爬虫的注意事项",
   "summary": "",
-  "created_at": "2025-11-29T00:40:00Z",
-  "updated_at": "2025-11-29T00:40:55Z",
+  "created_at": "2026-01-21T01:01:00Z",
+  "updated_at": "2026-01-21T01:02:01Z",
   "chat_messages": [
    {
     "uuid": "demo-g008-m1",
     "sender": "human",
-    "created_at": "2025-11-29T00:40:00Z",
+    "created_at": "2026-01-21T01:01:00Z",
     "content": [
      {
       "type": "text",
-      "text": "学吉他先练什么？"
+      "text": "写爬虫要注意什么？"
      }
     ]
    },
    {
     "uuid": "demo-g008-m2",
     "sender": "assistant",
-    "created_at": "2025-11-29T00:40:55Z",
+    "created_at": "2026-01-21T01:02:01Z",
     "content": [
      {
       "type": "text",
-      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
+      "text": "几件事：先看网站的 robots.txt 和使用条款；请求之间加间隔，别给对方服务器压力；做好异常处理和重试；数据只用于自己被允许的用途。"
      }
     ]
    }
@@ -890,30 +508,58 @@
  },
  {
   "uuid": "demo-conv-g009",
-  "name": "前端布局问题",
+  "name": "affect 和 effect",
   "summary": "",
-  "created_at": "2025-12-28T14:07:00Z",
-  "updated_at": "2025-12-28T14:07:24Z",
+  "created_at": "2026-02-10T04:47:00Z",
+  "updated_at": "2026-02-10T04:53:23Z",
   "chat_messages": [
    {
     "uuid": "demo-g009-m1",
     "sender": "human",
-    "created_at": "2025-12-28T14:07:00Z",
+    "created_at": "2026-02-10T04:47:00Z",
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
+      "text": "affect 和 effect 怎么区分？"
      }
     ]
    },
    {
     "uuid": "demo-g009-m2",
     "sender": "assistant",
-    "created_at": "2025-12-28T14:07:24Z",
+    "created_at": "2026-02-10T04:48:16Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "用户的语法点比较基础，用记忆口诀会更好记。",
+      "start_timestamp": "2026-02-10T04:47:58Z",
+      "stop_timestamp": "2026-02-10T04:48:16Z"
+     },
+     {
+      "type": "text",
+      "text": "多数情况下 **affect** 是动词（影响），**effect** 是名词（效果）。记法：*A for action*，动作用 affect。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g009-m3",
+    "sender": "human",
+    "created_at": "2026-02-10T04:53:16Z",
     "content": [
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "明白了，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g009-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-10T04:53:23Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -921,59 +567,158 @@
  },
  {
   "uuid": "demo-conv-g010",
-  "name": "英文邮件润色",
+  "name": "改一个英文句子",
   "summary": "",
-  "created_at": "2026-03-11T13:30:00Z",
-  "updated_at": "2026-03-11T13:34:05Z",
+  "created_at": "2025-11-08T13:44:00Z",
+  "updated_at": "2025-11-08T13:44:30Z",
   "chat_messages": [
    {
     "uuid": "demo-g010-m1",
     "sender": "human",
-    "created_at": "2026-03-11T13:30:00Z",
+    "created_at": "2025-11-08T13:44:00Z",
     "content": [
      {
       "type": "text",
-      "text": "by the way 在正式邮件里可以用吗？ 🧑‍🍳"
+      "text": "帮我把这句话改得更自然：I very like this book."
      }
     ]
    },
    {
     "uuid": "demo-g010-m2",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:31:13Z",
+    "created_at": "2025-11-08T13:44:30Z",
     "content": [
      {
+      "type": "thinking",
+      "thinking": "给一个改写示例，比讲规则更直观。",
+      "start_timestamp": "2025-11-08T13:44:11Z",
+      "stop_timestamp": "2025-11-08T13:44:30Z"
+     },
+     {
       "type": "text",
-      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
+      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g011",
+  "name": "雅思大作文开头",
+  "summary": "",
+  "created_at": "2026-03-24T13:21:00Z",
+  "updated_at": "2026-03-24T13:25:14Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g010-m3",
+    "uuid": "demo-g011-m1",
     "sender": "human",
-    "created_at": "2026-03-11T13:32:13Z",
+    "created_at": "2026-03-24T13:21:00Z",
     "content": [
      {
       "type": "text",
-      "text": "好的，我试试"
+      "text": "雅思大作文开头怎么写比较稳？"
      }
     ]
    },
    {
-    "uuid": "demo-g010-m4",
+    "uuid": "demo-g011-m2",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:32:23Z",
+    "created_at": "2026-03-24T13:22:05Z",
     "content": [
      {
       "type": "text",
-      "text": "加油！"
+      "text": "一个稳妥的结构：一句改写题目 + 一句表明立场。不用追求华丽，清楚比复杂更重要。"
      }
     ]
    },
    {
-    "uuid": "demo-g010-m5",
+    "uuid": "demo-g011-m3",
     "sender": "human",
-    "created_at": "2026-03-11T13:33:23Z",
+    "created_at": "2026-03-24T13:25:05Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！ 🙏"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g011-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-24T13:25:14Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g012",
+  "name": "每天练口语",
+  "summary": "",
+  "created_at": "2026-02-09T04:00:00Z",
+  "updated_at": "2026-02-09T04:02:07Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g012-m1",
+    "sender": "human",
+    "created_at": "2026-02-09T04:00:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "我想练口语，每天该怎么安排？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g012-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-09T04:01:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "建议每天 20 分钟：5 分钟跟读、10 分钟就一个话题自言自语并录音、5 分钟回听找问题。坚持比时长更重要。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g012-m3",
+    "sender": "human",
+    "created_at": "2026-02-09T04:02:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g012-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-09T04:02:07Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g013",
+  "name": "英文邮件结尾",
+  "summary": "",
+  "created_at": "2026-03-21T05:33:00Z",
+  "updated_at": "2026-03-21T05:33:37Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g013-m1",
+    "sender": "human",
+    "created_at": "2026-03-21T05:33:00Z",
     "content": [
      {
       "type": "text",
@@ -982,16 +727,10 @@
     ]
    },
    {
-    "uuid": "demo-g010-m6",
+    "uuid": "demo-g013-m2",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:34:05Z",
+    "created_at": "2026-03-21T05:33:37Z",
     "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
-      "start_timestamp": "2026-03-11T13:33:45Z",
-      "stop_timestamp": "2026-03-11T13:34:05Z"
-     },
      {
       "type": "text",
       "text": "常见的有 *Kind regards*、*Many thanks*、*Cheers*（比较随意）。正式场合用 *Kind regards* 最保险。"
@@ -1001,60 +740,131 @@
   ]
  },
  {
-  "uuid": "demo-conv-g011",
-  "name": "周末做什么菜",
+  "uuid": "demo-conv-g014",
+  "name": "look forward to 的用法",
   "summary": "",
-  "created_at": "2026-02-07T11:53:00Z",
-  "updated_at": "2026-02-07T12:11:26Z",
+  "created_at": "2026-02-21T19:28:00Z",
+  "updated_at": "2026-02-21T19:31:04Z",
   "chat_messages": [
    {
-    "uuid": "demo-g011-m1",
+    "uuid": "demo-g014-m1",
     "sender": "human",
-    "created_at": "2026-02-07T11:53:00Z",
+    "created_at": "2026-02-21T19:28:00Z",
     "content": [
      {
       "type": "text",
-      "text": "怎么让炒青菜保持翠绿？ ✨"
+      "text": "look forward to 后面接什么？"
      }
     ]
    },
    {
-    "uuid": "demo-g011-m2",
+    "uuid": "demo-g014-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T11:54:00Z",
+    "created_at": "2026-02-21T19:28:48Z",
     "content": [
      {
       "type": "text",
-      "text": "大火快炒，下锅前确保锅够热；盐最后放；也可以先焯水 10 秒再炒。"
+      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
      }
     ]
    },
    {
-    "uuid": "demo-g011-m3",
+    "uuid": "demo-g014-m3",
     "sender": "human",
-    "created_at": "2026-02-07T12:00:00Z",
+    "created_at": "2026-02-21T19:30:48Z",
     "content": [
      {
       "type": "text",
-      "text": "烤箱要预热多久？ 🎉"
+      "text": "谢谢，很有帮助"
      }
     ]
    },
    {
-    "uuid": "demo-g011-m4",
+    "uuid": "demo-g014-m4",
     "sender": "assistant",
-    "created_at": "2026-02-07T12:00:33Z",
+    "created_at": "2026-02-21T19:31:04Z",
     "content": [
      {
       "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g015",
+  "name": "by the way 正式吗",
+  "summary": "",
+  "created_at": "2026-02-07T13:30:00Z",
+  "updated_at": "2026-02-07T13:31:04Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g015-m1",
+    "sender": "human",
+    "created_at": "2026-02-07T13:30:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "by the way 在正式邮件里可以用吗？"
      }
     ]
    },
    {
-    "uuid": "demo-g011-m5",
+    "uuid": "demo-g015-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-07T13:31:04Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g016",
+  "name": "番茄炒蛋的顺序",
+  "summary": "",
+  "created_at": "2026-02-15T15:56:00Z",
+  "updated_at": "2026-02-15T15:57:09Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g016-m1",
     "sender": "human",
-    "created_at": "2026-02-07T12:05:33Z",
+    "created_at": "2026-02-15T15:56:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "番茄炒蛋要先炒蛋还是先炒番茄？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g016-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-15T15:57:09Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "先炒蛋：油热下蛋液，凝固到七成就盛出。再炒番茄出汁，最后把蛋倒回去翻匀。这样蛋嫩、汁多。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g017",
+  "name": "鸡蛋土豆洋葱",
+  "summary": "",
+  "created_at": "2026-01-25T02:38:00Z",
+  "updated_at": "2026-01-25T02:44:06Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g017-m1",
+    "sender": "human",
+    "created_at": "2026-01-25T02:38:00Z",
     "content": [
      {
       "type": "text",
@@ -1063,15 +873,15 @@
     ]
    },
    {
-    "uuid": "demo-g011-m6",
+    "uuid": "demo-g017-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T12:06:02Z",
+    "created_at": "2026-01-25T02:38:55Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "用户手边食材有限，给一道能直接做的菜。",
-      "start_timestamp": "2026-02-07T12:05:39Z",
-      "stop_timestamp": "2026-02-07T12:06:02Z"
+      "start_timestamp": "2026-01-25T02:38:38Z",
+      "stop_timestamp": "2026-01-25T02:38:55Z"
      },
      {
       "type": "text",
@@ -1080,31 +890,93 @@
     ]
    },
    {
-    "uuid": "demo-g011-m7",
+    "uuid": "demo-g017-m3",
     "sender": "human",
-    "created_at": "2026-02-07T12:07:02Z",
+    "created_at": "2026-01-25T02:43:55Z",
     "content": [
      {
       "type": "text",
-      "text": "收到～"
+      "text": "明白了，谢谢！ 👍"
      }
     ]
    },
    {
-    "uuid": "demo-g011-m8",
+    "uuid": "demo-g017-m4",
     "sender": "assistant",
-    "created_at": "2026-02-07T12:07:16Z",
+    "created_at": "2026-01-25T02:44:06Z",
     "content": [
      {
       "type": "text",
       "text": "不客气，有问题随时问。"
      }
     ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g018",
+  "name": "烤箱预热",
+  "summary": "",
+  "created_at": "2026-03-09T13:32:00Z",
+  "updated_at": "2026-03-09T13:34:03Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g018-m1",
+    "sender": "human",
+    "created_at": "2026-03-09T13:32:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "烤箱要预热多久？"
+     }
+    ]
    },
    {
-    "uuid": "demo-g011-m9",
+    "uuid": "demo-g018-m2",
+    "sender": "assistant",
+    "created_at": "2026-03-09T13:32:48Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g018-m3",
     "sender": "human",
-    "created_at": "2026-02-07T12:10:16Z",
+    "created_at": "2026-03-09T13:33:48Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g018-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-09T13:34:03Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g019",
+  "name": "米饭夹生",
+  "summary": "",
+  "created_at": "2026-03-24T01:58:00Z",
+  "updated_at": "2026-03-24T01:58:55Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g019-m1",
+    "sender": "human",
+    "created_at": "2026-03-24T01:58:00Z",
     "content": [
      {
       "type": "text",
@@ -1113,16 +985,10 @@
     ]
    },
    {
-    "uuid": "demo-g011-m10",
+    "uuid": "demo-g019-m2",
     "sender": "assistant",
-    "created_at": "2026-02-07T12:11:26Z",
+    "created_at": "2026-03-24T01:58:55Z",
     "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
-      "start_timestamp": "2026-02-07T12:11:18Z",
-      "stop_timestamp": "2026-02-07T12:11:26Z"
-     },
      {
       "type": "text",
       "text": "多数是水少了或者没泡。大米和水大约 1:1.2，先泡 20 分钟再煮，煮好焖 10 分钟别急着开盖。"
@@ -1132,533 +998,16 @@
   ]
  },
  {
-  "uuid": "demo-conv-g012",
-  "name": "第一次去冰岛",
+  "uuid": "demo-conv-g020",
+  "name": "15 分钟晚饭",
   "summary": "",
-  "created_at": "2026-02-02T09:26:00Z",
-  "updated_at": "2026-02-02T09:29:46Z",
+  "created_at": "2025-12-28T13:59:00Z",
+  "updated_at": "2025-12-28T13:59:55Z",
   "chat_messages": [
    {
-    "uuid": "demo-g012-m1",
+    "uuid": "demo-g020-m1",
     "sender": "human",
-    "created_at": "2026-02-02T09:26:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "短途旅行带什么最容易忘？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g012-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-02T09:27:25Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2026-02-02T09:27:22Z",
-      "stop_timestamp": "2026-02-02T09:27:25Z"
-     },
-     {
-      "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g012-m3",
-    "sender": "human",
-    "created_at": "2026-02-02T09:28:25Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "冰岛自驾要注意什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g012-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-02T09:29:46Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2026-02-02T09:29:29Z",
-      "stop_timestamp": "2026-02-02T09:29:46Z"
-     },
-     {
-      "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g013",
-  "name": "《百年孤独》读后感",
-  "summary": "",
-  "created_at": "2026-01-03T02:28:00Z",
-  "updated_at": "2026-01-03T02:35:05Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g013-m1",
-    "sender": "human",
-    "created_at": "2026-01-03T02:28:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "《百年孤独》人名太多记不住怎么办？ 😮"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g013-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-03T02:28:20Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
-      "start_timestamp": "2026-01-03T02:28:07Z",
-      "stop_timestamp": "2026-01-03T02:28:20Z"
-     },
-     {
-      "type": "text",
-      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g013-m3",
-    "sender": "human",
-    "created_at": "2026-01-03T02:34:20Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "推荐几本入门科普书？ 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g013-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-03T02:35:05Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g014",
-  "name": "拉伸动作",
-  "summary": "",
-  "created_at": "2026-03-31T19:35:00Z",
-  "updated_at": "2026-03-31T19:39:57Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g014-m1",
-    "sender": "human",
-    "created_at": "2026-03-31T19:35:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "运动后要拉伸多久？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m2",
-    "sender": "assistant",
-    "created_at": "2026-03-31T19:36:01Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
-      "start_timestamp": "2026-03-31T19:35:46Z",
-      "stop_timestamp": "2026-03-31T19:36:01Z"
-     },
-     {
-      "type": "text",
-      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m3",
-    "sender": "human",
-    "created_at": "2026-03-31T19:39:01Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "零基础想开始跑步，怎么开始？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g014-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-31T19:39:57Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g015",
-  "name": "做一页 PPT",
-  "summary": "",
-  "created_at": "2025-11-05T12:19:00Z",
-  "updated_at": "2025-11-05T12:20:08Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g015-m1",
-    "sender": "human",
-    "created_at": "2025-11-05T12:19:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "周报总写成流水账，怎么改？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g015-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-05T12:20:08Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
-      "start_timestamp": "2025-11-05T12:20:01Z",
-      "stop_timestamp": "2025-11-05T12:20:08Z"
-     },
-     {
-      "type": "text",
-      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g016",
-  "name": "养绿萝的问题",
-  "summary": "",
-  "created_at": "2026-01-25T11:48:00Z",
-  "updated_at": "2026-01-25T12:09:57Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g016-m1",
-    "sender": "human",
-    "created_at": "2026-01-25T11:48:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "朋友喜欢画画，送什么生日礼物好？ 😮"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-25T11:49:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以考虑一套好一点的水彩、速写本，或者一节体验课。附一张手写卡片会更走心。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m3",
-    "sender": "human",
-    "created_at": "2026-01-25T11:55:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-25T11:55:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m5",
-    "sender": "human",
-    "created_at": "2026-01-25T11:59:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "学吉他先练什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m6",
-    "sender": "assistant",
-    "created_at": "2026-01-25T12:00:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m7",
-    "sender": "human",
-    "created_at": "2026-01-25T12:04:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ ✨"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m8",
-    "sender": "assistant",
-    "created_at": "2026-01-25T12:04:44Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，有需要再来找我。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m9",
-    "sender": "human",
-    "created_at": "2026-01-25T12:08:44Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "猫为什么会踩奶？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g016-m10",
-    "sender": "assistant",
-    "created_at": "2026-01-25T12:09:57Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g017",
-  "name": "Python 列表推导式",
-  "summary": "",
-  "created_at": "2025-10-19T12:36:00Z",
-  "updated_at": "2025-10-19T12:47:33Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g017-m1",
-    "sender": "human",
-    "created_at": "2025-10-19T12:36:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "正则里 `.*?` 和 `.*` 有什么区别？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m2",
-    "sender": "assistant",
-    "created_at": "2025-10-19T12:37:28Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "`.*` 是贪婪匹配，会尽可能多地吃字符；`.*?` 是非贪婪，匹配到最短就停。比如在 `<a><b>` 里用 `<.*>` 会匹配整串，用 `<.*?>` 只匹配 `<a>`。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m3",
-    "sender": "human",
-    "created_at": "2025-10-19T12:39:28Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "SQL 查询很慢，先从哪里查？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m4",
-    "sender": "assistant",
-    "created_at": "2025-10-19T12:40:42Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m5",
-    "sender": "human",
-    "created_at": "2025-10-19T12:46:42Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g017-m6",
-    "sender": "assistant",
-    "created_at": "2025-10-19T12:47:33Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g018",
-  "name": "雅思写作思路",
-  "summary": "",
-  "created_at": "2026-02-26T14:36:00Z",
-  "updated_at": "2026-02-26T14:49:35Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g018-m1",
-    "sender": "human",
-    "created_at": "2026-02-26T14:36:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "帮我把这句话改得更自然：I very like this book."
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-26T14:36:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m3",
-    "sender": "human",
-    "created_at": "2026-02-26T14:39:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，我试试"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-26T14:39:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "试过之后可以告诉我效果。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m5",
-    "sender": "human",
-    "created_at": "2026-02-26T14:43:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "邮件结尾除了 Best regards 还能用什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m6",
-    "sender": "assistant",
-    "created_at": "2026-02-26T14:44:33Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "常见的有 *Kind regards*、*Many thanks*、*Cheers*（比较随意）。正式场合用 *Kind regards* 最保险。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m7",
-    "sender": "human",
-    "created_at": "2026-02-26T14:48:33Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "look forward to 后面接什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g018-m8",
-    "sender": "assistant",
-    "created_at": "2026-02-26T14:49:35Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
-      "start_timestamp": "2026-02-26T14:49:27Z",
-      "stop_timestamp": "2026-02-26T14:49:35Z"
-     },
-     {
-      "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g019",
-  "name": "烤箱新手问题",
-  "summary": "",
-  "created_at": "2026-03-21T09:14:00Z",
-  "updated_at": "2026-03-21T09:18:43Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g019-m1",
-    "sender": "human",
-    "created_at": "2026-03-21T09:14:00Z",
+    "created_at": "2025-12-28T13:59:00Z",
     "content": [
      {
       "type": "text",
@@ -1667,144 +1016,13 @@
     ]
    },
    {
-    "uuid": "demo-g019-m2",
+    "uuid": "demo-g020-m2",
     "sender": "assistant",
-    "created_at": "2026-03-21T09:14:54Z",
+    "created_at": "2025-12-28T13:59:55Z",
     "content": [
      {
       "type": "text",
       "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g019-m3",
-    "sender": "human",
-    "created_at": "2026-03-21T09:17:54Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g019-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-21T09:18:43Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g020",
-  "name": "周末短途去哪",
-  "summary": "",
-  "created_at": "2026-01-18T13:10:00Z",
-  "updated_at": "2026-01-18T13:19:06Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g020-m1",
-    "sender": "human",
-    "created_at": "2026-01-18T13:10:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "短途旅行带什么最容易忘？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-18T13:10:37Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2026-01-18T13:10:19Z",
-      "stop_timestamp": "2026-01-18T13:10:37Z"
-     },
-     {
-      "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m3",
-    "sender": "human",
-    "created_at": "2026-01-18T13:15:37Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "旅行时怎么拍出好看的照片？ 🙏"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-18T13:16:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "多利用早晨和傍晚的光线；人物不一定放正中，试试三分构图；多拍几张再挑。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m5",
-    "sender": "human",
-    "created_at": "2026-01-18T13:17:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m6",
-    "sender": "assistant",
-    "created_at": "2026-01-18T13:17:26Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "加油！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m7",
-    "sender": "human",
-    "created_at": "2026-01-18T13:18:26Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "冰岛自驾要注意什么？ 🙏"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g020-m8",
-    "sender": "assistant",
-    "created_at": "2026-01-18T13:19:06Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2026-01-18T13:19:01Z",
-      "stop_timestamp": "2026-01-18T13:19:06Z"
-     },
-     {
-      "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
      }
     ]
    }
@@ -1812,52 +1030,30 @@
  },
  {
   "uuid": "demo-conv-g021",
-  "name": "怎么坚持读书",
+  "name": "炒青菜变黄",
   "summary": "",
-  "created_at": "2026-02-25T12:02:00Z",
-  "updated_at": "2026-02-25T12:06:44Z",
+  "created_at": "2025-12-14T14:08:00Z",
+  "updated_at": "2025-12-14T14:08:38Z",
   "chat_messages": [
    {
     "uuid": "demo-g021-m1",
     "sender": "human",
-    "created_at": "2026-02-25T12:02:00Z",
+    "created_at": "2025-12-14T14:08:00Z",
     "content": [
      {
       "type": "text",
-      "text": "《百年孤独》人名太多记不住怎么办？ ☕"
+      "text": "怎么让炒青菜保持翠绿？"
      }
     ]
    },
    {
     "uuid": "demo-g021-m2",
     "sender": "assistant",
-    "created_at": "2026-02-25T12:02:23Z",
+    "created_at": "2025-12-14T14:08:38Z",
     "content": [
      {
       "type": "text",
-      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g021-m3",
-    "sender": "human",
-    "created_at": "2026-02-25T12:06:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "推荐几本入门科普书？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g021-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-25T12:06:44Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
+      "text": "大火快炒，下锅前确保锅够热；盐最后放；也可以先焯水 10 秒再炒。"
      }
     ]
    }
@@ -1865,86 +1061,58 @@
  },
  {
   "uuid": "demo-conv-g022",
-  "name": "在家练什么",
+  "name": "京都三日行程",
   "summary": "",
-  "created_at": "2026-03-02T13:05:00Z",
-  "updated_at": "2026-03-02T13:15:03Z",
+  "created_at": "2025-11-09T05:28:00Z",
+  "updated_at": "2025-11-09T05:33:39Z",
   "chat_messages": [
    {
     "uuid": "demo-g022-m1",
     "sender": "human",
-    "created_at": "2026-03-02T13:05:00Z",
+    "created_at": "2025-11-09T05:28:00Z",
     "content": [
      {
       "type": "text",
-      "text": "跑完步膝盖有点疼，正常吗？ 🌙"
+      "text": "京都三天怎么安排比较不赶？"
      }
     ]
    },
    {
     "uuid": "demo-g022-m2",
     "sender": "assistant",
-    "created_at": "2026-03-02T13:05:54Z",
+    "created_at": "2025-11-09T05:28:25Z",
     "content": [
      {
       "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
-      "start_timestamp": "2026-03-02T13:05:45Z",
-      "stop_timestamp": "2026-03-02T13:05:54Z"
+      "thinking": "行程问题按区域拆分最清楚。",
+      "start_timestamp": "2025-11-09T05:28:04Z",
+      "stop_timestamp": "2025-11-09T05:28:25Z"
      },
      {
       "type": "text",
-      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
+      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
      }
     ]
    },
    {
     "uuid": "demo-g022-m3",
     "sender": "human",
-    "created_at": "2026-03-02T13:10:54Z",
+    "created_at": "2025-11-09T05:33:25Z",
     "content": [
      {
       "type": "text",
-      "text": "运动后要拉伸多久？ 😊"
+      "text": "好的，谢谢！"
      }
     ]
    },
    {
     "uuid": "demo-g022-m4",
     "sender": "assistant",
-    "created_at": "2026-03-02T13:11:51Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
-      "start_timestamp": "2026-03-02T13:11:36Z",
-      "stop_timestamp": "2026-03-02T13:11:51Z"
-     },
-     {
-      "type": "text",
-      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g022-m5",
-    "sender": "human",
-    "created_at": "2026-03-02T13:13:51Z",
+    "created_at": "2025-11-09T05:33:39Z",
     "content": [
      {
       "type": "text",
-      "text": "晚上总是睡不着怎么办？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g022-m6",
-    "sender": "assistant",
-    "created_at": "2026-03-02T13:15:03Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "尽量固定起床时间，睡前一小时少看屏幕，下午之后少喝咖啡。如果长期失眠，最好咨询医生。"
+      "text": "不客气～"
      }
     ]
    }
@@ -1952,342 +1120,15 @@
  },
  {
   "uuid": "demo-conv-g023",
-  "name": "周报怎么写",
+  "name": "冰岛自驾",
   "summary": "",
-  "created_at": "2025-11-22T19:03:00Z",
-  "updated_at": "2025-11-22T19:04:17Z",
+  "created_at": "2025-12-26T18:22:00Z",
+  "updated_at": "2025-12-26T18:22:43Z",
   "chat_messages": [
    {
     "uuid": "demo-g023-m1",
     "sender": "human",
-    "created_at": "2025-11-22T19:03:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "事情太多，先做哪个？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g023-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-22T19:04:17Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g024",
-  "name": "猫为什么踩奶",
-  "summary": "",
-  "created_at": "2026-03-19T04:44:00Z",
-  "updated_at": "2026-03-19T04:54:01Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g024-m1",
-    "sender": "human",
-    "created_at": "2026-03-19T04:44:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "猫为什么会踩奶？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g024-m2",
-    "sender": "assistant",
-    "created_at": "2026-03-19T04:44:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g024-m3",
-    "sender": "human",
-    "created_at": "2026-03-19T04:49:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "那如果换一种情况呢？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g024-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-19T04:50:16Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "加油！"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g024-m5",
-    "sender": "human",
-    "created_at": "2026-03-19T04:53:16Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "绿萝叶子发黄是怎么回事？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g024-m6",
-    "sender": "assistant",
-    "created_at": "2026-03-19T04:54:01Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g025",
-  "name": "Git 分支怎么合并",
-  "summary": "",
-  "created_at": "2025-12-03T01:23:00Z",
-  "updated_at": "2025-12-03T01:31:31Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g025-m1",
-    "sender": "human",
-    "created_at": "2025-12-03T01:23:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "SQL 查询很慢，先从哪里查？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g025-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-03T01:24:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g025-m3",
-    "sender": "human",
-    "created_at": "2025-12-03T01:28:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "原来如此"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g025-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-03T01:28:25Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，有需要再来找我。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g025-m5",
-    "sender": "human",
-    "created_at": "2025-12-03T01:30:25Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g025-m6",
-    "sender": "assistant",
-    "created_at": "2025-12-03T01:31:31Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
-      "start_timestamp": "2025-12-03T01:31:12Z",
-      "stop_timestamp": "2025-12-03T01:31:31Z"
-     },
-     {
-      "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g026",
-  "name": "这个单词怎么用",
-  "summary": "",
-  "created_at": "2026-01-06T14:17:00Z",
-  "updated_at": "2026-01-06T14:32:57Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g026-m1",
-    "sender": "human",
-    "created_at": "2026-01-06T14:17:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "affect 和 effect 怎么区分？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-06T14:18:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "多数情况下 **affect** 是动词（影响），**effect** 是名词（效果）。记法：*A for action*，动作用 affect。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m3",
-    "sender": "human",
-    "created_at": "2026-01-06T14:19:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "look forward to 后面接什么？ ☕"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-06T14:20:05Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
-      "start_timestamp": "2026-01-06T14:19:54Z",
-      "stop_timestamp": "2026-01-06T14:20:05Z"
-     },
-     {
-      "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m5",
-    "sender": "human",
-    "created_at": "2026-01-06T14:26:05Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "邮件结尾除了 Best regards 还能用什么？ 🌙"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m6",
-    "sender": "assistant",
-    "created_at": "2026-01-06T14:27:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "常见的有 *Kind regards*、*Many thanks*、*Cheers*（比较随意）。正式场合用 *Kind regards* 最保险。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m7",
-    "sender": "human",
-    "created_at": "2026-01-06T14:32:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "by the way 在正式邮件里可以用吗？ 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g026-m8",
-    "sender": "assistant",
-    "created_at": "2026-01-06T14:32:57Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
-      "start_timestamp": "2026-01-06T14:32:38Z",
-      "stop_timestamp": "2026-01-06T14:32:57Z"
-     },
-     {
-      "type": "text",
-      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g027",
-  "name": "烤箱新手问题",
-  "summary": "",
-  "created_at": "2025-11-22T14:58:00Z",
-  "updated_at": "2025-11-22T14:58:32Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g027-m1",
-    "sender": "human",
-    "created_at": "2025-11-22T14:58:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "有没有 15 分钟能做完的晚饭？ 🧑‍🍳"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g027-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-22T14:58:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g028",
-  "name": "京都三日行程",
-  "summary": "",
-  "created_at": "2026-01-11T13:47:00Z",
-  "updated_at": "2026-01-11T13:51:15Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g028-m1",
-    "sender": "human",
-    "created_at": "2026-01-11T13:47:00Z",
+    "created_at": "2025-12-26T18:22:00Z",
     "content": [
      {
       "type": "text",
@@ -2296,57 +1137,218 @@
     ]
    },
    {
-    "uuid": "demo-g028-m2",
+    "uuid": "demo-g023-m2",
     "sender": "assistant",
-    "created_at": "2026-01-11T13:47:57Z",
+    "created_at": "2025-12-26T18:22:43Z",
     "content": [
      {
       "type": "text",
       "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g024",
+  "name": "行李清单",
+  "summary": "",
+  "created_at": "2026-03-17T00:40:00Z",
+  "updated_at": "2026-03-17T00:40:21Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g028-m3",
+    "uuid": "demo-g024-m1",
     "sender": "human",
-    "created_at": "2026-01-11T13:48:57Z",
+    "created_at": "2026-03-17T00:40:00Z",
     "content": [
      {
       "type": "text",
-      "text": "好的，我试试"
+      "text": "短途旅行带什么最容易忘？"
      }
     ]
    },
    {
-    "uuid": "demo-g028-m4",
+    "uuid": "demo-g024-m2",
     "sender": "assistant",
-    "created_at": "2026-01-11T13:49:07Z",
+    "created_at": "2026-03-17T00:40:21Z",
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g025",
+  "name": "旅行拍照",
+  "summary": "",
+  "created_at": "2025-12-28T14:07:00Z",
+  "updated_at": "2025-12-28T14:08:30Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g028-m5",
+    "uuid": "demo-g025-m1",
     "sender": "human",
-    "created_at": "2026-01-11T13:50:07Z",
+    "created_at": "2025-12-28T14:07:00Z",
     "content": [
      {
       "type": "text",
-      "text": "京都三天怎么安排比较不赶？ 😂"
+      "text": "旅行时怎么拍出好看的照片？"
      }
     ]
    },
    {
-    "uuid": "demo-g028-m6",
+    "uuid": "demo-g025-m2",
     "sender": "assistant",
-    "created_at": "2026-01-11T13:51:15Z",
+    "created_at": "2025-12-28T14:08:30Z",
     "content": [
      {
       "type": "text",
-      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
+      "text": "多利用早晨和傍晚的光线；人物不一定放正中，试试三分构图；多拍几张再挑。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g026",
+  "name": "旅行保险",
+  "summary": "",
+  "created_at": "2026-03-11T13:30:00Z",
+  "updated_at": "2026-03-11T13:31:56Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g026-m1",
+    "sender": "human",
+    "created_at": "2026-03-11T13:30:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "出国玩要不要买旅行保险？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g026-m2",
+    "sender": "assistant",
+    "created_at": "2026-03-11T13:30:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "建议买，尤其是医疗和行程延误保障。注意看清条款里对高风险活动的限制。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g026-m3",
+    "sender": "human",
+    "created_at": "2026-03-11T13:31:46Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g026-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-11T13:31:56Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g027",
+  "name": "《百年孤独》人名",
+  "summary": "",
+  "created_at": "2025-10-10T13:11:00Z",
+  "updated_at": "2025-10-10T13:12:58Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g027-m1",
+    "sender": "human",
+    "created_at": "2025-10-10T13:11:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "《百年孤独》人名太多记不住怎么办？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g027-m2",
+    "sender": "assistant",
+    "created_at": "2025-10-10T13:11:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g027-m3",
+    "sender": "human",
+    "created_at": "2025-10-10T13:12:47Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g027-m4",
+    "sender": "assistant",
+    "created_at": "2025-10-10T13:12:58Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g028",
+  "name": "没时间读书",
+  "summary": "",
+  "created_at": "2026-02-07T11:53:00Z",
+  "updated_at": "2026-02-07T11:54:18Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g028-m1",
+    "sender": "human",
+    "created_at": "2026-02-07T11:53:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "每天没时间读书，怎么坚持？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g028-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-07T11:54:18Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
+      "start_timestamp": "2026-02-07T11:54:04Z",
+      "stop_timestamp": "2026-02-07T11:54:18Z"
+     },
+     {
+      "type": "text",
+      "text": "把目标定小：每天 10 页，或者睡前 15 分钟。随身带一本，零碎时间也能读几页。"
      }
     ]
    }
@@ -2354,26 +1356,26 @@
  },
  {
   "uuid": "demo-conv-g029",
-  "name": "《百年孤独》读后感",
+  "name": "科普书推荐",
   "summary": "",
-  "created_at": "2026-01-28T14:41:00Z",
-  "updated_at": "2026-01-28T14:58:15Z",
+  "created_at": "2026-03-06T13:40:00Z",
+  "updated_at": "2026-03-06T13:42:40Z",
   "chat_messages": [
    {
     "uuid": "demo-g029-m1",
     "sender": "human",
-    "created_at": "2026-01-28T14:41:00Z",
+    "created_at": "2026-03-06T13:40:00Z",
     "content": [
      {
       "type": "text",
-      "text": "推荐几本入门科普书？ ✨"
+      "text": "推荐几本入门科普书？"
      }
     ]
    },
    {
     "uuid": "demo-g029-m2",
     "sender": "assistant",
-    "created_at": "2026-01-28T14:42:17Z",
+    "created_at": "2026-03-06T13:41:27Z",
     "content": [
      {
       "type": "text",
@@ -2384,7 +1386,69 @@
    {
     "uuid": "demo-g029-m3",
     "sender": "human",
-    "created_at": "2026-01-28T14:44:17Z",
+    "created_at": "2026-03-06T13:42:27Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g029-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-06T13:42:40Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g030",
+  "name": "读书笔记",
+  "summary": "",
+  "created_at": "2026-03-19T05:40:00Z",
+  "updated_at": "2026-03-19T05:40:24Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g030-m1",
+    "sender": "human",
+    "created_at": "2026-03-19T05:40:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "读书笔记怎么做才有用？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g030-m2",
+    "sender": "assistant",
+    "created_at": "2026-03-19T05:40:24Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "别只抄原文。读完一章，用自己的话写三句：讲了什么、我同意什么、我能用在哪里。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g031",
+  "name": "纸质书还是电子书",
+  "summary": "",
+  "created_at": "2026-03-21T01:24:00Z",
+  "updated_at": "2026-03-21T01:29:37Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g031-m1",
+    "sender": "human",
+    "created_at": "2026-03-21T01:24:00Z",
     "content": [
      {
       "type": "text",
@@ -2393,16 +1457,10 @@
     ]
    },
    {
-    "uuid": "demo-g029-m4",
+    "uuid": "demo-g031-m2",
     "sender": "assistant",
-    "created_at": "2026-01-28T14:44:57Z",
+    "created_at": "2026-03-21T01:25:24Z",
     "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
-      "start_timestamp": "2026-01-28T14:44:52Z",
-      "stop_timestamp": "2026-01-28T14:44:57Z"
-     },
      {
       "type": "text",
       "text": "各有优点：纸质书更容易专注和回翻，电子书方便携带和搜索。看你主要在什么场景读。"
@@ -2410,208 +1468,24 @@
     ]
    },
    {
-    "uuid": "demo-g029-m5",
-    "sender": "human",
-    "created_at": "2026-01-28T14:50:57Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "每天没时间读书，怎么坚持？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m6",
-    "sender": "assistant",
-    "created_at": "2026-01-28T14:51:46Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "把目标定小：每天 10 页，或者睡前 15 分钟。随身带一本，零碎时间也能读几页。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m7",
-    "sender": "human",
-    "created_at": "2026-01-28T14:57:46Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "《百年孤独》人名太多记不住怎么办？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g029-m8",
-    "sender": "assistant",
-    "created_at": "2026-01-28T14:58:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g030",
-  "name": "拉伸动作",
-  "summary": "",
-  "created_at": "2026-01-30T15:45:00Z",
-  "updated_at": "2026-01-30T15:45:57Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g030-m1",
-    "sender": "human",
-    "created_at": "2026-01-30T15:45:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "零基础想开始跑步，怎么开始？ ☕"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g030-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-30T15:45:57Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
-      "start_timestamp": "2026-01-30T15:45:39Z",
-      "stop_timestamp": "2026-01-30T15:45:57Z"
-     },
-     {
-      "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g031",
-  "name": "会议纪要模板",
-  "summary": "",
-  "created_at": "2025-12-24T11:34:00Z",
-  "updated_at": "2025-12-24T11:51:43Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g031-m1",
-    "sender": "human",
-    "created_at": "2025-12-24T11:34:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "事情太多，先做哪个？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-24T11:34:41Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
-      "start_timestamp": "2025-12-24T11:34:24Z",
-      "stop_timestamp": "2025-12-24T11:34:41Z"
-     },
-     {
-      "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
-     }
-    ]
-   },
-   {
     "uuid": "demo-g031-m3",
     "sender": "human",
-    "created_at": "2025-12-24T11:39:41Z",
+    "created_at": "2026-03-21T01:29:24Z",
     "content": [
      {
       "type": "text",
-      "text": "收到～"
+      "text": "好的，谢谢！ 🙏"
      }
     ]
    },
    {
     "uuid": "demo-g031-m4",
     "sender": "assistant",
-    "created_at": "2025-12-24T11:40:13Z",
+    "created_at": "2026-03-21T01:29:37Z",
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m5",
-    "sender": "human",
-    "created_at": "2025-12-24T11:43:13Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一页 PPT 放多少字合适？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m6",
-    "sender": "assistant",
-    "created_at": "2025-12-24T11:44:28Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m7",
-    "sender": "human",
-    "created_at": "2025-12-24T11:46:28Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "帮我设计一个会议纪要模板 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m8",
-    "sender": "assistant",
-    "created_at": "2025-12-24T11:47:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以包含：\n\n1. 时间、参会人\n2. 议题\n3. 结论\n4. 待办（负责人 + 截止时间）\n\n待办那一栏最重要。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m9",
-    "sender": "human",
-    "created_at": "2025-12-24T11:50:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "周报总写成流水账，怎么改？ ✨"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g031-m10",
-    "sender": "assistant",
-    "created_at": "2025-12-24T11:51:43Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
+      "text": "不客气～"
      }
     ]
    }
@@ -2619,539 +1493,15 @@
  },
  {
   "uuid": "demo-conv-g032",
-  "name": "养绿萝的问题",
+  "name": "零基础跑步",
   "summary": "",
-  "created_at": "2026-02-13T19:34:00Z",
-  "updated_at": "2026-02-13T19:39:56Z",
+  "created_at": "2025-12-26T19:40:00Z",
+  "updated_at": "2025-12-26T19:41:12Z",
   "chat_messages": [
    {
     "uuid": "demo-g032-m1",
     "sender": "human",
-    "created_at": "2026-02-13T19:34:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "绿萝叶子发黄是怎么回事？ 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g032-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-13T19:34:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g032-m3",
-    "sender": "human",
-    "created_at": "2026-02-13T19:38:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "猫为什么会踩奶？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g032-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-13T19:39:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g033",
-  "name": "Git 分支怎么合并",
-  "summary": "",
-  "created_at": "2026-02-28T00:39:00Z",
-  "updated_at": "2026-02-28T00:57:22Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g033-m1",
-    "sender": "human",
-    "created_at": "2026-02-28T00:39:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "写爬虫要注意什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-28T00:39:38Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "几件事：先看网站的 robots.txt 和使用条款；请求之间加间隔，别给对方服务器压力；做好异常处理和重试；数据只用于自己被允许的用途。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m3",
-    "sender": "human",
-    "created_at": "2026-02-28T00:42:38Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-28T00:43:41Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
-      "start_timestamp": "2026-02-28T00:43:20Z",
-      "stop_timestamp": "2026-02-28T00:43:41Z"
-     },
-     {
-      "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m5",
-    "sender": "human",
-    "created_at": "2026-02-28T00:44:41Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "这个报错是什么意思：`IndexError: list index out of range` 🌙"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m6",
-    "sender": "assistant",
-    "created_at": "2026-02-28T00:45:52Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
-      "start_timestamp": "2026-02-28T00:45:46Z",
-      "stop_timestamp": "2026-02-28T00:45:52Z"
-     },
-     {
-      "type": "text",
-      "text": "说明你访问的下标超出了列表长度。比如列表只有 3 个元素，下标最大是 2，却访问了 `items[3]`。可以先 `print(len(items))` 看看实际长度。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m7",
-    "sender": "human",
-    "created_at": "2026-02-28T00:51:52Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "有道理"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m8",
-    "sender": "assistant",
-    "created_at": "2026-02-28T00:52:19Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，有需要再来找我。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m9",
-    "sender": "human",
-    "created_at": "2026-02-28T00:56:19Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "列表推导式和 for 循环比，有什么好处？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g033-m10",
-    "sender": "assistant",
-    "created_at": "2026-02-28T00:57:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "主要是简洁：`[x*2 for x in nums]` 一行就能表达「把每个元素翻倍」。性能上通常也略快一些，因为循环在解释器内部完成。不过逻辑复杂时，普通 for 循环更好读。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g034",
-  "name": "雅思写作思路",
-  "summary": "",
-  "created_at": "2025-10-14T11:24:00Z",
-  "updated_at": "2025-10-14T11:25:29Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g034-m1",
-    "sender": "human",
-    "created_at": "2025-10-14T11:24:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "look forward to 后面接什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g034-m2",
-    "sender": "assistant",
-    "created_at": "2025-10-14T11:25:29Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g035",
-  "name": "周末做什么菜",
-  "summary": "",
-  "created_at": "2025-11-22T11:24:00Z",
-  "updated_at": "2025-11-22T11:40:06Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g035-m1",
-    "sender": "human",
-    "created_at": "2025-11-22T11:24:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "米饭总是夹生，怎么办？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m2",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:25:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "多数是水少了或者没泡。大米和水大约 1:1.2，先泡 20 分钟再煮，煮好焖 10 分钟别急着开盖。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m3",
-    "sender": "human",
-    "created_at": "2025-11-22T11:29:10Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "那如果换一种情况呢？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m4",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:29:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "好的，有需要再来找我。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m5",
-    "sender": "human",
-    "created_at": "2025-11-22T11:33:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "番茄炒蛋要先炒蛋还是先炒番茄？ ✨"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m6",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:34:13Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
-      "start_timestamp": "2025-11-22T11:33:49Z",
-      "stop_timestamp": "2025-11-22T11:34:13Z"
-     },
-     {
-      "type": "text",
-      "text": "先炒蛋：油热下蛋液，凝固到七成就盛出。再炒番茄出汁，最后把蛋倒回去翻匀。这样蛋嫩、汁多。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m7",
-    "sender": "human",
-    "created_at": "2025-11-22T11:36:13Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "明白了，谢谢！ 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m8",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:36:36Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不客气，有问题随时问。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m9",
-    "sender": "human",
-    "created_at": "2025-11-22T11:38:36Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g035-m10",
-    "sender": "assistant",
-    "created_at": "2025-11-22T11:40:06Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g036",
-  "name": "京都三日行程",
-  "summary": "",
-  "created_at": "2026-03-11T04:33:00Z",
-  "updated_at": "2026-03-11T04:48:41Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g036-m1",
-    "sender": "human",
-    "created_at": "2026-03-11T04:33:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "短途旅行带什么最容易忘？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m2",
-    "sender": "assistant",
-    "created_at": "2026-03-11T04:34:12Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m3",
-    "sender": "human",
-    "created_at": "2026-03-11T04:40:12Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "收到～"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m4",
-    "sender": "assistant",
-    "created_at": "2026-03-11T04:40:40Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "试过之后可以告诉我效果。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m5",
-    "sender": "human",
-    "created_at": "2026-03-11T04:41:40Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "冰岛自驾要注意什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m6",
-    "sender": "assistant",
-    "created_at": "2026-03-11T04:42:53Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
-      "start_timestamp": "2026-03-11T04:42:45Z",
-      "stop_timestamp": "2026-03-11T04:42:53Z"
-     },
-     {
-      "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m7",
-    "sender": "human",
-    "created_at": "2026-03-11T04:44:53Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "要不要买旅行保险？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m8",
-    "sender": "assistant",
-    "created_at": "2026-03-11T04:45:21Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "出境的话建议买，尤其是医疗和行程延误保障。注意看清条款里对高风险活动的限制。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m9",
-    "sender": "human",
-    "created_at": "2026-03-11T04:47:21Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "旅行时怎么拍出好看的照片？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g036-m10",
-    "sender": "assistant",
-    "created_at": "2026-03-11T04:48:41Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "多利用早晨和傍晚的光线；人物不一定放正中，试试三分构图；多拍几张再挑。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g037",
-  "name": "读书笔记方法",
-  "summary": "",
-  "created_at": "2026-02-22T07:24:00Z",
-  "updated_at": "2026-02-22T07:27:39Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g037-m1",
-    "sender": "human",
-    "created_at": "2026-02-22T07:24:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "读书笔记怎么做才有用？ 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m2",
-    "sender": "assistant",
-    "created_at": "2026-02-22T07:25:25Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
-      "start_timestamp": "2026-02-22T07:25:07Z",
-      "stop_timestamp": "2026-02-22T07:25:25Z"
-     },
-     {
-      "type": "text",
-      "text": "别只抄原文。读完一章，用自己的话写三句：讲了什么、我同意什么、我能用在哪里。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m3",
-    "sender": "human",
-    "created_at": "2026-02-22T07:26:25Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "每天没时间读书，怎么坚持？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g037-m4",
-    "sender": "assistant",
-    "created_at": "2026-02-22T07:27:39Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "把目标定小：每天 10 页，或者睡前 15 分钟。随身带一本，零碎时间也能读几页。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g038",
-  "name": "怎么改善睡眠",
-  "summary": "",
-  "created_at": "2025-12-23T15:36:00Z",
-  "updated_at": "2025-12-23T15:45:21Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g038-m1",
-    "sender": "human",
-    "created_at": "2025-12-23T15:36:00Z",
+    "created_at": "2025-12-26T19:40:00Z",
     "content": [
      {
       "type": "text",
@@ -3160,48 +1510,97 @@
     ]
    },
    {
-    "uuid": "demo-g038-m2",
+    "uuid": "demo-g032-m2",
     "sender": "assistant",
-    "created_at": "2025-12-23T15:36:28Z",
+    "created_at": "2025-12-26T19:41:12Z",
     "content": [
-     {
-      "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
-      "start_timestamp": "2025-12-23T15:36:18Z",
-      "stop_timestamp": "2025-12-23T15:36:28Z"
-     },
      {
       "type": "text",
       "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g033",
+  "name": "在家无器械训练",
+  "summary": "",
+  "created_at": "2026-03-18T07:09:00Z",
+  "updated_at": "2026-03-18T07:10:11Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g038-m3",
+    "uuid": "demo-g033-m1",
     "sender": "human",
-    "created_at": "2025-12-23T15:41:28Z",
+    "created_at": "2026-03-18T07:09:00Z",
     "content": [
      {
       "type": "text",
-      "text": "有道理 👨‍💻"
+      "text": "在家没有器械能练什么？"
      }
     ]
    },
    {
-    "uuid": "demo-g038-m4",
+    "uuid": "demo-g033-m2",
     "sender": "assistant",
-    "created_at": "2025-12-23T15:42:00Z",
+    "created_at": "2026-03-18T07:10:11Z",
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "深蹲、俯卧撑、平板支撑、弓步蹲。每个动作 3 组，组间休息 1 分钟。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g034",
+  "name": "跑后膝盖疼",
+  "summary": "",
+  "created_at": "2025-12-03T13:06:00Z",
+  "updated_at": "2025-12-03T13:07:08Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g034-m1",
+    "sender": "human",
+    "created_at": "2025-12-03T13:06:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "跑完步膝盖有点疼，正常吗？"
      }
     ]
    },
    {
-    "uuid": "demo-g038-m5",
+    "uuid": "demo-g034-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-03T13:07:08Z",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "涉及身体不适，提醒必要时就医。",
+      "start_timestamp": "2025-12-03T13:06:55Z",
+      "stop_timestamp": "2025-12-03T13:07:08Z"
+     },
+     {
+      "type": "text",
+      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g035",
+  "name": "运动后拉伸",
+  "summary": "",
+  "created_at": "2025-12-27T15:56:00Z",
+  "updated_at": "2025-12-27T15:57:09Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g035-m1",
     "sender": "human",
-    "created_at": "2025-12-23T15:44:00Z",
+    "created_at": "2025-12-27T15:56:00Z",
     "content": [
      {
       "type": "text",
@@ -3210,9 +1609,9 @@
     ]
    },
    {
-    "uuid": "demo-g038-m6",
+    "uuid": "demo-g035-m2",
     "sender": "assistant",
-    "created_at": "2025-12-23T15:45:21Z",
+    "created_at": "2025-12-27T15:57:09Z",
     "content": [
      {
       "type": "text",
@@ -3223,16 +1622,69 @@
   ]
  },
  {
-  "uuid": "demo-conv-g039",
-  "name": "会议纪要模板",
+  "uuid": "demo-conv-g036",
+  "name": "睡不着",
   "summary": "",
-  "created_at": "2025-10-08T13:15:00Z",
-  "updated_at": "2025-10-08T13:16:06Z",
+  "created_at": "2025-12-20T14:08:00Z",
+  "updated_at": "2025-12-20T14:13:26Z",
   "chat_messages": [
    {
-    "uuid": "demo-g039-m1",
+    "uuid": "demo-g036-m1",
     "sender": "human",
-    "created_at": "2025-10-08T13:15:00Z",
+    "created_at": "2025-12-20T14:08:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "晚上总是睡不着怎么办？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-20T14:09:17Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "尽量固定起床时间，睡前一小时少看屏幕，下午之后少喝咖啡。如果长期失眠，最好咨询医生。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m3",
+    "sender": "human",
+    "created_at": "2025-12-20T14:13:17Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "好的，谢谢！ 😊"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g036-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-20T14:13:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气～"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g037",
+  "name": "会议纪要模板",
+  "summary": "",
+  "created_at": "2025-12-27T13:40:00Z",
+  "updated_at": "2025-12-27T13:44:11Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g037-m1",
+    "sender": "human",
+    "created_at": "2025-12-27T13:40:00Z",
     "content": [
      {
       "type": "text",
@@ -3241,19 +1693,125 @@
     ]
    },
    {
-    "uuid": "demo-g039-m2",
+    "uuid": "demo-g037-m2",
     "sender": "assistant",
-    "created_at": "2025-10-08T13:16:06Z",
+    "created_at": "2025-12-27T13:40:56Z",
     "content": [
      {
       "type": "thinking",
       "thinking": "给一个能直接套用的结构。",
-      "start_timestamp": "2025-10-08T13:15:42Z",
-      "stop_timestamp": "2025-10-08T13:16:06Z"
+      "start_timestamp": "2025-12-27T13:40:39Z",
+      "stop_timestamp": "2025-12-27T13:40:56Z"
      },
      {
       "type": "text",
       "text": "可以包含：\n\n1. 时间、参会人\n2. 议题\n3. 结论\n4. 待办（负责人 + 截止时间）\n\n待办那一栏最重要。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g037-m3",
+    "sender": "human",
+    "created_at": "2025-12-27T13:43:56Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "明白了，谢谢！"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g037-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-27T13:44:11Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不客气，有问题随时问。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g038",
+  "name": "周报写成流水账",
+  "summary": "",
+  "created_at": "2026-04-01T11:15:00Z",
+  "updated_at": "2026-04-01T11:16:12Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g038-m1",
+    "sender": "human",
+    "created_at": "2026-04-01T11:15:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "周报总写成流水账，怎么改？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g038-m2",
+    "sender": "assistant",
+    "created_at": "2026-04-01T11:16:12Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g039",
+  "name": "先做哪件事",
+  "summary": "",
+  "created_at": "2025-12-27T04:06:00Z",
+  "updated_at": "2025-12-27T04:09:27Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g039-m1",
+    "sender": "human",
+    "created_at": "2025-12-27T04:06:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "事情太多，先做哪个？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g039-m2",
+    "sender": "assistant",
+    "created_at": "2025-12-27T04:07:10Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g039-m3",
+    "sender": "human",
+    "created_at": "2025-12-27T04:09:10Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助 ✨"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g039-m4",
+    "sender": "assistant",
+    "created_at": "2025-12-27T04:09:27Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -3261,15 +1819,46 @@
  },
  {
   "uuid": "demo-conv-g040",
-  "name": "学吉他从哪开始",
+  "name": "一页 PPT 的字数",
   "summary": "",
-  "created_at": "2025-10-17T02:03:00Z",
-  "updated_at": "2025-10-17T02:15:05Z",
+  "created_at": "2025-11-05T12:19:00Z",
+  "updated_at": "2025-11-05T12:19:28Z",
   "chat_messages": [
    {
     "uuid": "demo-g040-m1",
     "sender": "human",
-    "created_at": "2025-10-17T02:03:00Z",
+    "created_at": "2025-11-05T12:19:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "一页 PPT 放多少字合适？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g040-m2",
+    "sender": "assistant",
+    "created_at": "2025-11-05T12:19:28Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g041",
+  "name": "绿萝叶子发黄",
+  "summary": "",
+  "created_at": "2026-01-10T18:10:00Z",
+  "updated_at": "2026-01-10T18:13:34Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g041-m1",
+    "sender": "human",
+    "created_at": "2026-01-10T18:10:00Z",
     "content": [
      {
       "type": "text",
@@ -3278,9 +1867,9 @@
     ]
    },
    {
-    "uuid": "demo-g040-m2",
+    "uuid": "demo-g041-m2",
     "sender": "assistant",
-    "created_at": "2025-10-17T02:04:19Z",
+    "created_at": "2026-01-10T18:10:20Z",
     "content": [
      {
       "type": "text",
@@ -3289,42 +1878,82 @@
     ]
    },
    {
-    "uuid": "demo-g040-m3",
+    "uuid": "demo-g041-m3",
     "sender": "human",
-    "created_at": "2025-10-17T02:09:19Z",
+    "created_at": "2026-01-10T18:13:20Z",
     "content": [
      {
       "type": "text",
-      "text": "有道理"
+      "text": "谢谢，很有帮助"
      }
     ]
    },
    {
-    "uuid": "demo-g040-m4",
+    "uuid": "demo-g041-m4",
     "sender": "assistant",
-    "created_at": "2025-10-17T02:09:37Z",
+    "created_at": "2026-01-10T18:13:34Z",
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "很高兴能帮上忙。"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g042",
+  "name": "给朋友的生日礼物",
+  "summary": "",
+  "created_at": "2025-12-09T14:38:00Z",
+  "updated_at": "2025-12-09T14:38:50Z",
+  "chat_messages": [
    {
-    "uuid": "demo-g040-m5",
+    "uuid": "demo-g042-m1",
     "sender": "human",
-    "created_at": "2025-10-17T02:11:37Z",
+    "created_at": "2025-12-09T14:38:00Z",
     "content": [
      {
       "type": "text",
-      "text": "学吉他先练什么？ 🙏"
+      "text": "朋友喜欢画画，送什么生日礼物好？"
      }
     ]
    },
    {
-    "uuid": "demo-g040-m6",
+    "uuid": "demo-g042-m2",
     "sender": "assistant",
-    "created_at": "2025-10-17T02:12:31Z",
+    "created_at": "2025-12-09T14:38:50Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "可以考虑一套好一点的水彩、速写本，或者一节体验课。附一张手写卡片会更走心。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g043",
+  "name": "学吉他",
+  "summary": "",
+  "created_at": "2026-02-19T09:09:00Z",
+  "updated_at": "2026-02-19T09:13:42Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g043-m1",
+    "sender": "human",
+    "created_at": "2026-02-19T09:09:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "学吉他先练什么？"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g043-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-19T09:09:23Z",
     "content": [
      {
       "type": "text",
@@ -3333,245 +1962,24 @@
     ]
    },
    {
-    "uuid": "demo-g040-m7",
-    "sender": "human",
-    "created_at": "2025-10-17T02:14:31Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "猫为什么会踩奶？ 😮"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g040-m8",
-    "sender": "assistant",
-    "created_at": "2025-10-17T02:15:05Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g041",
-  "name": "前端布局问题",
-  "summary": "",
-  "created_at": "2026-01-19T19:30:00Z",
-  "updated_at": "2026-01-19T19:34:33Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g041-m1",
-    "sender": "human",
-    "created_at": "2026-01-19T19:30:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m2",
-    "sender": "assistant",
-    "created_at": "2026-01-19T19:31:05Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "用户在问基础概念，先给结论再举一个小例子。",
-      "start_timestamp": "2026-01-19T19:30:41Z",
-      "stop_timestamp": "2026-01-19T19:31:05Z"
-     },
-     {
-      "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m3",
-    "sender": "human",
-    "created_at": "2026-01-19T19:33:05Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "SQL 查询很慢，先从哪里查？ 😊"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g041-m4",
-    "sender": "assistant",
-    "created_at": "2026-01-19T19:34:33Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g042",
-  "name": "英语口语练习",
-  "summary": "",
-  "created_at": "2025-12-14T04:29:00Z",
-  "updated_at": "2025-12-14T04:38:07Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g042-m1",
-    "sender": "human",
-    "created_at": "2025-12-14T04:29:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "look forward to 后面接什么？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m2",
-    "sender": "assistant",
-    "created_at": "2025-12-14T04:29:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m3",
-    "sender": "human",
-    "created_at": "2025-12-14T04:30:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "帮我把这句话改得更自然：I very like this book. 🧑‍🍳"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m4",
-    "sender": "assistant",
-    "created_at": "2025-12-14T04:31:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m5",
-    "sender": "human",
-    "created_at": "2025-12-14T04:34:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "我想练口语，每天该怎么安排？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m6",
-    "sender": "assistant",
-    "created_at": "2025-12-14T04:35:46Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "建议每天 20 分钟：5 分钟跟读、10 分钟就一个话题自言自语并录音、5 分钟回听找问题。坚持比时长更重要。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m7",
-    "sender": "human",
-    "created_at": "2025-12-14T04:37:46Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "by the way 在正式邮件里可以用吗？ 🙏"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g042-m8",
-    "sender": "assistant",
-    "created_at": "2025-12-14T04:38:07Z",
-    "content": [
-     {
-      "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
-      "start_timestamp": "2025-12-14T04:38:04Z",
-      "stop_timestamp": "2025-12-14T04:38:07Z"
-     },
-     {
-      "type": "text",
-      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
-     }
-    ]
-   }
-  ]
- },
- {
-  "uuid": "demo-conv-g043",
-  "name": "烤箱新手问题",
-  "summary": "",
-  "created_at": "2025-10-18T04:54:00Z",
-  "updated_at": "2025-10-18T04:58:07Z",
-  "chat_messages": [
-   {
-    "uuid": "demo-g043-m1",
-    "sender": "human",
-    "created_at": "2025-10-18T04:54:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "烤箱要预热多久？ ☕"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g043-m2",
-    "sender": "assistant",
-    "created_at": "2025-10-18T04:54:25Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
-     }
-    ]
-   },
-   {
     "uuid": "demo-g043-m3",
     "sender": "human",
-    "created_at": "2025-10-18T04:57:25Z",
+    "created_at": "2026-02-19T09:13:23Z",
     "content": [
      {
       "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
+      "text": "明白了，谢谢！ 🙏"
      }
     ]
    },
    {
     "uuid": "demo-g043-m4",
     "sender": "assistant",
-    "created_at": "2025-10-18T04:58:07Z",
+    "created_at": "2026-02-19T09:13:42Z",
     "content": [
      {
-      "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
-      "start_timestamp": "2025-10-18T04:57:52Z",
-      "stop_timestamp": "2025-10-18T04:58:07Z"
-     },
-     {
       "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
+      "text": "不客气，有问题随时问。"
      }
     ]
    }
@@ -3579,30 +1987,52 @@
  },
  {
   "uuid": "demo-conv-g044",
-  "name": "行李清单",
+  "name": "猫为什么踩奶",
   "summary": "",
-  "created_at": "2026-01-28T09:42:00Z",
-  "updated_at": "2026-01-28T09:42:26Z",
+  "created_at": "2026-03-15T09:02:00Z",
+  "updated_at": "2026-03-15T09:05:37Z",
   "chat_messages": [
    {
     "uuid": "demo-g044-m1",
     "sender": "human",
-    "created_at": "2026-01-28T09:42:00Z",
+    "created_at": "2026-03-15T09:02:00Z",
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？"
+      "text": "猫为什么会踩奶？"
      }
     ]
    },
    {
     "uuid": "demo-g044-m2",
     "sender": "assistant",
-    "created_at": "2026-01-28T09:42:26Z",
+    "created_at": "2026-03-15T09:02:26Z",
     "content": [
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m3",
+    "sender": "human",
+    "created_at": "2026-03-15T09:05:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "谢谢，很有帮助"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g044-m4",
+    "sender": "assistant",
+    "created_at": "2026-03-15T09:05:37Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很高兴能帮上忙。"
      }
     ]
    }
@@ -3610,1108 +2040,30 @@
  },
  {
   "uuid": "demo-conv-g045",
-  "name": "每日一词打卡",
+  "name": "下雨天做什么",
   "summary": "",
-  "created_at": "2025-11-03T07:53:00Z",
-  "updated_at": "2026-01-03T13:14:50Z",
+  "created_at": "2025-12-07T09:31:00Z",
+  "updated_at": "2025-12-07T09:32:14Z",
   "chat_messages": [
    {
     "uuid": "demo-g045-m1",
     "sender": "human",
-    "created_at": "2025-11-03T07:53:00Z",
+    "created_at": "2025-12-07T09:31:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：resilient，帮我造个句"
+      "text": "下雨天适合做什么？"
      }
     ]
    },
    {
     "uuid": "demo-g045-m2",
     "sender": "assistant",
-    "created_at": "2025-11-03T07:53:39Z",
+    "created_at": "2025-12-07T09:32:14Z",
     "content": [
      {
       "type": "text",
-      "text": "*resilient* —— 例句：\n\n> She remained resilient throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m3",
-    "sender": "human",
-    "created_at": "2025-11-04T15:43:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：meticulous，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m4",
-    "sender": "assistant",
-    "created_at": "2025-11-04T15:43:52Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*meticulous* —— 例句：\n\n> She remained meticulous throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m5",
-    "sender": "human",
-    "created_at": "2025-11-05T12:50:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：candid，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m6",
-    "sender": "assistant",
-    "created_at": "2025-11-05T12:50:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*candid* —— 例句：\n\n> She remained candid throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m7",
-    "sender": "human",
-    "created_at": "2025-11-07T13:22:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：ambiguous，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m8",
-    "sender": "assistant",
-    "created_at": "2025-11-07T13:22:54Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*ambiguous* —— 例句：\n\n> She remained ambiguous throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m9",
-    "sender": "human",
-    "created_at": "2025-11-08T11:40:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：pragmatic，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m10",
-    "sender": "assistant",
-    "created_at": "2025-11-08T11:40:52Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*pragmatic* —— 例句：\n\n> She remained pragmatic throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m11",
-    "sender": "human",
-    "created_at": "2025-11-09T14:21:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：vivid，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m12",
-    "sender": "assistant",
-    "created_at": "2025-11-09T14:21:40Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*vivid* —— 例句：\n\n> She remained vivid throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m13",
-    "sender": "human",
-    "created_at": "2025-11-10T15:24:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：coherent，帮我造个句 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m14",
-    "sender": "assistant",
-    "created_at": "2025-11-10T15:24:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*coherent* —— 例句：\n\n> She remained coherent throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m15",
-    "sender": "human",
-    "created_at": "2025-11-12T04:39:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：diligent，帮我造个句 🙏"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m16",
-    "sender": "assistant",
-    "created_at": "2025-11-12T04:39:54Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*diligent* —— 例句：\n\n> She remained diligent throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m17",
-    "sender": "human",
-    "created_at": "2025-11-13T09:49:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：eloquent，帮我造个句 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m18",
-    "sender": "assistant",
-    "created_at": "2025-11-13T09:49:47Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*eloquent* —— 例句：\n\n> She remained eloquent throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m19",
-    "sender": "human",
-    "created_at": "2025-11-14T01:55:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：frugal，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m20",
-    "sender": "assistant",
-    "created_at": "2025-11-14T01:55:35Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*frugal* —— 例句：\n\n> She remained frugal throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m21",
-    "sender": "human",
-    "created_at": "2025-11-16T12:56:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：genuine，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m22",
-    "sender": "assistant",
-    "created_at": "2025-11-16T12:56:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*genuine* —— 例句：\n\n> She remained genuine throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m23",
-    "sender": "human",
-    "created_at": "2025-11-17T14:28:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：humble，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m24",
-    "sender": "assistant",
-    "created_at": "2025-11-17T14:29:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*humble* —— 例句：\n\n> She remained humble throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m25",
-    "sender": "human",
-    "created_at": "2025-11-18T01:11:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：inevitable，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m26",
-    "sender": "assistant",
-    "created_at": "2025-11-18T01:11:40Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*inevitable* —— 例句：\n\n> She remained inevitable throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m27",
-    "sender": "human",
-    "created_at": "2025-11-19T13:24:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：keen，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m28",
-    "sender": "assistant",
-    "created_at": "2025-11-19T13:24:25Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*keen* —— 例句：\n\n> She remained keen throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m29",
-    "sender": "human",
-    "created_at": "2025-11-20T11:10:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：lucid，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m30",
-    "sender": "assistant",
-    "created_at": "2025-11-20T11:10:19Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*lucid* —— 例句：\n\n> She remained lucid throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m31",
-    "sender": "human",
-    "created_at": "2025-11-21T13:47:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：modest，帮我造个句 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m32",
-    "sender": "assistant",
-    "created_at": "2025-11-21T13:47:50Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*modest* —— 例句：\n\n> She remained modest throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m33",
-    "sender": "human",
-    "created_at": "2025-11-23T13:02:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：notion，帮我造个句 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m34",
-    "sender": "assistant",
-    "created_at": "2025-11-23T13:02:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*notion* —— 例句：\n\n> She remained notion throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m35",
-    "sender": "human",
-    "created_at": "2025-11-24T12:39:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：obscure，帮我造个句 👨‍💻"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m36",
-    "sender": "assistant",
-    "created_at": "2025-11-24T12:39:21Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*obscure* —— 例句：\n\n> She remained obscure throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m37",
-    "sender": "human",
-    "created_at": "2025-11-25T04:54:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：plausible，帮我造个句 😂"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m38",
-    "sender": "assistant",
-    "created_at": "2025-11-25T04:54:17Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*plausible* —— 例句：\n\n> She remained plausible throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m39",
-    "sender": "human",
-    "created_at": "2025-11-26T12:34:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：reluctant，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m40",
-    "sender": "assistant",
-    "created_at": "2025-11-26T12:34:36Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*reluctant* —— 例句：\n\n> She remained reluctant throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m41",
-    "sender": "human",
-    "created_at": "2025-11-27T14:25:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：subtle，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m42",
-    "sender": "assistant",
-    "created_at": "2025-11-27T14:25:54Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*subtle* —— 例句：\n\n> She remained subtle throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m43",
-    "sender": "human",
-    "created_at": "2025-11-28T09:20:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：tedious，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m44",
-    "sender": "assistant",
-    "created_at": "2025-11-28T09:20:37Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*tedious* —— 例句：\n\n> She remained tedious throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m45",
-    "sender": "human",
-    "created_at": "2025-11-30T14:23:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：versatile，帮我造个句 ❤️"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m46",
-    "sender": "assistant",
-    "created_at": "2025-11-30T14:23:42Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*versatile* —— 例句：\n\n> She remained versatile throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m47",
-    "sender": "human",
-    "created_at": "2025-12-02T04:41:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：whim，帮我造个句 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m48",
-    "sender": "assistant",
-    "created_at": "2025-12-02T04:41:31Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*whim* —— 例句：\n\n> She remained whim throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m49",
-    "sender": "human",
-    "created_at": "2025-12-03T13:55:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：zeal，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m50",
-    "sender": "assistant",
-    "created_at": "2025-12-03T13:55:22Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*zeal* —— 例句：\n\n> She remained zeal throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m51",
-    "sender": "human",
-    "created_at": "2025-12-04T11:04:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：abundant，帮我造个句 ❤️"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m52",
-    "sender": "assistant",
-    "created_at": "2025-12-04T11:04:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*abundant* —— 例句：\n\n> She remained abundant throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m53",
-    "sender": "human",
-    "created_at": "2025-12-05T13:20:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：brisk，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m54",
-    "sender": "assistant",
-    "created_at": "2025-12-05T13:20:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*brisk* —— 例句：\n\n> She remained brisk throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m55",
-    "sender": "human",
-    "created_at": "2025-12-06T07:18:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：cherish，帮我造个句 😊"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m56",
-    "sender": "assistant",
-    "created_at": "2025-12-06T07:18:40Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*cherish* —— 例句：\n\n> She remained cherish throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m57",
-    "sender": "human",
-    "created_at": "2025-12-07T12:35:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：dwell，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m58",
-    "sender": "assistant",
-    "created_at": "2025-12-07T12:35:50Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*dwell* —— 例句：\n\n> She remained dwell throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m59",
-    "sender": "human",
-    "created_at": "2025-12-09T13:33:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：endeavor，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m60",
-    "sender": "assistant",
-    "created_at": "2025-12-09T13:33:24Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*endeavor* —— 例句：\n\n> She remained endeavor throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m61",
-    "sender": "human",
-    "created_at": "2025-12-10T04:44:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：fragile，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m62",
-    "sender": "assistant",
-    "created_at": "2025-12-10T04:44:53Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*fragile* —— 例句：\n\n> She remained fragile throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m63",
-    "sender": "human",
-    "created_at": "2025-12-11T14:57:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：grasp，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m64",
-    "sender": "assistant",
-    "created_at": "2025-12-11T14:57:26Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*grasp* —— 例句：\n\n> She remained grasp throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m65",
-    "sender": "human",
-    "created_at": "2025-12-13T00:33:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：hinder，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m66",
-    "sender": "assistant",
-    "created_at": "2025-12-13T00:33:45Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*hinder* —— 例句：\n\n> She remained hinder throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m67",
-    "sender": "human",
-    "created_at": "2025-12-14T13:51:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：imply，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m68",
-    "sender": "assistant",
-    "created_at": "2025-12-14T13:51:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*imply* —— 例句：\n\n> She remained imply throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m69",
-    "sender": "human",
-    "created_at": "2025-12-15T12:04:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：resilient，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m70",
-    "sender": "assistant",
-    "created_at": "2025-12-15T12:04:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*resilient* —— 例句：\n\n> She remained resilient throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m71",
-    "sender": "human",
-    "created_at": "2025-12-16T09:03:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：meticulous，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m72",
-    "sender": "assistant",
-    "created_at": "2025-12-16T09:03:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*meticulous* —— 例句：\n\n> She remained meticulous throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m73",
-    "sender": "human",
-    "created_at": "2025-12-17T14:26:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：candid，帮我造个句 ❤️"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m74",
-    "sender": "assistant",
-    "created_at": "2025-12-17T14:26:24Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*candid* —— 例句：\n\n> She remained candid throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m75",
-    "sender": "human",
-    "created_at": "2025-12-18T13:20:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：ambiguous，帮我造个句 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m76",
-    "sender": "assistant",
-    "created_at": "2025-12-18T13:20:41Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*ambiguous* —— 例句：\n\n> She remained ambiguous throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m77",
-    "sender": "human",
-    "created_at": "2025-12-20T02:32:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：pragmatic，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m78",
-    "sender": "assistant",
-    "created_at": "2025-12-20T02:32:41Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*pragmatic* —— 例句：\n\n> She remained pragmatic throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m79",
-    "sender": "human",
-    "created_at": "2025-12-22T12:09:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：vivid，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m80",
-    "sender": "assistant",
-    "created_at": "2025-12-22T12:09:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*vivid* —— 例句：\n\n> She remained vivid throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m81",
-    "sender": "human",
-    "created_at": "2025-12-24T02:21:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：coherent，帮我造个句 😂"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m82",
-    "sender": "assistant",
-    "created_at": "2025-12-24T02:21:38Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*coherent* —— 例句：\n\n> She remained coherent throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m83",
-    "sender": "human",
-    "created_at": "2025-12-25T12:18:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：diligent，帮我造个句 🤔"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m84",
-    "sender": "assistant",
-    "created_at": "2025-12-25T12:18:32Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*diligent* —— 例句：\n\n> She remained diligent throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m85",
-    "sender": "human",
-    "created_at": "2025-12-26T11:46:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：eloquent，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m86",
-    "sender": "assistant",
-    "created_at": "2025-12-26T11:46:46Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*eloquent* —— 例句：\n\n> She remained eloquent throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m87",
-    "sender": "human",
-    "created_at": "2025-12-27T11:52:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：frugal，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m88",
-    "sender": "assistant",
-    "created_at": "2025-12-27T11:52:43Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*frugal* —— 例句：\n\n> She remained frugal throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m89",
-    "sender": "human",
-    "created_at": "2025-12-28T04:09:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：genuine，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m90",
-    "sender": "assistant",
-    "created_at": "2025-12-28T04:09:55Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*genuine* —— 例句：\n\n> She remained genuine throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m91",
-    "sender": "human",
-    "created_at": "2025-12-29T11:14:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：humble，帮我造个句 😊"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m92",
-    "sender": "assistant",
-    "created_at": "2025-12-29T11:14:15Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*humble* —— 例句：\n\n> She remained humble throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m93",
-    "sender": "human",
-    "created_at": "2025-12-30T11:20:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：inevitable，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m94",
-    "sender": "assistant",
-    "created_at": "2025-12-30T11:20:47Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*inevitable* —— 例句：\n\n> She remained inevitable throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m95",
-    "sender": "human",
-    "created_at": "2025-12-31T02:43:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：keen，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m96",
-    "sender": "assistant",
-    "created_at": "2025-12-31T02:43:51Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*keen* —— 例句：\n\n> She remained keen throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m97",
-    "sender": "human",
-    "created_at": "2026-01-02T14:18:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：lucid，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m98",
-    "sender": "assistant",
-    "created_at": "2026-01-02T14:18:59Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*lucid* —— 例句：\n\n> She remained lucid throughout the long project.\n\n试着用它说一句关于你今天的话？"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m99",
-    "sender": "human",
-    "created_at": "2026-01-03T13:14:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "今天的单词：modest，帮我造个句"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g045-m100",
-    "sender": "assistant",
-    "created_at": "2026-01-03T13:14:50Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "*modest* —— 例句：\n\n> She remained modest throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "看一部电影、整理房间、做一锅汤，或者就听着雨声读本书。"
      }
     ]
    }
@@ -4719,756 +2071,536 @@
  },
  {
   "uuid": "demo-conv-g046",
-  "name": "跑步记录",
+  "name": "每日一词",
   "summary": "",
-  "created_at": "2026-01-05T12:58:00Z",
-  "updated_at": "2026-02-15T15:06:53Z",
+  "created_at": "2025-11-03T14:54:00Z",
+  "updated_at": "2025-11-30T01:53:23Z",
   "chat_messages": [
    {
     "uuid": "demo-g046-m1",
     "sender": "human",
-    "created_at": "2026-01-05T12:58:00Z",
+    "created_at": "2025-11-03T14:54:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "今天的单词：resilient"
      }
     ]
    },
    {
     "uuid": "demo-g046-m2",
     "sender": "assistant",
-    "created_at": "2026-01-05T12:59:00Z",
+    "created_at": "2025-11-03T14:54:30Z",
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "**resilient** —— 有韧性的。\n\n> Kids are often more resilient than we think."
      }
     ]
    },
    {
     "uuid": "demo-g046-m3",
     "sender": "human",
-    "created_at": "2026-01-06T07:12:00Z",
+    "created_at": "2025-11-05T07:09:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟 🤔"
+      "text": "今天的单词：meticulous"
      }
     ]
    },
    {
     "uuid": "demo-g046-m4",
     "sender": "assistant",
-    "created_at": "2026-01-06T07:12:21Z",
+    "created_at": "2025-11-05T07:09:50Z",
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**meticulous** —— 一丝不苟的。\n\n> She keeps meticulous notes for every project."
      }
     ]
    },
    {
     "uuid": "demo-g046-m5",
     "sender": "human",
-    "created_at": "2026-01-07T13:52:00Z",
+    "created_at": "2025-11-06T12:20:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 👨‍💻"
+      "text": "今天的单词：candid"
      }
     ]
    },
    {
     "uuid": "demo-g046-m6",
     "sender": "assistant",
-    "created_at": "2026-01-07T13:52:26Z",
+    "created_at": "2025-11-06T12:20:51Z",
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "**candid** —— 坦率的。\n\n> Thanks for your candid feedback on the draft."
      }
     ]
    },
    {
     "uuid": "demo-g046-m7",
     "sender": "human",
-    "created_at": "2026-01-08T05:01:00Z",
+    "created_at": "2025-11-07T02:34:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟 🤔"
+      "text": "今天的单词：ambiguous"
      }
     ]
    },
    {
     "uuid": "demo-g046-m8",
     "sender": "assistant",
-    "created_at": "2026-01-08T05:01:45Z",
+    "created_at": "2025-11-07T02:34:43Z",
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**ambiguous** —— 模棱两可的。\n\n> The instructions were ambiguous, so I asked again."
      }
     ]
    },
    {
     "uuid": "demo-g046-m9",
     "sender": "human",
-    "created_at": "2026-01-09T13:10:00Z",
+    "created_at": "2025-11-08T12:21:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速 🌙"
+      "text": "今天的单词：pragmatic"
      }
     ]
    },
    {
     "uuid": "demo-g046-m10",
     "sender": "assistant",
-    "created_at": "2026-01-09T13:10:40Z",
+    "created_at": "2025-11-08T12:21:22Z",
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "**pragmatic** —— 务实的。\n\n> We took a pragmatic approach and fixed the biggest bug first."
      }
     ]
    },
    {
     "uuid": "demo-g046-m11",
     "sender": "human",
-    "created_at": "2026-01-10T01:06:00Z",
+    "created_at": "2025-11-09T14:29:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "今天的单词：vivid"
      }
     ]
    },
    {
     "uuid": "demo-g046-m12",
     "sender": "assistant",
-    "created_at": "2026-01-10T01:06:59Z",
+    "created_at": "2025-11-09T14:29:56Z",
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**vivid** —— 生动的。\n\n> He gave a vivid description of the old town."
      }
     ]
    },
    {
     "uuid": "demo-g046-m13",
     "sender": "human",
-    "created_at": "2026-01-11T13:35:00Z",
+    "created_at": "2025-11-10T09:19:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量 👍"
+      "text": "今天的单词：coherent"
      }
     ]
    },
    {
     "uuid": "demo-g046-m14",
     "sender": "assistant",
-    "created_at": "2026-01-11T13:35:57Z",
+    "created_at": "2025-11-10T09:19:22Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**coherent** —— 连贯的。\n\n> Her argument was clear and coherent."
      }
     ]
    },
    {
     "uuid": "demo-g046-m15",
     "sender": "human",
-    "created_at": "2026-01-12T04:43:00Z",
+    "created_at": "2025-11-12T11:49:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10 🧑‍🍳"
+      "text": "今天的单词：diligent"
      }
     ]
    },
    {
     "uuid": "demo-g046-m16",
     "sender": "assistant",
-    "created_at": "2026-01-12T04:43:41Z",
+    "created_at": "2025-11-12T11:49:38Z",
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "**diligent** —— 勤奋的。\n\n> A diligent student reviews her notes every evening."
      }
     ]
    },
    {
     "uuid": "demo-g046-m17",
     "sender": "human",
-    "created_at": "2026-01-13T15:41:00Z",
+    "created_at": "2025-11-13T02:18:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟"
+      "text": "今天的单词：eloquent"
      }
     ]
    },
    {
     "uuid": "demo-g046-m18",
     "sender": "assistant",
-    "created_at": "2026-01-13T15:41:52Z",
+    "created_at": "2025-11-13T02:18:25Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**eloquent** —— 雄辩的。\n\n> He gave an eloquent speech at the wedding."
      }
     ]
    },
    {
     "uuid": "demo-g046-m19",
     "sender": "human",
-    "created_at": "2026-01-15T14:35:00Z",
+    "created_at": "2025-11-14T04:27:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 👨‍💻"
+      "text": "今天的单词：frugal"
      }
     ]
    },
    {
     "uuid": "demo-g046-m20",
     "sender": "assistant",
-    "created_at": "2026-01-15T14:35:34Z",
+    "created_at": "2025-11-14T04:27:54Z",
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**frugal** —— 节俭的。\n\n> They live a frugal life and save most of their income."
      }
     ]
    },
    {
     "uuid": "demo-g046-m21",
     "sender": "human",
-    "created_at": "2026-01-16T04:24:00Z",
+    "created_at": "2025-11-15T12:48:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟 🤔"
+      "text": "今天的单词：genuine"
      }
     ]
    },
    {
     "uuid": "demo-g046-m22",
     "sender": "assistant",
-    "created_at": "2026-01-16T04:24:48Z",
+    "created_at": "2025-11-15T12:48:35Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**genuine** —— 真诚的。\n\n> Her smile was warm and genuine."
      }
     ]
    },
    {
     "uuid": "demo-g046-m23",
     "sender": "human",
-    "created_at": "2026-01-17T12:33:00Z",
+    "created_at": "2025-11-16T15:29:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速"
+      "text": "今天的单词：humble"
      }
     ]
    },
    {
     "uuid": "demo-g046-m24",
     "sender": "assistant",
-    "created_at": "2026-01-17T12:33:50Z",
+    "created_at": "2025-11-16T15:29:56Z",
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**humble** —— 谦逊的。\n\n> Despite his success, he stayed humble."
      }
     ]
    },
    {
     "uuid": "demo-g046-m25",
     "sender": "human",
-    "created_at": "2026-01-18T12:03:00Z",
+    "created_at": "2025-11-18T01:12:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "今天的单词：inevitable"
      }
     ]
    },
    {
     "uuid": "demo-g046-m26",
     "sender": "assistant",
-    "created_at": "2026-01-18T12:03:56Z",
+    "created_at": "2025-11-18T01:12:49Z",
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**inevitable** —— 不可避免的。\n\n> Some mistakes are inevitable when you learn something new."
      }
     ]
    },
    {
     "uuid": "demo-g046-m27",
     "sender": "human",
-    "created_at": "2026-01-20T13:18:00Z",
+    "created_at": "2025-11-19T14:17:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量 🌙"
+      "text": "今天的单词：keen"
      }
     ]
    },
    {
     "uuid": "demo-g046-m28",
     "sender": "assistant",
-    "created_at": "2026-01-20T13:18:35Z",
+    "created_at": "2025-11-19T14:17:29Z",
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "**keen** —— 热衷的。\n\n> I'm keen to try the new café downstairs."
      }
     ]
    },
    {
     "uuid": "demo-g046-m29",
     "sender": "human",
-    "created_at": "2026-01-22T14:35:00Z",
+    "created_at": "2025-11-20T14:55:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "今天的单词：lucid"
      }
     ]
    },
    {
     "uuid": "demo-g046-m30",
     "sender": "assistant",
-    "created_at": "2026-01-22T14:35:50Z",
+    "created_at": "2025-11-20T14:55:29Z",
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "**lucid** —— 清晰易懂的。\n\n> The book gives a lucid explanation of how vaccines work."
      }
     ]
    },
    {
     "uuid": "demo-g046-m31",
     "sender": "human",
-    "created_at": "2026-01-24T14:03:00Z",
+    "created_at": "2025-11-21T09:37:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟"
+      "text": "今天的单词：modest"
      }
     ]
    },
    {
     "uuid": "demo-g046-m32",
     "sender": "assistant",
-    "created_at": "2026-01-24T14:03:47Z",
+    "created_at": "2025-11-21T09:37:25Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**modest** —— 适度的。\n\n> We saw a modest improvement after the change."
      }
     ]
    },
    {
     "uuid": "demo-g046-m33",
     "sender": "human",
-    "created_at": "2026-01-26T07:42:00Z",
+    "created_at": "2025-11-22T05:23:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 🎉"
+      "text": "今天的单词：notion"
      }
     ]
    },
    {
     "uuid": "demo-g046-m34",
     "sender": "assistant",
-    "created_at": "2026-01-26T07:42:42Z",
+    "created_at": "2025-11-22T05:24:00Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**notion** —— 概念，想法。\n\n> I had no notion of how long the trip would take."
      }
     ]
    },
    {
     "uuid": "demo-g046-m35",
     "sender": "human",
-    "created_at": "2026-01-27T13:46:00Z",
+    "created_at": "2025-11-23T02:10:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟"
+      "text": "今天的单词：obscure"
      }
     ]
    },
    {
     "uuid": "demo-g046-m36",
     "sender": "assistant",
-    "created_at": "2026-01-27T13:46:28Z",
+    "created_at": "2025-11-23T02:10:31Z",
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "**obscure** —— 鲜为人知的。\n\n> He loves obscure bands that nobody has heard of."
      }
     ]
    },
    {
     "uuid": "demo-g046-m37",
     "sender": "human",
-    "created_at": "2026-01-28T12:21:00Z",
+    "created_at": "2025-11-25T13:58:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速 👍"
+      "text": "今天的单词：plausible"
      }
     ]
    },
    {
     "uuid": "demo-g046-m38",
     "sender": "assistant",
-    "created_at": "2026-01-28T12:21:40Z",
+    "created_at": "2025-11-25T13:58:28Z",
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "**plausible** —— 似乎合理的。\n\n> That sounds like a plausible explanation."
      }
     ]
    },
    {
     "uuid": "demo-g046-m39",
     "sender": "human",
-    "created_at": "2026-01-29T13:17:00Z",
+    "created_at": "2025-11-26T02:19:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "今天的单词：reluctant"
      }
     ]
    },
    {
     "uuid": "demo-g046-m40",
     "sender": "assistant",
-    "created_at": "2026-01-29T13:17:27Z",
+    "created_at": "2025-11-26T02:19:16Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**reluctant** —— 不情愿的。\n\n> She was reluctant to leave the party early."
      }
     ]
    },
    {
     "uuid": "demo-g046-m41",
     "sender": "human",
-    "created_at": "2026-01-30T09:23:00Z",
+    "created_at": "2025-11-27T04:15:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量"
+      "text": "今天的单词：subtle"
      }
     ]
    },
    {
     "uuid": "demo-g046-m42",
     "sender": "assistant",
-    "created_at": "2026-01-30T09:23:59Z",
+    "created_at": "2025-11-27T04:15:38Z",
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "**subtle** —— 微妙的。\n\n> There's a subtle difference between the two shades of blue."
      }
     ]
    },
    {
     "uuid": "demo-g046-m43",
     "sender": "human",
-    "created_at": "2026-01-31T11:33:00Z",
+    "created_at": "2025-11-28T14:49:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "今天的单词：tedious"
      }
     ]
    },
    {
     "uuid": "demo-g046-m44",
     "sender": "assistant",
-    "created_at": "2026-01-31T11:33:28Z",
+    "created_at": "2025-11-28T14:49:28Z",
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "**tedious** —— 乏味的。\n\n> Filling in the same form every week is tedious."
      }
     ]
    },
    {
     "uuid": "demo-g046-m45",
     "sender": "human",
-    "created_at": "2026-02-01T13:54:00Z",
+    "created_at": "2025-11-29T04:11:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟 ❤️"
+      "text": "今天的单词：versatile"
      }
     ]
    },
    {
     "uuid": "demo-g046-m46",
     "sender": "assistant",
-    "created_at": "2026-02-01T13:54:56Z",
+    "created_at": "2025-11-29T04:11:53Z",
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "**versatile** —— 多用途的。\n\n> A cast-iron pan is surprisingly versatile."
      }
     ]
    },
    {
     "uuid": "demo-g046-m47",
     "sender": "human",
-    "created_at": "2026-02-02T09:13:00Z",
+    "created_at": "2025-11-30T01:53:00Z",
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 🙏"
+      "text": "今天的单词：whim"
      }
     ]
    },
    {
     "uuid": "demo-g046-m48",
     "sender": "assistant",
-    "created_at": "2026-02-02T09:13:53Z",
+    "created_at": "2025-11-30T01:53:23Z",
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m49",
-    "sender": "human",
-    "created_at": "2026-02-04T05:47:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m50",
-    "sender": "assistant",
-    "created_at": "2026-02-04T05:47:42Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "休息也是训练的一部分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m51",
-    "sender": "human",
-    "created_at": "2026-02-05T02:57:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m52",
-    "sender": "assistant",
-    "created_at": "2026-02-05T02:57:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "休息也是训练的一部分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m53",
-    "sender": "human",
-    "created_at": "2026-02-06T13:59:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m54",
-    "sender": "assistant",
-    "created_at": "2026-02-06T13:59:23Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "进步明显 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m55",
-    "sender": "human",
-    "created_at": "2026-02-07T12:52:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m56",
-    "sender": "assistant",
-    "created_at": "2026-02-07T12:52:40Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "进步明显 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m57",
-    "sender": "human",
-    "created_at": "2026-02-08T00:46:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m58",
-    "sender": "assistant",
-    "created_at": "2026-02-08T00:46:21Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "进步明显 🎉"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m59",
-    "sender": "human",
-    "created_at": "2026-02-09T01:08:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：跑走结合 25 分钟"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m60",
-    "sender": "assistant",
-    "created_at": "2026-02-09T01:08:54Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "休息也是训练的一部分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m61",
-    "sender": "human",
-    "created_at": "2026-02-11T09:02:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：4 公里，比上次轻松"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m62",
-    "sender": "assistant",
-    "created_at": "2026-02-11T09:02:27Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "休息也是训练的一部分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m63",
-    "sender": "human",
-    "created_at": "2026-02-12T11:54:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m64",
-    "sender": "assistant",
-    "created_at": "2026-02-12T11:54:56Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "休息也是训练的一部分。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m65",
-    "sender": "human",
-    "created_at": "2026-02-13T13:24:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m66",
-    "sender": "assistant",
-    "created_at": "2026-02-13T13:24:58Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "很稳，记得拉伸。"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m67",
-    "sender": "human",
-    "created_at": "2026-02-15T15:06:00Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "打卡：5 公里！第一次跑完 ☕"
-     }
-    ]
-   },
-   {
-    "uuid": "demo-g046-m68",
-    "sender": "assistant",
-    "created_at": "2026-02-15T15:06:53Z",
-    "content": [
-     {
-      "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "**whim** —— 一时的念头。\n\n> We booked the trip on a whim."
      }
     ]
    }
@@ -5476,668 +2608,1117 @@
  },
  {
   "uuid": "demo-conv-g047",
-  "name": "单词打卡 · 第二轮",
+  "name": "跑步记录",
   "summary": "",
-  "created_at": "2026-02-16T11:48:00Z",
-  "updated_at": "2026-03-21T14:59:36Z",
+  "created_at": "2026-01-05T11:55:00Z",
+  "updated_at": "2026-02-15T14:43:50Z",
   "chat_messages": [
    {
     "uuid": "demo-g047-m1",
     "sender": "human",
-    "created_at": "2026-02-16T11:48:00Z",
+    "created_at": "2026-01-05T11:55:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：resilient，帮我造个句 ✨"
+      "text": "打卡：2.25 公里，配速 7:36"
      }
     ]
    },
    {
     "uuid": "demo-g047-m2",
     "sender": "assistant",
-    "created_at": "2026-02-16T11:48:57Z",
+    "created_at": "2026-01-05T11:55:50Z",
     "content": [
      {
       "type": "text",
-      "text": "*resilient* —— 例句：\n\n> She remained resilient throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m3",
     "sender": "human",
-    "created_at": "2026-02-17T12:48:00Z",
+    "created_at": "2026-01-06T11:27:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：meticulous，帮我造个句 ☕"
+      "text": "打卡：2.5 公里，配速 7:34"
      }
     ]
    },
    {
     "uuid": "demo-g047-m4",
     "sender": "assistant",
-    "created_at": "2026-02-17T12:48:36Z",
+    "created_at": "2026-01-06T11:27:33Z",
     "content": [
      {
       "type": "text",
-      "text": "*meticulous* —— 例句：\n\n> She remained meticulous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m5",
     "sender": "human",
-    "created_at": "2026-02-18T12:32:00Z",
+    "created_at": "2026-01-07T13:19:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：candid，帮我造个句 😊"
+      "text": "打卡：2.75 公里，配速 7:32"
      }
     ]
    },
    {
     "uuid": "demo-g047-m6",
     "sender": "assistant",
-    "created_at": "2026-02-18T12:32:48Z",
+    "created_at": "2026-01-07T13:19:17Z",
     "content": [
      {
       "type": "text",
-      "text": "*candid* —— 例句：\n\n> She remained candid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m7",
     "sender": "human",
-    "created_at": "2026-02-20T13:56:00Z",
+    "created_at": "2026-01-08T13:22:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：ambiguous，帮我造个句 ✨"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m8",
     "sender": "assistant",
-    "created_at": "2026-02-20T13:56:28Z",
+    "created_at": "2026-01-08T13:22:29Z",
     "content": [
      {
       "type": "text",
-      "text": "*ambiguous* —— 例句：\n\n> She remained ambiguous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m9",
     "sender": "human",
-    "created_at": "2026-02-21T09:29:00Z",
+    "created_at": "2026-01-09T11:26:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：pragmatic，帮我造个句"
+      "text": "打卡：3 公里，配速 7:29"
      }
     ]
    },
    {
     "uuid": "demo-g047-m10",
     "sender": "assistant",
-    "created_at": "2026-02-21T09:29:48Z",
+    "created_at": "2026-01-09T11:26:58Z",
     "content": [
      {
       "type": "text",
-      "text": "*pragmatic* —— 例句：\n\n> She remained pragmatic throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m11",
     "sender": "human",
-    "created_at": "2026-02-22T12:25:00Z",
+    "created_at": "2026-01-11T14:51:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：vivid，帮我造个句 🙏"
+      "text": "打卡：3.25 公里，配速 7:27"
      }
     ]
    },
    {
     "uuid": "demo-g047-m12",
     "sender": "assistant",
-    "created_at": "2026-02-22T12:25:30Z",
+    "created_at": "2026-01-11T14:51:15Z",
     "content": [
      {
       "type": "text",
-      "text": "*vivid* —— 例句：\n\n> She remained vivid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m13",
     "sender": "human",
-    "created_at": "2026-02-24T05:45:00Z",
+    "created_at": "2026-01-12T00:36:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：coherent，帮我造个句"
+      "text": "打卡：3.5 公里，配速 7:25"
      }
     ]
    },
    {
     "uuid": "demo-g047-m14",
     "sender": "assistant",
-    "created_at": "2026-02-24T05:45:33Z",
+    "created_at": "2026-01-12T00:36:28Z",
     "content": [
      {
       "type": "text",
-      "text": "*coherent* —— 例句：\n\n> She remained coherent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m15",
     "sender": "human",
-    "created_at": "2026-02-25T02:01:00Z",
+    "created_at": "2026-01-13T01:37:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：diligent，帮我造个句"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m16",
     "sender": "assistant",
-    "created_at": "2026-02-25T02:01:53Z",
+    "created_at": "2026-01-13T01:37:33Z",
     "content": [
      {
       "type": "text",
-      "text": "*diligent* —— 例句：\n\n> She remained diligent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m17",
     "sender": "human",
-    "created_at": "2026-02-26T12:50:00Z",
+    "created_at": "2026-01-14T09:37:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：eloquent，帮我造个句"
+      "text": "打卡：3.75 公里，配速 7:22"
      }
     ]
    },
    {
     "uuid": "demo-g047-m18",
     "sender": "assistant",
-    "created_at": "2026-02-26T12:50:41Z",
+    "created_at": "2026-01-14T09:37:32Z",
     "content": [
      {
       "type": "text",
-      "text": "*eloquent* —— 例句：\n\n> She remained eloquent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m19",
     "sender": "human",
-    "created_at": "2026-02-27T09:12:00Z",
+    "created_at": "2026-01-15T12:14:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：frugal，帮我造个句"
+      "text": "打卡：4 公里，配速 7:20"
      }
     ]
    },
    {
     "uuid": "demo-g047-m20",
     "sender": "assistant",
-    "created_at": "2026-02-27T09:12:50Z",
+    "created_at": "2026-01-15T12:14:28Z",
     "content": [
      {
       "type": "text",
-      "text": "*frugal* —— 例句：\n\n> She remained frugal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "很稳，比上周又快了一点。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m21",
     "sender": "human",
-    "created_at": "2026-02-28T11:24:00Z",
+    "created_at": "2026-01-16T15:59:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：genuine，帮我造个句"
+      "text": "打卡：4.25 公里，配速 7:18"
      }
     ]
    },
    {
     "uuid": "demo-g047-m22",
     "sender": "assistant",
-    "created_at": "2026-02-28T11:24:31Z",
+    "created_at": "2026-01-16T15:59:53Z",
     "content": [
      {
       "type": "text",
-      "text": "*genuine* —— 例句：\n\n> She remained genuine throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m23",
     "sender": "human",
-    "created_at": "2026-03-02T11:01:00Z",
+    "created_at": "2026-01-17T12:02:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：humble，帮我造个句"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m24",
     "sender": "assistant",
-    "created_at": "2026-03-02T11:01:28Z",
+    "created_at": "2026-01-17T12:02:33Z",
     "content": [
      {
       "type": "text",
-      "text": "*humble* —— 例句：\n\n> She remained humble throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m25",
     "sender": "human",
-    "created_at": "2026-03-03T01:04:00Z",
+    "created_at": "2026-01-18T14:25:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：inevitable，帮我造个句"
+      "text": "打卡：4.5 公里，配速 7:14"
      }
     ]
    },
    {
     "uuid": "demo-g047-m26",
     "sender": "assistant",
-    "created_at": "2026-03-03T01:04:18Z",
+    "created_at": "2026-01-18T14:25:30Z",
     "content": [
      {
       "type": "text",
-      "text": "*inevitable* —— 例句：\n\n> She remained inevitable throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "很稳，比上周又快了一点。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m27",
     "sender": "human",
-    "created_at": "2026-03-04T13:51:00Z",
+    "created_at": "2026-01-20T13:26:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：keen，帮我造个句"
+      "text": "打卡：4.75 公里，配速 7:13"
      }
     ]
    },
    {
     "uuid": "demo-g047-m28",
     "sender": "assistant",
-    "created_at": "2026-03-04T13:51:20Z",
+    "created_at": "2026-01-20T13:26:49Z",
     "content": [
      {
       "type": "text",
-      "text": "*keen* —— 例句：\n\n> She remained keen throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m29",
     "sender": "human",
-    "created_at": "2026-03-05T13:03:00Z",
+    "created_at": "2026-01-22T04:12:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：lucid，帮我造个句"
+      "text": "打卡：5 公里！第一次一口气跑完 🎉"
      }
     ]
    },
    {
     "uuid": "demo-g047-m30",
     "sender": "assistant",
-    "created_at": "2026-03-05T13:03:31Z",
+    "created_at": "2026-01-22T04:12:34Z",
     "content": [
      {
       "type": "text",
-      "text": "*lucid* —— 例句：\n\n> She remained lucid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "太棒了！从 2 公里到 5 公里，坚持下来了。记得好好拉伸。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m31",
     "sender": "human",
-    "created_at": "2026-03-06T05:43:00Z",
+    "created_at": "2026-01-23T14:36:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：modest，帮我造个句"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m32",
     "sender": "assistant",
-    "created_at": "2026-03-06T05:43:16Z",
+    "created_at": "2026-01-23T14:36:34Z",
     "content": [
      {
       "type": "text",
-      "text": "*modest* —— 例句：\n\n> She remained modest throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m33",
     "sender": "human",
-    "created_at": "2026-03-07T14:44:00Z",
+    "created_at": "2026-01-25T07:47:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：notion，帮我造个句"
+      "text": "打卡：5 公里，配速 7:07"
      }
     ]
    },
    {
     "uuid": "demo-g047-m34",
     "sender": "assistant",
-    "created_at": "2026-03-07T14:44:16Z",
+    "created_at": "2026-01-25T07:47:43Z",
     "content": [
      {
       "type": "text",
-      "text": "*notion* —— 例句：\n\n> She remained notion throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m35",
     "sender": "human",
-    "created_at": "2026-03-08T15:36:00Z",
+    "created_at": "2026-01-26T11:35:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：obscure，帮我造个句"
+      "text": "打卡：5 公里，配速 7:05"
      }
     ]
    },
    {
     "uuid": "demo-g047-m36",
     "sender": "assistant",
-    "created_at": "2026-03-08T15:36:29Z",
+    "created_at": "2026-01-26T11:35:45Z",
     "content": [
      {
       "type": "text",
-      "text": "*obscure* —— 例句：\n\n> She remained obscure throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m37",
     "sender": "human",
-    "created_at": "2026-03-10T15:20:00Z",
+    "created_at": "2026-01-28T15:59:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：plausible，帮我造个句"
+      "text": "打卡：5 公里，配速 7:04"
      }
     ]
    },
    {
     "uuid": "demo-g047-m38",
     "sender": "assistant",
-    "created_at": "2026-03-10T15:20:38Z",
+    "created_at": "2026-01-28T15:59:56Z",
     "content": [
      {
       "type": "text",
-      "text": "*plausible* —— 例句：\n\n> She remained plausible throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "很稳，比上周又快了一点。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m39",
     "sender": "human",
-    "created_at": "2026-03-11T13:07:00Z",
+    "created_at": "2026-01-29T07:27:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：reluctant，帮我造个句 😊"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m40",
     "sender": "assistant",
-    "created_at": "2026-03-11T13:07:38Z",
+    "created_at": "2026-01-29T07:27:59Z",
     "content": [
      {
       "type": "text",
-      "text": "*reluctant* —— 例句：\n\n> She remained reluctant throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m41",
     "sender": "human",
-    "created_at": "2026-03-12T07:44:00Z",
+    "created_at": "2026-01-30T11:59:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：subtle，帮我造个句"
+      "text": "打卡：5 公里，配速 7:00"
      }
     ]
    },
    {
     "uuid": "demo-g047-m42",
     "sender": "assistant",
-    "created_at": "2026-03-12T07:45:00Z",
+    "created_at": "2026-01-30T11:59:42Z",
     "content": [
      {
       "type": "text",
-      "text": "*subtle* —— 例句：\n\n> She remained subtle throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m43",
     "sender": "human",
-    "created_at": "2026-03-13T14:41:00Z",
+    "created_at": "2026-01-31T12:52:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：tedious，帮我造个句"
+      "text": "打卡：5 公里，配速 6:58"
      }
     ]
    },
    {
     "uuid": "demo-g047-m44",
     "sender": "assistant",
-    "created_at": "2026-03-13T14:41:51Z",
+    "created_at": "2026-01-31T12:52:39Z",
     "content": [
      {
       "type": "text",
-      "text": "*tedious* —— 例句：\n\n> She remained tedious throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "很稳，比上周又快了一点。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m45",
     "sender": "human",
-    "created_at": "2026-03-14T12:45:00Z",
+    "created_at": "2026-02-01T05:48:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：versatile，帮我造个句 🧑‍🍳"
+      "text": "打卡：5 公里，配速 6:56"
      }
     ]
    },
    {
     "uuid": "demo-g047-m46",
     "sender": "assistant",
-    "created_at": "2026-03-14T12:45:28Z",
+    "created_at": "2026-02-01T05:48:25Z",
     "content": [
      {
       "type": "text",
-      "text": "*versatile* —— 例句：\n\n> She remained versatile throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m47",
     "sender": "human",
-    "created_at": "2026-03-15T13:56:00Z",
+    "created_at": "2026-02-02T12:56:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：whim，帮我造个句"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m48",
     "sender": "assistant",
-    "created_at": "2026-03-15T13:56:25Z",
+    "created_at": "2026-02-02T12:56:27Z",
     "content": [
      {
       "type": "text",
-      "text": "*whim* —— 例句：\n\n> She remained whim throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m49",
     "sender": "human",
-    "created_at": "2026-03-16T04:52:00Z",
+    "created_at": "2026-02-04T04:47:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：zeal，帮我造个句"
+      "text": "打卡：5 公里，配速 6:53"
      }
     ]
    },
    {
     "uuid": "demo-g047-m50",
     "sender": "assistant",
-    "created_at": "2026-03-16T04:52:44Z",
+    "created_at": "2026-02-04T04:47:58Z",
     "content": [
      {
       "type": "text",
-      "text": "*zeal* —— 例句：\n\n> She remained zeal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "很稳，比上周又快了一点。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m51",
     "sender": "human",
-    "created_at": "2026-03-17T14:33:00Z",
+    "created_at": "2026-02-05T02:03:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：abundant，帮我造个句"
+      "text": "打卡：5 公里，配速 6:51"
      }
     ]
    },
    {
     "uuid": "demo-g047-m52",
     "sender": "assistant",
-    "created_at": "2026-03-17T14:33:47Z",
+    "created_at": "2026-02-05T02:03:15Z",
     "content": [
      {
       "type": "text",
-      "text": "*abundant* —— 例句：\n\n> She remained abundant throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m53",
     "sender": "human",
-    "created_at": "2026-03-18T04:59:00Z",
+    "created_at": "2026-02-06T02:43:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：brisk，帮我造个句"
+      "text": "打卡：5 公里，配速 6:49"
      }
     ]
    },
    {
     "uuid": "demo-g047-m54",
     "sender": "assistant",
-    "created_at": "2026-03-18T04:59:44Z",
+    "created_at": "2026-02-06T02:43:36Z",
     "content": [
      {
       "type": "text",
-      "text": "*brisk* —— 例句：\n\n> She remained brisk throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m55",
     "sender": "human",
-    "created_at": "2026-03-19T07:30:00Z",
+    "created_at": "2026-02-08T13:26:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：cherish，帮我造个句 😊"
+      "text": "打卡：休息日，拉伸 10 分钟"
      }
     ]
    },
    {
     "uuid": "demo-g047-m56",
     "sender": "assistant",
-    "created_at": "2026-03-19T07:30:38Z",
+    "created_at": "2026-02-08T13:26:28Z",
     "content": [
      {
       "type": "text",
-      "text": "*cherish* —— 例句：\n\n> She remained cherish throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "休息也是训练的一部分，明天继续。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m57",
     "sender": "human",
-    "created_at": "2026-03-20T14:26:00Z",
+    "created_at": "2026-02-09T11:01:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：dwell，帮我造个句"
+      "text": "打卡：5 公里，配速 6:46"
      }
     ]
    },
    {
     "uuid": "demo-g047-m58",
     "sender": "assistant",
-    "created_at": "2026-03-20T14:26:40Z",
+    "created_at": "2026-02-09T11:01:40Z",
     "content": [
      {
       "type": "text",
-      "text": "*dwell* —— 例句：\n\n> She remained dwell throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
      }
     ]
    },
    {
     "uuid": "demo-g047-m59",
     "sender": "human",
-    "created_at": "2026-03-21T14:59:00Z",
+    "created_at": "2026-02-10T11:23:00Z",
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：endeavor，帮我造个句"
+      "text": "打卡：5 公里，配速 6:44"
      }
     ]
    },
    {
     "uuid": "demo-g047-m60",
     "sender": "assistant",
-    "created_at": "2026-03-21T14:59:36Z",
+    "created_at": "2026-02-10T11:23:18Z",
     "content": [
      {
       "type": "text",
-      "text": "*endeavor* —— 例句：\n\n> She remained endeavor throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "不错，保持这个节奏。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m61",
+    "sender": "human",
+    "created_at": "2026-02-11T11:06:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "打卡：5 公里，配速 6:42"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m62",
+    "sender": "assistant",
+    "created_at": "2026-02-11T11:06:53Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很稳，比上周又快了一点。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m63",
+    "sender": "human",
+    "created_at": "2026-02-12T07:48:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "打卡：休息日，拉伸 10 分钟"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m64",
+    "sender": "assistant",
+    "created_at": "2026-02-12T07:48:54Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "休息也是训练的一部分，明天继续。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m65",
+    "sender": "human",
+    "created_at": "2026-02-13T15:54:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "打卡：5 公里，配速 6:38"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m66",
+    "sender": "assistant",
+    "created_at": "2026-02-13T15:54:51Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "不错，保持这个节奏。"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m67",
+    "sender": "human",
+    "created_at": "2026-02-15T14:43:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "打卡：5 公里，配速 6:37"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g047-m68",
+    "sender": "assistant",
+    "created_at": "2026-02-15T14:43:50Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "很稳，比上周又快了一点。"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "uuid": "demo-conv-g048",
+  "name": "每日一词 · 第二轮",
+  "summary": "",
+  "created_at": "2026-02-16T13:25:00Z",
+  "updated_at": "2026-03-06T13:55:43Z",
+  "chat_messages": [
+   {
+    "uuid": "demo-g048-m1",
+    "sender": "human",
+    "created_at": "2026-02-16T13:25:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：zeal"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m2",
+    "sender": "assistant",
+    "created_at": "2026-02-16T13:25:42Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**zeal** —— 热情。\n\n> He started the new job with great zeal."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m3",
+    "sender": "human",
+    "created_at": "2026-02-17T13:04:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：abundant"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m4",
+    "sender": "assistant",
+    "created_at": "2026-02-17T13:04:41Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**abundant** —— 丰富的。\n\n> Fresh fruit is abundant in summer."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m5",
+    "sender": "human",
+    "created_at": "2026-02-18T07:16:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：brisk"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m6",
+    "sender": "assistant",
+    "created_at": "2026-02-18T07:16:31Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**brisk** —— 轻快的。\n\n> We took a brisk walk before breakfast."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m7",
+    "sender": "human",
+    "created_at": "2026-02-19T00:22:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：cherish"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m8",
+    "sender": "assistant",
+    "created_at": "2026-02-19T00:22:51Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**cherish** —— 珍惜。\n\n> I cherish the letters my grandmother wrote."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m9",
+    "sender": "human",
+    "created_at": "2026-02-20T12:11:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：dwell"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m10",
+    "sender": "assistant",
+    "created_at": "2026-02-20T12:11:31Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**dwell** —— 老是想着。\n\n> Try not to dwell on small mistakes."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m11",
+    "sender": "human",
+    "created_at": "2026-02-22T00:20:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：endeavor"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m12",
+    "sender": "assistant",
+    "created_at": "2026-02-22T00:20:35Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**endeavor** —— 努力。\n\n> Learning a language is a long endeavor."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m13",
+    "sender": "human",
+    "created_at": "2026-02-23T05:54:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：fragile"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m14",
+    "sender": "assistant",
+    "created_at": "2026-02-23T05:54:49Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**fragile** —— 易碎的。\n\n> Please be careful, the vase is fragile."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m15",
+    "sender": "human",
+    "created_at": "2026-02-24T12:48:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：grasp"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m16",
+    "sender": "assistant",
+    "created_at": "2026-02-24T12:48:21Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**grasp** —— 理解，领会。\n\n> It took me a while to grasp the idea."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m17",
+    "sender": "human",
+    "created_at": "2026-02-25T00:54:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：hinder"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m18",
+    "sender": "assistant",
+    "created_at": "2026-02-25T00:54:36Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**hinder** —— 妨碍。\n\n> Noise can hinder your concentration."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m19",
+    "sender": "human",
+    "created_at": "2026-02-27T13:47:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：imply"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m20",
+    "sender": "assistant",
+    "created_at": "2026-02-27T13:47:26Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**imply** —— 暗示。\n\n> His silence seemed to imply agreement."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m21",
+    "sender": "human",
+    "created_at": "2026-02-28T01:03:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：juggle"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m22",
+    "sender": "assistant",
+    "created_at": "2026-02-28T01:03:33Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**juggle** —— 同时应付。\n\n> She juggles work and evening classes."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m23",
+    "sender": "human",
+    "created_at": "2026-03-01T02:58:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：linger"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m24",
+    "sender": "assistant",
+    "created_at": "2026-03-01T02:58:21Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**linger** —— 逗留。\n\n> The smell of coffee lingered in the kitchen."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m25",
+    "sender": "human",
+    "created_at": "2026-03-02T13:51:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：mundane"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m26",
+    "sender": "assistant",
+    "created_at": "2026-03-02T13:51:19Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**mundane** —— 平凡的。\n\n> Even mundane tasks feel better with music on."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m27",
+    "sender": "human",
+    "created_at": "2026-03-03T01:19:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：novice"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m28",
+    "sender": "assistant",
+    "created_at": "2026-03-03T01:19:39Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**novice** —— 新手。\n\n> As a novice cook, I follow recipes exactly."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m29",
+    "sender": "human",
+    "created_at": "2026-03-04T13:01:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：optimistic"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m30",
+    "sender": "assistant",
+    "created_at": "2026-03-04T13:01:55Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**optimistic** —— 乐观的。\n\n> I'm optimistic about the results."
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m31",
+    "sender": "human",
+    "created_at": "2026-03-06T13:55:00Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "今天的单词：persevere"
+     }
+    ]
+   },
+   {
+    "uuid": "demo-g048-m32",
+    "sender": "assistant",
+    "created_at": "2026-03-06T13:55:43Z",
+    "content": [
+     {
+      "type": "text",
+      "text": "**persevere** —— 坚持不懈。\n\n> If you persevere, the chords will get easier."
      }
     ]
    }
