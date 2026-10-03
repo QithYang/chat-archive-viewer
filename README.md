@@ -1,25 +1,55 @@
 # Chat Archive Viewer
 
-A lightweight, local-only viewer for Claude conversation exports. It renders the `conversations.json` file exported from Claude as a clean chat interface. Everything is processed in your browser; nothing is uploaded anywhere.
+A local-only viewer and analytics dashboard for Claude conversation exports. Load the `conversations.json` file exported from Claude to read your chats in a clean interface and see how you use AI over time: when you talk to it, how the conversation is shared between you and the model, and what you talk about. Everything is processed in your browser; nothing is uploaded anywhere.
 
 [Live demo →](https://qithyang.github.io/chat-archive-viewer/) · [中文说明](#中文说明)
 
-![The viewer showing the bundled sample conversation](assets/screenshot.jpg)
+![The statistics view: totals, character share and daily heatmap](assets/screenshot-stats.jpg)
 
-*The interface is in English or Chinese (switch with the 中 / EN button in the sidebar). Screenshots show the bundled sample data, not real conversations.*
+*Screenshots show the bundled sample data, not real conversations. The interface is in English or Chinese (switch with the 中 / EN button in the sidebar).*
 
-![The statistics view: totals and daily heatmap](assets/screenshot-stats.jpg)
+## Conversation analytics
+
+The **Stats** tab turns an export into a usage profile. It answers questions such as:
+
+- **How much and how regularly?** Conversations, messages, active days, the longest streak of consecutive days, and a daily heatmap.
+- **When?** Messages by weekday and by hour, and how many conversations happen late at night.
+- **Who does the talking?** Each side's share of the characters written, and characters per month for both.
+- **About what?** The longest conversations, the late-night ones, the most frequent words on each side, and the most-used emoji.
 
 ![The statistics view: weekly and daily rhythm, and top words](assets/screenshot-stats-2.jpg)
 
-## Features
+### Metric definitions
+
+| Metric | Definition |
+|---|---|
+| Conversations, messages | Conversations in the list (deleted ones excluded) and their visible messages. A message counts if it shows something: text, thinking, files or tool activity. |
+| Time span, active days | Calendar days from the first to the last message (inclusive), and days with at least one message. |
+| Longest streak | The longest run of consecutive active days. |
+| Late-night chats | Conversations with at least one message between 02:00 and 04:59. |
+| Character share | Characters of message text per side, whitespace excluded. Thinking, tool calls and attachment contents are not counted. |
+| Daily heatmap | Messages per day for up to the last 53 weeks; the four colour levels split the non-zero days at their quartiles, so the scale adapts to light and heavy users alike. |
+| Rhythm | Messages by weekday (Monday first) and by hour of the day. |
+| Longest conversations | Ranked by visible messages, ties broken by characters. |
+| Top words | Words from each side's text, segmented with `Intl.Segmenter` (handles Chinese and English); code blocks, inline code and links removed, case folded; very short words (one Chinese character, or one or two Latin letters), common stopwords and words seen only once are dropped. |
+| Most-used emoji | Counted as whole grapheme clusters, so a combined emoji such as 👨‍💻 counts once; text symbols such as © are excluded. |
+
+### How it is computed
+
+- **Local time throughout.** Days, hours and weekdays use the browser's time zone, so the numbers match what the timeline shows.
+- **Separated from the UI.** One pure function takes the conversation list and returns every figure; the charts only draw its output. The result is cached until the data changes (import, merge or delete).
+- **Tested on edge cases.** `node --test tests/` runs the computation on small hand-made inputs with known answers: streaks across a month boundary, the 01:59 / 02:00 cut-off, whitespace and code points in character counts, combined emoji, stopwords and code in word counts, and messages or conversations with nothing visible.
+- **No dependencies.** Charts are inline SVG drawn with the page's own colours and fonts; nothing is fetched from a CDN.
+
+## Viewer features
+
+![The viewer showing a sample conversation](assets/screenshot.jpg)
 
 - **Conversation list**: sorted by last update, with title search and delete (local soft delete)
 - **Message rendering**: Markdown (bold, italic, lists, code blocks, quotes, links), attachments, image placeholders
 - **Thinking chains**: a collapsible pill button that expands into a block marked by a left rule
 - **Bookmarks**: hover a message to reveal ☆ and bookmark it; the Bookmarks tab groups them by conversation
 - **Timeline**: month calendar view with conversation days highlighted
-- **Statistics**: totals, activity streaks, a daily heatmap, weekday and hour-of-day rhythm, monthly character counts, longest and late-night conversations, top words for each side, and most-used emoji
 - **Two languages**: English and Chinese interface, each with its own sample data
 - **Search**: current conversation or all conversations, with highlighting and next/previous jumps
 - **Merge multiple imports**: the sidebar `+` button imports another export, de-duplicated by conversation uuid
@@ -57,7 +87,7 @@ A single-file front end (HTML + CSS + JavaScript) with no framework and no build
 ```
 .
 ├── index.html               # the whole app (HTML + CSS + JS in one file)
-├── assets/                  # icon and screenshot
+├── assets/                  # icon and screenshots
 ├── fonts/                   # bundled fonts; licenses in fonts/licenses/
 ├── demo-conversations*.json # sample data, English and Chinese (generated by scripts/gen-demo.py)
 ├── scripts/                 # demo data generator
@@ -84,20 +114,54 @@ The bundled fonts are licensed under the [SIL Open Font License 1.1](https://ope
 
 ## 中文说明
 
-轻量、本地的 Claude 对话查看器 —— 把 Claude 导出的 `conversations.json` 渲染成清晰的聊天界面。所有数据在浏览器本地处理，不上传任何东西。
+本地运行的 Claude 对话查看器与数据分析面板。载入 Claude 导出的 `conversations.json`，既能在清爽的界面里回看对话，也能看到自己使用 AI 的规律：什么时候聊、双方各说了多少、都聊些什么。所有数据在浏览器本地处理，不上传任何东西。
 
 [在线体验 →](https://qithyang.github.io/chat-archive-viewer/)
 
-![示例对话界面](assets/screenshot.jpg)
+![统计页：总览、字数占比与每日热力图](assets/screenshot-stats.jpg)
 
-### 功能
+### 对话数据分析
+
+「统计」页把一份导出变成一份使用画像，回答这些问题：
+
+- **用得多不多、规律不规律？** 对话数、消息数、活跃天数、最长连续天数、每日热力图。
+- **什么时候用？** 按星期、按小时的消息分布，以及深夜对话有多少。
+- **谁说得多？** 双方字数占比，以及双方每月字数走势。
+- **聊些什么？** 最长的对话、深夜对话榜、双方高频词、常用 Emoji。
+
+![统计页：星期与 24 小时分布、高频词](assets/screenshot-stats-2.jpg)
+
+#### 指标口径
+
+| 指标 | 定义 |
+|---|---|
+| 对话数、消息数 | 列表中的对话（已删除的不算）及其可见消息。有文字、思考、文件或工具调用内容的消息才算可见。 |
+| 时间跨度、活跃天数 | 首条到末条消息的天数（含两端），以及至少有 1 条消息的天数。 |
+| 最长连续 | 连续活跃天数的最大值。 |
+| 深夜对话 | 至少有 1 条消息落在 02:00–04:59 的对话数。 |
+| 字数占比 | 双方正文的字符数，不含空白；思考、工具调用、附件内容不计。 |
+| 每日热力图 | 最近至多 53 周每天的消息数；颜色四档按非零日的四分位数切分，用得多和用得少的人都能看出层次。 |
+| 节奏 | 按星期（周一在前）和按小时的消息数。 |
+| 最长对话 | 按可见消息数排序，相同时比字数。 |
+| 高频词 | 用 `Intl.Segmenter` 分词（中英文都支持），去掉代码块、行内代码和链接，统一小写；过滤过短的词（中文单字、1–2 个字母的英文）、常见停用词和只出现一次的词。 |
+| 常用 Emoji | 按完整字形计数，👨‍💻 这类组合 emoji 算 1 个；©、® 等文本符号不计。 |
+
+#### 计算方式
+
+- **统一本地时区**：日期、小时、星期都按浏览器时区计算，和时间轴显示一致。
+- **计算与界面分离**：一个纯函数接收对话列表、返回全部数值，图表只负责绘制；结果缓存到数据变化（导入、合并、删除）时才重算。
+- **边界情况有测试**：`node --test tests/` 用预先算好答案的小样例验证跨月连续天数、01:59/02:00 分界、字数的空白与码点、组合 emoji、高频词的停用词与代码过滤、没有可见内容的消息和对话。
+- **零依赖**：图表是内联 SVG，沿用页面自己的配色和字体，不从 CDN 加载任何东西。
+
+### 查看器功能
+
+![示例对话界面](assets/screenshot.jpg)
 
 - **对话列表** — 按最近更新排序，支持标题搜索、删除（本地软删除）
 - **消息渲染** — Markdown（加粗/斜体/列表/代码块/引用/链接）、附件、图片占位
 - **思考链** — 药丸折叠按钮 + 左侧竖线展开块
 - **收藏** — hover 消息显示 ☆，点击收藏。「收藏」标签页按对话分组浏览
 - **时间轴** — 月历视图，有对话的日期高亮
-- **统计** — 总量与连续天数、每日热力图、星期/24 小时分布、每月字数、最长与深夜对话榜、双方高频词、常用 Emoji
 - **中英双语** — 侧边栏「中 / EN」按钮切换界面语言，示例数据也随之切换
 - **搜索** — 当前对话 / 全部对话两种范围，支持高亮、上下跳转
 - **多次导入合并** — 侧边栏 `+` 按钮，按 uuid 去重
