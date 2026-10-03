@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>QithYang · 对话归档查看器</title>
+<title>Chat Archive Viewer · 对话归档查看器</title>
 <link rel="icon" type="image/png" href="assets/app-logo.png">
 <style>
 /* === Fonts: relative paths, no embed === */
@@ -346,7 +346,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 }
 
 /* Preload-choice modal: shown on boot when this HTML carries
-   embedded conversations (window.QithYang_preloaded). User picks import-to-IDB
+   embedded conversations (the cav-payload script tag). User picks import-to-IDB
    vs in-memory only. */
 .preload-modal { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; }
 .preload-modal-bg { position:absolute; inset:0; background:rgba(20,20,19,0.45); backdrop-filter:blur(4px); }
@@ -370,7 +370,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 
 <div id="picker">
   <img class="pic-logo" src="assets/app-logo.png" alt="">
-  <div class="pt">QithYang</div>
+  <div class="pt">Chat Archive Viewer</div>
   <div class="ph">— 对话归档查看器 —</div>
   <div class="drop" id="drop">
     <div class="drop-ic">📎</div>
@@ -384,7 +384,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
   <aside id="sidebar">
     <div class="sb-head">
       <div class="sb-title-row">
-        <div class="sb-title"><img src="assets/app-logo.png" alt="">QithYang</div>
+        <div class="sb-title"><img src="assets/app-logo.png" alt="">Chat Archive Viewer</div>
         <div class="sb-actions">
           <button class="sb-import" id="settings-btn" title="数据管理">⚙</button>
           <button class="sb-import" id="import-btn" title="导入更多 conversations.json">+</button>
@@ -420,7 +420,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
     <div class="main-head">
       <button class="mh-hb" id="hb" aria-label="菜单">☰</button>
       <div class="mh-c">
-        <div class="mh-t" id="mh-t">QithYang</div>
+        <div class="mh-t" id="mh-t">Chat Archive Viewer</div>
         <div class="mh-m" id="mh-m">— 对话归档查看器 —</div>
       </div>
       <div class="mh-acts">
@@ -475,8 +475,8 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 
 <script>
 
-// === QithYang module ===
-window.QithYang = (() => {
+// === CAV module ===
+window.CAV = (() => {
 
   // ===== state (simple mutable plain object) =====
   const state = {
@@ -593,11 +593,11 @@ window.QithYang = (() => {
   }
 
   // ===== storage (idb + ls) =====
-  // localStorage display-name keys
+  // localStorage display-name keys (legacy names kept so saved names survive)
   const DN_USER_KEY = 'qithyang_user_name';
   const DN_ASST_KEY = 'qithyang_assistant_name';
   // IndexedDB schema. Changing it requires a DB_VERSION bump and a migration.
-  const DB_NAME = 'QithYang';
+  const DB_NAME = 'QithYang'; // legacy name kept: renaming would orphan stored data
   const DB_VERSION = 1;
   const STORES = ['conversations', 'favs', 'deletedConvs'];
   let _db = null;
@@ -1033,76 +1033,76 @@ function setLoadingText(t) {
 async function saveConvsByIds(ids) {
   if (!ids.length) return { ok:true };
   try {
-    const items = ids.map(id => QithYang.state.RAW_BY_ID[id]).filter(Boolean);
-    await QithYang.storage.idb.bulkPut('conversations', items);
-    QithYang.state.lastSaveOk = true;
+    const items = ids.map(id => CAV.state.RAW_BY_ID[id]).filter(Boolean);
+    await CAV.storage.idb.bulkPut('conversations', items);
+    CAV.state.lastSaveOk = true;
     return { ok:true };
-  } catch (e) { QithYang.state.lastSaveOk = false; return { ok:false, err:e }; }
+  } catch (e) { CAV.state.lastSaveOk = false; return { ok:false, err:e }; }
 }
 // Bulk save favs (used after backup import that merges fav map)
 async function saveFavsBulk() {
   try {
-    await QithYang.storage.idb.clear('favs');
-    const items = Object.keys(QithYang.state.favs).filter(k => QithYang.state.favs[k]).map(k => ({ key:k }));
-    await QithYang.storage.idb.bulkPut('favs', items);
+    await CAV.storage.idb.clear('favs');
+    const items = Object.keys(CAV.state.favs).filter(k => CAV.state.favs[k]).map(k => ({ key:k }));
+    await CAV.storage.idb.bulkPut('favs', items);
   } catch (e) { console.warn('saveFavsBulk', e); }
 }
 async function saveDeletedBulk() {
   try {
-    await QithYang.storage.idb.clear('deletedConvs');
-    const items = [...QithYang.state.deletedConvs].map(uuid => ({ uuid }));
-    await QithYang.storage.idb.bulkPut('deletedConvs', items);
+    await CAV.storage.idb.clear('deletedConvs');
+    const items = [...CAV.state.deletedConvs].map(uuid => ({ uuid }));
+    await CAV.storage.idb.bulkPut('deletedConvs', items);
   } catch (e) { console.warn('saveDeletedBulk', e); }
 }
 
 // === Process raw data (thin caller over filter + normalizer) ===
 function processConvs(raw) {
   const filtered = raw
-    .filter(QithYang.filter.isRealConversation)
-    .filter(c => !QithYang.state.deletedConvs.has(c.uuid));
-  return QithYang.normalizer.normalize(filtered);
+    .filter(CAV.filter.isRealConversation)
+    .filter(c => !CAV.state.deletedConvs.has(c.uuid));
+  return CAV.normalizer.normalize(filtered);
 }
 
 // === Render conv list ===
-QithYang.renderer.renderConvList = function renderConvList() {
+CAV.renderer.renderConvList = function renderConvList() {
   const list = document.getElementById('conv-list');
-  const f = QithYang.state.convFilter.toLowerCase();
-  const items = QithYang.state.CONVS.filter(c => !f || c.title.toLowerCase().includes(f));
+  const f = CAV.state.convFilter.toLowerCase();
+  const items = CAV.state.CONVS.filter(c => !f || c.title.toLowerCase().includes(f));
   if (!items.length) {
     list.innerHTML = '<div class="empty-list">没有找到匹配的对话</div>';
     return;
   }
   list.innerHTML = items.map(c => {
-    const a = QithYang.utils.fmtMD(c.firstDate), b = QithYang.utils.fmtMD(c.lastDate);
+    const a = CAV.utils.fmtMD(c.firstDate), b = CAV.utils.fmtMD(c.lastDate);
     const range = a === b ? a : `${a}-${b}`;
-    return `<div class="conv-item ${c.uuid===QithYang.state.curConvId?'active':''}" data-id="${QithYang.utils.escHtml(c.uuid)}">
-      <div class="conv-title">${QithYang.utils.escHtml(c.title)}</div>
+    return `<div class="conv-item ${c.uuid===CAV.state.curConvId?'active':''}" data-id="${CAV.utils.escHtml(c.uuid)}">
+      <div class="conv-title">${CAV.utils.escHtml(c.title)}</div>
       <div class="conv-meta">${range} · ${c.msgCount}条</div>
-      <button class="conv-del" data-id="${QithYang.utils.escHtml(c.uuid)}" title="删除对话">×</button>
+      <button class="conv-del" data-id="${CAV.utils.escHtml(c.uuid)}" title="删除对话">×</button>
     </div>`;
   }).join('');
 };
 
 // === Render messages ===
-QithYang.renderer.renderMessages = function renderMessages() {
+CAV.renderer.renderMessages = function renderMessages() {
   const wrap = document.getElementById('msgs-wrap');
   const ms = document.getElementById('messages');
-  if (!QithYang.state.curConv) {
-    document.getElementById('mh-t').textContent = 'QithYang';
+  if (!CAV.state.curConv) {
+    document.getElementById('mh-t').textContent = 'Chat Archive Viewer';
     document.getElementById('mh-m').textContent = '— 对话归档查看器 —';
     ms.innerHTML = '<div class="empty">从左侧选择一个对话</div>';
     return;
   }
-  const c = QithYang.state.curConv;
+  const c = CAV.state.curConv;
   document.getElementById('mh-t').textContent = c.title;
-  document.getElementById('mh-m').textContent = `${QithYang.utils.fmtDateCN(c.firstDate)} — ${QithYang.utils.fmtDateCN(c.lastDate)} · ${c.msgCount} 条`;
+  document.getElementById('mh-m').textContent = `${CAV.utils.fmtDateCN(c.firstDate)} — ${CAV.utils.fmtDateCN(c.lastDate)} · ${c.msgCount} 条`;
 
-  const hl = (QithYang.state.searchScope==='current' && QithYang.state.searchQ) ? QithYang.state.searchQ : '';
+  const hl = (CAV.state.searchScope==='current' && CAV.state.searchQ) ? CAV.state.searchQ : '';
   let html = '';
   let lastDay = '';
 
-  const escHtml = QithYang.utils.escHtml;
-  const formatSize = QithYang.utils.formatSize;
+  const escHtml = CAV.utils.escHtml;
+  const formatSize = CAV.utils.formatSize;
   function renderFile(f) {
     const name = f.file_name || '未命名';
     if (f.kind === 'text' && f.extracted_content != null && f.extracted_content !== '') {
@@ -1122,7 +1122,7 @@ QithYang.renderer.renderMessages = function renderMessages() {
   // - safety (flag) blocks are always visible and never folded
   const PROCESS_TYPES = new Set(['thinking', 'tool_use', 'tool_result', 'token_budget']);
   function renderMsgInner(msg, ctx) {
-    const d = QithYang.normalizer.getMsgData(msg);
+    const d = CAV.normalizer.getMsgData(msg);
     const parts = [];
     let processBlocks = [];
 
@@ -1138,9 +1138,9 @@ QithYang.renderer.renderMessages = function renderMessages() {
           const status = (b.cut_off || b.truncated) ? '<div class="tool-meta">已截断</div>' : '';
           return `<div class="th-block">${lines}${status}</div>`;
         }
-        return QithYang.renderer.dispatchBlock(b, ctx);
+        return CAV.renderer.dispatchBlock(b, ctx);
       }).join('');
-      const tkOpen = QithYang.state.showThinking;
+      const tkOpen = CAV.state.showThinking;
       parts.push(
         `<div class="thinking">` +
           `<button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">思考</span></button>` +
@@ -1158,10 +1158,10 @@ QithYang.renderer.renderMessages = function renderMessages() {
       if (!b || typeof b !== 'object') continue;
       if (b.type === 'text') {
         flushProcess();
-        if (b.text) parts.push(`<div class="msg-text">${QithYang.utils.renderMarkdown(b.text, ctx.hl)}</div>`);
+        if (b.text) parts.push(`<div class="msg-text">${CAV.utils.renderMarkdown(b.text, ctx.hl)}</div>`);
       } else if (b.type === 'flag') {
         flushProcess();
-        parts.push(QithYang.renderer.dispatchBlock(b, ctx));  // always visible
+        parts.push(CAV.renderer.dispatchBlock(b, ctx));  // always visible
       } else {
         // thinking / tool_use / tool_result / token_budget / unknown → process section
         processBlocks.push(b);
@@ -1175,7 +1175,7 @@ QithYang.renderer.renderMessages = function renderMessages() {
     const inner = renderMsgInner(msg, { hl });
     if (!inner) continue;
 
-    const day = QithYang.utils.fmtDateCN(msg.created_at);
+    const day = CAV.utils.fmtDateCN(msg.created_at);
     if (day !== lastDay) {
       lastDay = day;
       html += `<div class="dsep"><span>${day}</span></div>`;
@@ -1183,23 +1183,23 @@ QithYang.renderer.renderMessages = function renderMessages() {
     const isU = msg.sender === 'human';
     const fkey = `${c.uuid}__${msg.uuid}`;
     const msgAttr = escHtml(msg.uuid), fkeyAttr = escHtml(fkey);
-    const fav = !!QithYang.state.favs[fkey];
+    const fav = !!CAV.state.favs[fkey];
 
     if (isU) {
       html += `<div class="msg user" data-msg="${msgAttr}">
         <div class="msg-row">
           <div class="bubble">${inner}</div>
-          <div class="u-name">${QithYang.utils.escHtml(QithYang.storage.ls.getUserName())}</div>
+          <div class="u-name">${CAV.utils.escHtml(CAV.storage.ls.getUserName())}</div>
         </div>
-        <div class="u-time">${QithYang.utils.fmtFullCN(msg.created_at)}</div>
+        <div class="u-time">${CAV.utils.fmtFullCN(msg.created_at)}</div>
         <button class="msg-fav ${fav?'on':''}" data-fkey="${fkeyAttr}" title="收藏">${fav?'★':'☆'}</button>
       </div>`;
     } else {
       html += `<div class="msg ai" data-msg="${msgAttr}">
         <div class="a-head">
           <img class="a-av" src="assets/app-logo.png" alt="">
-          <span class="a-name">${QithYang.utils.escHtml(QithYang.storage.ls.getAssistantName())}</span>
-          <span class="a-time">${QithYang.utils.fmtFullCN(msg.created_at)}</span>
+          <span class="a-name">${CAV.utils.escHtml(CAV.storage.ls.getAssistantName())}</span>
+          <span class="a-time">${CAV.utils.fmtFullCN(msg.created_at)}</span>
         </div>
         <button class="msg-fav ${fav?'on':''}" data-fkey="${fkeyAttr}" title="收藏">${fav?'★':'☆'}</button>
         <div class="body">${inner}</div>
@@ -1215,21 +1215,21 @@ QithYang.renderer.renderMessages = function renderMessages() {
   ms.innerHTML = html;
   wrap.scrollTop = 0;
 
-  if (QithYang.state.searchScope === 'current' && QithYang.state.searchQ) {
-    QithYang.search.findCurrentMatches();
+  if (CAV.state.searchScope === 'current' && CAV.state.searchQ) {
+    CAV.search.findCurrentMatches();
   }
 };
 
 // === View switching ===
-QithYang.renderer.setView = function setView(v) {
-  QithYang.state.view = v;
+CAV.renderer.setView = function setView(v) {
+  CAV.state.view = v;
   document.querySelectorAll('.sb-tab-top').forEach(b => b.classList.toggle('on', b.dataset.view===v));
   document.getElementById('msgs-wrap').classList.toggle('show', v==='chat');
   document.getElementById('fav-view').classList.toggle('show', v==='favorites');
   document.getElementById('tl-view').classList.toggle('show', v==='timeline');
-  QithYang.renderer.closeTlPopover();
-  if (v==='favorites') QithYang.renderer.renderFavorites();
-  if (v==='timeline') QithYang.renderer.renderTimeline();
+  CAV.renderer.closeTlPopover();
+  if (v==='favorites') CAV.renderer.renderFavorites();
+  if (v==='timeline') CAV.renderer.renderTimeline();
   // Auto-close mobile drawer when switching views
   if (window.matchMedia('(max-width: 768px)').matches) {
     document.getElementById('sidebar').classList.remove('open');
@@ -1238,11 +1238,11 @@ QithYang.renderer.setView = function setView(v) {
 };
 
 // === Favorites view ===
-QithYang.renderer.renderFavorites = function renderFavorites() {
+CAV.renderer.renderFavorites = function renderFavorites() {
   const root = document.getElementById('fav-view');
   const groups = {};
-  for (const k of Object.keys(QithYang.state.favs)) {
-    if (!QithYang.state.favs[k]) continue;
+  for (const k of Object.keys(CAV.state.favs)) {
+    if (!CAV.state.favs[k]) continue;
     const sep = k.indexOf('__');
     if (sep < 0) continue;
     const cid = k.slice(0, sep), mid = k.slice(sep+2);
@@ -1257,20 +1257,20 @@ QithYang.renderer.renderFavorites = function renderFavorites() {
   }
   let html = `<div class="view-h">收藏 <span class="vh-sub">共 ${total} 条</span></div>`;
   for (const cid of Object.keys(groups)) {
-    const c = QithYang.state.CONVS.find(x => x.uuid === cid);
+    const c = CAV.state.CONVS.find(x => x.uuid === cid);
     if (!c) continue;
     html += `<div class="fav-group">
-      <div class="fav-conv-title"><span>${QithYang.utils.escHtml(c.title)}</span><span class="fct-cnt">${groups[cid].length} 条</span></div>`;
+      <div class="fav-conv-title"><span>${CAV.utils.escHtml(c.title)}</span><span class="fct-cnt">${groups[cid].length} 条</span></div>`;
     for (const mid of groups[cid]) {
       const m = c.chat_messages.find(x => x.uuid === mid);
       if (!m) continue;
-      const d = QithYang.normalizer.getMsgData(m);
+      const d = CAV.normalizer.getMsgData(m);
       const snippet = (d.text || (d.files.length ? '📎 附件消息' : '(无文本)')).slice(0,260);
       const fkey = `${cid}__${mid}`;
-      html += `<div class="fav-item" data-cid="${QithYang.utils.escHtml(cid)}" data-mid="${QithYang.utils.escHtml(mid)}">
-        <button class="fav-unfav" data-fkey="${QithYang.utils.escHtml(fkey)}" title="取消收藏">★</button>
-        <div class="fav-snip">${QithYang.utils.escHtml(snippet)}${d.text && d.text.length>260?'…':''}</div>
-        <div class="fav-meta"><span class="who">${QithYang.utils.escHtml(m.sender==='human'?QithYang.storage.ls.getUserName():QithYang.storage.ls.getAssistantName())}</span><span>${QithYang.utils.fmtFullCN(m.created_at)}</span></div>
+      html += `<div class="fav-item" data-cid="${CAV.utils.escHtml(cid)}" data-mid="${CAV.utils.escHtml(mid)}">
+        <button class="fav-unfav" data-fkey="${CAV.utils.escHtml(fkey)}" title="取消收藏">★</button>
+        <div class="fav-snip">${CAV.utils.escHtml(snippet)}${d.text && d.text.length>260?'…':''}</div>
+        <div class="fav-meta"><span class="who">${CAV.utils.escHtml(m.sender==='human'?CAV.storage.ls.getUserName():CAV.storage.ls.getAssistantName())}</span><span>${CAV.utils.fmtFullCN(m.created_at)}</span></div>
       </div>`;
     }
     html += `</div>`;
@@ -1279,7 +1279,7 @@ QithYang.renderer.renderFavorites = function renderFavorites() {
 };
 
 // === Display-name settings modal ===
-QithYang.renderer.openDisplayNamesModal = function openDisplayNamesModal() {
+CAV.renderer.openDisplayNamesModal = function openDisplayNamesModal() {
   const u = document.getElementById('dn-user');
   const a = document.getElementById('dn-asst');
   u.value = localStorage.getItem('qithyang_user_name') || '';
@@ -1287,27 +1287,27 @@ QithYang.renderer.openDisplayNamesModal = function openDisplayNamesModal() {
   document.getElementById('dn-modal').classList.add('show');
   setTimeout(() => u.focus(), 50);
 };
-QithYang.renderer.closeDisplayNamesModal = function closeDisplayNamesModal() {
+CAV.renderer.closeDisplayNamesModal = function closeDisplayNamesModal() {
   document.getElementById('dn-modal').classList.remove('show');
 };
-QithYang.renderer.saveDisplayNamesFromModal = function saveDisplayNamesFromModal() {
-  QithYang.storage.ls.setDisplayNames(
+CAV.renderer.saveDisplayNamesFromModal = function saveDisplayNamesFromModal() {
+  CAV.storage.ls.setDisplayNames(
     document.getElementById('dn-user').value,
     document.getElementById('dn-asst').value
   );
-  QithYang.renderer.closeDisplayNamesModal();
-  if (QithYang.state.curConv) QithYang.renderer.renderMessages();
-  if (QithYang.state.view === 'favorites') QithYang.renderer.renderFavorites();
+  CAV.renderer.closeDisplayNamesModal();
+  if (CAV.state.curConv) CAV.renderer.renderMessages();
+  if (CAV.state.view === 'favorites') CAV.renderer.renderFavorites();
 };
 
 // === Timeline ===
-QithYang.renderer.renderTimeline = function renderTimeline() {
+CAV.renderer.renderTimeline = function renderTimeline() {
   const root = document.getElementById('tl-view');
   const dayMap = {};
-  for (const c of QithYang.state.CONVS) {
+  for (const c of CAV.state.CONVS) {
     for (const m of c.chat_messages) {
-      if (!QithYang.normalizer.isMsgVisible(m)) continue;
-      const k = QithYang.utils.fmtDayKey(m.created_at);
+      if (!CAV.normalizer.isMsgVisible(m)) continue;
+      const k = CAV.utils.fmtDayKey(m.created_at);
       if (!dayMap[k]) dayMap[k] = new Set();
       dayMap[k].add(c.uuid);
     }
@@ -1323,7 +1323,7 @@ QithYang.renderer.renderTimeline = function renderTimeline() {
     root.innerHTML = `<div class="view-h">时间轴</div><div class="empty-view">还没有数据</div>`;
     return;
   }
-  const totalConvs = QithYang.state.CONVS.length;
+  const totalConvs = CAV.state.CONVS.length;
   let html = `<div class="view-h">时间轴 <span class="vh-sub">${totalConvs} 个对话 · ${months.length} 个月</span></div>`;
   const wkLabels = ['日','一','二','三','四','五','六'];
   for (const ym of months) {
@@ -1337,7 +1337,7 @@ QithYang.renderer.renderTimeline = function renderTimeline() {
     for (const w of wkLabels) html += `<div class="tl-day-h">${w}</div>`;
     for (let i = 0; i < startWk; i++) html += `<div class="tl-day empty"></div>`;
     for (let d = 1; d <= days; d++) {
-      const k = `${y}-${QithYang.utils.pad2(m)}-${QithYang.utils.pad2(d)}`;
+      const k = `${y}-${CAV.utils.pad2(m)}-${CAV.utils.pad2(d)}`;
       const cnt = monthMap[ym][k];
       if (cnt) {
         const lvl = cnt >= 4 ? 3 : cnt >= 2 ? 2 : 1;
@@ -1351,17 +1351,17 @@ QithYang.renderer.renderTimeline = function renderTimeline() {
   root.innerHTML = html;
 };
 
-QithYang.renderer.closeTlPopover = function closeTlPopover() {
+CAV.renderer.closeTlPopover = function closeTlPopover() {
   const ex = document.querySelector('.tl-popover');
   if (ex) ex.remove();
 };
-QithYang.renderer.showTlPopover = function showTlPopover(dayEl) {
-  QithYang.renderer.closeTlPopover();
+CAV.renderer.showTlPopover = function showTlPopover(dayEl) {
+  CAV.renderer.closeTlPopover();
   const day = dayEl.dataset.day;
   // collect all conversations that have at least one visible msg on this day
   const items = [];
-  for (const c of QithYang.state.CONVS) {
-    const dayMsgs = c.chat_messages.filter(m => QithYang.normalizer.isMsgVisible(m) && QithYang.utils.fmtDayKey(m.created_at) === day);
+  for (const c of CAV.state.CONVS) {
+    const dayMsgs = c.chat_messages.filter(m => CAV.normalizer.isMsgVisible(m) && CAV.utils.fmtDayKey(m.created_at) === day);
     if (dayMsgs.length) {
       items.push({ cid: c.uuid, title: c.title, mid: dayMsgs[0].uuid, count: dayMsgs.length });
     }
@@ -1374,8 +1374,8 @@ QithYang.renderer.showTlPopover = function showTlPopover(dayEl) {
   pop.innerHTML =
     `<div class="tl-pop-h"><span>${parseInt(yy)} 年 ${parseInt(mm)} 月 ${parseInt(dd)} 日 · ${items.length} 个对话</span><button class="tl-pop-close" title="关闭">×</button></div>` +
     `<div class="tl-pop-list">` +
-    items.map(it => `<div class="tl-pop-item" data-cid="${QithYang.utils.escHtml(it.cid)}" data-mid="${QithYang.utils.escHtml(it.mid)}">
-      <div>${QithYang.utils.escHtml(it.title)}</div>
+    items.map(it => `<div class="tl-pop-item" data-cid="${CAV.utils.escHtml(it.cid)}" data-mid="${CAV.utils.escHtml(it.mid)}">
+      <div>${CAV.utils.escHtml(it.title)}</div>
       <div class="tl-pop-meta">${it.count} 条消息</div>
     </div>`).join('') +
     `</div>`;
@@ -1401,73 +1401,73 @@ QithYang.renderer.showTlPopover = function showTlPopover(dayEl) {
 };
 
 // === Search ===
-// All four entrypoints live on QithYang.search; readers and event handlers
-// flip QithYang.state.searchScope / searchQ and call search.doSearch(), which
+// All four entrypoints live on CAV.search; readers and event handlers
+// flip CAV.state.searchScope / searchQ and call search.doSearch(), which
 // branches on scope. findCurrentMatches scans the rendered #messages DOM
 // after renderMessages has highlighted via renderMarkdown's <mark> wrap.
-QithYang.search = {};
+CAV.search = {};
 
-QithYang.search.doSearch = function doSearch() {
-  if (QithYang.state.searchScope === 'current') {
+CAV.search.doSearch = function doSearch() {
+  if (CAV.state.searchScope === 'current') {
     document.getElementById('sb-results').classList.remove('show');
-    if (QithYang.state.curConv) QithYang.renderer.renderMessages();
+    if (CAV.state.curConv) CAV.renderer.renderMessages();
     else document.getElementById('sb-stats').textContent = '';
   } else {
-    QithYang.search.searchAll();
+    CAV.search.searchAll();
   }
 };
 
-QithYang.search.findCurrentMatches = function findCurrentMatches() {
-  QithYang.state.searchMatches = [];
-  if (!QithYang.state.searchQ) {
+CAV.search.findCurrentMatches = function findCurrentMatches() {
+  CAV.state.searchMatches = [];
+  if (!CAV.state.searchQ) {
     document.getElementById('sb-stats').textContent = '';
     return;
   }
   const marks = document.querySelectorAll('#messages mark');
-  QithYang.state.searchMatches = [...marks];
-  QithYang.state.searchMatchIdx = 0;
-  document.getElementById('sb-stats').textContent = QithYang.state.searchMatches.length ? `1/${QithYang.state.searchMatches.length}` : '0';
-  if (QithYang.state.searchMatches.length) QithYang.search.jumpToMatch(0);
+  CAV.state.searchMatches = [...marks];
+  CAV.state.searchMatchIdx = 0;
+  document.getElementById('sb-stats').textContent = CAV.state.searchMatches.length ? `1/${CAV.state.searchMatches.length}` : '0';
+  if (CAV.state.searchMatches.length) CAV.search.jumpToMatch(0);
 };
 
-QithYang.search.jumpToMatch = function jumpToMatch(i) {
-  if (!QithYang.state.searchMatches.length) return;
-  QithYang.state.searchMatchIdx = ((i % QithYang.state.searchMatches.length) + QithYang.state.searchMatches.length) % QithYang.state.searchMatches.length;
-  QithYang.state.searchMatches.forEach(m => { m.style.outline = ''; });
-  const cur = QithYang.state.searchMatches[QithYang.state.searchMatchIdx];
+CAV.search.jumpToMatch = function jumpToMatch(i) {
+  if (!CAV.state.searchMatches.length) return;
+  CAV.state.searchMatchIdx = ((i % CAV.state.searchMatches.length) + CAV.state.searchMatches.length) % CAV.state.searchMatches.length;
+  CAV.state.searchMatches.forEach(m => { m.style.outline = ''; });
+  const cur = CAV.state.searchMatches[CAV.state.searchMatchIdx];
   cur.style.outline = '2px solid var(--orange)';
   cur.scrollIntoView({behavior:'smooth', block:'center'});
-  document.getElementById('sb-stats').textContent = `${QithYang.state.searchMatchIdx+1}/${QithYang.state.searchMatches.length}`;
+  document.getElementById('sb-stats').textContent = `${CAV.state.searchMatchIdx+1}/${CAV.state.searchMatches.length}`;
 };
 
-QithYang.search.searchAll = function searchAll() {
+CAV.search.searchAll = function searchAll() {
   const root = document.getElementById('sb-results');
-  if (!QithYang.state.searchQ) {
+  if (!CAV.state.searchQ) {
     root.classList.remove('show');
     root.innerHTML = '';
     document.getElementById('sb-stats').textContent = '';
     return;
   }
-  const q = QithYang.state.searchQ.toLowerCase();
+  const q = CAV.state.searchQ.toLowerCase();
   let found = 0;
-  const re = new RegExp('('+QithYang.utils.escapeRegExp(QithYang.state.searchQ)+')','gi');
+  const re = new RegExp('('+CAV.utils.escapeRegExp(CAV.state.searchQ)+')','gi');
   const parts = [];
-  for (const c of QithYang.state.CONVS) {
+  for (const c of CAV.state.CONVS) {
     let convMatches = 0;
     let firstHtml = '';
     for (const m of c.chat_messages) {
-      const d = QithYang.normalizer.getMsgData(m);
+      const d = CAV.normalizer.getMsgData(m);
       if (d.text && d.text.toLowerCase().includes(q)) {
         convMatches++; found++;
         if (convMatches <= 2) {
           const idx = d.text.toLowerCase().indexOf(q);
           const start = Math.max(0, idx-30);
-          const end = Math.min(d.text.length, idx+QithYang.state.searchQ.length+80);
+          const end = Math.min(d.text.length, idx+CAV.state.searchQ.length+80);
           let snip = d.text.slice(start, end).replace(/\n+/g,' ');
-          snip = (start>0?'…':'') + QithYang.utils.escHtml(snip) + (end<d.text.length?'…':'');
+          snip = (start>0?'…':'') + CAV.utils.escHtml(snip) + (end<d.text.length?'…':'');
           snip = snip.replace(re, '<mark>$1</mark>');
-          firstHtml += `<div class="sb-result" data-cid="${QithYang.utils.escHtml(c.uuid)}" data-mid="${QithYang.utils.escHtml(m.uuid)}">
-            <div class="sb-result-title">${QithYang.utils.escHtml(c.title)}</div>
+          firstHtml += `<div class="sb-result" data-cid="${CAV.utils.escHtml(c.uuid)}" data-mid="${CAV.utils.escHtml(m.uuid)}">
+            <div class="sb-result-title">${CAV.utils.escHtml(c.title)}</div>
             <div class="sb-result-snip">${snip}</div>
           </div>`;
         }
@@ -1482,11 +1482,11 @@ QithYang.search.searchAll = function searchAll() {
 
 // === Open conv ===
 function openConv(id, scrollToMsg) {
-  QithYang.state.curConvId = id;
-  QithYang.state.curConv = QithYang.state.CONVS.find(c => c.uuid === id) || null;
-  QithYang.renderer.setView('chat');
-  QithYang.renderer.renderConvList();
-  QithYang.renderer.renderMessages();
+  CAV.state.curConvId = id;
+  CAV.state.curConv = CAV.state.CONVS.find(c => c.uuid === id) || null;
+  CAV.renderer.setView('chat');
+  CAV.renderer.renderConvList();
+  CAV.renderer.renderMessages();
   if (scrollToMsg) {
     setTimeout(() => {
       const el = document.querySelector(`#messages [data-msg="${CSS.escape(scrollToMsg)}"]`);
@@ -1504,18 +1504,18 @@ function openConv(id, scrollToMsg) {
 }
 
 // === Events ===
-// QithYang.events.bindAll wires every DOM listener at startup (one-shot,
+// CAV.events.bindAll wires every DOM listener at startup (one-shot,
 // called by app.init). Handlers mutate state then call the matching
 // renderer.* to repaint; nothing here renders directly. Split into named
 // helpers so each surface (sidebar / messages / toolbar / modal / picker /
 // keyboard) is grep-locatable.
-QithYang.events = {};
+CAV.events = {};
 
-QithYang.events.bindSidebar = function bindSidebar() {
+CAV.events.bindSidebar = function bindSidebar() {
   // Conv-title filter input
   document.getElementById('conv-filter').addEventListener('input', e => {
-    QithYang.state.convFilter = e.target.value.trim();
-    QithYang.renderer.renderConvList();
+    CAV.state.convFilter = e.target.value.trim();
+    CAV.renderer.renderConvList();
   });
 
   // Conv list (delete + open). The delete button uses a two-step
@@ -1526,15 +1526,15 @@ QithYang.events.bindSidebar = function bindSidebar() {
       e.stopPropagation();
       if (del.classList.contains('confirm')) {
         const id = del.dataset.id;
-        QithYang.state.deletedConvs.add(id);
-        QithYang.storage.idb.saveDeleted(id);
-        QithYang.state.CONVS = QithYang.state.CONVS.filter(c => c.uuid !== id);
-        if (QithYang.state.curConvId === id) {
-          QithYang.state.curConvId = null;
-          QithYang.state.curConv = null;
-          QithYang.renderer.renderMessages();
+        CAV.state.deletedConvs.add(id);
+        CAV.storage.idb.saveDeleted(id);
+        CAV.state.CONVS = CAV.state.CONVS.filter(c => c.uuid !== id);
+        if (CAV.state.curConvId === id) {
+          CAV.state.curConvId = null;
+          CAV.state.curConv = null;
+          CAV.renderer.renderMessages();
         }
-        QithYang.renderer.renderConvList();
+        CAV.renderer.renderConvList();
       } else {
         document.querySelectorAll('.conv-del.confirm').forEach(b => { b.classList.remove('confirm'); b.textContent = '×'; });
         del.classList.add('confirm');
@@ -1549,20 +1549,20 @@ QithYang.events.bindSidebar = function bindSidebar() {
 
   // Sidebar top tabs (chat / favorites / timeline)
   document.querySelectorAll('.sb-tab-top').forEach(b => {
-    b.addEventListener('click', () => QithYang.renderer.setView(b.dataset.view));
+    b.addEventListener('click', () => CAV.renderer.setView(b.dataset.view));
   });
 };
 
-QithYang.events.bindMessages = function bindMessages() {
+CAV.events.bindMessages = function bindMessages() {
   // Favorite toggle + thinking-block expand
   document.getElementById('messages').addEventListener('click', e => {
     const fav = e.target.closest('.msg-fav');
     if (fav) {
       e.stopPropagation();
       const k = fav.dataset.fkey;
-      if (QithYang.state.favs[k]) delete QithYang.state.favs[k]; else QithYang.state.favs[k] = true;
-      const on = !!QithYang.state.favs[k];
-      QithYang.storage.idb.saveFav(k, on);
+      if (CAV.state.favs[k]) delete CAV.state.favs[k]; else CAV.state.favs[k] = true;
+      const on = !!CAV.state.favs[k];
+      CAV.storage.idb.saveFav(k, on);
       fav.classList.toggle('on', on);
       fav.textContent = on ? '★' : '☆';
       return;
@@ -1586,9 +1586,9 @@ QithYang.events.bindMessages = function bindMessages() {
     if (un) {
       e.stopPropagation();
       const k = un.dataset.fkey;
-      delete QithYang.state.favs[k];
-      QithYang.storage.idb.saveFav(k, false);
-      QithYang.renderer.renderFavorites();
+      delete CAV.state.favs[k];
+      CAV.storage.idb.saveFav(k, false);
+      CAV.renderer.renderFavorites();
       return;
     }
     const it = e.target.closest('.fav-item');
@@ -1602,32 +1602,32 @@ QithYang.events.bindMessages = function bindMessages() {
       e.stopPropagation();
       const cid = pi.dataset.cid;
       const mid = pi.dataset.mid;
-      QithYang.renderer.closeTlPopover();
+      CAV.renderer.closeTlPopover();
       openConv(cid, mid || undefined);
       return;
     }
-    if (e.target.closest('.tl-pop-close')) { QithYang.renderer.closeTlPopover(); return; }
+    if (e.target.closest('.tl-pop-close')) { CAV.renderer.closeTlPopover(); return; }
     const d = e.target.closest('.tl-day.has');
-    if (!d) { QithYang.renderer.closeTlPopover(); return; }
-    QithYang.renderer.showTlPopover(d);
+    if (!d) { CAV.renderer.closeTlPopover(); return; }
+    CAV.renderer.showTlPopover(d);
   });
   // Outside-of-popover click closes it
   document.addEventListener('click', e => {
-    if (!e.target.closest('.tl-popover') && !e.target.closest('.tl-day.has')) QithYang.renderer.closeTlPopover();
+    if (!e.target.closest('.tl-popover') && !e.target.closest('.tl-day.has')) CAV.renderer.closeTlPopover();
   });
 };
 
-QithYang.events.bindToolbar = function bindToolbar() {
+CAV.events.bindToolbar = function bindToolbar() {
   // Global thinking toggle: expand/collapse all in-place (no re-render)
   document.getElementById('thinking-btn').addEventListener('click', () => {
-    QithYang.state.showThinking = !QithYang.state.showThinking;
-    document.getElementById('thinking-btn').classList.toggle('on', QithYang.state.showThinking);
+    CAV.state.showThinking = !CAV.state.showThinking;
+    document.getElementById('thinking-btn').classList.toggle('on', CAV.state.showThinking);
     document.querySelectorAll('#messages .thinking').forEach(t => {
       const c = t.querySelector('.th-content');
       const ic = t.querySelector('.th-ico');
       if (!c || !ic) return;
-      c.classList.toggle('open', QithYang.state.showThinking);
-      ic.textContent = QithYang.state.showThinking ? '▾' : '▸';
+      c.classList.toggle('open', CAV.state.showThinking);
+      ic.textContent = CAV.state.showThinking ? '▾' : '▸';
     });
   });
 
@@ -1639,11 +1639,11 @@ QithYang.events.bindToolbar = function bindToolbar() {
     if (showing) {
       document.getElementById('msg-search').focus();
     } else {
-      QithYang.state.searchQ = '';
+      CAV.state.searchQ = '';
       document.getElementById('msg-search').value = '';
       document.getElementById('sb-results').classList.remove('show');
       document.getElementById('sb-stats').textContent = '';
-      if (QithYang.state.curConv) QithYang.renderer.renderMessages();
+      if (CAV.state.curConv) CAV.renderer.renderMessages();
     }
   });
   document.getElementById('sb-close').addEventListener('click', () => {
@@ -1655,22 +1655,22 @@ QithYang.events.bindToolbar = function bindToolbar() {
     t.addEventListener('click', () => {
       document.querySelectorAll('.sb-tab').forEach(x => x.classList.remove('on'));
       t.classList.add('on');
-      QithYang.state.searchScope = t.dataset.scope;
-      QithYang.search.doSearch();
+      CAV.state.searchScope = t.dataset.scope;
+      CAV.search.doSearch();
     });
   });
 
   // Search input (debounced) + keyboard nav (Enter / Shift+Enter / Esc)
   document.getElementById('msg-search').addEventListener('input', e => {
-    QithYang.state.searchQ = e.target.value.trim();
-    clearTimeout(QithYang.state.searchTimer);
-    QithYang.state.searchTimer = setTimeout(QithYang.search.doSearch, 220);
+    CAV.state.searchQ = e.target.value.trim();
+    clearTimeout(CAV.state.searchTimer);
+    CAV.state.searchTimer = setTimeout(CAV.search.doSearch, 220);
   });
   document.getElementById('msg-search').addEventListener('keydown', e => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (QithYang.state.searchScope === 'current' && QithYang.state.searchMatches.length) {
-        QithYang.search.jumpToMatch(QithYang.state.searchMatchIdx + (e.shiftKey ? -1 : 1));
+      if (CAV.state.searchScope === 'current' && CAV.state.searchMatches.length) {
+        CAV.search.jumpToMatch(CAV.state.searchMatchIdx + (e.shiftKey ? -1 : 1));
       }
     } else if (e.key === 'Escape') {
       document.getElementById('search-btn').click();
@@ -1678,8 +1678,8 @@ QithYang.events.bindToolbar = function bindToolbar() {
   });
 
   // Search nav buttons (current-scope only)
-  document.getElementById('sb-prev').addEventListener('click', () => { if (QithYang.state.searchScope==='current') QithYang.search.jumpToMatch(QithYang.state.searchMatchIdx-1); });
-  document.getElementById('sb-next').addEventListener('click', () => { if (QithYang.state.searchScope==='current') QithYang.search.jumpToMatch(QithYang.state.searchMatchIdx+1); });
+  document.getElementById('sb-prev').addEventListener('click', () => { if (CAV.state.searchScope==='current') CAV.search.jumpToMatch(CAV.state.searchMatchIdx-1); });
+  document.getElementById('sb-next').addEventListener('click', () => { if (CAV.state.searchScope==='current') CAV.search.jumpToMatch(CAV.state.searchMatchIdx+1); });
 
   // Search result clicks (all-scope jump-to-msg)
   document.getElementById('sb-results').addEventListener('click', e => {
@@ -1707,12 +1707,12 @@ QithYang.events.bindToolbar = function bindToolbar() {
   }
   const exportBtn = document.getElementById('sm-export');
   if (exportBtn) exportBtn.addEventListener('click', () => {
-    QithYang.app.importExport.exportBackup();
+    CAV.app.importExport.exportBackup();
     smMenu && smMenu.classList.remove('show');
   });
   const exportHtmlBtn = document.getElementById('sm-export-html');
   if (exportHtmlBtn) exportHtmlBtn.addEventListener('click', () => {
-    QithYang.app.importExport.exportSelfContainedHtml();
+    CAV.app.importExport.exportSelfContainedHtml();
     smMenu && smMenu.classList.remove('show');
   });
   const importBackupBtn = document.getElementById('sm-import-backup');
@@ -1723,50 +1723,50 @@ QithYang.events.bindToolbar = function bindToolbar() {
     });
     backupInput.addEventListener('change', e => {
       const f = e.target.files && e.target.files[0];
-      QithYang.app.importExport.importBackup(f);
+      CAV.app.importExport.importBackup(f);
       e.target.value = '';
     });
   }
   const clearBtn = document.getElementById('sm-clear');
   if (clearBtn) clearBtn.addEventListener('click', () => {
     smMenu && smMenu.classList.remove('show');
-    QithYang.app.importExport.clearAllData();
+    CAV.app.importExport.clearAllData();
   });
 };
 
-QithYang.events.bindModal = function bindModal() {
+CAV.events.bindModal = function bindModal() {
   // Display-name settings modal (opened from gear menu)
   const smMenu = document.getElementById('sm-menu');
   const dnOpen = document.getElementById('sm-display-names');
   const dnModal = document.getElementById('dn-modal');
   if (dnOpen) dnOpen.addEventListener('click', () => {
     smMenu && smMenu.classList.remove('show');
-    QithYang.renderer.openDisplayNamesModal();
+    CAV.renderer.openDisplayNamesModal();
   });
   const dnSave = document.getElementById('dn-save');
   const dnCancel = document.getElementById('dn-cancel');
-  if (dnSave) dnSave.addEventListener('click', QithYang.renderer.saveDisplayNamesFromModal);
-  if (dnCancel) dnCancel.addEventListener('click', QithYang.renderer.closeDisplayNamesModal);
+  if (dnSave) dnSave.addEventListener('click', CAV.renderer.saveDisplayNamesFromModal);
+  if (dnCancel) dnCancel.addEventListener('click', CAV.renderer.closeDisplayNamesModal);
   if (dnModal) dnModal.addEventListener('click', e => {
-    if (e.target.id === 'dn-modal') QithYang.renderer.closeDisplayNamesModal();
+    if (e.target.id === 'dn-modal') CAV.renderer.closeDisplayNamesModal();
   });
   ['dn-user', 'dn-asst'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('keydown', e => {
-      if (e.key === 'Enter') QithYang.renderer.saveDisplayNamesFromModal();
-      else if (e.key === 'Escape') QithYang.renderer.closeDisplayNamesModal();
+      if (e.key === 'Enter') CAV.renderer.saveDisplayNamesFromModal();
+      else if (e.key === 'Escape') CAV.renderer.closeDisplayNamesModal();
     });
   });
 };
 
-QithYang.events.bindPicker = function bindPicker() {
+CAV.events.bindPicker = function bindPicker() {
   // "Import more" button (sidebar) — merges additional JSON files into IDB
   const importBtn = document.getElementById('import-btn');
   const mergeInput = document.getElementById('merge-input');
   if (importBtn && mergeInput) {
     importBtn.addEventListener('click', () => mergeInput.click());
     mergeInput.addEventListener('change', e => {
-      QithYang.app.importExport.mergeMoreFiles(e.target.files);
+      CAV.app.importExport.mergeMoreFiles(e.target.files);
       e.target.value = '';
     });
   }
@@ -1782,12 +1782,12 @@ QithYang.events.bindPicker = function bindPicker() {
   });
 };
 
-QithYang.events.bindAll = function bindAll() {
-  QithYang.events.bindSidebar();
-  QithYang.events.bindMessages();
-  QithYang.events.bindToolbar();
-  QithYang.events.bindModal();
-  QithYang.events.bindPicker();
+CAV.events.bindAll = function bindAll() {
+  CAV.events.bindSidebar();
+  CAV.events.bindMessages();
+  CAV.events.bindToolbar();
+  CAV.events.bindModal();
+  CAV.events.bindPicker();
 };
 
 // === Data management ===
@@ -1797,48 +1797,48 @@ QithYang.events.bindAll = function bindAll() {
 // out by isRealConversation and any soft-deleted conversations still cached in IDB.
 function totalMsgCount() {
   let n = 0;
-  for (const c of QithYang.state.CONVS) {
+  for (const c of CAV.state.CONVS) {
     if (typeof c.msgCount === 'number') n += c.msgCount;
   }
   return n;
 }
 function totalFavCount() {
   let n = 0;
-  for (const k in QithYang.state.favs) if (QithYang.state.favs[k]) n++;
+  for (const k in CAV.state.favs) if (CAV.state.favs[k]) n++;
   return n;
 }
 function updateStorageStats() {
   const cn = document.getElementById('sm-conv-n');
   const mn = document.getElementById('sm-msg-n');
   const note = document.getElementById('sm-store-note');
-  if (cn) cn.textContent = QithYang.state.CONVS.length;
+  if (cn) cn.textContent = CAV.state.CONVS.length;
   if (mn) mn.textContent = totalMsgCount();
   if (note) {
     const fn = totalFavCount();
-    if (QithYang.state.lastSaveOk) note.textContent = `已自动保存到本地数据库 · ${fn} 条收藏`;
+    if (CAV.state.lastSaveOk) note.textContent = `已自动保存到本地数据库 · ${fn} 条收藏`;
     else note.textContent = `⚠ 保存失败 · ${fn} 条收藏`;
   }
 }
 // === app + importExport ===
-// QithYang.app.init bootstraps the whole UI (storage open, legacy migrate,
-// IDB load, picker fallback, first-render). QithYang.app.importExport
+// CAV.app.init bootstraps the whole UI (storage open, legacy migrate,
+// IDB load, picker fallback, first-render). CAV.app.importExport
 // gathers every entry point that takes JSON in or pushes JSON out.
-QithYang.app = {};
-QithYang.app.importExport = {};
+CAV.app = {};
+CAV.app.importExport = {};
 
-QithYang.app.importExport.exportBackup = function exportBackup() {
+CAV.app.importExport.exportBackup = function exportBackup() {
   const payload = {
-    app: 'QithYang',
+    app: 'chat-archive-viewer',
     version: 1,
     exportedAt: new Date().toISOString(),
-    conversations: Object.values(QithYang.state.RAW_BY_ID),
-    favs: QithYang.state.favs,
-    deletedConvs: [...QithYang.state.deletedConvs],
+    conversations: Object.values(CAV.state.RAW_BY_ID),
+    favs: CAV.state.favs,
+    deletedConvs: [...CAV.state.deletedConvs],
   };
   const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
   const d = new Date();
-  const stamp = `${d.getFullYear()}${QithYang.utils.pad2(d.getMonth()+1)}${QithYang.utils.pad2(d.getDate())}-${QithYang.utils.pad2(d.getHours())}${QithYang.utils.pad2(d.getMinutes())}${QithYang.utils.pad2(d.getSeconds())}`;
-  const fname = `QithYang-backup-${stamp}.json`;
+  const stamp = `${d.getFullYear()}${CAV.utils.pad2(d.getMonth()+1)}${CAV.utils.pad2(d.getDate())}-${CAV.utils.pad2(d.getHours())}${CAV.utils.pad2(d.getMinutes())}${CAV.utils.pad2(d.getSeconds())}`;
+  const fname = `chat-archive-backup-${stamp}.json`;
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = fname;
@@ -1849,7 +1849,7 @@ QithYang.app.importExport.exportBackup = function exportBackup() {
 // Inline font + logo asset references as base64 data: URLs so the
 // returned HTML stays viewable offline or after being shared. Same-origin
 // HTTP fetch only — caller must guard against file:// (cross-origin fail).
-QithYang.app.importExport.inlineAssets = async function inlineAssets(htmlText) {
+CAV.app.importExport.inlineAssets = async function inlineAssets(htmlText) {
   const fontFiles = [
     'fonts/InstrumentSans-Regular.woff2',
     'fonts/InstrumentSans-Italic.woff2',
@@ -1888,9 +1888,9 @@ QithYang.app.importExport.inlineAssets = async function inlineAssets(htmlText) {
 };
 
 // Export a single self-contained HTML file: current page + inlined assets
-// + user data as window.QithYang_preloaded. Opens identically when double-
+// + user data in a cav-payload script tag. Opens identically when double-
 // clicked or hosted, with a boot dialog asking import vs in-memory.
-QithYang.app.importExport.exportSelfContainedHtml = async function exportSelfContainedHtml() {
+CAV.app.importExport.exportSelfContainedHtml = async function exportSelfContainedHtml() {
   // Over file:// most browsers block fetching the page itself and its fonts,
   // so tell the user to export from the hosted version instead of failing silently.
   if (location.protocol === 'file:') {
@@ -1907,12 +1907,12 @@ QithYang.app.importExport.exportSelfContainedHtml = async function exportSelfCon
   if (exportHtmlBtn) { exportHtmlBtn.textContent = '正在生成…'; exportHtmlBtn.disabled = true; }
   try {
     const payload = {
-      app: 'QithYang',
+      app: 'chat-archive-viewer',
       version: 1,
       exportedAt: new Date().toISOString(),
-      conversations: Object.values(QithYang.state.RAW_BY_ID),
-      favs: QithYang.state.favs,
-      deletedConvs: [...QithYang.state.deletedConvs],
+      conversations: Object.values(CAV.state.RAW_BY_ID),
+      favs: CAV.state.favs,
+      deletedConvs: [...CAV.state.deletedConvs],
     };
     // The payload goes in a <script type="application/json"> tag and is read
     // back with JSON.parse, not executed as a JS literal: characters such as
@@ -1927,7 +1927,7 @@ QithYang.app.importExport.exportSelfContainedHtml = async function exportSelfCon
       if (!r.ok) throw new Error(`fetch self HTML failed: ${r.status}`);
       return r.text();
     });
-    const inlined = await QithYang.app.importExport.inlineAssets(baseHtml);
+    const inlined = await CAV.app.importExport.inlineAssets(baseHtml);
 
     // CRITICAL: use slice-based injection, NOT String.prototype.replace.
     // String.replace's second-arg replacement string interprets $&, $`, $' even
@@ -1940,13 +1940,13 @@ QithYang.app.importExport.exportSelfContainedHtml = async function exportSelfCon
     if (headIdx < 0) throw new Error('exportSelfContainedHtml: no </head> in fetched index.html');
     const injected =
       inlined.slice(0, headIdx) +
-      `<script type="application/json" id="qithyang-payload">${safeJson}<\/script>\n` +
+      `<script type="application/json" id="cav-payload">${safeJson}<\/script>\n` +
       inlined.slice(headIdx);
 
     const blob = new Blob([injected], { type: 'text/html;charset=utf-8' });
     const d = new Date();
-    const stamp = `${d.getFullYear()}${QithYang.utils.pad2(d.getMonth()+1)}${QithYang.utils.pad2(d.getDate())}-${QithYang.utils.pad2(d.getHours())}${QithYang.utils.pad2(d.getMinutes())}${QithYang.utils.pad2(d.getSeconds())}`;
-    const fname = `QithYang-${stamp}.html`;
+    const stamp = `${d.getFullYear()}${CAV.utils.pad2(d.getMonth()+1)}${CAV.utils.pad2(d.getDate())}-${CAV.utils.pad2(d.getHours())}${CAV.utils.pad2(d.getMinutes())}${CAV.utils.pad2(d.getSeconds())}`;
+    const fname = `chat-archive-${stamp}.html`;
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = fname;
@@ -1960,7 +1960,7 @@ QithYang.app.importExport.exportSelfContainedHtml = async function exportSelfCon
   }
 };
 
-QithYang.app.importExport.importBackup = function importBackup(file) {
+CAV.app.importExport.importBackup = function importBackup(file) {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = async e => {
@@ -1971,22 +1971,22 @@ QithYang.app.importExport.importBackup = function importBackup(file) {
     if (Array.isArray(data)) arr = data;
     else if (Array.isArray(data.conversations)) arr = data.conversations;
     if (!arr) { alert('无法识别的备份文件（缺少 conversations 数组）'); return; }
-    arr.forEach(QithYang.filter.schemaDriftDetector);
-    const r = QithYang.parser.parse(arr);
+    arr.forEach(CAV.filter.schemaDriftDetector);
+    const r = CAV.parser.parse(arr);
     if (data.favs && typeof data.favs === 'object') {
-      Object.assign(QithYang.state.favs, data.favs);
+      Object.assign(CAV.state.favs, data.favs);
       await saveFavsBulk();
     }
     if (Array.isArray(data.deletedConvs)) {
-      data.deletedConvs.forEach(id => QithYang.state.deletedConvs.add(id));
+      data.deletedConvs.forEach(id => CAV.state.deletedConvs.add(id));
       await saveDeletedBulk();
     }
-    QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
-    QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+    CAV.state.RAW = Object.values(CAV.state.RAW_BY_ID);
+    CAV.state.CONVS = processConvs(CAV.state.RAW);
     const sv = await saveConvsByIds(r.changedIds);
-    QithYang.renderer.renderConvList();
-    if (QithYang.state.view === 'favorites') QithYang.renderer.renderFavorites();
-    if (QithYang.state.view === 'timeline') QithYang.renderer.renderTimeline();
+    CAV.renderer.renderConvList();
+    if (CAV.state.view === 'favorites') CAV.renderer.renderFavorites();
+    if (CAV.state.view === 'timeline') CAV.renderer.renderTimeline();
     updateStorageStats();
     let msg = `备份已恢复：新增 ${r.added}，更新 ${r.updated}，跳过 ${r.kept}`;
     if (!sv.ok) msg += '\n⚠ 保存到本地数据库失败：' + (sv.err && sv.err.message || '未知错误');
@@ -1995,7 +1995,7 @@ QithYang.app.importExport.importBackup = function importBackup(file) {
   reader.readAsText(file);
 };
 
-QithYang.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
+CAV.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
   const files = Array.from(fileList || []);
   if (!files.length) return;
   let pending = files.length;
@@ -2008,18 +2008,18 @@ QithYang.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
         const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : null);
         if (!arr) { totals.errors++; }
         else {
-          arr.forEach(QithYang.filter.schemaDriftDetector);
-          const r = QithYang.parser.parse(arr);
+          arr.forEach(CAV.filter.schemaDriftDetector);
+          const r = CAV.parser.parse(arr);
           totals.added += r.added; totals.updated += r.updated; totals.kept += r.kept;
           totals.changedIds.push(...r.changedIds);
         }
       } catch(err) { totals.errors++; }
       if (--pending === 0) {
-        QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
-        QithYang.state.CONVS = processConvs(QithYang.state.RAW);
-        QithYang.renderer.renderConvList();
-        if (QithYang.state.view === 'favorites') QithYang.renderer.renderFavorites();
-        if (QithYang.state.view === 'timeline') QithYang.renderer.renderTimeline();
+        CAV.state.RAW = Object.values(CAV.state.RAW_BY_ID);
+        CAV.state.CONVS = processConvs(CAV.state.RAW);
+        CAV.renderer.renderConvList();
+        if (CAV.state.view === 'favorites') CAV.renderer.renderFavorites();
+        if (CAV.state.view === 'timeline') CAV.renderer.renderTimeline();
         const sv = await saveConvsByIds(totals.changedIds);
         updateStorageStats();
         let msg = `导入完成：新增 ${totals.added}，更新 ${totals.updated}，跳过 ${totals.kept}` + (totals.errors ? `，失败 ${totals.errors}` : '');
@@ -2030,9 +2030,9 @@ QithYang.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
     reader.onerror = async () => {
       totals.errors++;
       if (--pending === 0) {
-        QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
-        QithYang.state.CONVS = processConvs(QithYang.state.RAW);
-        QithYang.renderer.renderConvList();
+        CAV.state.RAW = Object.values(CAV.state.RAW_BY_ID);
+        CAV.state.CONVS = processConvs(CAV.state.RAW);
+        CAV.renderer.renderConvList();
         await saveConvsByIds(totals.changedIds);
         updateStorageStats();
         alert('导入完成（含错误）');
@@ -2042,29 +2042,29 @@ QithYang.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
   }
 };
 
-QithYang.app.importExport.clearAllData = async function clearAllData() {
+CAV.app.importExport.clearAllData = async function clearAllData() {
   if (!confirm('确定清空所有数据吗？\n\n将删除：所有对话、收藏、已隐藏对话。')) return;
   if (!confirm('⚠ 最后确认\n\n此操作不可撤销。是否继续？')) return;
   try {
-    await QithYang.storage.idb.clear('conversations');
-    await QithYang.storage.idb.clear('favs');
-    await QithYang.storage.idb.clear('deletedConvs');
+    await CAV.storage.idb.clear('conversations');
+    await CAV.storage.idb.clear('favs');
+    await CAV.storage.idb.clear('deletedConvs');
   } catch (e) { console.warn('clear IDB failed', e); }
   // Legacy LS keys were one-time-migrated then removed by migrateLegacy at
-  // startup (see QithYang.storage.ls.migrateLegacy); we don't re-remove them
+  // startup (see CAV.storage.ls.migrateLegacy); we don't re-remove them
   // here. localStorage display-name keys are intentionally preserved across
   // clearAllData so the user doesn't have to re-enter them.
-  QithYang.state.RAW_BY_ID = {};
-  QithYang.state.RAW = [];
-  QithYang.state.CONVS = [];
-  QithYang.state.favs = {};
-  QithYang.state.deletedConvs = new Set();
-  QithYang.state.curConvId = null; QithYang.state.curConv = null;
+  CAV.state.RAW_BY_ID = {};
+  CAV.state.RAW = [];
+  CAV.state.CONVS = [];
+  CAV.state.favs = {};
+  CAV.state.deletedConvs = new Set();
+  CAV.state.curConvId = null; CAV.state.curConv = null;
   alert('已清空所有数据，页面将刷新。');
   location.reload();
 };
 
-QithYang.app.importExport.setupPicker = function setupPicker() {
+CAV.app.importExport.setupPicker = function setupPicker() {
   const drop = document.getElementById('drop');
   const input = document.getElementById('file-input');
   function handle(file) {
@@ -2100,12 +2100,12 @@ function isDemoUuid(uuid) { return typeof uuid === 'string' && uuid.startsWith('
 
 async function startApp(data, opts) {
   opts = opts || {};
-  QithYang.state.RAW_BY_ID = {};
+  CAV.state.RAW_BY_ID = {};
   const arr = Array.isArray(data) ? data : (Array.isArray(data?.conversations) ? data.conversations : []);
-  arr.forEach(QithYang.filter.schemaDriftDetector);
-  const r = QithYang.parser.parse(arr);
-  QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
-  QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+  arr.forEach(CAV.filter.schemaDriftDetector);
+  const r = CAV.parser.parse(arr);
+  CAV.state.RAW = Object.values(CAV.state.RAW_BY_ID);
+  CAV.state.CONVS = processConvs(CAV.state.RAW);
   if (!opts.fromCache && !opts.noPersist && r.changedIds.length) {
     setLoadingText(`正在保存 ${r.changedIds.length} 个对话到本地数据库…`);
     await saveConvsByIds(r.changedIds);
@@ -2113,9 +2113,9 @@ async function startApp(data, opts) {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('picker').classList.remove('show');
   document.getElementById('app').classList.add('show');
-  QithYang.events.bindAll();
-  QithYang.renderer.renderConvList();
-  if (QithYang.state.CONVS.length) openConv(QithYang.state.CONVS[0].uuid);
+  CAV.events.bindAll();
+  CAV.renderer.renderConvList();
+  if (CAV.state.CONVS.length) openConv(CAV.state.CONVS[0].uuid);
   updateStorageStats();
 }
 
@@ -2151,7 +2151,7 @@ function showPreloadChoiceModal(n) {
   });
 }
 
-QithYang.app.handlePreloaded = async function handlePreloaded(preloaded) {
+CAV.app.handlePreloaded = async function handlePreloaded(preloaded) {
   if (!preloaded || !Array.isArray(preloaded.conversations)) return false;
   // Hide initial loading immediately so the modal sits on a calm canvas
   const loading = document.getElementById('loading');
@@ -2161,7 +2161,7 @@ QithYang.app.handlePreloaded = async function handlePreloaded(preloaded) {
   // skips writes but startApp's downstream still expects state shape to be
   // consistent. open() failure is non-fatal here (we just won't persist).
   let idbOk = true;
-  try { await QithYang.storage.idb.open(); }
+  try { await CAV.storage.idb.open(); }
   catch (e) { console.warn('IDB open failed; persist disabled', e); idbOk = false; }
 
   const n = preloaded.conversations.length;
@@ -2173,16 +2173,16 @@ QithYang.app.handlePreloaded = async function handlePreloaded(preloaded) {
 
   // Parse + populate state (same shape importBackup uses)
   const arr = preloaded.conversations;
-  arr.forEach(QithYang.filter.schemaDriftDetector);
-  const r = QithYang.parser.parse(arr);
+  arr.forEach(CAV.filter.schemaDriftDetector);
+  const r = CAV.parser.parse(arr);
   if (preloaded.favs && typeof preloaded.favs === 'object') {
-    Object.assign(QithYang.state.favs, preloaded.favs);
+    Object.assign(CAV.state.favs, preloaded.favs);
   }
   if (Array.isArray(preloaded.deletedConvs)) {
-    preloaded.deletedConvs.forEach(id => QithYang.state.deletedConvs.add(id));
+    preloaded.deletedConvs.forEach(id => CAV.state.deletedConvs.add(id));
   }
-  QithYang.state.RAW = Object.values(QithYang.state.RAW_BY_ID);
-  QithYang.state.CONVS = processConvs(QithYang.state.RAW);
+  CAV.state.RAW = Object.values(CAV.state.RAW_BY_ID);
+  CAV.state.CONVS = processConvs(CAV.state.RAW);
 
   if (choice === 'persist' && r.changedIds.length) {
     try {
@@ -2195,39 +2195,38 @@ QithYang.app.handlePreloaded = async function handlePreloaded(preloaded) {
   // Reveal app
   document.getElementById('picker').classList.remove('show');
   document.getElementById('app').classList.add('show');
-  QithYang.events.bindAll();
-  QithYang.renderer.renderConvList();
-  if (QithYang.state.CONVS.length) openConv(QithYang.state.CONVS[0].uuid);
+  CAV.events.bindAll();
+  CAV.renderer.renderConvList();
+  if (CAV.state.CONVS.length) openConv(CAV.state.CONVS[0].uuid);
   updateStorageStats();
   return true;
 };
 
-// Read preloaded payload: prefer <script type=application/json id=qithyang-payload>
-// (robust against weird user data); fallback to window.QithYang_
-// preloaded (legacy form, kept for backward compat with existing HTML
-// exports). Returns parsed object or null.
+// Read preloaded payload: prefer <script type=application/json id=cav-payload>
+// (robust against weird user data); fall back to the legacy ids/globals
+// (qithyang-payload, window.QithYang_preloaded) so older HTML exports still open.
+// Returns parsed object or null.
 function readPreloadedPayload() {
-  // 1. New path: script tag with JSON content
-  const el = document.getElementById('qithyang-payload');
-  if (el && el.textContent && el.textContent.trim()) {
-    try {
-      return JSON.parse(el.textContent);
-    } catch (e) {
-      console.warn('qithyang-payload JSON.parse failed; falling back to window.QithYang_preloaded', e);
+  for (const id of ['cav-payload', 'qithyang-payload']) {
+    const el = document.getElementById(id);
+    if (el && el.textContent && el.textContent.trim()) {
+      try {
+        return JSON.parse(el.textContent);
+      } catch (e) {
+        console.warn(id + ' JSON.parse failed; falling back', e);
+      }
     }
   }
-  // 2. Legacy path
-  if (window.QithYang_preloaded) return window.QithYang_preloaded;
-  return null;
+  return window.CAV_preloaded || window.QithYang_preloaded || null;
 }
 
-QithYang.app.init = async function init() {
+CAV.app.init = async function init() {
   // Preloaded shortcut: HTML carries embedded data (self-contained export).
   // Skip the normal IDB-load → fetch demo cascade and ask user how to handle it.
   const preloaded = readPreloadedPayload();
   if (preloaded) {
     try {
-      const handled = await QithYang.app.handlePreloaded(preloaded);
+      const handled = await CAV.app.handlePreloaded(preloaded);
       if (handled) return;
     } catch (e) {
       console.error('preloaded handler failed', e);
@@ -2237,28 +2236,28 @@ QithYang.app.init = async function init() {
 
   setLoadingText('正在打开本地数据库…');
   try {
-    await QithYang.storage.idb.open();
+    await CAV.storage.idb.open();
   } catch (e) {
     console.error('IndexedDB 不可用', e);
     setLoadingText('本地数据库不可用，请改用文件导入…');
     document.getElementById('loading').style.display = 'none';
     document.getElementById('picker').classList.add('show');
-    QithYang.app.importExport.setupPicker();
+    CAV.app.importExport.setupPicker();
     return;
   }
 
   // One-time migration from old localStorage layout (xy_raw / xy_favs / xy_del)
   setLoadingText('正在迁移旧数据…');
-  await QithYang.storage.ls.migrateLegacy();
+  await CAV.storage.ls.migrateLegacy();
 
   // Load all stores from IndexedDB
   setLoadingText('正在加载本地数据…');
   let convs, favRows, delRows;
   try {
     [convs, favRows, delRows] = await Promise.all([
-      QithYang.storage.idb.getAll('conversations'),
-      QithYang.storage.idb.getAll('favs'),
-      QithYang.storage.idb.getAll('deletedConvs'),
+      CAV.storage.idb.getAll('conversations'),
+      CAV.storage.idb.getAll('favs'),
+      CAV.storage.idb.getAll('deletedConvs'),
     ]);
   } catch (e) {
     console.error('IDB getAll failed', e);
@@ -2269,13 +2268,13 @@ QithYang.app.init = async function init() {
   // saved. Demo uuids are stable (`demo-conv-001`..`003`).
   const demoIdsInDb = (convs || []).filter(c => isDemoUuid(c.uuid)).map(c => c.uuid);
   if (demoIdsInDb.length) {
-    for (const id of demoIdsInDb) { try { await QithYang.storage.idb.delete('conversations', id); } catch(e){} }
+    for (const id of demoIdsInDb) { try { await CAV.storage.idb.delete('conversations', id); } catch(e){} }
     convs = convs.filter(c => !isDemoUuid(c.uuid));
   }
 
-  QithYang.state.favs = {};
-  for (const f of favRows) QithYang.state.favs[f.key] = true;
-  QithYang.state.deletedConvs = new Set(delRows.map(d => d.uuid));
+  CAV.state.favs = {};
+  for (const f of favRows) CAV.state.favs[f.key] = true;
+  CAV.state.deletedConvs = new Set(delRows.map(d => d.uuid));
 
   if (convs && convs.length) {
     setLoadingText(`正在恢复 ${convs.length} 个对话…`);
@@ -2301,13 +2300,13 @@ QithYang.app.init = async function init() {
   if (!data) {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('picker').classList.add('show');
-    QithYang.app.importExport.setupPicker();
+    CAV.app.importExport.setupPicker();
     return;
   }
   await startApp(data, { noPersist: !persistFetched });
 };
 
-QithYang.app.init();
+CAV.app.init();
 </script>
 </body>
 </html>
