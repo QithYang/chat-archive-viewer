@@ -170,11 +170,11 @@ input, button { font-family: inherit; }
 .sb-result-snip { color:var(--text-2); line-height:1.5; }
 .sb-result mark { background:var(--orange-soft); color:var(--orange); padding:0 2px; border-radius:2px; }
 
-/* === Views (chat/fav/timeline) === */
-.msgs-wrap, .fav-view, .tl-view { display:none; flex:1; overflow-y:auto; }
-.msgs-wrap.show, .fav-view.show, .tl-view.show { display:block; }
+/* === Views (chat/fav/timeline/stats) === */
+.msgs-wrap, .fav-view, .tl-view, .stats-view { display:none; flex:1; overflow-y:auto; }
+.msgs-wrap.show, .fav-view.show, .tl-view.show, .stats-view.show { display:block; }
 .msgs-wrap { padding:0 24px 60px; }
-.fav-view, .tl-view { padding:24px 24px 60px; }
+.fav-view, .tl-view, .stats-view { padding:24px 24px 60px; }
 .tl-view { position:relative; }
 .msgs-in { max-width:760px; margin:0 auto; padding-top:18px; }
 .msgs-in > .empty { display:flex; align-items:center; justify-content:center; height:100%; min-height:300px; color:var(--text-3); font-style:italic; font-size:14px; }
@@ -326,6 +326,78 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 .tl-pop-item:hover { background:var(--orange-bg); color:var(--orange); }
 .tl-pop-item .tl-pop-meta { font-size:10px; color:var(--text-3); margin-top:2px; }
 
+/* Stats */
+.st-wrap { max-width:760px; margin:0 auto; }
+.st-grid { display:grid; gap:10px; margin-bottom:10px; }
+.st-g3 { grid-template-columns:repeat(3, minmax(0, 1fr)); }
+.st-g2 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+.st-card { background:var(--white); border:1px solid var(--border-light); border-radius:12px; padding:14px 16px; min-width:0; }
+.st-card + .st-card, .st-grid + .st-card { margin-top:0; }
+.st-wrap > .st-card { margin-bottom:10px; }
+.st-pad { padding:16px 18px; }
+.st-link { cursor:pointer; transition:all 0.15s; }
+.st-link:hover { border-color:var(--orange); background:var(--orange-bg); transform:translateY(-1px); }
+.st-l { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); letter-spacing:0.4px; margin-bottom:6px; }
+.st-v { font-size:26px; color:var(--text-1); line-height:1.15; font-variant-numeric:tabular-nums; }
+.st-u { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); margin-left:4px; }
+.st-hint { font-size:11px; color:var(--text-3); font-style:italic; margin-top:4px; }
+.st-title { font-size:15px; color:var(--text-1); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.st-share { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.st-center { display:flex; flex-direction:column; align-items:center; }
+.st-center .st-l { align-self:flex-start; }
+.st-h { font-family:'Instrument Sans',sans-serif; font-size:14px; color:var(--text-2); margin:26px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--border-light); }
+.st-none { color:var(--text-3); font-size:13px; padding:6px 0; }
+/* charts */
+.ch-lbl { font-family:'Instrument Sans',sans-serif; font-size:9px; fill:var(--text-3); }
+.ch-track { fill:none; stroke:var(--surface); stroke-width:6; }
+.ch-arc { fill:none; stroke-width:6; stroke-linecap:round; }
+.ch-arc.ch-u { stroke:var(--orange); }
+.ch-arc.ch-a { stroke:var(--blue); }
+.ch-ring { flex:0 0 auto; }
+.ch-ring-t { font-family:'Instrument Sans',sans-serif; font-size:11px; fill:var(--text-2); }
+.hm-scroll { overflow-x:auto; padding-bottom:4px; }
+.ch-heat { display:block; margin:0 auto; }
+.ch-heat rect { cursor:pointer; }
+.hm-0 { fill:var(--surface-2); background:var(--surface-2); }
+.hm-1 { fill:#f9e6dc; background:#f9e6dc; }
+.hm-2 { fill:#efbfa9; background:#efbfa9; }
+.hm-3 { fill:#e3987a; background:#e3987a; }
+.hm-4 { fill:var(--orange); background:var(--orange); }
+.hm-legend { display:flex; align-items:center; justify-content:flex-end; gap:4px; font-family:'Instrument Sans',sans-serif; font-size:10px; color:var(--text-3); margin-top:8px; }
+.hm-sw { width:10px; height:10px; border-radius:2.5px; display:inline-block; }
+.ch-bars { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+.cb-row { display:grid; grid-template-columns:34px 1fr 44px; align-items:center; gap:8px; font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); }
+.cb-track { height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden; }
+.cb-fill { display:block; height:100%; background:var(--orange); border-radius:3px; }
+.cb-v { text-align:right; font-variant-numeric:tabular-nums; color:var(--text-2); }
+.ch-radial { max-width:100%; height:auto; }
+.rd-bar { stroke:var(--orange-soft); stroke-width:5; stroke-linecap:round; }
+.rd-bar.peak { stroke:var(--orange); }
+.rd-c1 { font-family:'Instrument Sans',sans-serif; font-size:9px; fill:var(--text-3); }
+.rd-c2 { font-size:16px; fill:var(--text-1); }
+.ch-line { width:100%; height:auto; display:block; margin-top:4px; }
+.ln-grid { stroke:var(--border-light); stroke-width:1; }
+.ln { fill:none; stroke-width:1.8; stroke-linejoin:round; stroke-linecap:round; }
+.ln-u { stroke:var(--orange); }
+.ln-a { stroke:var(--blue); }
+.ln-dot { stroke:none; }
+.ln-dot.ln-u { fill:var(--orange); }
+.ln-dot.ln-a { fill:var(--blue); }
+.ln-legend { display:flex; justify-content:center; gap:18px; font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); margin-top:4px; }
+.ln-legend i { display:inline-block; width:14px; height:2px; border-radius:1px; vertical-align:middle; margin-right:6px; }
+.lg-u { background:var(--orange); }
+.lg-a { background:var(--blue); }
+.st-rank { display:flex; flex-direction:column; gap:2px; }
+.st-row { display:flex; align-items:baseline; gap:10px; padding:8px 8px; margin:0 -8px; border:1px solid transparent; border-radius:8px; font-size:13px; }
+.st-row:hover { transform:none; }
+.sr-i { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--orange); width:12px; flex:0 0 auto; }
+.sr-t { flex:1; min-width:0; color:var(--text-1); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.sr-m { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); flex:0 0 auto; font-variant-numeric:tabular-nums; }
+.st-emoji { display:grid; grid-template-columns:repeat(auto-fill, minmax(56px, 1fr)); gap:8px; }
+.se-i { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 0 6px; background:var(--surface-2); border-radius:10px; }
+.se-e { font-size:22px; line-height:1; }
+.se-n { font-family:'Instrument Sans',sans-serif; font-size:10px; color:var(--text-3); font-variant-numeric:tabular-nums; }
+
 /* === Mobile === */
 .sb-overlay { display:none; }
 @media (max-width: 768px) {
@@ -336,7 +408,10 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
   .sb-overlay { display:block; position:fixed; inset:0; background:rgba(20,20,19,0.35); z-index:150; opacity:0; pointer-events:none; transition:opacity 0.28s; }
   .sb-overlay.show { opacity:1; pointer-events:auto; }
   .msgs-wrap { padding:0 16px 60px; }
-  .fav-view, .tl-view { padding:18px 16px 60px; }
+  .fav-view, .tl-view, .stats-view { padding:18px 16px 60px; }
+  .st-g3 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .st-g2 { grid-template-columns:1fr; }
+  .st-v { font-size:22px; }
   .msg.user .bubble { max-width:88%; }
   .msg-fav { opacity:0.6 !important; background:var(--white); }
   .main-head { padding:12px 16px; }
@@ -408,6 +483,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
         <button class="sb-tab-top on" data-view="chat">对话</button>
         <button class="sb-tab-top" data-view="favorites">收藏</button>
         <button class="sb-tab-top" data-view="timeline">时间轴</button>
+        <button class="sb-tab-top" data-view="stats">统计</button>
       </div>
       <div class="sb-search"><input id="conv-filter" placeholder="搜索对话标题…"></div>
     </div>
@@ -449,6 +525,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
     </div>
     <div class="fav-view" id="fav-view"></div>
     <div class="tl-view" id="tl-view"></div>
+    <div class="stats-view" id="stats-view"></div>
   </main>
 </div>
 
@@ -1227,9 +1304,11 @@ CAV.renderer.setView = function setView(v) {
   document.getElementById('msgs-wrap').classList.toggle('show', v==='chat');
   document.getElementById('fav-view').classList.toggle('show', v==='favorites');
   document.getElementById('tl-view').classList.toggle('show', v==='timeline');
+  document.getElementById('stats-view').classList.toggle('show', v==='stats');
   CAV.renderer.closeTlPopover();
   if (v==='favorites') CAV.renderer.renderFavorites();
   if (v==='timeline') CAV.renderer.renderTimeline();
+  if (v==='stats') CAV.renderer.renderStats();
   // Auto-close mobile drawer when switching views
   if (window.matchMedia('(max-width: 768px)').matches) {
     document.getElementById('sidebar').classList.remove('open');
@@ -1331,7 +1410,7 @@ CAV.renderer.renderTimeline = function renderTimeline() {
     const first = new Date(y, m-1, 1);
     const startWk = first.getDay();
     const days = new Date(y, m, 0).getDate();
-    html += `<div class="tl-month">
+    html += `<div class="tl-month" id="tl-m-${ym}">
       <div class="tl-month-title">${y} 年 ${m} 月</div>
       <div class="tl-grid">`;
     for (const w of wkLabels) html += `<div class="tl-day-h">${w}</div>`;
@@ -1349,6 +1428,282 @@ CAV.renderer.renderTimeline = function renderTimeline() {
     html += `</div></div>`;
   }
   root.innerHTML = html;
+};
+
+// === Stats view ===
+// <stats-core> — pure computation, no DOM. tests/stats.test.mjs extracts
+// this block by its markers and runs it under Node, so keep it
+// self-contained: everything it needs comes in through `norm`.
+function computeStats(convs, norm) {
+  const p2 = n => String(n).padStart(2, '0');
+  const dayKey = d => `${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`;
+  const monthKey = d => `${d.getFullYear()}-${p2(d.getMonth()+1)}`;
+  const PICTO = /\p{Extended_Pictographic}/u;
+  const EMOJI_LOOK = /\p{Emoji_Presentation}|️/u;
+  const seg = (typeof Intl !== 'undefined' && Intl.Segmenter) ? new Intl.Segmenter(undefined, { granularity:'grapheme' }) : null;
+
+  const days = new Map();              // 'YYYY-MM-DD' -> visible messages
+  const months = new Map();            // 'YYYY-MM' -> characters { human, assistant }
+  const weekday = new Array(7).fill(0); // Monday first
+  const hours = new Array(24).fill(0);
+  const chars = { human:0, assistant:0 };
+  const emoji = new Map();
+  const perConv = [];
+  let msgCount = 0, firstTs = Infinity, lastTs = -Infinity;
+
+  function countEmoji(text) {
+    if (!PICTO.test(text)) return;
+    const parts = seg ? Array.from(seg.segment(text), s => s.segment) : (text.match(/\p{Extended_Pictographic}️?/gu) || []);
+    for (const g of parts) {
+      if (PICTO.test(g) && EMOJI_LOOK.test(g)) emoji.set(g, (emoji.get(g) || 0) + 1);
+    }
+  }
+
+  for (const c of convs) {
+    let n = 0, nChars = 0, deep = 0, first = Infinity;
+    for (const m of c.chat_messages) {
+      if (!norm.isMsgVisible(m)) continue;
+      const d = new Date(m.created_at);
+      const ts = d.getTime();
+      if (isNaN(ts)) continue;
+      const who = m.sender === 'human' ? 'human' : 'assistant';
+      const text = norm.getMsgData(m).text;
+      const len = text ? Array.from(text.replace(/\s/g, '')).length : 0;
+      n++; nChars += len; chars[who] += len;
+      if (ts < first) first = ts;
+      if (ts < firstTs) firstTs = ts;
+      if (ts > lastTs) lastTs = ts;
+      const h = d.getHours();
+      hours[h]++;
+      if (h >= 2 && h < 5) deep++;
+      weekday[(d.getDay() + 6) % 7]++;
+      const dk = dayKey(d);
+      days.set(dk, (days.get(dk) || 0) + 1);
+      const mk = monthKey(d);
+      if (!months.has(mk)) months.set(mk, { human:0, assistant:0 });
+      months.get(mk)[who] += len;
+      if (text) countEmoji(text);
+    }
+    msgCount += n;
+    if (n) perConv.push({ uuid:c.uuid, title:c.title, msgs:n, chars:nChars, deep, first });
+  }
+
+  if (!msgCount) return { empty:true };
+
+  // streak + span over local calendar days (noon avoids DST edge cases)
+  const toNoon = k => { const [y, mo, da] = k.split('-').map(Number); return new Date(y, mo-1, da, 12).getTime(); };
+  const dayKeys = Array.from(days.keys()).sort();
+  let streak = 1, run = 1;
+  for (let i = 1; i < dayKeys.length; i++) {
+    run = Math.round((toNoon(dayKeys[i]) - toNoon(dayKeys[i-1])) / 864e5) === 1 ? run + 1 : 1;
+    if (run > streak) streak = run;
+  }
+  const spanDays = Math.round((toNoon(dayKeys[dayKeys.length-1]) - toNoon(dayKeys[0])) / 864e5) + 1;
+
+  // contiguous month series, zero-filled
+  const monthSeries = [];
+  const m0 = new Date(firstTs), m1 = new Date(lastTs);
+  for (let y = m0.getFullYear(), mo = m0.getMonth(); y < m1.getFullYear() || (y === m1.getFullYear() && mo <= m1.getMonth()); mo === 11 ? (y++, mo = 0) : mo++) {
+    const k = `${y}-${p2(mo+1)}`;
+    monthSeries.push({ key:k, ...(months.get(k) || { human:0, assistant:0 }) });
+  }
+
+  const byFirst = perConv.slice().sort((a, b) => a.first - b.first);
+  const brief = c => ({ uuid:c.uuid, title:c.title, msgs:c.msgs, chars:c.chars, deep:c.deep, first:c.first });
+  return {
+    empty: false,
+    convCount: perConv.length,
+    msgCount,
+    spanDays,
+    activeDays: dayKeys.length,
+    longestStreak: streak,
+    deepConvCount: perConv.filter(c => c.deep > 0).length,
+    firstConv: brief(byFirst[0]),
+    lastConv: brief(byFirst[byFirst.length-1]),
+    chars,
+    days: Object.fromEntries(days),
+    firstDay: dayKeys[0],
+    lastDay: dayKeys[dayKeys.length-1],
+    weekday,
+    hours,
+    monthSeries,
+    topLongest: perConv.slice().sort((a, b) => b.msgs - a.msgs || b.chars - a.chars).slice(0, 5).map(brief),
+    topDeep: perConv.filter(c => c.deep > 0).sort((a, b) => b.deep - a.deep || b.msgs - a.msgs).slice(0, 5).map(brief),
+    emoji: Array.from(emoji, ([e, n]) => ({ e, n })).sort((a, b) => b.n - a.n).slice(0, 15),
+    firstTs, lastTs,
+  };
+}
+// </stats-core>
+
+CAV.stats = {};
+// Cached against the CONVS array itself: every import / merge / delete /
+// clear assigns a new array, so identity is a reliable change signal.
+CAV.stats.compute = function compute() {
+  const convs = CAV.state.CONVS;
+  if (CAV.stats._for !== convs) {
+    CAV.stats._result = computeStats(convs, CAV.normalizer);
+    CAV.stats._for = convs;
+  }
+  return CAV.stats._result;
+};
+
+// UI strings for the stats view, kept in one place for a future English UI.
+const STATS_TEXT = {
+  title: '统计',
+  empty: '还没有数据',
+  convs: '对话', msgs: '消息', span: '时间跨度', active: '活跃天数', streak: '最长连续', deep: '深夜对话',
+  unitConv: '个', unitMsg: '条', unitDay: '天', unitChar: '字',
+  deepHint: '02:00–04:59 有消息',
+  firstConv: '第一段对话', lastConv: '最近一段对话',
+  chars: '字数', share: '占比',
+  heat: '每日消息', heatLess: '少', heatMore: '多',
+  rhythm: '节奏', byWeekday: '星期分布', byHour: '24 小时', peak: '最活跃',
+  monthly: '每月字数',
+  ranks: '排行', longest: '最长的 5 段对话', deepest: '深夜对话榜',
+  emoji: '常用 Emoji',
+  weekdays: ['周一','周二','周三','周四','周五','周六','周日'],
+  wkShort: ['日','一','二','三','四','五','六'],
+};
+
+// === Charts: each returns an SVG/HTML string; colours come from CSS classes ===
+CAV.charts = {};
+CAV.charts.ring = function ring(pct, cls) {
+  const r = 26, c = 2 * Math.PI * r, f = Math.max(0, Math.min(1, pct)) * c;
+  return `<svg class="ch-ring" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+    <circle cx="32" cy="32" r="${r}" class="ch-track" />
+    <circle cx="32" cy="32" r="${r}" class="ch-arc ${cls}" stroke-dasharray="${f.toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 32 32)" />
+    <text x="32" y="36" text-anchor="middle" class="ch-ring-t">${Math.round(pct * 100)}%</text>
+  </svg>`;
+};
+
+// GitHub-style grid ending at the week of `lastDay`, Sunday rows first
+// (same week layout as the timeline). Shows up to 53 weeks, fewer when the
+// data is shorter (at least 20) so a few months of data don't sit in an empty year.
+// Levels split non-zero days at quartiles.
+CAV.charts.heatmap = function heatmap(days, firstDay, lastDay) {
+  const T = STATS_TEXT, cell = 11, gap = 3, step = cell + gap, left = 22, top = 18;
+  const toDate = k => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m-1, d); };
+  const end = toDate(lastDay), first = toDate(firstDay);
+  const weeks = Math.max(20, Math.min(53, Math.ceil((end - first) / 864e5 / 7) + 2));
+  const start = new Date(end); start.setDate(end.getDate() - end.getDay() - (weeks - 1) * 7);
+  const vals = Object.values(days).sort((a, b) => a - b);
+  const q = p => vals[Math.min(vals.length-1, Math.floor(p * vals.length))];
+  const cuts = [q(0.25), q(0.5), q(0.75)];
+  const lvl = v => !v ? 0 : v <= cuts[0] ? 1 : v <= cuts[1] ? 2 : v <= cuts[2] ? 3 : 4;
+  const pad = n => String(n).padStart(2, '0');
+  let rects = '', labels = '', lastMonth = -1;
+  const marks = [];
+  for (let w = 0; w < weeks; w++) {
+    for (let r = 0; r < 7; r++) {
+      const dt = new Date(start); dt.setDate(start.getDate() + w * 7 + r);
+      if (dt > end) break;
+      const k = `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}`;
+      const v = days[k] || 0;
+      if (r === 0 && dt.getMonth() !== lastMonth) {
+        lastMonth = dt.getMonth();
+        marks.push({ w, m: dt.getMonth() + 1 });
+      }
+      rects += `<rect x="${left + w * step}" y="${top + r * step}" width="${cell}" height="${cell}" rx="2.5" class="hm-${lvl(v)}" data-month="${k.slice(0,7)}"><title>${k} · ${v} ${T.unitMsg}</title></rect>`;
+    }
+  }
+  // month labels; drop one that would crowd the next (needs 3 columns)
+  marks.forEach((k, i) => {
+    const next = marks[i + 1] ? marks[i + 1].w : weeks;
+    if (next - k.w >= 3) labels += `<text x="${left + k.w * step}" y="11" class="ch-lbl">${k.m}月</text>`;
+  });
+  for (const r of [1, 3, 5]) labels += `<text x="0" y="${top + r * step + 9}" class="ch-lbl">${T.wkShort[r]}</text>`;
+  const W = left + weeks * step, H = top + 7 * step;
+  const legend = [0,1,2,3,4].map(i => `<span class="hm-sw hm-${i}"></span>`).join('');
+  return `<div class="hm-scroll"><svg class="ch-heat" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${labels}${rects}</svg></div>
+    <div class="hm-legend">${T.heatLess}${legend}${T.heatMore}</div>`;
+};
+
+CAV.charts.bars = function bars(rows) {
+  const max = Math.max(1, ...rows.map(r => r.v));
+  return `<div class="ch-bars">${rows.map(r => `<div class="cb-row"><span class="cb-l">${CAV.utils.escHtml(r.label)}</span><span class="cb-track"><span class="cb-fill" style="width:${(r.v / max * 100).toFixed(1)}%"></span></span><span class="cb-v">${r.v.toLocaleString()}</span></div>`).join('')}</div>`;
+};
+
+CAV.charts.radial = function radial(hours) {
+  const T = STATS_TEXT, cx = 110, cy = 110, r0 = 38, len = 52;
+  const max = Math.max(1, ...hours);
+  const peak = hours.indexOf(Math.max(...hours));
+  let s = '';
+  hours.forEach((v, h) => {
+    const a = (h / 24) * 2 * Math.PI - Math.PI / 2;
+    const r1 = r0 + 3 + (v / max) * len;
+    const x0 = cx + r0 * Math.cos(a), y0 = cy + r0 * Math.sin(a), x1 = cx + r1 * Math.cos(a), y1 = cy + r1 * Math.sin(a);
+    s += `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" class="rd-bar${h === peak ? ' peak' : ''}"><title>${h}:00 · ${v} ${T.unitMsg}</title></line>`;
+  });
+  const lbl = (h, x, y, a) => `<text x="${x}" y="${y}" text-anchor="${a}" class="ch-lbl">${h}</text>`;
+  s += lbl(0, cx, 10, 'middle') + lbl(6, 216, cy + 4, 'end') + lbl(12, cx, 216, 'middle') + lbl(18, 4, cy + 4, 'start');
+  s += `<text x="${cx}" y="${cy - 4}" text-anchor="middle" class="rd-c1">${T.peak}</text><text x="${cx}" y="${cy + 14}" text-anchor="middle" class="rd-c2">${String(peak).padStart(2,'0')}:00</text>`;
+  return `<svg class="ch-radial" viewBox="0 0 220 220" width="220" height="220">${s}</svg>`;
+};
+
+CAV.charts.line = function line(series, names) {
+  const W = 680, H = 200, l = 36, r = 12, t = 12, b = 26;
+  const max = Math.max(1, ...series.flatMap(p => [p.human, p.assistant]));
+  const nice = Math.pow(10, Math.floor(Math.log10(max)));
+  const top = Math.ceil(max / nice) * nice;
+  const x = i => l + (series.length === 1 ? (W - l - r) / 2 : i * (W - l - r) / (series.length - 1));
+  const y = v => t + (1 - v / top) * (H - t - b);
+  let s = '';
+  for (let g = 0; g <= 4; g++) {
+    const v = top * g / 4;
+    s += `<line x1="${l}" x2="${W - r}" y1="${y(v)}" y2="${y(v)}" class="ln-grid" /><text x="${l - 6}" y="${y(v) + 3}" text-anchor="end" class="ch-lbl">${v >= 1000 ? (v / 1000).toFixed(v % 1000 ? 1 : 0) + 'k' : Math.round(v)}</text>`;
+  }
+  const every = Math.ceil(series.length / 8);
+  series.forEach((p, i) => {
+    if (i % every === 0) s += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle" class="ch-lbl">${Number(p.key.slice(5))}月</text>`;
+  });
+  for (const [who, cls] of [['human', 'u'], ['assistant', 'a']]) {
+    s += `<polyline class="ln ln-${cls}" points="${series.map((p, i) => `${x(i).toFixed(1)},${y(p[who]).toFixed(1)}`).join(' ')}" />`;
+    s += series.map((p, i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(p[who]).toFixed(1)}" r="2.5" class="ln-dot ln-${cls}"><title>${p.key} · ${p[who]}</title></circle>`).join('');
+  }
+  const esc = CAV.utils.escHtml;
+  return `<svg class="ch-line" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${s}</svg>
+    <div class="ln-legend"><span><i class="lg-u"></i>${esc(names.u)}</span><span><i class="lg-a"></i>${esc(names.a)}</span></div>`;
+};
+
+CAV.renderer.renderStats = function renderStats() {
+  const root = document.getElementById('stats-view');
+  const T = STATS_TEXT, esc = CAV.utils.escHtml;
+  const s = CAV.stats.compute();
+  if (s.empty) {
+    root.innerHTML = `<div class="view-h">${T.title}</div><div class="empty-view">${T.empty}</div>`;
+    return;
+  }
+  const names = { u: CAV.storage.ls.getUserName(), a: CAV.storage.ls.getAssistantName() };
+  const ym = ts => { const d = new Date(ts); return `${d.getFullYear()} 年 ${d.getMonth()+1} 月`; };
+  const n = v => v.toLocaleString();
+  const card = (label, value, unit, hint) => `<div class="st-card"><div class="st-l">${label}</div><div class="st-v">${n(value)}<span class="st-u">${unit}</span></div>${hint ? `<div class="st-hint">${hint}</div>` : ''}</div>`;
+  const convCard = (label, c) => `<div class="st-card st-link" data-cid="${esc(c.uuid)}"><div class="st-l">${label}</div><div class="st-title">${esc(c.title)}</div><div class="st-hint">${esc(CAV.utils.fmtDateCN(new Date(c.first).toISOString()))} · ${n(c.msgs)} ${T.unitMsg}</div></div>`;
+  const totalChars = s.chars.human + s.chars.assistant || 1;
+  const charCard = (name, v, cls) => `<div class="st-card st-share"><div><div class="st-l">${esc(name)} · ${T.chars}</div><div class="st-v">${n(v)}<span class="st-u">${T.unitChar}</span></div></div>${CAV.charts.ring(v / totalChars, cls)}</div>`;
+  const rank = (list, metric) => `<div class="st-rank">${list.map((c, i) => `<div class="st-row st-link" data-cid="${esc(c.uuid)}"><span class="sr-i">${i + 1}</span><span class="sr-t">${esc(c.title)}</span><span class="sr-m">${metric(c)}</span></div>`).join('')}</div>`;
+  const sec = t => `<div class="st-h">${t}</div>`;
+
+  let h = `<div class="view-h">${T.title} <span class="vh-sub">${ym(s.firstTs)} – ${ym(s.lastTs)}</span></div><div class="st-wrap">`;
+  h += `<div class="st-grid st-g3">
+    ${card(T.convs, s.convCount, T.unitConv)}${card(T.msgs, s.msgCount, T.unitMsg)}${card(T.span, s.spanDays, T.unitDay)}
+    ${card(T.active, s.activeDays, T.unitDay)}${card(T.streak, s.longestStreak, T.unitDay)}${card(T.deep, s.deepConvCount, T.unitConv, T.deepHint)}
+  </div>`;
+  h += `<div class="st-grid st-g2">${charCard(names.u, s.chars.human, 'ch-u')}${charCard(names.a, s.chars.assistant, 'ch-a')}</div>`;
+  h += `<div class="st-grid st-g2">${convCard(T.firstConv, s.firstConv)}${convCard(T.lastConv, s.lastConv)}</div>`;
+  h += sec(T.heat) + `<div class="st-card st-pad">${CAV.charts.heatmap(s.days, s.firstDay, s.lastDay)}</div>`;
+  h += sec(T.rhythm) + `<div class="st-grid st-g2">
+    <div class="st-card st-pad"><div class="st-l">${T.byWeekday}</div>${CAV.charts.bars(T.weekdays.map((label, i) => ({ label, v:s.weekday[i] })))}</div>
+    <div class="st-card st-pad st-center"><div class="st-l">${T.byHour}</div>${CAV.charts.radial(s.hours)}</div>
+  </div>`;
+  h += `<div class="st-card st-pad"><div class="st-l">${T.monthly}</div>${CAV.charts.line(s.monthSeries, names)}</div>`;
+  h += sec(T.ranks) + `<div class="st-grid st-g2">
+    <div class="st-card st-pad"><div class="st-l">${T.longest}</div>${rank(s.topLongest, c => `${n(c.msgs)} ${T.unitMsg} · ${n(c.chars)} ${T.unitChar}`)}</div>
+    <div class="st-card st-pad"><div class="st-l">${T.deepest}</div>${s.topDeep.length ? rank(s.topDeep, c => `${n(c.deep)} ${T.unitMsg}`) : `<div class="st-none">—</div>`}</div>
+  </div>`;
+  if (s.emoji.length) {
+    h += sec(T.emoji) + `<div class="st-card st-pad"><div class="st-emoji">${s.emoji.map(x => `<div class="se-i"><span class="se-e">${esc(x.e)}</span><span class="se-n">${n(x.n)}</span></div>`).join('')}</div></div>`;
+  }
+  root.innerHTML = h + `</div>`;
 };
 
 CAV.renderer.closeTlPopover = function closeTlPopover() {
@@ -1788,6 +2143,22 @@ CAV.events.bindAll = function bindAll() {
   CAV.events.bindToolbar();
   CAV.events.bindModal();
   CAV.events.bindPicker();
+  CAV.events.bindStats();
+};
+
+// Stats view: conversation cards/rows open the conversation; a heatmap cell
+// switches to the timeline and scrolls to that month.
+CAV.events.bindStats = function bindStats() {
+  document.getElementById('stats-view').addEventListener('click', e => {
+    const c = e.target.closest('[data-cid]');
+    if (c) { openConv(c.dataset.cid); return; }
+    const cell = e.target.closest('[data-month]');
+    if (cell) {
+      CAV.renderer.setView('timeline');
+      const el = document.getElementById('tl-m-' + cell.dataset.month);
+      if (el) el.scrollIntoView({ block:'start' });
+    }
+  });
 };
 
 // === Data management ===
