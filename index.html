@@ -249,7 +249,7 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 .msg-tool > .tool-body pre { margin:6px 0; padding:8px 10px; background:var(--surface); border-radius:6px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-1); white-space:pre-wrap; word-break:break-word; max-height:300px; overflow:auto; }
 .msg-tool > .tool-body .tool-meta { font-size:11px; color:var(--text-3); margin-bottom:4px; }
 .msg-tool > .tool-body img.tool-icon { width:14px; height:14px; vertical-align:-2px; margin-right:4px; border-radius:2px; }
-/* Failed tool results are marked by a "(失败)" label rather than a red style. */
+/* Failed tool results are marked by a "failed" label (i18n key `failed`) rather than a red style. */
 
 /* flag block — safety helpline (e.g. self-harm intervention). Amber, not red, to avoid alarm. */
 .msg-block-flag { display:block; border:1px solid #d9a55a; background:#fdf6ea; border-radius:10px; padding:12px 14px; margin:10px 0; font-family:'Instrument Sans',sans-serif; }
@@ -1422,7 +1422,7 @@ CAV.renderer.renderMessages = function renderMessages() {
 
     function flushProcess() {
       if (!processBlocks.length) return;
-      // The label is always plain "思考"; expanding shows every block.
+      // The label is always the plain "Thinking" text (i18n key `thinking`); expanding shows every block.
       // Thinking is rendered inline here to avoid a fold inside a fold.
       const inner = processBlocks.map(b => {
         if (b.type === 'thinking') {
@@ -2160,7 +2160,7 @@ CAV.events.bindSidebar = function bindSidebar() {
   });
 
   // Conv list (delete + open). The delete button uses a two-step
-  // confirm pattern (× → "确认删除", i.e. "confirm delete") gated by .confirm.
+  // confirm pattern (× → the `confirmDelete` label) gated by .confirm.
   document.getElementById('conv-list').addEventListener('click', e => {
     const del = e.target.closest('.conv-del');
     if (del) {
