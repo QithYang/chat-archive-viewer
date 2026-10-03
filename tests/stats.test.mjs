@@ -96,3 +96,13 @@ test('weekday is Monday-first; longest list breaks ties by characters', () => {
   assert.equal(s.weekday[6], 2);
   assert.deepEqual(s.topLongest.map(c => c.uuid), ['wordy', 'short']);
 });
+
+test('top words: stopwords, code and links are dropped; case folds; CJK words kept', () => {
+  const s = computeStats([conv('a', 'A', [
+    msg('human', '2026-03-01T10:00:00', 'Python python the THE 我们 咖啡 咖啡 `ignored` https://example.com/x'),
+    msg('human', '2026-03-01T10:01:00', 'Python 咖啡\n```\nfunction function\n```'),
+  ])], norm);
+  const got = Object.fromEntries(s.words.human.map(x => [x.w, x.n]));
+  assert.deepEqual(got, { python: 3, '咖啡': 3 });
+  assert.deepEqual(s.words.assistant, []);
+});

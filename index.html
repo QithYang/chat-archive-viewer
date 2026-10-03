@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Chat Archive Viewer · 对话归档查看器</title>
+<title>Chat Archive Viewer</title>
 <link rel="icon" type="image/png" href="assets/app-logo.png">
 <style>
 /* === Fonts: relative paths, no embed === */
@@ -77,6 +77,7 @@ input, button { font-family: inherit; }
 .sb-title img { width:22px; height:22px; flex:0 0 auto; }
 .sb-actions { display:flex; gap:6px; flex:0 0 auto; position:relative; }
 .sb-import { width:26px; height:26px; border:1px solid var(--border); background:var(--white); border-radius:7px; cursor:pointer; font-size:14px; color:var(--text-2); display:flex; align-items:center; justify-content:center; line-height:1; padding:0; transition:all 0.15s; flex:0 0 auto; }
+.sb-lang { width:auto; min-width:26px; padding:0 7px; font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:0.3px; }
 .sb-import:hover { border-color:var(--orange); color:var(--orange); background:var(--orange-bg); }
 
 /* Settings dropdown */
@@ -393,6 +394,11 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 .sr-i { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--orange); width:12px; flex:0 0 auto; }
 .sr-t { flex:1; min-width:0; color:var(--text-1); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .sr-m { font-family:'Instrument Sans',sans-serif; font-size:11px; color:var(--text-3); flex:0 0 auto; font-variant-numeric:tabular-nums; }
+.wc { display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline; gap:4px 12px; padding:6px 2px 2px; line-height:1.35; }
+.wc-w { white-space:nowrap; }
+.wc-w.top { font-weight:600; }
+.wc-u { color:var(--orange); }
+.wc-a { color:var(--blue); }
 .st-emoji { display:grid; grid-template-columns:repeat(auto-fill, minmax(56px, 1fr)); gap:8px; }
 .se-i { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 0 6px; background:var(--surface-2); border-radius:10px; }
 .se-e { font-size:22px; line-height:1; }
@@ -440,17 +446,17 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 
 <div id="loading">
   <div class="spin"></div>
-  <div class="lt">载入中…</div>
+  <div class="lt" data-i18n="loading">Loading…</div>
 </div>
 
 <div id="picker">
   <img class="pic-logo" src="assets/app-logo.png" alt="">
   <div class="pt">Chat Archive Viewer</div>
-  <div class="ph">— 对话归档查看器 —</div>
+  <div class="ph" data-i18n="tagline">— conversation archive —</div>
   <div class="drop" id="drop">
     <div class="drop-ic">📎</div>
-    <div class="drop-t">拖入 conversations.json，或点击选择</div>
-    <div class="drop-h">从 Claude 导出的对话数据</div>
+    <div class="drop-t" data-i18n="dropTitle">Drop conversations.json here, or click to choose</div>
+    <div class="drop-h" data-i18n="dropHint">The conversation data exported from Claude</div>
   </div>
   <input type="file" id="file-input" accept=".json,application/json" style="display:none">
 </div>
@@ -461,31 +467,32 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
       <div class="sb-title-row">
         <div class="sb-title"><img src="assets/app-logo.png" alt="">Chat Archive Viewer</div>
         <div class="sb-actions">
-          <button class="sb-import" id="settings-btn" title="数据管理">⚙</button>
-          <button class="sb-import" id="import-btn" title="导入更多 conversations.json">+</button>
+          <button class="sb-import sb-lang" id="lang-btn" data-i18n="langBtn" data-i18n-title="langTitle">中</button>
+          <button class="sb-import" id="settings-btn" data-i18n-title="dataMgmt" title="Data">⚙</button>
+          <button class="sb-import" id="import-btn" data-i18n-title="importMore" title="Import more conversations.json">+</button>
           <div class="sm-menu" id="sm-menu">
-            <div class="sm-h">数据管理</div>
+            <div class="sm-h" data-i18n="dataMgmt">Data</div>
             <div class="sm-stats" id="sm-stats">
-              <div><span class="sm-stat-num" id="sm-conv-n">0</span> 个对话 · <span class="sm-stat-num" id="sm-msg-n">0</span> 条消息</div>
-              <div class="sm-note" id="sm-store-note">已自动保存到本地数据库</div>
+              <div><span class="sm-stat-num" id="sm-conv-n">0</span> <span data-i18n="smConvs">conversations</span> · <span class="sm-stat-num" id="sm-msg-n">0</span> <span data-i18n="smMsgs">messages</span></div>
+              <div class="sm-note" id="sm-store-note" data-i18n="savedNote">Saved in your browser</div>
             </div>
-            <button class="sm-item" id="sm-export"><span class="sm-ic">⬇</span>导出备份…</button>
-            <button class="sm-item" id="sm-export-html"><span class="sm-ic">📄</span>导出独立 HTML…</button>
-            <button class="sm-item" id="sm-import-backup"><span class="sm-ic">⬆</span>导入备份…</button>
-            <button class="sm-item" id="sm-display-names"><span class="sm-ic">✎</span>显示名设置…</button>
+            <button class="sm-item" id="sm-export"><span class="sm-ic">⬇</span><span data-i18n="exportBackup">Export backup…</span></button>
+            <button class="sm-item" id="sm-export-html"><span class="sm-ic">📄</span><span data-i18n="exportHtml">Export standalone HTML…</span></button>
+            <button class="sm-item" id="sm-import-backup"><span class="sm-ic">⬆</span><span data-i18n="importBackup">Import backup…</span></button>
+            <button class="sm-item" id="sm-display-names"><span class="sm-ic">✎</span><span data-i18n="displayNames">Display names…</span></button>
             <hr class="sm-sep">
-            <button class="sm-item danger" id="sm-clear"><span class="sm-ic">✕</span>清空所有数据</button>
+            <button class="sm-item danger" id="sm-clear"><span class="sm-ic">✕</span><span data-i18n="clearAll">Clear all data</span></button>
           </div>
         </div>
       </div>
-      <div class="sb-sub">— 对话归档查看器 —</div>
+      <div class="sb-sub" data-i18n="tagline">— conversation archive —</div>
       <div class="sb-tabs-top">
-        <button class="sb-tab-top on" data-view="chat">对话</button>
-        <button class="sb-tab-top" data-view="favorites">收藏</button>
-        <button class="sb-tab-top" data-view="timeline">时间轴</button>
-        <button class="sb-tab-top" data-view="stats">统计</button>
+        <button class="sb-tab-top on" data-view="chat" data-i18n="tabChat">Chats</button>
+        <button class="sb-tab-top" data-view="favorites" data-i18n="tabFav">Bookmarks</button>
+        <button class="sb-tab-top" data-view="timeline" data-i18n="tabTimeline">Timeline</button>
+        <button class="sb-tab-top" data-view="stats" data-i18n="tabStats">Stats</button>
       </div>
-      <div class="sb-search"><input id="conv-filter" placeholder="搜索对话标题…"></div>
+      <div class="sb-search"><input id="conv-filter" data-i18n-ph="filterPh" placeholder="Search titles…"></div>
     </div>
     <div id="conv-list"></div>
     <input type="file" id="merge-input" accept=".json,application/json" multiple style="display:none">
@@ -494,34 +501,34 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
   <div class="sb-overlay" id="sb-overlay"></div>
   <main id="main">
     <div class="main-head">
-      <button class="mh-hb" id="hb" aria-label="菜单">☰</button>
+      <button class="mh-hb" id="hb" data-i18n-aria="menu" aria-label="Menu">☰</button>
       <div class="mh-c">
         <div class="mh-t" id="mh-t">Chat Archive Viewer</div>
-        <div class="mh-m" id="mh-m">— 对话归档查看器 —</div>
+        <div class="mh-m" id="mh-m" data-i18n="tagline">— conversation archive —</div>
       </div>
       <div class="mh-acts">
-        <button class="ibtn" id="search-btn" title="搜索消息">🔍</button>
-        <button class="ibtn" id="thinking-btn" title="思考过程">🧠</button>
+        <button class="ibtn" id="search-btn" data-i18n-title="searchMsgs" title="Search messages">🔍</button>
+        <button class="ibtn" id="thinking-btn" data-i18n-title="thinkingBtn" title="Thinking">🧠</button>
       </div>
     </div>
     <div class="search-bar" id="search-bar">
       <div class="sb-row">
         <div class="sb-tabs">
-          <button class="sb-tab on" data-scope="current">当前对话</button>
-          <button class="sb-tab" data-scope="all">全部对话</button>
+          <button class="sb-tab on" data-scope="current" data-i18n="scopeCurrent">This chat</button>
+          <button class="sb-tab" data-scope="all" data-i18n="scopeAll">All chats</button>
         </div>
-        <input id="msg-search" placeholder="搜索消息内容…">
+        <input id="msg-search" data-i18n-ph="msgSearchPh" placeholder="Search messages…">
         <span class="sb-stats" id="sb-stats"></span>
         <div class="sb-nav">
-          <button id="sb-prev" title="上一个">↑</button>
-          <button id="sb-next" title="下一个">↓</button>
+          <button id="sb-prev" data-i18n-title="prev" title="Previous">↑</button>
+          <button id="sb-next" data-i18n-title="next" title="Next">↓</button>
         </div>
-        <button class="sb-close" id="sb-close" title="关闭">×</button>
+        <button class="sb-close" id="sb-close" data-i18n-title="close" title="Close">×</button>
       </div>
       <div class="sb-results" id="sb-results"></div>
     </div>
     <div class="msgs-wrap show" id="msgs-wrap">
-      <div class="msgs-in" id="messages"><div class="empty">从左侧选择一个对话</div></div>
+      <div class="msgs-in" id="messages"><div class="empty" data-i18n="pickConv">Select a conversation on the left</div></div>
     </div>
     <div class="fav-view" id="fav-view"></div>
     <div class="tl-view" id="tl-view"></div>
@@ -531,26 +538,222 @@ details.msg-file-text > pre { margin:0; padding:10px 12px; background:var(--surf
 
 <div id="dn-modal" class="dn-modal">
   <div class="dn-panel">
-    <div class="dn-title">显示名设置</div>
+    <div class="dn-title" data-i18n="dnTitle">Display names</div>
     <div class="dn-body">
       <div class="dn-field">
-        <span class="dn-lbl">我的名字</span>
-        <input id="dn-user" type="text" maxlength="20" placeholder="你 / 自己的昵称">
+        <span class="dn-lbl" data-i18n="dnMine">My name</span>
+        <input id="dn-user" type="text" maxlength="20" data-i18n-ph="dnMinePh" placeholder="You, or a nickname">
       </div>
       <div class="dn-field">
-        <span class="dn-lbl">助手名字</span>
-        <input id="dn-asst" type="text" maxlength="20" placeholder="Claude / 给 Ta 起个名字">
+        <span class="dn-lbl" data-i18n="dnAsst">Assistant name</span>
+        <input id="dn-asst" type="text" maxlength="20" data-i18n-ph="dnAsstPh" placeholder="Claude, or any name you like">
       </div>
-      <div class="dn-note">名字只保存在你的浏览器本地，仅你自己看得到。留空保存即恢复默认。</div>
+      <div class="dn-note" data-i18n="dnNote"></div>
     </div>
     <div class="dn-acts">
-      <button class="dn-btn" id="dn-cancel">取消</button>
-      <button class="dn-btn primary" id="dn-save">保存</button>
+      <button class="dn-btn" id="dn-cancel" data-i18n="cancel">Cancel</button>
+      <button class="dn-btn primary" id="dn-save" data-i18n="save">Save</button>
     </div>
   </div>
 </div>
 
 <script>
+// === i18n ===
+// UI language: English by default, Chinese on request. The choice lives in
+// localStorage; switching reloads the page so every view re-renders in the
+// new language (the sample data is loaded per language too).
+const LANG_KEY = 'cav_lang';
+const LANG = (() => {
+  try { if (localStorage.getItem(LANG_KEY) === 'zh') return 'zh'; } catch (e) {}
+  return 'en';
+})();
+const MON_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTH_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const pl = (n, one, many) => `${n.toLocaleString()} ${n === 1 ? one : (many || one + 's')}`;
+const I18N = {
+  en: {
+    docTitle: 'Chat Archive Viewer',
+    tagline: '— conversation archive —',
+    langBtn: '中', langTitle: '切换到中文',
+    loading: 'Loading…',
+    dropTitle: 'Drop conversations.json here, or click to choose',
+    dropHint: 'The conversation data exported from Claude',
+    dataMgmt: 'Data', importMore: 'Import more conversations.json',
+    smConvs: 'conversations', smMsgs: 'messages',
+    savedNote: 'Saved in your browser',
+    savedNoteN: n => `Saved in your browser · ${pl(n, 'bookmark')}`,
+    saveFailedN: n => `⚠ Save failed · ${pl(n, 'bookmark')}`,
+    exportBackup: 'Export backup…', exportHtml: 'Export standalone HTML…',
+    importBackup: 'Import backup…', displayNames: 'Display names…', clearAll: 'Clear all data',
+    tabChat: 'Chats', tabFav: 'Bookmarks', tabTimeline: 'Timeline', tabStats: 'Stats',
+    filterPh: 'Search titles…', menu: 'Menu',
+    searchMsgs: 'Search messages', thinkingBtn: 'Thinking',
+    scopeCurrent: 'This chat', scopeAll: 'All chats', msgSearchPh: 'Search messages…',
+    prev: 'Previous', next: 'Next', close: 'Close',
+    pickConv: 'Select a conversation on the left',
+    dnTitle: 'Display names', dnMine: 'My name', dnMinePh: 'You, or a nickname',
+    dnAsst: 'Assistant name', dnAsstPh: 'Claude, or any name you like',
+    dnNote: 'Names are stored only in this browser and only you can see them. Save an empty field to restore the default.',
+    cancel: 'Cancel', save: 'Save',
+    you: 'You', untitledConv: 'Untitled conversation', untitledFile: 'Untitled',
+    truncated: 'truncated', thinking: 'Thinking', noInput: '(no input)', noOutput: '(no output)', failed: 'failed',
+    noMatchConv: 'No matching conversations',
+    convMeta: n => pl(n, 'msg'),
+    deleteConv: 'Delete conversation', confirmDelete: 'Delete?',
+    convRange: (a, b, n) => `${a} — ${b} · ${pl(n, 'message')}`,
+    bookmark: 'Bookmark', unbookmark: 'Remove bookmark',
+    endOfConv: '— end of conversation —',
+    favTitle: 'Bookmarks', favEmpty: 'No bookmarked messages yet',
+    favEmptyHint: 'Hover over a message and click ☆ to bookmark it',
+    favTotal: n => `${n.toLocaleString()} total`, favGroupN: n => n.toLocaleString(),
+    attachMsg: '📎 Attachment', noText: '(no text)',
+    tlTitle: 'Timeline', noData: 'No data yet',
+    tlSub: (c, m) => `${pl(c, 'conversation')} · ${pl(m, 'month')}`,
+    nConvs: n => pl(n, 'conversation'), nMsgs: n => pl(n, 'message'),
+    wkShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+    ym: (y, m) => `${MONTH_EN[m-1]} ${y}`,
+    ymShort: (y, m) => `${MON_EN[m-1]} ${y}`,
+    ymd: (y, m, d) => `${MON_EN[m-1]} ${d}, ${y}`,
+    mon: m => MON_EN[m-1],
+    noMatchMsgs: 'No matching messages', nFound: n => `${n.toLocaleString()} found`,
+    fileModeExport: 'This page was opened from a file (file://), so it cannot export a standalone HTML file.\n\nBrowsers do not let file:// pages read other files in the same folder.\n\nOpen the online version (https://qithyang.github.io/chat-archive-viewer/) or a local http server and export from there.',
+    generating: 'Generating…', exportFailed: 'Export failed: ', jsonFailed: 'Could not parse the JSON: ',
+    badBackup: 'Not a backup file this viewer recognises (no conversations array).',
+    backupRestored: (a, u, k) => `Backup restored: ${a} added, ${u} updated, ${k} skipped`,
+    importDone: (a, u, k, e) => `Import finished: ${a} added, ${u} updated, ${k} skipped` + (e ? `, ${e} failed` : ''),
+    importDoneErr: 'Import finished with errors',
+    saveDbFailed: '\n⚠ Could not save to the browser database: ', unknownError: 'unknown error',
+    clearConfirm1: 'Clear all data?\n\nThis removes every conversation, bookmark and hidden conversation.',
+    clearConfirm2: '⚠ Last check\n\nThis cannot be undone. Continue?',
+    cleared: 'All data cleared. The page will reload.',
+    parsingJson: 'Parsing JSON…', loadFailed: 'Could not load: ',
+    savingN: n => `Saving ${pl(n, 'conversation')} to the browser database…`,
+    preloadTitle: n => `This HTML file contains ${pl(n, 'conversation')}`,
+    preloadQ: 'Import them into this browser?',
+    preloadNote: 'Imported conversations are still here next time you open the viewer; viewing only keeps them until you close the page.',
+    preloadMem: 'View only', preloadPersist: 'Import',
+    idbUnavailableMem: 'The browser database is unavailable, so this is a view-only session.',
+    openingDb: 'Opening the browser database…', dbUnavailable: 'The browser database is unavailable. Please import a file instead…',
+    migrating: 'Migrating old data…', loadingLocal: 'Loading saved data…',
+    restoringN: n => `Restoring ${pl(n, 'conversation')}…`, readingFile: 'Reading the data file…',
+    stats: {
+      title: 'Stats', empty: 'No data yet',
+      convs: 'Conversations', msgs: 'Messages', span: 'Time span', active: 'Active days', streak: 'Longest streak', deep: 'Late-night chats',
+      unitConv: '', unitMsgTotal: '', unitMsg: 'msgs', unitDay: 'days', unitChar: 'chars',
+      deepHint: 'with messages 02:00–04:59',
+      firstConv: 'First conversation', lastConv: 'Latest conversation',
+      chars: 'characters',
+      heat: 'Daily messages', heatLess: 'Less', heatMore: 'More',
+      rhythm: 'Rhythm', byWeekday: 'By weekday', byHour: 'By hour', peak: 'Peak',
+      monthly: 'Characters per month',
+      ranks: 'Rankings', longest: 'Longest conversations', deepest: 'Late-night conversations',
+      emoji: 'Most-used emoji',
+      words: 'Top words',
+      weekdays: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    },
+  },
+  zh: {
+    docTitle: 'Chat Archive Viewer · 对话归档查看器',
+    tagline: '— 对话归档查看器 —',
+    langBtn: 'EN', langTitle: 'Switch to English',
+    loading: '载入中…',
+    dropTitle: '拖入 conversations.json，或点击选择',
+    dropHint: '从 Claude 导出的对话数据',
+    dataMgmt: '数据管理', importMore: '导入更多 conversations.json',
+    smConvs: '个对话', smMsgs: '条消息',
+    savedNote: '已自动保存到本地数据库',
+    savedNoteN: n => `已自动保存到本地数据库 · ${n} 条收藏`,
+    saveFailedN: n => `⚠ 保存失败 · ${n} 条收藏`,
+    exportBackup: '导出备份…', exportHtml: '导出独立 HTML…',
+    importBackup: '导入备份…', displayNames: '显示名设置…', clearAll: '清空所有数据',
+    tabChat: '对话', tabFav: '收藏', tabTimeline: '时间轴', tabStats: '统计',
+    filterPh: '搜索对话标题…', menu: '菜单',
+    searchMsgs: '搜索消息', thinkingBtn: '思考过程',
+    scopeCurrent: '当前对话', scopeAll: '全部对话', msgSearchPh: '搜索消息内容…',
+    prev: '上一个', next: '下一个', close: '关闭',
+    pickConv: '从左侧选择一个对话',
+    dnTitle: '显示名设置', dnMine: '我的名字', dnMinePh: '你 / 自己的昵称',
+    dnAsst: '助手名字', dnAsstPh: 'Claude / 给 Ta 起个名字',
+    dnNote: '名字只保存在你的浏览器本地，仅你自己看得到。留空保存即恢复默认。',
+    cancel: '取消', save: '保存',
+    you: '你', untitledConv: '未命名对话', untitledFile: '未命名',
+    truncated: '已截断', thinking: '思考', noInput: '(无输入)', noOutput: '(无输出)', failed: '失败',
+    noMatchConv: '没有找到匹配的对话',
+    convMeta: n => `${n}条`,
+    deleteConv: '删除对话', confirmDelete: '确认删除',
+    convRange: (a, b, n) => `${a} — ${b} · ${n} 条`,
+    bookmark: '收藏', unbookmark: '取消收藏',
+    endOfConv: '— 对话结束 —',
+    favTitle: '收藏', favEmpty: '还没有收藏的消息',
+    favEmptyHint: '在消息上 hover，点击 ☆ 即可收藏',
+    favTotal: n => `共 ${n} 条`, favGroupN: n => `${n} 条`,
+    attachMsg: '📎 附件消息', noText: '(无文本)',
+    tlTitle: '时间轴', noData: '还没有数据',
+    tlSub: (c, m) => `${c} 个对话 · ${m} 个月`,
+    nConvs: n => `${n} 个对话`, nMsgs: n => `${n} 条消息`,
+    wkShort: ['日','一','二','三','四','五','六'],
+    ym: (y, m) => `${y} 年 ${m} 月`,
+    ymShort: (y, m) => `${y} 年 ${m} 月`,
+    ymd: (y, m, d) => `${y} 年 ${m} 月 ${d} 日`,
+    mon: m => `${m}月`,
+    noMatchMsgs: '没有匹配的消息', nFound: n => `${n} 项`,
+    fileModeExport: '当前是离线浏览模式 (file://)，无法导出独立 HTML。\n\n原因：浏览器禁止本地 file:// 页面 fetch 同目录其他文件。\n\n请回到在线版（https://qithyang.github.io/chat-archive-viewer/ 或本机 http 服务器）后再导出。',
+    generating: '正在生成…', exportFailed: '导出失败: ', jsonFailed: 'JSON 解析失败: ',
+    badBackup: '无法识别的备份文件（缺少 conversations 数组）',
+    backupRestored: (a, u, k) => `备份已恢复：新增 ${a}，更新 ${u}，跳过 ${k}`,
+    importDone: (a, u, k, e) => `导入完成：新增 ${a}，更新 ${u}，跳过 ${k}` + (e ? `，失败 ${e}` : ''),
+    importDoneErr: '导入完成（含错误）',
+    saveDbFailed: '\n⚠ 保存到本地数据库失败：', unknownError: '未知错误',
+    clearConfirm1: '确定清空所有数据吗？\n\n将删除：所有对话、收藏、已隐藏对话。',
+    clearConfirm2: '⚠ 最后确认\n\n此操作不可撤销。是否继续？',
+    cleared: '已清空所有数据，页面将刷新。',
+    parsingJson: '正在解析 JSON…', loadFailed: '加载失败: ',
+    savingN: n => `正在保存 ${n} 个对话到本地数据库…`,
+    preloadTitle: n => `这份 HTML 嵌入了 ${n} 条对话`,
+    preloadQ: '要把它导入到本机数据库吗？',
+    preloadNote: '导入后下次打开本机 viewer 还能看到；仅本次浏览则关闭页面就丢失。',
+    preloadMem: '仅本次浏览', preloadPersist: '导入到本地',
+    idbUnavailableMem: '本地数据库不可用，将仅本次浏览。',
+    openingDb: '正在打开本地数据库…', dbUnavailable: '本地数据库不可用，请改用文件导入…',
+    migrating: '正在迁移旧数据…', loadingLocal: '正在加载本地数据…',
+    restoringN: n => `正在恢复 ${n} 个对话…`, readingFile: '正在读取数据文件…',
+    stats: {
+      title: '统计', empty: '还没有数据',
+      convs: '对话', msgs: '消息', span: '时间跨度', active: '活跃天数', streak: '最长连续', deep: '深夜对话',
+      unitConv: '个', unitMsgTotal: '条', unitMsg: '条', unitDay: '天', unitChar: '字',
+      deepHint: '02:00–04:59 有消息',
+      firstConv: '第一段对话', lastConv: '最近一段对话',
+      chars: '字数',
+      heat: '每日消息', heatLess: '少', heatMore: '多',
+      rhythm: '节奏', byWeekday: '星期分布', byHour: '24 小时', peak: '最活跃',
+      monthly: '每月字数',
+      ranks: '排行', longest: '最长的 5 段对话', deepest: '深夜对话榜',
+      emoji: '常用 Emoji',
+      words: '高频词',
+      weekdays: ['周一','周二','周三','周四','周五','周六','周日'],
+    },
+  },
+};
+// t('key', ...args): string entries are returned as is, function entries are called.
+function t(key, ...args) {
+  const v = key in I18N[LANG] ? I18N[LANG][key] : I18N.en[key];
+  return typeof v === 'function' ? v(...args) : v;
+}
+// Static markup carries data-i18n / data-i18n-title / data-i18n-ph / data-i18n-aria.
+function applyStaticI18n() {
+  document.documentElement.lang = LANG === 'zh' ? 'zh-CN' : 'en';
+  document.title = t('docTitle');
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+}
+applyStaticI18n();
+function switchLang() {
+  try { localStorage.setItem(LANG_KEY, LANG === 'zh' ? 'en' : 'zh'); } catch (e) {}
+  location.reload();
+}
+
 
 // === CAV module ===
 window.CAV = (() => {
@@ -579,7 +782,7 @@ window.CAV = (() => {
   function pad2(n) { return String(n).padStart(2,'0'); }
   function fmtFullCN(iso) {
     const d = new Date(iso);
-    return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+    return `${fmtDateCN(iso)} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
   }
   function fmtMD(iso) {
     const d = new Date(iso);
@@ -587,7 +790,8 @@ window.CAV = (() => {
   }
   function fmtDateCN(iso) {
     const d = new Date(iso);
-    return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+    const s = t('ymd', d.getFullYear(), d.getMonth()+1, d.getDate());
+    return LANG === 'zh' ? s.replace(/ /g, '') : s; // zh: 2026年4月7日
   }
   function fmtDayKey(iso) {
     const d = new Date(iso);
@@ -757,7 +961,7 @@ window.CAV = (() => {
   }
 
   // localStorage helpers
-  function lsGetUserName() { return localStorage.getItem(DN_USER_KEY) || '你'; }
+  function lsGetUserName() { return localStorage.getItem(DN_USER_KEY) || t('you'); }
   function lsGetAssistantName() { return localStorage.getItem(DN_ASST_KEY) || 'Claude'; }
   function lsSetDisplayNames(u, a) {
     const uT = (u || '').trim(), aT = (a || '').trim();
@@ -889,7 +1093,7 @@ window.CAV = (() => {
         }
       }
     }
-    return '未命名对话';
+    return t('untitledConv');
   }
   // normalize(filteredConvs) → [{uuid, title, chat_messages, firstDate, lastDate, msgCount, updated_at, created_at}]
   // The input must already be filtered (isRealConversation, deletedConvs).
@@ -968,9 +1172,9 @@ window.CAV = (() => {
   registerBlock('thinking', (b /* , ctx */) => {
     if (!b.thinking) return '';
     const inner = String(b.thinking).split('\n').map(l => l.trim() ? `<p>${escHtml(l)}</p>` : '<div class="th-sp"></div>').join('');
-    const status = b.cut_off ? ' · 已截断' : (b.truncated ? ' · 已截断' : '');
+    const status = (b.cut_off || b.truncated) ? ' · ' + t('truncated') : '';
     return `<div class="thinking">
-      <button type="button" class="th-toggle"><span class="th-ico">▸</span><span class="th-lbl">思考${status}</span></button>
+      <button type="button" class="th-toggle"><span class="th-ico">▸</span><span class="th-lbl">${t('thinking')}${status}</span></button>
       <div class="th-content"><div class="th-block">${inner}</div></div>
     </div>`;
   });
@@ -1015,7 +1219,7 @@ window.CAV = (() => {
       }
     }
     const summary = `${icon}<span class="tool-ic"></span><span>🔧 ${escHtml(name)}${msg}</span>`;
-    return `<details class="msg-tool msg-tool-use"><summary>${summary}</summary><div class="tool-body">${integration}${body || '<div class="tool-meta">(无输入)</div>'}</div></details>`;
+    return `<details class="msg-tool msg-tool-use"><summary>${summary}</summary><div class="tool-body">${integration}${body || '<div class="tool-meta">' + t('noInput') + '</div>'}</div></details>`;
   });
 
   registerBlock('tool_result', (b /* , ctx */) => {
@@ -1023,7 +1227,7 @@ window.CAV = (() => {
     const icon = renderToolIcon(b);
     const name = b.name || '(result)';
     const errCls = b.is_error ? ' is-error' : '';
-    const errMark = b.is_error ? ' (失败)' : '';
+    const errMark = b.is_error ? ` (${t('failed')})` : '';
     // body order: display_content → structured_content → content[]
     let body = renderDisplayContent(b.display_content);
     if (!body && b.structured_content && typeof b.structured_content === 'object') {
@@ -1040,7 +1244,7 @@ window.CAV = (() => {
         catch { return ''; }
       }).join('');
     }
-    if (!body) body = '<div class="tool-meta">(无输出)</div>';
+    if (!body) body = '<div class="tool-meta">' + t('noOutput') + '</div>';
     const summary = `${icon}<span class="tool-ic"></span><span>📥 ${escHtml(name)}${errMark}</span>`;
     return `<details class="msg-tool msg-tool-result${errCls}"><summary>${summary}</summary><div class="tool-body">${body}</div></details>`;
   });
@@ -1146,7 +1350,7 @@ CAV.renderer.renderConvList = function renderConvList() {
   const f = CAV.state.convFilter.toLowerCase();
   const items = CAV.state.CONVS.filter(c => !f || c.title.toLowerCase().includes(f));
   if (!items.length) {
-    list.innerHTML = '<div class="empty-list">没有找到匹配的对话</div>';
+    list.innerHTML = `<div class="empty-list">${t('noMatchConv')}</div>`;
     return;
   }
   list.innerHTML = items.map(c => {
@@ -1154,8 +1358,8 @@ CAV.renderer.renderConvList = function renderConvList() {
     const range = a === b ? a : `${a}-${b}`;
     return `<div class="conv-item ${c.uuid===CAV.state.curConvId?'active':''}" data-id="${CAV.utils.escHtml(c.uuid)}">
       <div class="conv-title">${CAV.utils.escHtml(c.title)}</div>
-      <div class="conv-meta">${range} · ${c.msgCount}条</div>
-      <button class="conv-del" data-id="${CAV.utils.escHtml(c.uuid)}" title="删除对话">×</button>
+      <div class="conv-meta">${range} · ${t('convMeta', c.msgCount)}</div>
+      <button class="conv-del" data-id="${CAV.utils.escHtml(c.uuid)}" title="${t('deleteConv')}">×</button>
     </div>`;
   }).join('');
 };
@@ -1166,13 +1370,13 @@ CAV.renderer.renderMessages = function renderMessages() {
   const ms = document.getElementById('messages');
   if (!CAV.state.curConv) {
     document.getElementById('mh-t').textContent = 'Chat Archive Viewer';
-    document.getElementById('mh-m').textContent = '— 对话归档查看器 —';
-    ms.innerHTML = '<div class="empty">从左侧选择一个对话</div>';
+    document.getElementById('mh-m').textContent = t('tagline');
+    ms.innerHTML = `<div class="empty">${t('pickConv')}</div>`;
     return;
   }
   const c = CAV.state.curConv;
   document.getElementById('mh-t').textContent = c.title;
-  document.getElementById('mh-m').textContent = `${CAV.utils.fmtDateCN(c.firstDate)} — ${CAV.utils.fmtDateCN(c.lastDate)} · ${c.msgCount} 条`;
+  document.getElementById('mh-m').textContent = t('convRange', CAV.utils.fmtDateCN(c.firstDate), CAV.utils.fmtDateCN(c.lastDate), c.msgCount);
 
   const hl = (CAV.state.searchScope==='current' && CAV.state.searchQ) ? CAV.state.searchQ : '';
   let html = '';
@@ -1181,7 +1385,7 @@ CAV.renderer.renderMessages = function renderMessages() {
   const escHtml = CAV.utils.escHtml;
   const formatSize = CAV.utils.formatSize;
   function renderFile(f) {
-    const name = f.file_name || '未命名';
+    const name = f.file_name || t('untitledFile');
     if (f.kind === 'text' && f.extracted_content != null && f.extracted_content !== '') {
       return `<details class="msg-file msg-file-text"><summary>📄 ${escHtml(name)}</summary><pre>${escHtml(f.extracted_content)}</pre></details>`;
     }
@@ -1212,7 +1416,7 @@ CAV.renderer.renderMessages = function renderMessages() {
           const lines = String(b.thinking || '').split('\n')
             .map(l => l.trim() ? `<p>${escHtml(l)}</p>` : '<div class="th-sp"></div>')
             .join('');
-          const status = (b.cut_off || b.truncated) ? '<div class="tool-meta">已截断</div>' : '';
+          const status = (b.cut_off || b.truncated) ? `<div class="tool-meta">${t('truncated')}</div>` : '';
           return `<div class="th-block">${lines}${status}</div>`;
         }
         return CAV.renderer.dispatchBlock(b, ctx);
@@ -1220,7 +1424,7 @@ CAV.renderer.renderMessages = function renderMessages() {
       const tkOpen = CAV.state.showThinking;
       parts.push(
         `<div class="thinking">` +
-          `<button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">思考</span></button>` +
+          `<button type="button" class="th-toggle"><span class="th-ico">${tkOpen?'▾':'▸'}</span><span class="th-lbl">${t('thinking')}</span></button>` +
           `<div class="th-content${tkOpen?' open':''}">${inner}</div>` +
         `</div>`
       );
@@ -1269,7 +1473,7 @@ CAV.renderer.renderMessages = function renderMessages() {
           <div class="u-name">${CAV.utils.escHtml(CAV.storage.ls.getUserName())}</div>
         </div>
         <div class="u-time">${CAV.utils.fmtFullCN(msg.created_at)}</div>
-        <button class="msg-fav ${fav?'on':''}" data-fkey="${fkeyAttr}" title="收藏">${fav?'★':'☆'}</button>
+        <button class="msg-fav ${fav?'on':''}" data-fkey="${fkeyAttr}" title="${t('bookmark')}">${fav?'★':'☆'}</button>
       </div>`;
     } else {
       html += `<div class="msg ai" data-msg="${msgAttr}">
@@ -1278,15 +1482,15 @@ CAV.renderer.renderMessages = function renderMessages() {
           <span class="a-name">${CAV.utils.escHtml(CAV.storage.ls.getAssistantName())}</span>
           <span class="a-time">${CAV.utils.fmtFullCN(msg.created_at)}</span>
         </div>
-        <button class="msg-fav ${fav?'on':''}" data-fkey="${fkeyAttr}" title="收藏">${fav?'★':'☆'}</button>
+        <button class="msg-fav ${fav?'on':''}" data-fkey="${fkeyAttr}" title="${t('bookmark')}">${fav?'★':'☆'}</button>
         <div class="body">${inner}</div>
       </div>`;
     }
   }
 
   html += `<div class="endm">
-    <div class="e1">— 对话结束 —</div>
-    <div class="e2">end of conversation</div>
+    <div class="e1">${t('endOfConv')}</div>
+    ${LANG === 'zh' ? '<div class="e2">end of conversation</div>' : ''}
   </div>`;
 
   ms.innerHTML = html;
@@ -1330,24 +1534,24 @@ CAV.renderer.renderFavorites = function renderFavorites() {
   }
   const total = Object.values(groups).reduce((s,a)=>s+a.length,0);
   if (total === 0) {
-    root.innerHTML = `<div class="view-h">收藏 <span class="vh-sub">(0)</span></div>
-      <div class="empty-view">还没有收藏的消息<div class="ev-h">在消息上 hover，点击 ☆ 即可收藏</div></div>`;
+    root.innerHTML = `<div class="view-h">${t('favTitle')} <span class="vh-sub">(0)</span></div>
+      <div class="empty-view">${t('favEmpty')}<div class="ev-h">${t('favEmptyHint')}</div></div>`;
     return;
   }
-  let html = `<div class="view-h">收藏 <span class="vh-sub">共 ${total} 条</span></div>`;
+  let html = `<div class="view-h">${t('favTitle')} <span class="vh-sub">${t('favTotal', total)}</span></div>`;
   for (const cid of Object.keys(groups)) {
     const c = CAV.state.CONVS.find(x => x.uuid === cid);
     if (!c) continue;
     html += `<div class="fav-group">
-      <div class="fav-conv-title"><span>${CAV.utils.escHtml(c.title)}</span><span class="fct-cnt">${groups[cid].length} 条</span></div>`;
+      <div class="fav-conv-title"><span>${CAV.utils.escHtml(c.title)}</span><span class="fct-cnt">${t('favGroupN', groups[cid].length)}</span></div>`;
     for (const mid of groups[cid]) {
       const m = c.chat_messages.find(x => x.uuid === mid);
       if (!m) continue;
       const d = CAV.normalizer.getMsgData(m);
-      const snippet = (d.text || (d.files.length ? '📎 附件消息' : '(无文本)')).slice(0,260);
+      const snippet = (d.text || (d.files.length ? t('attachMsg') : t('noText'))).slice(0,260);
       const fkey = `${cid}__${mid}`;
       html += `<div class="fav-item" data-cid="${CAV.utils.escHtml(cid)}" data-mid="${CAV.utils.escHtml(mid)}">
-        <button class="fav-unfav" data-fkey="${CAV.utils.escHtml(fkey)}" title="取消收藏">★</button>
+        <button class="fav-unfav" data-fkey="${CAV.utils.escHtml(fkey)}" title="${t('unbookmark')}">★</button>
         <div class="fav-snip">${CAV.utils.escHtml(snippet)}${d.text && d.text.length>260?'…':''}</div>
         <div class="fav-meta"><span class="who">${CAV.utils.escHtml(m.sender==='human'?CAV.storage.ls.getUserName():CAV.storage.ls.getAssistantName())}</span><span>${CAV.utils.fmtFullCN(m.created_at)}</span></div>
       </div>`;
@@ -1399,19 +1603,19 @@ CAV.renderer.renderTimeline = function renderTimeline() {
   }
   const months = Object.keys(monthMap).sort();
   if (!months.length) {
-    root.innerHTML = `<div class="view-h">时间轴</div><div class="empty-view">还没有数据</div>`;
+    root.innerHTML = `<div class="view-h">${t('tlTitle')}</div><div class="empty-view">${t('noData')}</div>`;
     return;
   }
   const totalConvs = CAV.state.CONVS.length;
-  let html = `<div class="view-h">时间轴 <span class="vh-sub">${totalConvs} 个对话 · ${months.length} 个月</span></div>`;
-  const wkLabels = ['日','一','二','三','四','五','六'];
+  let html = `<div class="view-h">${t('tlTitle')} <span class="vh-sub">${t('tlSub', totalConvs, months.length)}</span></div>`;
+  const wkLabels = t('wkShort');
   for (const ym of months) {
     const [y, m] = ym.split('-').map(Number);
     const first = new Date(y, m-1, 1);
     const startWk = first.getDay();
     const days = new Date(y, m, 0).getDate();
     html += `<div class="tl-month" id="tl-m-${ym}">
-      <div class="tl-month-title">${y} 年 ${m} 月</div>
+      <div class="tl-month-title">${t('ym', y, m)}</div>
       <div class="tl-grid">`;
     for (const w of wkLabels) html += `<div class="tl-day-h">${w}</div>`;
     for (let i = 0; i < startWk; i++) html += `<div class="tl-day empty"></div>`;
@@ -1420,7 +1624,7 @@ CAV.renderer.renderTimeline = function renderTimeline() {
       const cnt = monthMap[ym][k];
       if (cnt) {
         const lvl = cnt >= 4 ? 3 : cnt >= 2 ? 2 : 1;
-        html += `<div class="tl-day has lvl-${lvl}" data-day="${k}" title="${cnt} 个对话">${d}<div class="dot"></div></div>`;
+        html += `<div class="tl-day has lvl-${lvl}" data-day="${k}" title="${t('nConvs', cnt)}">${d}<div class="dot"></div></div>`;
       } else {
         html += `<div class="tl-day">${d}</div>`;
       }
@@ -1440,7 +1644,26 @@ function computeStats(convs, norm) {
   const monthKey = d => `${d.getFullYear()}-${p2(d.getMonth()+1)}`;
   const PICTO = /\p{Extended_Pictographic}/u;
   const EMOJI_LOOK = /\p{Emoji_Presentation}|️/u;
-  const seg = (typeof Intl !== 'undefined' && Intl.Segmenter) ? new Intl.Segmenter(undefined, { granularity:'grapheme' }) : null;
+  const hasSeg = typeof Intl !== 'undefined' && !!Intl.Segmenter;
+  const seg = hasSeg ? new Intl.Segmenter(undefined, { granularity:'grapheme' }) : null;
+  // word segmentation: the zh locale handles CJK and Latin text alike
+  const wordSeg = hasSeg ? new Intl.Segmenter('zh', { granularity:'word' }) : null;
+  const STOP = new Set((
+    'the and for are but not you your yours with this that these those from have has had was were will would could should ' +
+    'can cant dont doesnt didnt isnt its it\'s i\'m im ive youre i\'ve i\'ll i\'d you\'re you\'ll you\'ve we\'re they\'re ' +
+    'what\'s that\'s there\'s here\'s don\'t doesn\'t didn\'t isn\'t can\'t won\'t comes what when where which who whom why how all any both each ' +
+    'few more most other some such than too very just also only own same into over under again then once here there about ' +
+    'above below after before between out off our ours they them their theirs she her hers him his its itself myself ' +
+    'yourself one two get got make made like well yes yeah okay sure thing things way lot really much many even still ' +
+    'because while does did doing being been let lets use used using want need know think something anything everything ' +
+    'maybe though through without within per via etc may might must shall now new good great right back first last ' +
+    'take see say said tell keep give look find try going come go done day time thanks thank hello please ' +
+    '我们 你们 他们 她们 它们 这个 那个 这些 那些 这样 那样 这里 那里 什么 怎么 怎样 怎么样 为什么 可以 可能 应该 需要 ' +
+    '就是 还是 因为 所以 但是 不过 如果 然后 已经 一个 一些 一下 一点 没有 不是 自己 时候 现在 知道 觉得 还有 或者 而且 ' +
+    '只是 比较 非常 真的 其实 的话 之后 之前 以后 起来 出来 一样 这么 那么 是不是 有没有 一般 通常 大概 也许 而是 以及 ' +
+    '还要 不要 不会 可是 只要 就会 一定 有点 一起 东西 问题 方法 情况 时间 你的 我的 他的 她的 好的 好吧 谢谢 你好'
+  ).split(' '));
+  const words = { human:new Map(), assistant:new Map() };
 
   const days = new Map();              // 'YYYY-MM-DD' -> visible messages
   const months = new Map();            // 'YYYY-MM' -> characters { human, assistant }
@@ -1456,6 +1679,19 @@ function computeStats(convs, norm) {
     const parts = seg ? Array.from(seg.segment(text), s => s.segment) : (text.match(/\p{Extended_Pictographic}️?/gu) || []);
     for (const g of parts) {
       if (PICTO.test(g) && EMOJI_LOOK.test(g)) emoji.set(g, (emoji.get(g) || 0) + 1);
+    }
+  }
+
+  function countWords(text, map) {
+    if (!wordSeg) return;
+    const clean = text.replace(/```[\s\S]*?```/g, ' ').replace(/`[^`\n]*`/g, ' ').replace(/(?:https?:\/\/|www\.)\S+/g, ' ');
+    for (const part of wordSeg.segment(clean)) {
+      if (!part.isWordLike) continue;
+      const w = part.segment.toLowerCase().replace(/[’']/g, '\'');
+      if (/^[\d.,:]+$/.test(w)) continue;
+      if (/[\u3400-\u9fff]/.test(w) ? w.length < 2 : w.length < 3) continue;
+      if (STOP.has(w)) continue;
+      map.set(w, (map.get(w) || 0) + 1);
     }
   }
 
@@ -1482,13 +1718,15 @@ function computeStats(convs, norm) {
       const mk = monthKey(d);
       if (!months.has(mk)) months.set(mk, { human:0, assistant:0 });
       months.get(mk)[who] += len;
-      if (text) countEmoji(text);
+      if (text) { countEmoji(text); countWords(text, words[who]); }
     }
     msgCount += n;
     if (n) perConv.push({ uuid:c.uuid, title:c.title, msgs:n, chars:nChars, deep, first });
   }
 
   if (!msgCount) return { empty:true };
+  // ties broken alphabetically so the output is stable
+  const topWords = m => Array.from(m, ([w, n]) => ({ w, n })).filter(x => x.n > 1).sort((a, b) => b.n - a.n || (a.w < b.w ? -1 : 1)).slice(0, 40);
 
   // streak + span over local calendar days (noon avoids DST edge cases)
   const toNoon = k => { const [y, mo, da] = k.split('-').map(Number); return new Date(y, mo-1, da, 12).getTime(); };
@@ -1530,6 +1768,10 @@ function computeStats(convs, norm) {
     topLongest: perConv.slice().sort((a, b) => b.msgs - a.msgs || b.chars - a.chars).slice(0, 5).map(brief),
     topDeep: perConv.filter(c => c.deep > 0).sort((a, b) => b.deep - a.deep || b.msgs - a.msgs).slice(0, 5).map(brief),
     emoji: Array.from(emoji, ([e, n]) => ({ e, n })).sort((a, b) => b.n - a.n).slice(0, 15),
+    words: {
+      human: topWords(words.human),
+      assistant: topWords(words.assistant),
+    },
     firstTs, lastTs,
   };
 }
@@ -1547,23 +1789,8 @@ CAV.stats.compute = function compute() {
   return CAV.stats._result;
 };
 
-// UI strings for the stats view, kept in one place for a future English UI.
-const STATS_TEXT = {
-  title: '统计',
-  empty: '还没有数据',
-  convs: '对话', msgs: '消息', span: '时间跨度', active: '活跃天数', streak: '最长连续', deep: '深夜对话',
-  unitConv: '个', unitMsg: '条', unitDay: '天', unitChar: '字',
-  deepHint: '02:00–04:59 有消息',
-  firstConv: '第一段对话', lastConv: '最近一段对话',
-  chars: '字数', share: '占比',
-  heat: '每日消息', heatLess: '少', heatMore: '多',
-  rhythm: '节奏', byWeekday: '星期分布', byHour: '24 小时', peak: '最活跃',
-  monthly: '每月字数',
-  ranks: '排行', longest: '最长的 5 段对话', deepest: '深夜对话榜',
-  emoji: '常用 Emoji',
-  weekdays: ['周一','周二','周三','周四','周五','周六','周日'],
-  wkShort: ['日','一','二','三','四','五','六'],
-};
+// Stats view strings live in I18N[lang].stats.
+const STATS_TEXT = I18N[LANG].stats;
 
 // === Charts: each returns an SVG/HTML string; colours come from CSS classes ===
 CAV.charts = {};
@@ -1609,13 +1836,27 @@ CAV.charts.heatmap = function heatmap(days, firstDay, lastDay) {
   // month labels; drop one that would crowd the next (needs 3 columns)
   marks.forEach((k, i) => {
     const next = marks[i + 1] ? marks[i + 1].w : weeks;
-    if (next - k.w >= 3) labels += `<text x="${left + k.w * step}" y="11" class="ch-lbl">${k.m}月</text>`;
+    if (next - k.w >= 3) labels += `<text x="${left + k.w * step}" y="11" class="ch-lbl">${t('mon', k.m)}</text>`;
   });
-  for (const r of [1, 3, 5]) labels += `<text x="0" y="${top + r * step + 9}" class="ch-lbl">${T.wkShort[r]}</text>`;
+  for (const r of [1, 3, 5]) labels += `<text x="0" y="${top + r * step + 9}" class="ch-lbl">${t('wkShort')[r]}</text>`;
   const W = left + weeks * step, H = top + 7 * step;
   const legend = [0,1,2,3,4].map(i => `<span class="hm-sw hm-${i}"></span>`).join('');
   return `<div class="hm-scroll"><svg class="ch-heat" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${labels}${rects}</svg></div>
     <div class="hm-legend">${T.heatLess}${legend}${T.heatMore}</div>`;
+};
+
+// Word cloud: size and weight follow frequency; words are laid out in a stable
+// pseudo-random order so the biggest ones don't all bunch up at the start.
+CAV.charts.cloud = function cloud(list, cls) {
+  if (!list.length) return '<div class="st-none">—</div>';
+  const max = list[0].n, min = list[list.length - 1].n;
+  const hash = w => { let h = 0; for (const ch of w) h = (h * 31 + ch.codePointAt(0)) >>> 0; return h; };
+  const items = list.map((x, i) => {
+    const k = max === min ? 1 : Math.sqrt((x.n - min) / (max - min));
+    return `<span class="wc-w ${cls}${i < 5 ? ' top' : ''}" style="font-size:${(12 + k * 14).toFixed(1)}px;opacity:${(0.55 + k * 0.45).toFixed(2)}" title="${CAV.utils.escHtml(x.w)} · ${x.n}">${CAV.utils.escHtml(x.w)}</span>`;
+  });
+  const order = list.map((x, i) => i).sort((a, b) => hash(list[a].w) - hash(list[b].w));
+  return `<div class="wc">${order.map(i => items[i]).join('')}</div>`;
 };
 
 CAV.charts.bars = function bars(rows) {
@@ -1641,12 +1882,12 @@ CAV.charts.radial = function radial(hours) {
 };
 
 CAV.charts.line = function line(series, names) {
-  const W = 680, H = 200, l = 36, r = 12, t = 12, b = 26;
+  const W = 680, H = 200, l = 36, r = 12, top0 = 12, b = 26;
   const max = Math.max(1, ...series.flatMap(p => [p.human, p.assistant]));
   const nice = Math.pow(10, Math.floor(Math.log10(max)));
   const top = Math.ceil(max / nice) * nice;
   const x = i => l + (series.length === 1 ? (W - l - r) / 2 : i * (W - l - r) / (series.length - 1));
-  const y = v => t + (1 - v / top) * (H - t - b);
+  const y = v => top0 + (1 - v / top) * (H - top0 - b);
   let s = '';
   for (let g = 0; g <= 4; g++) {
     const v = top * g / 4;
@@ -1654,7 +1895,7 @@ CAV.charts.line = function line(series, names) {
   }
   const every = Math.ceil(series.length / 8);
   series.forEach((p, i) => {
-    if (i % every === 0) s += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle" class="ch-lbl">${Number(p.key.slice(5))}月</text>`;
+    if (i % every === 0) s += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle" class="ch-lbl">${t('mon', Number(p.key.slice(5)))}</text>`;
   });
   for (const [who, cls] of [['human', 'u'], ['assistant', 'a']]) {
     s += `<polyline class="ln ln-${cls}" points="${series.map((p, i) => `${x(i).toFixed(1)},${y(p[who]).toFixed(1)}`).join(' ')}" />`;
@@ -1674,18 +1915,18 @@ CAV.renderer.renderStats = function renderStats() {
     return;
   }
   const names = { u: CAV.storage.ls.getUserName(), a: CAV.storage.ls.getAssistantName() };
-  const ym = ts => { const d = new Date(ts); return `${d.getFullYear()} 年 ${d.getMonth()+1} 月`; };
+  const ym = ts => { const d = new Date(ts); return t('ymShort', d.getFullYear(), d.getMonth()+1); };
   const n = v => v.toLocaleString();
   const card = (label, value, unit, hint) => `<div class="st-card"><div class="st-l">${label}</div><div class="st-v">${n(value)}<span class="st-u">${unit}</span></div>${hint ? `<div class="st-hint">${hint}</div>` : ''}</div>`;
   const convCard = (label, c) => `<div class="st-card st-link" data-cid="${esc(c.uuid)}"><div class="st-l">${label}</div><div class="st-title">${esc(c.title)}</div><div class="st-hint">${esc(CAV.utils.fmtDateCN(new Date(c.first).toISOString()))} · ${n(c.msgs)} ${T.unitMsg}</div></div>`;
   const totalChars = s.chars.human + s.chars.assistant || 1;
   const charCard = (name, v, cls) => `<div class="st-card st-share"><div><div class="st-l">${esc(name)} · ${T.chars}</div><div class="st-v">${n(v)}<span class="st-u">${T.unitChar}</span></div></div>${CAV.charts.ring(v / totalChars, cls)}</div>`;
   const rank = (list, metric) => `<div class="st-rank">${list.map((c, i) => `<div class="st-row st-link" data-cid="${esc(c.uuid)}"><span class="sr-i">${i + 1}</span><span class="sr-t">${esc(c.title)}</span><span class="sr-m">${metric(c)}</span></div>`).join('')}</div>`;
-  const sec = t => `<div class="st-h">${t}</div>`;
+  const sec = label => `<div class="st-h">${label}</div>`;
 
   let h = `<div class="view-h">${T.title} <span class="vh-sub">${ym(s.firstTs)} – ${ym(s.lastTs)}</span></div><div class="st-wrap">`;
   h += `<div class="st-grid st-g3">
-    ${card(T.convs, s.convCount, T.unitConv)}${card(T.msgs, s.msgCount, T.unitMsg)}${card(T.span, s.spanDays, T.unitDay)}
+    ${card(T.convs, s.convCount, T.unitConv)}${card(T.msgs, s.msgCount, T.unitMsgTotal)}${card(T.span, s.spanDays, T.unitDay)}
     ${card(T.active, s.activeDays, T.unitDay)}${card(T.streak, s.longestStreak, T.unitDay)}${card(T.deep, s.deepConvCount, T.unitConv, T.deepHint)}
   </div>`;
   h += `<div class="st-grid st-g2">${charCard(names.u, s.chars.human, 'ch-u')}${charCard(names.a, s.chars.assistant, 'ch-a')}</div>`;
@@ -1700,6 +1941,12 @@ CAV.renderer.renderStats = function renderStats() {
     <div class="st-card st-pad"><div class="st-l">${T.longest}</div>${rank(s.topLongest, c => `${n(c.msgs)} ${T.unitMsg} · ${n(c.chars)} ${T.unitChar}`)}</div>
     <div class="st-card st-pad"><div class="st-l">${T.deepest}</div>${s.topDeep.length ? rank(s.topDeep, c => `${n(c.deep)} ${T.unitMsg}`) : `<div class="st-none">—</div>`}</div>
   </div>`;
+  if (s.words.human.length || s.words.assistant.length) {
+    h += sec(T.words) + `<div class="st-grid st-g2">
+      <div class="st-card st-pad"><div class="st-l">${esc(names.u)}</div>${CAV.charts.cloud(s.words.human, 'wc-u')}</div>
+      <div class="st-card st-pad"><div class="st-l">${esc(names.a)}</div>${CAV.charts.cloud(s.words.assistant, 'wc-a')}</div>
+    </div>`;
+  }
   if (s.emoji.length) {
     h += sec(T.emoji) + `<div class="st-card st-pad"><div class="st-emoji">${s.emoji.map(x => `<div class="se-i"><span class="se-e">${esc(x.e)}</span><span class="se-n">${n(x.n)}</span></div>`).join('')}</div></div>`;
   }
@@ -1727,11 +1974,11 @@ CAV.renderer.showTlPopover = function showTlPopover(dayEl) {
   pop.className = 'tl-popover';
   const [yy,mm,dd] = day.split('-');
   pop.innerHTML =
-    `<div class="tl-pop-h"><span>${parseInt(yy)} 年 ${parseInt(mm)} 月 ${parseInt(dd)} 日 · ${items.length} 个对话</span><button class="tl-pop-close" title="关闭">×</button></div>` +
+    `<div class="tl-pop-h"><span>${t('ymd', parseInt(yy), parseInt(mm), parseInt(dd))} · ${t('nConvs', items.length)}</span><button class="tl-pop-close" title="${t('close')}">×</button></div>` +
     `<div class="tl-pop-list">` +
     items.map(it => `<div class="tl-pop-item" data-cid="${CAV.utils.escHtml(it.cid)}" data-mid="${CAV.utils.escHtml(it.mid)}">
       <div>${CAV.utils.escHtml(it.title)}</div>
-      <div class="tl-pop-meta">${it.count} 条消息</div>
+      <div class="tl-pop-meta">${t('nMsgs', it.count)}</div>
     </div>`).join('') +
     `</div>`;
   root.appendChild(pop);
@@ -1830,9 +2077,9 @@ CAV.search.searchAll = function searchAll() {
     }
     if (firstHtml) parts.push(firstHtml);
   }
-  root.innerHTML = parts.length ? parts.join('') : '<div style="padding:18px;text-align:center;color:var(--text-3);font-size:12px;font-style:italic">没有匹配的消息</div>';
+  root.innerHTML = parts.length ? parts.join('') : '<div style="padding:18px;text-align:center;color:var(--text-3);font-size:12px;font-style:italic">' + t('noMatchMsgs') + '</div>';
   root.classList.add('show');
-  document.getElementById('sb-stats').textContent = `${found} 项`;
+  document.getElementById('sb-stats').textContent = t('nFound', found);
 };
 
 // === Open conv ===
@@ -1867,6 +2114,8 @@ function openConv(id, scrollToMsg) {
 CAV.events = {};
 
 CAV.events.bindSidebar = function bindSidebar() {
+  document.getElementById('lang-btn').addEventListener('click', switchLang);
+
   // Conv-title filter input
   document.getElementById('conv-filter').addEventListener('input', e => {
     CAV.state.convFilter = e.target.value.trim();
@@ -1893,7 +2142,7 @@ CAV.events.bindSidebar = function bindSidebar() {
       } else {
         document.querySelectorAll('.conv-del.confirm').forEach(b => { b.classList.remove('confirm'); b.textContent = '×'; });
         del.classList.add('confirm');
-        del.textContent = '确认删除';
+        del.textContent = t('confirmDelete');
         setTimeout(() => { if (del.classList.contains('confirm')) { del.classList.remove('confirm'); del.textContent = '×'; } }, 3000);
       }
       return;
@@ -2186,8 +2435,8 @@ function updateStorageStats() {
   if (mn) mn.textContent = totalMsgCount();
   if (note) {
     const fn = totalFavCount();
-    if (CAV.state.lastSaveOk) note.textContent = `已自动保存到本地数据库 · ${fn} 条收藏`;
-    else note.textContent = `⚠ 保存失败 · ${fn} 条收藏`;
+    if (CAV.state.lastSaveOk) note.textContent = t('savedNoteN', fn);
+    else note.textContent = t('saveFailedN', fn);
   }
 }
 // === app + importExport ===
@@ -2266,16 +2515,14 @@ CAV.app.importExport.exportSelfContainedHtml = async function exportSelfContaine
   // so tell the user to export from the hosted version instead of failing silently.
   if (location.protocol === 'file:') {
     alert(
-      '当前是离线浏览模式 (file://)，无法导出独立 HTML。\n\n' +
-      '原因：浏览器禁止本地 file:// 页面 fetch 同目录其他文件。\n\n' +
-      '请回到在线版（https://qithyang.github.io/chat-archive-viewer/ 或本机 http 服务器）后再导出。'
+      t('fileModeExport')
     );
     return;
   }
 
   const exportHtmlBtn = document.getElementById('sm-export-html');
   const oldText = exportHtmlBtn ? exportHtmlBtn.textContent : '';
-  if (exportHtmlBtn) { exportHtmlBtn.textContent = '正在生成…'; exportHtmlBtn.disabled = true; }
+  if (exportHtmlBtn) { exportHtmlBtn.textContent = t('generating'); exportHtmlBtn.disabled = true; }
   try {
     const payload = {
       app: 'chat-archive-viewer',
@@ -2324,7 +2571,7 @@ CAV.app.importExport.exportSelfContainedHtml = async function exportSelfContaine
     document.body.appendChild(a); a.click();
     setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 100);
   } catch (e) {
-    alert('导出失败: ' + (e && e.message || e));
+    alert(t('exportFailed') + (e && e.message || e));
     console.error(e);
   } finally {
     if (exportHtmlBtn) { exportHtmlBtn.textContent = oldText; exportHtmlBtn.disabled = false; }
@@ -2337,11 +2584,11 @@ CAV.app.importExport.importBackup = function importBackup(file) {
   reader.onload = async e => {
     let data;
     try { data = JSON.parse(e.target.result); }
-    catch (err) { alert('JSON 解析失败: ' + err.message); return; }
+    catch (err) { alert(t('jsonFailed') + err.message); return; }
     let arr = null;
     if (Array.isArray(data)) arr = data;
     else if (Array.isArray(data.conversations)) arr = data.conversations;
-    if (!arr) { alert('无法识别的备份文件（缺少 conversations 数组）'); return; }
+    if (!arr) { alert(t('badBackup')); return; }
     arr.forEach(CAV.filter.schemaDriftDetector);
     const r = CAV.parser.parse(arr);
     if (data.favs && typeof data.favs === 'object') {
@@ -2359,8 +2606,8 @@ CAV.app.importExport.importBackup = function importBackup(file) {
     if (CAV.state.view === 'favorites') CAV.renderer.renderFavorites();
     if (CAV.state.view === 'timeline') CAV.renderer.renderTimeline();
     updateStorageStats();
-    let msg = `备份已恢复：新增 ${r.added}，更新 ${r.updated}，跳过 ${r.kept}`;
-    if (!sv.ok) msg += '\n⚠ 保存到本地数据库失败：' + (sv.err && sv.err.message || '未知错误');
+    let msg = t('backupRestored', r.added, r.updated, r.kept);
+    if (!sv.ok) msg += t('saveDbFailed') + (sv.err && sv.err.message || t('unknownError'));
     alert(msg);
   };
   reader.readAsText(file);
@@ -2393,8 +2640,8 @@ CAV.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
         if (CAV.state.view === 'timeline') CAV.renderer.renderTimeline();
         const sv = await saveConvsByIds(totals.changedIds);
         updateStorageStats();
-        let msg = `导入完成：新增 ${totals.added}，更新 ${totals.updated}，跳过 ${totals.kept}` + (totals.errors ? `，失败 ${totals.errors}` : '');
-        if (!sv.ok) msg += '\n⚠ 保存到本地数据库失败：' + (sv.err && sv.err.message || '未知错误');
+        let msg = t('importDone', totals.added, totals.updated, totals.kept, totals.errors);
+        if (!sv.ok) msg += t('saveDbFailed') + (sv.err && sv.err.message || t('unknownError'));
         alert(msg);
       }
     };
@@ -2406,7 +2653,7 @@ CAV.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
         CAV.renderer.renderConvList();
         await saveConvsByIds(totals.changedIds);
         updateStorageStats();
-        alert('导入完成（含错误）');
+        alert(t('importDoneErr'));
       }
     };
     reader.readAsText(f);
@@ -2414,8 +2661,8 @@ CAV.app.importExport.mergeMoreFiles = function mergeMoreFiles(fileList) {
 };
 
 CAV.app.importExport.clearAllData = async function clearAllData() {
-  if (!confirm('确定清空所有数据吗？\n\n将删除：所有对话、收藏、已隐藏对话。')) return;
-  if (!confirm('⚠ 最后确认\n\n此操作不可撤销。是否继续？')) return;
+  if (!confirm(t('clearConfirm1'))) return;
+  if (!confirm(t('clearConfirm2'))) return;
   try {
     await CAV.storage.idb.clear('conversations');
     await CAV.storage.idb.clear('favs');
@@ -2431,7 +2678,7 @@ CAV.app.importExport.clearAllData = async function clearAllData() {
   CAV.state.favs = {};
   CAV.state.deletedConvs = new Set();
   CAV.state.curConvId = null; CAV.state.curConv = null;
-  alert('已清空所有数据，页面将刷新。');
+  alert(t('cleared'));
   location.reload();
 };
 
@@ -2441,21 +2688,21 @@ CAV.app.importExport.setupPicker = function setupPicker() {
   function handle(file) {
     if (!file) return;
     document.getElementById('loading').style.display = 'flex';
-    setLoadingText('正在解析 JSON…');
+    setLoadingText(t('parsingJson'));
     const reader = new FileReader();
     reader.onload = async e => {
       let parsed;
       try { parsed = JSON.parse(e.target.result); }
       catch(err) {
         document.getElementById('loading').style.display = 'none';
-        alert('JSON 解析失败: ' + err.message);
+        alert(t('jsonFailed') + err.message);
         return;
       }
       try {
         await startApp(parsed);
       } catch (err) {
         document.getElementById('loading').style.display = 'none';
-        alert('加载失败: ' + (err && err.message || err));
+        alert(t('loadFailed') + (err && err.message || err));
       }
     };
     reader.readAsText(file);
@@ -2478,7 +2725,7 @@ async function startApp(data, opts) {
   CAV.state.RAW = Object.values(CAV.state.RAW_BY_ID);
   CAV.state.CONVS = processConvs(CAV.state.RAW);
   if (!opts.fromCache && !opts.noPersist && r.changedIds.length) {
-    setLoadingText(`正在保存 ${r.changedIds.length} 个对话到本地数据库…`);
+    setLoadingText(t('savingN', r.changedIds.length));
     await saveConvsByIds(r.changedIds);
   }
   document.getElementById('loading').style.display = 'none';
@@ -2501,15 +2748,14 @@ function showPreloadChoiceModal(n) {
     modal.innerHTML =
       '<div class="preload-modal-bg"></div>' +
       '<div class="preload-modal-card">' +
-        '<div class="preload-modal-title">这份 HTML 嵌入了 ' + n + ' 条对话</div>' +
+        '<div class="preload-modal-title">' + t('preloadTitle', n) + '</div>' +
         '<div class="preload-modal-body">' +
-          '要把它导入到本机数据库吗？' +
-          '<span class="preload-modal-note">导入后下次打开本机 viewer 还能看到；' +
-          '仅本次浏览则关闭页面就丢失。</span>' +
+          t('preloadQ') +
+          '<span class="preload-modal-note">' + t('preloadNote') + '</span>' +
         '</div>' +
         '<div class="preload-modal-acts">' +
-          '<button class="preload-btn" data-act="memory">仅本次浏览</button>' +
-          '<button class="preload-btn preload-btn-primary" data-act="persist">导入到本地</button>' +
+          '<button class="preload-btn" data-act="memory">' + t('preloadMem') + '</button>' +
+          '<button class="preload-btn preload-btn-primary" data-act="persist">' + t('preloadPersist') + '</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(modal);
@@ -2538,7 +2784,7 @@ CAV.app.handlePreloaded = async function handlePreloaded(preloaded) {
   const n = preloaded.conversations.length;
   let choice = await showPreloadChoiceModal(n);
   if (choice === 'persist' && !idbOk) {
-    alert('本地数据库不可用，将仅本次浏览。');
+    alert(t('idbUnavailableMem'));
     choice = 'memory';
   }
 
@@ -2605,12 +2851,12 @@ CAV.app.init = async function init() {
     }
   }
 
-  setLoadingText('正在打开本地数据库…');
+  setLoadingText(t('openingDb'));
   try {
     await CAV.storage.idb.open();
   } catch (e) {
-    console.error('IndexedDB 不可用', e);
-    setLoadingText('本地数据库不可用，请改用文件导入…');
+    console.error('IndexedDB unavailable', e);
+    setLoadingText(t('dbUnavailable'));
     document.getElementById('loading').style.display = 'none';
     document.getElementById('picker').classList.add('show');
     CAV.app.importExport.setupPicker();
@@ -2618,11 +2864,11 @@ CAV.app.init = async function init() {
   }
 
   // One-time migration from old localStorage layout (xy_raw / xy_favs / xy_del)
-  setLoadingText('正在迁移旧数据…');
+  setLoadingText(t('migrating'));
   await CAV.storage.ls.migrateLegacy();
 
   // Load all stores from IndexedDB
-  setLoadingText('正在加载本地数据…');
+  setLoadingText(t('loadingLocal'));
   let convs, favRows, delRows;
   try {
     [convs, favRows, delRows] = await Promise.all([
@@ -2648,14 +2894,14 @@ CAV.app.init = async function init() {
   CAV.state.deletedConvs = new Set(delRows.map(d => d.uuid));
 
   if (convs && convs.length) {
-    setLoadingText(`正在恢复 ${convs.length} 个对话…`);
+    setLoadingText(t('restoringN', convs.length));
     await startApp(convs, { fromCache: true });
     return;
   }
 
   // No cached data — try user's private conversations.json (persist),
   // then the public demo (don't persist — it's just a placeholder).
-  setLoadingText('正在读取数据文件…');
+  setLoadingText(t('readingFile'));
   let data = null;
   let persistFetched = true;
   try {
@@ -2664,7 +2910,7 @@ CAV.app.init = async function init() {
   } catch(e) {}
   if (!data) {
     try {
-      const r = await fetch('./demo-conversations.json');
+      const r = await fetch(LANG === 'zh' ? './demo-conversations.zh.json' : './demo-conversations.json');
       if (r.ok) { data = await r.json(); persistFetched = false; }
     } catch(e) {}
   }

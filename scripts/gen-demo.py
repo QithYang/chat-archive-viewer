@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Generate the sample data in demo-conversations.json.
+"""Generate the sample data: demo-conversations.json (English) and
+demo-conversations.zh.json (Chinese).
 
-Keeps the three hand-written conversations (demo-conv-001..003) as they are
-and adds ~50 generated ones (demo-conv-g001...) spread over the six months
+Each file keeps its three hand-written conversations (demo-conv-001..003) as
+they are and adds ~50 generated ones (demo-conv-g001...) spread over the six months
 before them, so the statistics view has something to show. Everything here
-is made up. The output is deterministic (fixed seed); re-run after editing:
+is made up. Both languages use the same seed and mirrored content lists, so
+their timelines and charts match. The output is deterministic; re-run after
+editing:
 
     python3 scripts/gen-demo.py
 
@@ -16,17 +19,18 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "demo-conversations.json"
+OUTS = {"en": ROOT / "demo-conversations.json", "zh": ROOT / "demo-conversations.zh.json"}
 CN = timezone(timedelta(hours=8))
 START = datetime(2025, 10, 6, tzinfo=CN)
 END = datetime(2026, 4, 3, tzinfo=CN)  # hand-written samples start 2026-04-05
 
-rng = random.Random(20261003)
+SEED = 20261003
+rng = random.Random(SEED)
 
 EMOJI = ["😊", "👍", "🙏", "✨", "😂", "🤔", "❤️", "🎉", "😮", "🌙", "☕", "👨‍💻", "🧑‍🍳"]
 
 # Each topic: titles, (question, answer) pairs, and optional short thinking notes.
-TOPICS = {
+TOPICS_ZH = {
     "code": {
         "titles": ["Python 列表推导式", "Git 分支怎么合并", "写一个小爬虫", "正则表达式入门", "SQL 查询优化", "前端布局问题"],
         "pairs": [
@@ -122,16 +126,136 @@ TOPICS = {
     },
 }
 
-FOLLOWUPS = ["好的，我试试", "明白了，谢谢！", "原来如此", "那如果换一种情况呢？", "有道理", "收到～"]
-ACKS = ["不客气，有问题随时问。", "加油！", "试过之后可以告诉我效果。", "好的，有需要再来找我。"]
+FOLLOWUPS_ZH = ["好的，我试试", "明白了，谢谢！", "原来如此", "那如果换一种情况呢？", "有道理", "收到～"]
+ACKS_ZH = ["不客气，有问题随时问。", "加油！", "试过之后可以告诉我效果。", "好的，有需要再来找我。"]
 
 # Long check-in conversations: one short exchange per day, so repetition reads naturally.
 WORDS = ["resilient", "meticulous", "candid", "ambiguous", "pragmatic", "vivid", "coherent", "diligent",
          "eloquent", "frugal", "genuine", "humble", "inevitable", "keen", "lucid", "modest", "notion",
          "obscure", "plausible", "reluctant", "subtle", "tedious", "versatile", "whim", "zeal",
          "abundant", "brisk", "cherish", "dwell", "endeavor", "fragile", "grasp", "hinder", "imply"]
-RUNS = ["3 公里，配速 7:10", "跑走结合 25 分钟", "4 公里，比上次轻松", "休息日，拉伸 10 分钟",
+RUNS_ZH = ["3 公里，配速 7:10", "跑走结合 25 分钟", "4 公里，比上次轻松", "休息日，拉伸 10 分钟",
         "3.5 公里，最后一公里加速", "5 公里！第一次跑完", "雨天在家做了 20 分钟力量"]
+
+# English pack: every list mirrors its Chinese counterpart one-to-one
+# (check_mirrored() enforces the lengths), so both files share one timeline.
+TOPICS_EN = {
+    "code": {
+        "titles": ["Python list comprehensions", "Merging Git branches", "Writing a small scraper", "Regex basics", "Speeding up a SQL query", "A CSS layout question"],
+        "pairs": [
+            ("What's the advantage of a list comprehension over a for loop?", "Mostly brevity: `[x*2 for x in nums]` says \"double every element\" in one line. It's usually a little faster too, since the loop runs inside the interpreter. When the logic gets complex, a plain for loop reads better."),
+            ("Should I use git merge or rebase?", "A simple rule:\n\n- **merge** keeps the real branch history; use it when merging into shared branches\n- **rebase** makes the history a straight line; use it to tidy commits you haven't pushed yet\n\nDon't rebase a branch that's already pushed and used by others."),
+            ("What does this error mean: `IndexError: list index out of range`", "You accessed an index past the end of the list. If the list has 3 items, the highest index is 2, but the code asked for `items[3]`. Try `print(len(items))` to see the real length."),
+            ("What's the difference between `.*?` and `.*` in a regex?", "`.*` is greedy and takes as many characters as it can; `.*?` is lazy and stops at the shortest match. On `<a><b>`, `<.*>` matches the whole string while `<.*?>` matches just `<a>`."),
+            ("My SQL query is slow. Where do I start?", "Run `EXPLAIN` and look for full table scans. Common fixes: index the columns used in WHERE and JOIN, avoid wrapping indexed columns in functions, and select only the columns you need instead of `SELECT *`."),
+            ("How do I vertically center an element with flexbox?", "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."),
+            ("Can you see anything in this code I could simplify?", "You could pull the repeated check into a small function and replace the long if/elif chain with a dictionary. Adding a new case then takes one line."),
+            ("What should I watch out for when writing a scraper?", "A few things: read the site's robots.txt and terms first; space out your requests so you don't load their server; handle errors and retries; and only use the data in ways you're allowed to."),
+        ],
+        "think": ["This is a basic concept; lead with the answer, then one small example.", "The usual confusion is when to use which, so answer by situation.", "A snippet they can copy will help most."],
+    },
+    "english": {
+        "titles": ["Writing practice", "Essay structure", "How to use this word", "Polishing an email"],
+        "pairs": [
+            ("How do I tell affect and effect apart?", "Most of the time **affect** is the verb and **effect** is the noun. A memory aid: *A for action*, so the action word is affect."),
+            ("Can you make this sentence sound more natural: I very like this book.", "Try *I really like this book.* or *I like this book a lot.* — very can't modify a verb directly."),
+            ("What's a safe way to open an argumentative essay?", "One reliable shape: one sentence restating the question, one sentence stating your position. Clear beats fancy."),
+            ("I want to get better at speaking. How should I plan each day?", "About 20 minutes: 5 minutes shadowing a recording, 10 minutes talking to yourself about one topic while recording, 5 minutes listening back for mistakes. Consistency matters more than length."),
+            ("What can I use instead of Best regards to end an email?", "Common ones are *Kind regards*, *Many thanks* and *Cheers* (more casual). *Kind regards* is the safest in formal settings."),
+            ("What comes after look forward to?", "A noun or an -ing form: *I look forward to hearing from you.* The to here is a preposition, not part of an infinitive."),
+            ("Is by the way fine in a formal email?", "It works but sounds conversational. *Additionally* or *Also* reads a bit more formal."),
+        ],
+        "think": ["A memory aid will stick better than a grammar rule here.", "One rewritten example says more than an explanation."],
+    },
+    "cook": {
+        "titles": ["Better scrambled eggs with tomato", "What to cook this weekend", "Oven beginner questions", "Quick dinners for one"],
+        "pairs": [
+            ("For tomato and egg stir-fry, do the eggs or the tomatoes go first?", "Eggs first: pour them into hot oil and take them out when they're about 70% set. Then cook the tomatoes until they release their juice and fold the eggs back in. The eggs stay tender and the sauce stays juicy."),
+            ("I only have eggs, potatoes and an onion. What can I make?", "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."),
+            ("How long should I preheat the oven?", "Usually 10–15 minutes, until the indicator says it has reached temperature. For cakes and other temperature-sensitive bakes, make sure it's fully preheated."),
+            ("My rice keeps coming out undercooked. What am I doing wrong?", "Usually too little water or no soaking. Use about 1:1.2 rice to water, soak for 20 minutes, and let it rest covered for 10 minutes after cooking."),
+            ("Any dinner I can make in 15 minutes?", "Scallion oil noodles: cook the noodles, pour hot oil over chopped scallions, soy sauce and a pinch of sugar, then toss. Add a fried egg and it's a full meal."),
+            ("How do I keep stir-fried greens bright green?", "High heat and a quick toss in a properly hot pan; salt at the end; or blanch them for 10 seconds first."),
+        ],
+        "think": ["They have few ingredients, so suggest one dish they can make right now."],
+    },
+    "travel": {
+        "titles": ["Three days in Kyoto", "First trip to Iceland", "Where to go for a weekend", "Packing list"],
+        "pairs": [
+            ("How can I plan three days in Kyoto without rushing?", "Split it by area: day one Higashiyama (Kiyomizu-dera, Ninenzaka), day two Arashiyama, day three Fushimi Inari plus the city centre. Head out early to beat the crowds."),
+            ("What should I know about driving in Iceland?", "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."),
+            ("What's easiest to forget on a short trip?", "Chargers, regular medication, copies of your documents and a folding shopping bag. Keep a fixed checklist and run through it each time."),
+            ("How do I take better travel photos?", "Use early morning and late afternoon light; don't always centre people, try the rule of thirds; take a few shots and pick the best."),
+            ("Is travel insurance worth it?", "For trips abroad, yes, especially medical cover and delay protection. Check the exclusions for higher-risk activities."),
+        ],
+        "think": ["An itinerary reads best split by area."],
+    },
+    "reading": {
+        "titles": ["Thoughts on One Hundred Years of Solitude", "Keeping a reading habit", "Popular science picks", "Taking reading notes"],
+        "pairs": [
+            ("There are too many names in One Hundred Years of Solitude. Any tips?", "Sketch a family tree as you go, or keep a printed one beside you. Halfway through you'll notice the repeating names are part of the point."),
+            ("I never have time to read. How do I keep going?", "Make the goal small: 10 pages a day, or 15 minutes before bed. Carry a book with you so spare minutes count."),
+            ("Can you recommend a few popular science books for beginners?", "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."),
+            ("How do I take reading notes that are actually useful?", "Don't just copy quotes. After each chapter, write three sentences in your own words: what it said, what you agree with, and where you could use it."),
+            ("Paper books or e-books?", "Each has its strengths: paper is easier to focus on and flip back through; e-books are easy to carry and search. It depends on where you usually read."),
+        ],
+        "think": ["They need a method they can act on, not general advice."],
+    },
+    "fitness": {
+        "titles": ["A beginner running plan", "Workouts at home", "Stretching", "Sleeping better"],
+        "pairs": [
+            ("I've never run before. How do I start?", "Start with run-walk intervals: run 1 minute, walk 2, repeat 8 times. Three times a week, and gradually lengthen the running parts."),
+            ("What can I do at home without equipment?", "Squats, push-ups, planks and lunges. Three sets of each with a minute of rest between sets."),
+            ("My knee hurts a bit after running. Is that normal?", "Mild soreness can just be your body adjusting, but sharp or lasting pain means stop and see a doctor. Check your shoes and stride length too."),
+            ("How long should I stretch after a workout?", "20–30 seconds per area, focusing on the front and back of the thighs, calves and glutes; 5–10 minutes in total is plenty."),
+            ("I can't fall asleep at night. What helps?", "Keep a regular wake-up time, put screens away an hour before bed, and skip coffee after lunch. If it goes on for a long time, talk to a doctor."),
+        ],
+        "think": ["This involves pain, so mention seeing a doctor when needed."],
+    },
+    "work": {
+        "titles": ["Meeting notes template", "Writing a weekly update", "Time management", "Making one slide"],
+        "pairs": [
+            ("Can you design a meeting notes template for me?", "It could include:\n\n1. Date and attendees\n2. Topics\n3. Decisions\n4. Action items (owner + due date)\n\nThe action items matter most."),
+            ("My weekly updates read like a diary. How do I fix that?", "Use three parts: results, problems, next week's plan, with only the two or three most important points in each. Use numbers wherever you can."),
+            ("I have too much to do. What comes first?", "Sort things roughly by urgent and important, and do the important-and-urgent ones first. Schedule the important-but-not-urgent ones ahead of time, or they'll turn urgent."),
+            ("How much text should one slide have?", "One idea per slide, with the conclusion as the title. Keep the body to three lines or fewer and put details in your speaker notes."),
+        ],
+        "think": ["Give a structure they can reuse as is."],
+    },
+    "misc": {
+        "titles": ["My pothos is struggling", "A birthday gift for a friend", "Where to start with guitar", "Why cats knead"],
+        "pairs": [
+            ("Why are my pothos leaves turning yellow?", "Usually too much water or too little light. Water only once the topsoil is dry and move it somewhere with bright, indirect light."),
+            ("My friend loves painting. What's a good birthday gift?", "A good set of watercolours, a sketchbook, or a trial class. A handwritten card makes it more personal."),
+            ("What should I practise first on guitar?", "A few basic chords: C, G, Am and F (F is hard, so start with the simplified version). Fifteen minutes a day and your fingertips will toughen up."),
+            ("Why do cats knead?", "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."),
+            ("What's good to do on a rainy day?", "Watch a film, tidy a room, cook a pot of soup, or just read with the rain in the background."),
+        ],
+        "think": [],
+    },
+}
+
+FOLLOWUPS_EN = ["OK, I'll try that", "Got it, thanks!", "Ah, that makes sense", "What if the situation were different?", "Fair point", "Noted!"]
+ACKS_EN = ["You're welcome, ask any time.", "Good luck!", "Let me know how it goes.", "Sure, come back whenever you need."]
+RUNS_EN = ["3 km at 7:10/km", "25 minutes of run-walk", "4 km, easier than last time", "rest day, 10 minutes of stretching",
+           "3.5 km with a faster last km", "5 km! First time all the way", "rainy day, 20 minutes of strength at home"]
+
+LANGS = {
+    "zh": {
+        "topics": TOPICS_ZH, "followups": FOLLOWUPS_ZH, "acks": ACKS_ZH, "runs": RUNS_ZH,
+        "run_q": "打卡：{r}", "run_a": ["不错，保持节奏！", "很稳，记得拉伸。", "进步明显 🎉", "休息也是训练的一部分。"],
+        "word": ("今天的单词：{w}，帮我造个句", "*{w}* —— 例句：\n\n> She remained {w} throughout the long project.\n\n试着用它说一句关于你今天的话？"),
+        "checkins": ["每日一词打卡", "跑步记录", "单词打卡 · 第二轮"],
+    },
+    "en": {
+        "topics": TOPICS_EN, "followups": FOLLOWUPS_EN, "acks": ACKS_EN, "runs": RUNS_EN,
+        "run_q": "Check-in: {r}", "run_a": ["Nice, keep the rhythm!", "Steady. Remember to stretch.", "Clear progress 🎉", "Rest is part of training too."],
+        "word": ("Word of the day: {w}. Can you use it in a sentence?", "*{w}* — for example:\n\n> She remained {w} throughout the long project.\n\nCan you use it in a sentence about your day?"),
+        "checkins": ["Word of the day", "Running log", "Word of the day · round two"],
+    },
+}
+L = LANGS["zh"]
+
 
 
 def cn_time(day, hour, minute):
@@ -154,7 +278,7 @@ def pick_day():
     while True:
         d = START + timedelta(days=rng.randrange(span))
         # weekends are busier
-        if d.weekday() >= 5 or rng.random() < 0.55:
+        if d.weekday() >= 5 or rng.random() < 0.3:
             return d
 
 
@@ -187,7 +311,7 @@ class Conv:
 
 
 def topic_conv(n, key, deep=False):
-    topic = TOPICS[key]
+    topic = L["topics"][key]
     c = Conv(n, rng.choice(topic["titles"]))
     day = pick_day()
     t = cn_time(day, pick_hour(deep), rng.randrange(60))
@@ -199,9 +323,9 @@ def topic_conv(n, key, deep=False):
         c.add("assistant", t, a, think)
         t += timedelta(minutes=rng.randint(1, 6))
         if i < len(pairs) - 1 and rng.random() < 0.3:
-            c.add("human", t, sprinkle(rng.choice(FOLLOWUPS)))
+            c.add("human", t, sprinkle(rng.choice(L["followups"])))
             t += timedelta(seconds=rng.randint(10, 40))
-            c.add("assistant", t, rng.choice(ACKS))
+            c.add("assistant", t, rng.choice(L["acks"]))
             t += timedelta(minutes=rng.randint(1, 4))
     return c
 
@@ -222,33 +346,53 @@ def checkin_conv(n, title, first_day, days, make):
 
 def words_day(i):
     w = WORDS[i % len(WORDS)]
-    return (sprinkle(f"今天的单词：{w}，帮我造个句"),
-            f"*{w}* —— 例句：\n\n> She remained {w} throughout the long project.\n\n试着用它说一句关于你今天的话？")
+    q, a = L["word"]
+    return sprinkle(q.format(w=w)), a.format(w=w)
 
 
 def run_day(i):
-    r = RUNS[i % len(RUNS)]
-    return (sprinkle(f"打卡：{r}"), rng.choice(["不错，保持节奏！", "很稳，记得拉伸。", "进步明显 🎉", "休息也是训练的一部分。"]))
+    return sprinkle(L["run_q"].format(r=L["runs"][i % len(L["runs"])])), rng.choice(L["run_a"])
 
 
-def main():
-    existing = json.loads(OUT.read_text(encoding="utf-8"))
+def build(lang):
+    global L, rng
+    L = LANGS[lang]
+    rng = random.Random(SEED)
+    out_path = OUTS[lang]
+    existing = json.loads(out_path.read_text(encoding="utf-8"))
     hand = [c for c in existing if not c["uuid"].startswith("demo-conv-g")]
 
     convs = []
     n = 1
-    keys = list(TOPICS)
+    keys = list(L["topics"])
     for i in range(44):
         convs.append(topic_conv(n, keys[i % len(keys)], deep=(i % 9 == 4)))
         n += 1
-    convs.append(checkin_conv(n, "每日一词打卡", datetime(2025, 11, 3, tzinfo=CN), 50, words_day)); n += 1
-    convs.append(checkin_conv(n, "跑步记录", datetime(2026, 1, 5, tzinfo=CN), 34, run_day)); n += 1
-    convs.append(checkin_conv(n, "单词打卡 · 第二轮", datetime(2026, 2, 16, tzinfo=CN), 30, words_day)); n += 1
+    t1, t2, t3 = L["checkins"]
+    convs.append(checkin_conv(n, t1, datetime(2025, 11, 3, tzinfo=CN), 50, words_day)); n += 1
+    convs.append(checkin_conv(n, t2, datetime(2026, 1, 5, tzinfo=CN), 34, run_day)); n += 1
+    convs.append(checkin_conv(n, t3, datetime(2026, 2, 16, tzinfo=CN), 30, words_day)); n += 1
 
     out = hand + [c.to_json() for c in convs]
-    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    out_path.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     msgs = sum(len(c["chat_messages"]) for c in out)
-    print(f"{len(out)} conversations, {msgs} messages, {OUT.stat().st_size // 1024} KB")
+    print(f"{out_path.name}: {len(out)} conversations, {msgs} messages, {out_path.stat().st_size // 1024} KB")
+
+
+def check_mirrored():
+    zh, en = LANGS["zh"], LANGS["en"]
+    assert list(zh["topics"]) == list(en["topics"])
+    for k in zh["topics"]:
+        for f in ("titles", "pairs", "think"):
+            assert len(zh["topics"][k][f]) == len(en["topics"][k][f]), (k, f)
+    for f in ("followups", "acks", "runs", "run_a"):
+        assert len(zh[f]) == len(en[f]), f
+
+
+def main():
+    check_mirrored()
+    for lang in OUTS:
+        build(lang)
 
 
 if __name__ == "__main__":

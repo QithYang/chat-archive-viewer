@@ -1,7 +1,7 @@
 [
  {
   "uuid": "demo-conv-001",
-  "name": "示例对话 · 样式与功能演示",
+  "name": "Sample · Formatting and features",
   "summary": "",
   "created_at": "2026-04-05T14:00:00Z",
   "updated_at": "2026-04-05T14:08:00Z",
@@ -13,7 +13,7 @@
     "content": [
      {
       "type": "text",
-      "text": "你好呀，我想试试这个查看器的功能。"
+      "text": "Hi! I'd like to try out what this viewer can do."
      }
     ]
    },
@@ -24,15 +24,15 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户想试试功能。\n我先简单介绍一下能看到什么。\n应该展示常见的 markdown 元素，让样式更直观。"
+      "thinking": "They want to try the features.\nI'll briefly show what can be displayed.\nCommon markdown elements will make the styling easy to see."
      },
      {
       "type": "thinking",
-      "thinking": "可以展示这些元素：\n- 加粗、斜体、删除线\n- 行内代码、代码块\n- 引用、链接\n- 列表"
+      "thinking": "Elements to show:\n- bold, italic, strikethrough\n- inline code, code blocks\n- quotes, links\n- lists"
      },
      {
       "type": "text",
-      "text": "你好～这里支持常见的 markdown 元素：\n\n**加粗**、*斜体*、~~删除线~~、`行内代码`、[链接](https://github.com)\n\n> 引用块也可以\n\n点击上面的「思考·2」药丸可以展开折叠我的思考过程。"
+      "text": "Hi! Common markdown elements are supported:\n\n**bold**, *italic*, ~~strikethrough~~, `inline code`, [a link](https://github.com)\n\n> Block quotes work too\n\nClick the Thinking pill above to expand or collapse my reasoning."
      }
     ]
    },
@@ -43,7 +43,7 @@
     "content": [
      {
       "type": "text",
-      "text": "代码块呢？"
+      "text": "What about code blocks?"
      }
     ]
    },
@@ -54,11 +54,11 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "展示一个代码块的例子。\n用 JavaScript 写个简单函数。"
+      "thinking": "Show a code block example.\nA small JavaScript function will do."
      },
      {
       "type": "text",
-      "text": "代码块的渲染：\n\n```\nfunction greet(name) {\n  return `你好, ${name}!`;\n}\n\nconsole.log(greet('world'));\n```\n\n试试搜索、收藏（hover 消息右上角的 ☆）、切换到「时间轴」看看日历视图。"
+      "text": "Here is a code block:\n\n```\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\n\nconsole.log(greet('world'));\n```\n\nTry search, bookmarks (hover a message and click the ☆ in its corner), and the Timeline and Stats tabs."
      }
     ]
    }
@@ -66,7 +66,7 @@
  },
  {
   "uuid": "demo-conv-002",
-  "name": "示例对话 · 多日跨度",
+  "name": "Sample · Spanning several days",
   "summary": "",
   "created_at": "2026-04-06T10:00:00Z",
   "updated_at": "2026-04-07T11:30:00Z",
@@ -78,7 +78,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天想问个问题。"
+      "text": "I have a question today."
      }
     ]
    },
@@ -89,7 +89,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好呀，请说。"
+      "text": "Sure, go ahead."
      }
     ]
    },
@@ -100,7 +100,7 @@
     "content": [
      {
       "type": "text",
-      "text": "（隔一天）我又来啦。"
+      "text": "(A day later) I'm back."
      }
     ]
    },
@@ -111,11 +111,11 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户隔了一天回来。\n上面会出现日期分隔，验证多日渲染。"
+      "thinking": "They came back a day later.\nA date divider should appear above, which checks multi-day rendering."
      },
      {
       "type": "text",
-      "text": "欢迎回来～你看到上面有两个日期分隔条了吗？这就是多日对话的效果。\n\n时间轴里这两天的格子都会被高亮，点开能看到对应的对话标题。"
+      "text": "Welcome back! Did you notice the two date dividers above? That's how a conversation spanning several days looks.\n\nBoth days are highlighted in the Timeline; click one to see the conversations from that day."
      }
     ]
    }
@@ -123,7 +123,7 @@
  },
  {
   "uuid": "demo-conv-003",
-  "name": "示例对话 · 思考链堆叠",
+  "name": "Sample · Stacked thinking blocks",
   "summary": "",
   "created_at": "2026-04-07T15:00:00Z",
   "updated_at": "2026-04-07T15:01:00Z",
@@ -135,7 +135,7 @@
     "content": [
      {
       "type": "text",
-      "text": "给我看一个有很多思考块的消息。"
+      "text": "Show me a message with lots of thinking blocks."
      }
     ]
    },
@@ -146,23 +146,23 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "第一段思考。\n用户想看多个思考块的样式。"
+      "thinking": "First thought.\nThey want to see how several thinking blocks look."
      },
      {
       "type": "thinking",
-      "thinking": "第二段思考。\n块之间应该只用间距分隔，没有破折号或横线。"
+      "thinking": "Second thought.\nBlocks should be separated by spacing only, with no dashes or rules."
      },
      {
       "type": "thinking",
-      "thinking": "第三段思考。\n这样能验证块间距的视觉效果。"
+      "thinking": "Third thought.\nThis checks the spacing between blocks."
      },
      {
       "type": "thinking",
-      "thinking": "第四段思考。\n药丸应显示「思考·4」。"
+      "thinking": "Fourth thought.\nThe pill should show a count of 4."
      },
      {
       "type": "text",
-      "text": "上面药丸显示「思考·4」，点开后你会看到 4 个思考块只用空白间距分隔，没有任何分隔线。"
+      "text": "The pill above shows 4 thinking blocks. Expand it and you'll see they are separated only by white space, with no dividing lines."
      }
     ]
    }
@@ -170,7 +170,7 @@
  },
  {
   "uuid": "demo-conv-g001",
-  "name": "Python 列表推导式",
+  "name": "Python list comprehensions",
   "summary": "",
   "created_at": "2026-02-10T01:24:00Z",
   "updated_at": "2026-02-10T01:35:07Z",
@@ -182,7 +182,7 @@
     "content": [
      {
       "type": "text",
-      "text": "列表推导式和 for 循环比，有什么好处？"
+      "text": "What's the advantage of a list comprehension over a for loop?"
      }
     ]
    },
@@ -193,7 +193,7 @@
     "content": [
      {
       "type": "text",
-      "text": "主要是简洁：`[x*2 for x in nums]` 一行就能表达「把每个元素翻倍」。性能上通常也略快一些，因为循环在解释器内部完成。不过逻辑复杂时，普通 for 循环更好读。"
+      "text": "Mostly brevity: `[x*2 for x in nums]` says \"double every element\" in one line. It's usually a little faster too, since the loop runs inside the interpreter. When the logic gets complex, a plain for loop reads better."
      }
     ]
    },
@@ -204,7 +204,7 @@
     "content": [
      {
       "type": "text",
-      "text": "写爬虫要注意什么？"
+      "text": "What should I watch out for when writing a scraper?"
      }
     ]
    },
@@ -215,7 +215,7 @@
     "content": [
      {
       "type": "text",
-      "text": "几件事：先看网站的 robots.txt 和使用条款；请求之间加间隔，别给对方服务器压力；做好异常处理和重试；数据只用于自己被允许的用途。"
+      "text": "A few things: read the site's robots.txt and terms first; space out your requests so you don't load their server; handle errors and retries; and only use the data in ways you're allowed to."
      }
     ]
    },
@@ -226,7 +226,7 @@
     "content": [
      {
       "type": "text",
-      "text": "原来如此"
+      "text": "Ah, that makes sense"
      }
     ]
    },
@@ -237,7 +237,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -248,7 +248,7 @@
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？ 👨‍💻"
+      "text": "How do I vertically center an element with flexbox? 👨‍💻"
      }
     ]
    },
@@ -259,13 +259,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
+      "thinking": "The usual confusion is when to use which, so answer by situation.",
       "start_timestamp": "2026-02-10T01:35:03Z",
       "stop_timestamp": "2026-02-10T01:35:07Z"
      },
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
      }
     ]
    }
@@ -273,7 +273,7 @@
  },
  {
   "uuid": "demo-conv-g002",
-  "name": "英语口语练习",
+  "name": "Writing practice",
   "summary": "",
   "created_at": "2026-03-29T14:37:00Z",
   "updated_at": "2026-03-29T14:49:22Z",
@@ -285,7 +285,7 @@
     "content": [
      {
       "type": "text",
-      "text": "雅思大作文开头怎么写比较稳？"
+      "text": "What's a safe way to open an argumentative essay?"
      }
     ]
    },
@@ -296,13 +296,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户的语法点比较基础，用记忆口诀会更好记。",
+      "thinking": "A memory aid will stick better than a grammar rule here.",
       "start_timestamp": "2026-03-29T14:38:14Z",
       "stop_timestamp": "2026-03-29T14:38:26Z"
      },
      {
       "type": "text",
-      "text": "一个稳妥的结构：一句改写题目 + 一句表明立场。不用追求华丽，清楚比复杂更重要。"
+      "text": "One reliable shape: one sentence restating the question, one sentence stating your position. Clear beats fancy."
      }
     ]
    },
@@ -313,7 +313,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！ 👍"
+      "text": "Got it, thanks! 👍"
      }
     ]
    },
@@ -324,7 +324,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -335,7 +335,7 @@
     "content": [
      {
       "type": "text",
-      "text": "我想练口语，每天该怎么安排？"
+      "text": "I want to get better at speaking. How should I plan each day?"
      }
     ]
    },
@@ -346,7 +346,7 @@
     "content": [
      {
       "type": "text",
-      "text": "建议每天 20 分钟：5 分钟跟读、10 分钟就一个话题自言自语并录音、5 分钟回听找问题。坚持比时长更重要。"
+      "text": "About 20 minutes: 5 minutes shadowing a recording, 10 minutes talking to yourself about one topic while recording, 5 minutes listening back for mistakes. Consistency matters more than length."
      }
     ]
    },
@@ -357,7 +357,7 @@
     "content": [
      {
       "type": "text",
-      "text": "帮我把这句话改得更自然：I very like this book."
+      "text": "Can you make this sentence sound more natural: I very like this book."
      }
     ]
    },
@@ -368,13 +368,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户的语法点比较基础，用记忆口诀会更好记。",
+      "thinking": "A memory aid will stick better than a grammar rule here.",
       "start_timestamp": "2026-03-29T14:48:59Z",
       "stop_timestamp": "2026-03-29T14:49:22Z"
      },
      {
       "type": "text",
-      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
+      "text": "Try *I really like this book.* or *I like this book a lot.* — very can't modify a verb directly."
      }
     ]
    }
@@ -382,7 +382,7 @@
  },
  {
   "uuid": "demo-conv-g003",
-  "name": "番茄炒蛋怎么更好吃",
+  "name": "Better scrambled eggs with tomato",
   "summary": "",
   "created_at": "2025-12-07T12:37:00Z",
   "updated_at": "2025-12-07T12:52:44Z",
@@ -394,7 +394,7 @@
     "content": [
      {
       "type": "text",
-      "text": "烤箱要预热多久？"
+      "text": "How long should I preheat the oven?"
      }
     ]
    },
@@ -405,7 +405,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
+      "text": "Usually 10–15 minutes, until the indicator says it has reached temperature. For cakes and other temperature-sensitive bakes, make sure it's fully preheated."
      }
     ]
    },
@@ -416,7 +416,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！ 🎉"
+      "text": "Got it, thanks! 🎉"
      }
     ]
    },
@@ -427,7 +427,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，有需要再来找我。"
+      "text": "Sure, come back whenever you need."
      }
     ]
    },
@@ -438,7 +438,7 @@
     "content": [
      {
       "type": "text",
-      "text": "番茄炒蛋要先炒蛋还是先炒番茄？ ❤️"
+      "text": "For tomato and egg stir-fry, do the eggs or the tomatoes go first? ❤️"
      }
     ]
    },
@@ -449,7 +449,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先炒蛋：油热下蛋液，凝固到七成就盛出。再炒番茄出汁，最后把蛋倒回去翻匀。这样蛋嫩、汁多。"
+      "text": "Eggs first: pour them into hot oil and take them out when they're about 70% set. Then cook the tomatoes until they release their juice and fold the eggs back in. The eggs stay tender and the sauce stays juicy."
      }
     ]
    },
@@ -460,7 +460,7 @@
     "content": [
      {
       "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
+      "text": "I only have eggs, potatoes and an onion. What can I make?"
      }
     ]
    },
@@ -471,7 +471,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
+      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
      }
     ]
    },
@@ -482,7 +482,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有没有 15 分钟能做完的晚饭？ 😊"
+      "text": "Any dinner I can make in 15 minutes? 😊"
      }
     ]
    },
@@ -493,7 +493,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
+      "text": "Scallion oil noodles: cook the noodles, pour hot oil over chopped scallions, soy sauce and a pinch of sugar, then toss. Add a fried egg and it's a full meal."
      }
     ]
    }
@@ -501,7 +501,7 @@
  },
  {
   "uuid": "demo-conv-g004",
-  "name": "周末短途去哪",
+  "name": "Where to go for a weekend",
   "summary": "",
   "created_at": "2025-12-05T14:20:00Z",
   "updated_at": "2025-12-05T14:33:25Z",
@@ -513,7 +513,7 @@
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？ 🧑‍🍳"
+      "text": "What should I know about driving in Iceland? 🧑‍🍳"
      }
     ]
    },
@@ -524,13 +524,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2025-12-05T14:21:20Z",
       "stop_timestamp": "2025-12-05T14:21:23Z"
      },
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
      }
     ]
    },
@@ -541,7 +541,7 @@
     "content": [
      {
       "type": "text",
-      "text": "短途旅行带什么最容易忘？ 👨‍💻"
+      "text": "What's easiest to forget on a short trip? 👨‍💻"
      }
     ]
    },
@@ -552,13 +552,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2025-12-05T14:27:19Z",
       "stop_timestamp": "2025-12-05T14:27:42Z"
      },
      {
       "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
+      "text": "Chargers, regular medication, copies of your documents and a folding shopping bag. Keep a fixed checklist and run through it each time."
      }
     ]
    },
@@ -569,7 +569,7 @@
     "content": [
      {
       "type": "text",
-      "text": "收到～"
+      "text": "Noted!"
      }
     ]
    },
@@ -580,7 +580,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -591,7 +591,7 @@
     "content": [
      {
       "type": "text",
-      "text": "京都三天怎么安排比较不赶？"
+      "text": "How can I plan three days in Kyoto without rushing?"
      }
     ]
    },
@@ -602,13 +602,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2025-12-05T14:33:10Z",
       "stop_timestamp": "2025-12-05T14:33:25Z"
      },
      {
       "type": "text",
-      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
+      "text": "Split it by area: day one Higashiyama (Kiyomizu-dera, Ninenzaka), day two Arashiyama, day three Fushimi Inari plus the city centre. Head out early to beat the crowds."
      }
     ]
    }
@@ -616,7 +616,7 @@
  },
  {
   "uuid": "demo-conv-g005",
-  "name": "读书笔记方法",
+  "name": "Taking reading notes",
   "summary": "",
   "created_at": "2026-02-06T19:22:00Z",
   "updated_at": "2026-02-06T19:29:36Z",
@@ -628,7 +628,7 @@
     "content": [
      {
       "type": "text",
-      "text": "读书笔记怎么做才有用？"
+      "text": "How do I take reading notes that are actually useful?"
      }
     ]
    },
@@ -639,7 +639,7 @@
     "content": [
      {
       "type": "text",
-      "text": "别只抄原文。读完一章，用自己的话写三句：讲了什么、我同意什么、我能用在哪里。"
+      "text": "Don't just copy quotes. After each chapter, write three sentences in your own words: what it said, what you agree with, and where you could use it."
      }
     ]
    },
@@ -650,7 +650,7 @@
     "content": [
      {
       "type": "text",
-      "text": "推荐几本入门科普书？"
+      "text": "Can you recommend a few popular science books for beginners?"
      }
     ]
    },
@@ -661,13 +661,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
+      "thinking": "They need a method they can act on, not general advice.",
       "start_timestamp": "2026-02-06T19:29:28Z",
       "stop_timestamp": "2026-02-06T19:29:36Z"
      },
      {
       "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
+      "text": "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."
      }
     ]
    }
@@ -675,7 +675,7 @@
  },
  {
   "uuid": "demo-conv-g006",
-  "name": "拉伸动作",
+  "name": "Stretching",
   "summary": "",
   "created_at": "2025-10-21T09:34:00Z",
   "updated_at": "2025-10-21T09:39:48Z",
@@ -687,7 +687,7 @@
     "content": [
      {
       "type": "text",
-      "text": "跑完步膝盖有点疼，正常吗？"
+      "text": "My knee hurts a bit after running. Is that normal?"
      }
     ]
    },
@@ -698,7 +698,7 @@
     "content": [
      {
       "type": "text",
-      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
+      "text": "Mild soreness can just be your body adjusting, but sharp or lasting pain means stop and see a doctor. Check your shoes and stride length too."
      }
     ]
    },
@@ -709,7 +709,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有道理"
+      "text": "Fair point"
      }
     ]
    },
@@ -720,7 +720,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "Let me know how it goes."
      }
     ]
    },
@@ -731,7 +731,7 @@
     "content": [
      {
       "type": "text",
-      "text": "零基础想开始跑步，怎么开始？"
+      "text": "I've never run before. How do I start?"
      }
     ]
    },
@@ -742,7 +742,7 @@
     "content": [
      {
       "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
+      "text": "Start with run-walk intervals: run 1 minute, walk 2, repeat 8 times. Three times a week, and gradually lengthen the running parts."
      }
     ]
    }
@@ -750,7 +750,7 @@
  },
  {
   "uuid": "demo-conv-g007",
-  "name": "时间管理",
+  "name": "Time management",
   "summary": "",
   "created_at": "2025-12-28T13:59:00Z",
   "updated_at": "2025-12-28T14:14:30Z",
@@ -762,7 +762,7 @@
     "content": [
      {
       "type": "text",
-      "text": "周报总写成流水账，怎么改？"
+      "text": "My weekly updates read like a diary. How do I fix that?"
      }
     ]
    },
@@ -773,13 +773,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
+      "thinking": "Give a structure they can reuse as is.",
       "start_timestamp": "2025-12-28T13:59:26Z",
       "stop_timestamp": "2025-12-28T13:59:37Z"
      },
      {
       "type": "text",
-      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
+      "text": "Use three parts: results, problems, next week's plan, with only the two or three most important points in each. Use numbers wherever you can."
      }
     ]
    },
@@ -790,7 +790,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！"
+      "text": "Got it, thanks!"
      }
     ]
    },
@@ -801,7 +801,7 @@
     "content": [
      {
       "type": "text",
-      "text": "加油！"
+      "text": "Good luck!"
      }
     ]
    },
@@ -812,7 +812,7 @@
     "content": [
      {
       "type": "text",
-      "text": "事情太多，先做哪个？ 👨‍💻"
+      "text": "I have too much to do. What comes first? 👨‍💻"
      }
     ]
    },
@@ -823,13 +823,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
+      "thinking": "Give a structure they can reuse as is.",
       "start_timestamp": "2025-12-28T14:07:35Z",
       "stop_timestamp": "2025-12-28T14:07:49Z"
      },
      {
       "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
+      "text": "Sort things roughly by urgent and important, and do the important-and-urgent ones first. Schedule the important-but-not-urgent ones ahead of time, or they'll turn urgent."
      }
     ]
    },
@@ -840,7 +840,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一页 PPT 放多少字合适？"
+      "text": "How much text should one slide have?"
      }
     ]
    },
@@ -851,7 +851,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
+      "text": "One idea per slide, with the conclusion as the title. Keep the body to three lines or fewer and put details in your speaker notes."
      }
     ]
    }
@@ -859,7 +859,7 @@
  },
  {
   "uuid": "demo-conv-g008",
-  "name": "养绿萝的问题",
+  "name": "My pothos is struggling",
   "summary": "",
   "created_at": "2025-11-29T00:40:00Z",
   "updated_at": "2025-11-29T00:40:55Z",
@@ -871,7 +871,7 @@
     "content": [
      {
       "type": "text",
-      "text": "学吉他先练什么？"
+      "text": "What should I practise first on guitar?"
      }
     ]
    },
@@ -882,7 +882,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
+      "text": "A few basic chords: C, G, Am and F (F is hard, so start with the simplified version). Fifteen minutes a day and your fingertips will toughen up."
      }
     ]
    }
@@ -890,7 +890,7 @@
  },
  {
   "uuid": "demo-conv-g009",
-  "name": "前端布局问题",
+  "name": "A CSS layout question",
   "summary": "",
   "created_at": "2025-12-28T14:07:00Z",
   "updated_at": "2025-12-28T14:07:24Z",
@@ -902,7 +902,7 @@
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
+      "text": "How do I vertically center an element with flexbox?"
      }
     ]
    },
@@ -913,7 +913,7 @@
     "content": [
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
      }
     ]
    }
@@ -921,7 +921,7 @@
  },
  {
   "uuid": "demo-conv-g010",
-  "name": "英文邮件润色",
+  "name": "Polishing an email",
   "summary": "",
   "created_at": "2026-03-11T13:30:00Z",
   "updated_at": "2026-03-11T13:34:05Z",
@@ -933,7 +933,7 @@
     "content": [
      {
       "type": "text",
-      "text": "by the way 在正式邮件里可以用吗？ 🧑‍🍳"
+      "text": "Is by the way fine in a formal email? 🧑‍🍳"
      }
     ]
    },
@@ -944,7 +944,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
+      "text": "It works but sounds conversational. *Additionally* or *Also* reads a bit more formal."
      }
     ]
    },
@@ -955,7 +955,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，我试试"
+      "text": "OK, I'll try that"
      }
     ]
    },
@@ -966,7 +966,7 @@
     "content": [
      {
       "type": "text",
-      "text": "加油！"
+      "text": "Good luck!"
      }
     ]
    },
@@ -977,7 +977,7 @@
     "content": [
      {
       "type": "text",
-      "text": "邮件结尾除了 Best regards 还能用什么？"
+      "text": "What can I use instead of Best regards to end an email?"
      }
     ]
    },
@@ -988,13 +988,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
+      "thinking": "One rewritten example says more than an explanation.",
       "start_timestamp": "2026-03-11T13:33:45Z",
       "stop_timestamp": "2026-03-11T13:34:05Z"
      },
      {
       "type": "text",
-      "text": "常见的有 *Kind regards*、*Many thanks*、*Cheers*（比较随意）。正式场合用 *Kind regards* 最保险。"
+      "text": "Common ones are *Kind regards*, *Many thanks* and *Cheers* (more casual). *Kind regards* is the safest in formal settings."
      }
     ]
    }
@@ -1002,7 +1002,7 @@
  },
  {
   "uuid": "demo-conv-g011",
-  "name": "周末做什么菜",
+  "name": "What to cook this weekend",
   "summary": "",
   "created_at": "2026-02-07T11:53:00Z",
   "updated_at": "2026-02-07T12:11:26Z",
@@ -1014,7 +1014,7 @@
     "content": [
      {
       "type": "text",
-      "text": "怎么让炒青菜保持翠绿？ ✨"
+      "text": "How do I keep stir-fried greens bright green? ✨"
      }
     ]
    },
@@ -1025,7 +1025,7 @@
     "content": [
      {
       "type": "text",
-      "text": "大火快炒，下锅前确保锅够热；盐最后放；也可以先焯水 10 秒再炒。"
+      "text": "High heat and a quick toss in a properly hot pan; salt at the end; or blanch them for 10 seconds first."
      }
     ]
    },
@@ -1036,7 +1036,7 @@
     "content": [
      {
       "type": "text",
-      "text": "烤箱要预热多久？ 🎉"
+      "text": "How long should I preheat the oven? 🎉"
      }
     ]
    },
@@ -1047,7 +1047,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
+      "text": "Usually 10–15 minutes, until the indicator says it has reached temperature. For cakes and other temperature-sensitive bakes, make sure it's fully preheated."
      }
     ]
    },
@@ -1058,7 +1058,7 @@
     "content": [
      {
       "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
+      "text": "I only have eggs, potatoes and an onion. What can I make?"
      }
     ]
    },
@@ -1069,13 +1069,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
+      "thinking": "They have few ingredients, so suggest one dish they can make right now.",
       "start_timestamp": "2026-02-07T12:05:39Z",
       "stop_timestamp": "2026-02-07T12:06:02Z"
      },
      {
       "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
+      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
      }
     ]
    },
@@ -1086,7 +1086,7 @@
     "content": [
      {
       "type": "text",
-      "text": "收到～"
+      "text": "Noted!"
      }
     ]
    },
@@ -1097,7 +1097,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -1108,7 +1108,7 @@
     "content": [
      {
       "type": "text",
-      "text": "米饭总是夹生，怎么办？"
+      "text": "My rice keeps coming out undercooked. What am I doing wrong?"
      }
     ]
    },
@@ -1119,13 +1119,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
+      "thinking": "They have few ingredients, so suggest one dish they can make right now.",
       "start_timestamp": "2026-02-07T12:11:18Z",
       "stop_timestamp": "2026-02-07T12:11:26Z"
      },
      {
       "type": "text",
-      "text": "多数是水少了或者没泡。大米和水大约 1:1.2，先泡 20 分钟再煮，煮好焖 10 分钟别急着开盖。"
+      "text": "Usually too little water or no soaking. Use about 1:1.2 rice to water, soak for 20 minutes, and let it rest covered for 10 minutes after cooking."
      }
     ]
    }
@@ -1133,7 +1133,7 @@
  },
  {
   "uuid": "demo-conv-g012",
-  "name": "第一次去冰岛",
+  "name": "First trip to Iceland",
   "summary": "",
   "created_at": "2026-02-02T09:26:00Z",
   "updated_at": "2026-02-02T09:29:46Z",
@@ -1145,7 +1145,7 @@
     "content": [
      {
       "type": "text",
-      "text": "短途旅行带什么最容易忘？"
+      "text": "What's easiest to forget on a short trip?"
      }
     ]
    },
@@ -1156,13 +1156,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2026-02-02T09:27:22Z",
       "stop_timestamp": "2026-02-02T09:27:25Z"
      },
      {
       "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
+      "text": "Chargers, regular medication, copies of your documents and a folding shopping bag. Keep a fixed checklist and run through it each time."
      }
     ]
    },
@@ -1173,7 +1173,7 @@
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？"
+      "text": "What should I know about driving in Iceland?"
      }
     ]
    },
@@ -1184,13 +1184,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2026-02-02T09:29:29Z",
       "stop_timestamp": "2026-02-02T09:29:46Z"
      },
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
      }
     ]
    }
@@ -1198,7 +1198,7 @@
  },
  {
   "uuid": "demo-conv-g013",
-  "name": "《百年孤独》读后感",
+  "name": "Thoughts on One Hundred Years of Solitude",
   "summary": "",
   "created_at": "2026-01-03T02:28:00Z",
   "updated_at": "2026-01-03T02:35:05Z",
@@ -1210,7 +1210,7 @@
     "content": [
      {
       "type": "text",
-      "text": "《百年孤独》人名太多记不住怎么办？ 😮"
+      "text": "There are too many names in One Hundred Years of Solitude. Any tips? 😮"
      }
     ]
    },
@@ -1221,13 +1221,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
+      "thinking": "They need a method they can act on, not general advice.",
       "start_timestamp": "2026-01-03T02:28:07Z",
       "stop_timestamp": "2026-01-03T02:28:20Z"
      },
      {
       "type": "text",
-      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
+      "text": "Sketch a family tree as you go, or keep a printed one beside you. Halfway through you'll notice the repeating names are part of the point."
      }
     ]
    },
@@ -1238,7 +1238,7 @@
     "content": [
      {
       "type": "text",
-      "text": "推荐几本入门科普书？ 🤔"
+      "text": "Can you recommend a few popular science books for beginners? 🤔"
      }
     ]
    },
@@ -1249,7 +1249,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
+      "text": "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."
      }
     ]
    }
@@ -1257,7 +1257,7 @@
  },
  {
   "uuid": "demo-conv-g014",
-  "name": "拉伸动作",
+  "name": "Stretching",
   "summary": "",
   "created_at": "2026-03-31T19:35:00Z",
   "updated_at": "2026-03-31T19:39:57Z",
@@ -1269,7 +1269,7 @@
     "content": [
      {
       "type": "text",
-      "text": "运动后要拉伸多久？"
+      "text": "How long should I stretch after a workout?"
      }
     ]
    },
@@ -1280,13 +1280,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
+      "thinking": "This involves pain, so mention seeing a doctor when needed.",
       "start_timestamp": "2026-03-31T19:35:46Z",
       "stop_timestamp": "2026-03-31T19:36:01Z"
      },
      {
       "type": "text",
-      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
+      "text": "20–30 seconds per area, focusing on the front and back of the thighs, calves and glutes; 5–10 minutes in total is plenty."
      }
     ]
    },
@@ -1297,7 +1297,7 @@
     "content": [
      {
       "type": "text",
-      "text": "零基础想开始跑步，怎么开始？"
+      "text": "I've never run before. How do I start?"
      }
     ]
    },
@@ -1308,7 +1308,7 @@
     "content": [
      {
       "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
+      "text": "Start with run-walk intervals: run 1 minute, walk 2, repeat 8 times. Three times a week, and gradually lengthen the running parts."
      }
     ]
    }
@@ -1316,7 +1316,7 @@
  },
  {
   "uuid": "demo-conv-g015",
-  "name": "做一页 PPT",
+  "name": "Making one slide",
   "summary": "",
   "created_at": "2025-11-05T12:19:00Z",
   "updated_at": "2025-11-05T12:20:08Z",
@@ -1328,7 +1328,7 @@
     "content": [
      {
       "type": "text",
-      "text": "周报总写成流水账，怎么改？"
+      "text": "My weekly updates read like a diary. How do I fix that?"
      }
     ]
    },
@@ -1339,13 +1339,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
+      "thinking": "Give a structure they can reuse as is.",
       "start_timestamp": "2025-11-05T12:20:01Z",
       "stop_timestamp": "2025-11-05T12:20:08Z"
      },
      {
       "type": "text",
-      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
+      "text": "Use three parts: results, problems, next week's plan, with only the two or three most important points in each. Use numbers wherever you can."
      }
     ]
    }
@@ -1353,7 +1353,7 @@
  },
  {
   "uuid": "demo-conv-g016",
-  "name": "养绿萝的问题",
+  "name": "My pothos is struggling",
   "summary": "",
   "created_at": "2026-01-25T11:48:00Z",
   "updated_at": "2026-01-25T12:09:57Z",
@@ -1365,7 +1365,7 @@
     "content": [
      {
       "type": "text",
-      "text": "朋友喜欢画画，送什么生日礼物好？ 😮"
+      "text": "My friend loves painting. What's a good birthday gift? 😮"
      }
     ]
    },
@@ -1376,7 +1376,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以考虑一套好一点的水彩、速写本，或者一节体验课。附一张手写卡片会更走心。"
+      "text": "A good set of watercolours, a sketchbook, or a trial class. A handwritten card makes it more personal."
      }
     ]
    },
@@ -1387,7 +1387,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！"
+      "text": "Got it, thanks!"
      }
     ]
    },
@@ -1398,7 +1398,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -1409,7 +1409,7 @@
     "content": [
      {
       "type": "text",
-      "text": "学吉他先练什么？"
+      "text": "What should I practise first on guitar?"
      }
     ]
    },
@@ -1420,7 +1420,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
+      "text": "A few basic chords: C, G, Am and F (F is hard, so start with the simplified version). Fifteen minutes a day and your fingertips will toughen up."
      }
     ]
    },
@@ -1431,7 +1431,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！ ✨"
+      "text": "Got it, thanks! ✨"
      }
     ]
    },
@@ -1442,7 +1442,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，有需要再来找我。"
+      "text": "Sure, come back whenever you need."
      }
     ]
    },
@@ -1453,7 +1453,7 @@
     "content": [
      {
       "type": "text",
-      "text": "猫为什么会踩奶？"
+      "text": "Why do cats knead?"
      }
     ]
    },
@@ -1464,7 +1464,7 @@
     "content": [
      {
       "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+      "text": "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."
      }
     ]
    }
@@ -1472,7 +1472,7 @@
  },
  {
   "uuid": "demo-conv-g017",
-  "name": "Python 列表推导式",
+  "name": "Python list comprehensions",
   "summary": "",
   "created_at": "2025-10-19T12:36:00Z",
   "updated_at": "2025-10-19T12:47:33Z",
@@ -1484,7 +1484,7 @@
     "content": [
      {
       "type": "text",
-      "text": "正则里 `.*?` 和 `.*` 有什么区别？"
+      "text": "What's the difference between `.*?` and `.*` in a regex?"
      }
     ]
    },
@@ -1495,7 +1495,7 @@
     "content": [
      {
       "type": "text",
-      "text": "`.*` 是贪婪匹配，会尽可能多地吃字符；`.*?` 是非贪婪，匹配到最短就停。比如在 `<a><b>` 里用 `<.*>` 会匹配整串，用 `<.*?>` 只匹配 `<a>`。"
+      "text": "`.*` is greedy and takes as many characters as it can; `.*?` is lazy and stops at the shortest match. On `<a><b>`, `<.*>` matches the whole string while `<.*?>` matches just `<a>`."
      }
     ]
    },
@@ -1506,7 +1506,7 @@
     "content": [
      {
       "type": "text",
-      "text": "SQL 查询很慢，先从哪里查？"
+      "text": "My SQL query is slow. Where do I start?"
      }
     ]
    },
@@ -1517,7 +1517,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
+      "text": "Run `EXPLAIN` and look for full table scans. Common fixes: index the columns used in WHERE and JOIN, avoid wrapping indexed columns in functions, and select only the columns you need instead of `SELECT *`."
      }
     ]
    },
@@ -1528,7 +1528,7 @@
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
+      "text": "How do I vertically center an element with flexbox?"
      }
     ]
    },
@@ -1539,7 +1539,7 @@
     "content": [
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
      }
     ]
    }
@@ -1547,7 +1547,7 @@
  },
  {
   "uuid": "demo-conv-g018",
-  "name": "雅思写作思路",
+  "name": "Essay structure",
   "summary": "",
   "created_at": "2026-02-26T14:36:00Z",
   "updated_at": "2026-02-26T14:49:35Z",
@@ -1559,7 +1559,7 @@
     "content": [
      {
       "type": "text",
-      "text": "帮我把这句话改得更自然：I very like this book."
+      "text": "Can you make this sentence sound more natural: I very like this book."
      }
     ]
    },
@@ -1570,7 +1570,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
+      "text": "Try *I really like this book.* or *I like this book a lot.* — very can't modify a verb directly."
      }
     ]
    },
@@ -1581,7 +1581,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，我试试"
+      "text": "OK, I'll try that"
      }
     ]
    },
@@ -1592,7 +1592,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "Let me know how it goes."
      }
     ]
    },
@@ -1603,7 +1603,7 @@
     "content": [
      {
       "type": "text",
-      "text": "邮件结尾除了 Best regards 还能用什么？"
+      "text": "What can I use instead of Best regards to end an email?"
      }
     ]
    },
@@ -1614,7 +1614,7 @@
     "content": [
      {
       "type": "text",
-      "text": "常见的有 *Kind regards*、*Many thanks*、*Cheers*（比较随意）。正式场合用 *Kind regards* 最保险。"
+      "text": "Common ones are *Kind regards*, *Many thanks* and *Cheers* (more casual). *Kind regards* is the safest in formal settings."
      }
     ]
    },
@@ -1625,7 +1625,7 @@
     "content": [
      {
       "type": "text",
-      "text": "look forward to 后面接什么？"
+      "text": "What comes after look forward to?"
      }
     ]
    },
@@ -1636,13 +1636,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
+      "thinking": "One rewritten example says more than an explanation.",
       "start_timestamp": "2026-02-26T14:49:27Z",
       "stop_timestamp": "2026-02-26T14:49:35Z"
      },
      {
       "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
+      "text": "A noun or an -ing form: *I look forward to hearing from you.* The to here is a preposition, not part of an infinitive."
      }
     ]
    }
@@ -1650,7 +1650,7 @@
  },
  {
   "uuid": "demo-conv-g019",
-  "name": "烤箱新手问题",
+  "name": "Oven beginner questions",
   "summary": "",
   "created_at": "2026-03-21T09:14:00Z",
   "updated_at": "2026-03-21T09:18:43Z",
@@ -1662,7 +1662,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有没有 15 分钟能做完的晚饭？"
+      "text": "Any dinner I can make in 15 minutes?"
      }
     ]
    },
@@ -1673,7 +1673,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
+      "text": "Scallion oil noodles: cook the noodles, pour hot oil over chopped scallions, soy sauce and a pinch of sugar, then toss. Add a fried egg and it's a full meal."
      }
     ]
    },
@@ -1684,7 +1684,7 @@
     "content": [
      {
       "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
+      "text": "I only have eggs, potatoes and an onion. What can I make?"
      }
     ]
    },
@@ -1695,7 +1695,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
+      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
      }
     ]
    }
@@ -1703,7 +1703,7 @@
  },
  {
   "uuid": "demo-conv-g020",
-  "name": "周末短途去哪",
+  "name": "Where to go for a weekend",
   "summary": "",
   "created_at": "2026-01-18T13:10:00Z",
   "updated_at": "2026-01-18T13:19:06Z",
@@ -1715,7 +1715,7 @@
     "content": [
      {
       "type": "text",
-      "text": "短途旅行带什么最容易忘？"
+      "text": "What's easiest to forget on a short trip?"
      }
     ]
    },
@@ -1726,13 +1726,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2026-01-18T13:10:19Z",
       "stop_timestamp": "2026-01-18T13:10:37Z"
      },
      {
       "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
+      "text": "Chargers, regular medication, copies of your documents and a folding shopping bag. Keep a fixed checklist and run through it each time."
      }
     ]
    },
@@ -1743,7 +1743,7 @@
     "content": [
      {
       "type": "text",
-      "text": "旅行时怎么拍出好看的照片？ 🙏"
+      "text": "How do I take better travel photos? 🙏"
      }
     ]
    },
@@ -1754,7 +1754,7 @@
     "content": [
      {
       "type": "text",
-      "text": "多利用早晨和傍晚的光线；人物不一定放正中，试试三分构图；多拍几张再挑。"
+      "text": "Use early morning and late afternoon light; don't always centre people, try the rule of thirds; take a few shots and pick the best."
      }
     ]
    },
@@ -1765,7 +1765,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！ 🤔"
+      "text": "Got it, thanks! 🤔"
      }
     ]
    },
@@ -1776,7 +1776,7 @@
     "content": [
      {
       "type": "text",
-      "text": "加油！"
+      "text": "Good luck!"
      }
     ]
    },
@@ -1787,7 +1787,7 @@
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？ 🙏"
+      "text": "What should I know about driving in Iceland? 🙏"
      }
     ]
    },
@@ -1798,13 +1798,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2026-01-18T13:19:01Z",
       "stop_timestamp": "2026-01-18T13:19:06Z"
      },
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
      }
     ]
    }
@@ -1812,7 +1812,7 @@
  },
  {
   "uuid": "demo-conv-g021",
-  "name": "怎么坚持读书",
+  "name": "Keeping a reading habit",
   "summary": "",
   "created_at": "2026-02-25T12:02:00Z",
   "updated_at": "2026-02-25T12:06:44Z",
@@ -1824,7 +1824,7 @@
     "content": [
      {
       "type": "text",
-      "text": "《百年孤独》人名太多记不住怎么办？ ☕"
+      "text": "There are too many names in One Hundred Years of Solitude. Any tips? ☕"
      }
     ]
    },
@@ -1835,7 +1835,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
+      "text": "Sketch a family tree as you go, or keep a printed one beside you. Halfway through you'll notice the repeating names are part of the point."
      }
     ]
    },
@@ -1846,7 +1846,7 @@
     "content": [
      {
       "type": "text",
-      "text": "推荐几本入门科普书？"
+      "text": "Can you recommend a few popular science books for beginners?"
      }
     ]
    },
@@ -1857,7 +1857,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
+      "text": "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."
      }
     ]
    }
@@ -1865,7 +1865,7 @@
  },
  {
   "uuid": "demo-conv-g022",
-  "name": "在家练什么",
+  "name": "Workouts at home",
   "summary": "",
   "created_at": "2026-03-02T13:05:00Z",
   "updated_at": "2026-03-02T13:15:03Z",
@@ -1877,7 +1877,7 @@
     "content": [
      {
       "type": "text",
-      "text": "跑完步膝盖有点疼，正常吗？ 🌙"
+      "text": "My knee hurts a bit after running. Is that normal? 🌙"
      }
     ]
    },
@@ -1888,13 +1888,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
+      "thinking": "This involves pain, so mention seeing a doctor when needed.",
       "start_timestamp": "2026-03-02T13:05:45Z",
       "stop_timestamp": "2026-03-02T13:05:54Z"
      },
      {
       "type": "text",
-      "text": "轻微酸胀可能是不适应，但如果是刺痛或持续疼痛，建议先停跑并咨询医生。也检查一下跑鞋和步幅。"
+      "text": "Mild soreness can just be your body adjusting, but sharp or lasting pain means stop and see a doctor. Check your shoes and stride length too."
      }
     ]
    },
@@ -1905,7 +1905,7 @@
     "content": [
      {
       "type": "text",
-      "text": "运动后要拉伸多久？ 😊"
+      "text": "How long should I stretch after a workout? 😊"
      }
     ]
    },
@@ -1916,13 +1916,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
+      "thinking": "This involves pain, so mention seeing a doctor when needed.",
       "start_timestamp": "2026-03-02T13:11:36Z",
       "stop_timestamp": "2026-03-02T13:11:51Z"
      },
      {
       "type": "text",
-      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
+      "text": "20–30 seconds per area, focusing on the front and back of the thighs, calves and glutes; 5–10 minutes in total is plenty."
      }
     ]
    },
@@ -1933,7 +1933,7 @@
     "content": [
      {
       "type": "text",
-      "text": "晚上总是睡不着怎么办？"
+      "text": "I can't fall asleep at night. What helps?"
      }
     ]
    },
@@ -1944,7 +1944,7 @@
     "content": [
      {
       "type": "text",
-      "text": "尽量固定起床时间，睡前一小时少看屏幕，下午之后少喝咖啡。如果长期失眠，最好咨询医生。"
+      "text": "Keep a regular wake-up time, put screens away an hour before bed, and skip coffee after lunch. If it goes on for a long time, talk to a doctor."
      }
     ]
    }
@@ -1952,7 +1952,7 @@
  },
  {
   "uuid": "demo-conv-g023",
-  "name": "周报怎么写",
+  "name": "Writing a weekly update",
   "summary": "",
   "created_at": "2025-11-22T19:03:00Z",
   "updated_at": "2025-11-22T19:04:17Z",
@@ -1964,7 +1964,7 @@
     "content": [
      {
       "type": "text",
-      "text": "事情太多，先做哪个？"
+      "text": "I have too much to do. What comes first?"
      }
     ]
    },
@@ -1975,7 +1975,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
+      "text": "Sort things roughly by urgent and important, and do the important-and-urgent ones first. Schedule the important-but-not-urgent ones ahead of time, or they'll turn urgent."
      }
     ]
    }
@@ -1983,7 +1983,7 @@
  },
  {
   "uuid": "demo-conv-g024",
-  "name": "猫为什么踩奶",
+  "name": "Why cats knead",
   "summary": "",
   "created_at": "2026-03-19T04:44:00Z",
   "updated_at": "2026-03-19T04:54:01Z",
@@ -1995,7 +1995,7 @@
     "content": [
      {
       "type": "text",
-      "text": "猫为什么会踩奶？"
+      "text": "Why do cats knead?"
      }
     ]
    },
@@ -2006,7 +2006,7 @@
     "content": [
      {
       "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+      "text": "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."
      }
     ]
    },
@@ -2017,7 +2017,7 @@
     "content": [
      {
       "type": "text",
-      "text": "那如果换一种情况呢？"
+      "text": "What if the situation were different?"
      }
     ]
    },
@@ -2028,7 +2028,7 @@
     "content": [
      {
       "type": "text",
-      "text": "加油！"
+      "text": "Good luck!"
      }
     ]
    },
@@ -2039,7 +2039,7 @@
     "content": [
      {
       "type": "text",
-      "text": "绿萝叶子发黄是怎么回事？"
+      "text": "Why are my pothos leaves turning yellow?"
      }
     ]
    },
@@ -2050,7 +2050,7 @@
     "content": [
      {
       "type": "text",
-      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
+      "text": "Usually too much water or too little light. Water only once the topsoil is dry and move it somewhere with bright, indirect light."
      }
     ]
    }
@@ -2058,7 +2058,7 @@
  },
  {
   "uuid": "demo-conv-g025",
-  "name": "Git 分支怎么合并",
+  "name": "Merging Git branches",
   "summary": "",
   "created_at": "2025-12-03T01:23:00Z",
   "updated_at": "2025-12-03T01:31:31Z",
@@ -2070,7 +2070,7 @@
     "content": [
      {
       "type": "text",
-      "text": "SQL 查询很慢，先从哪里查？"
+      "text": "My SQL query is slow. Where do I start?"
      }
     ]
    },
@@ -2081,7 +2081,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
+      "text": "Run `EXPLAIN` and look for full table scans. Common fixes: index the columns used in WHERE and JOIN, avoid wrapping indexed columns in functions, and select only the columns you need instead of `SELECT *`."
      }
     ]
    },
@@ -2092,7 +2092,7 @@
     "content": [
      {
       "type": "text",
-      "text": "原来如此"
+      "text": "Ah, that makes sense"
      }
     ]
    },
@@ -2103,7 +2103,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，有需要再来找我。"
+      "text": "Sure, come back whenever you need."
      }
     ]
    },
@@ -2114,7 +2114,7 @@
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
+      "text": "How do I vertically center an element with flexbox?"
      }
     ]
    },
@@ -2125,13 +2125,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
+      "thinking": "The usual confusion is when to use which, so answer by situation.",
       "start_timestamp": "2025-12-03T01:31:12Z",
       "stop_timestamp": "2025-12-03T01:31:31Z"
      },
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
      }
     ]
    }
@@ -2139,7 +2139,7 @@
  },
  {
   "uuid": "demo-conv-g026",
-  "name": "这个单词怎么用",
+  "name": "How to use this word",
   "summary": "",
   "created_at": "2026-01-06T14:17:00Z",
   "updated_at": "2026-01-06T14:32:57Z",
@@ -2151,7 +2151,7 @@
     "content": [
      {
       "type": "text",
-      "text": "affect 和 effect 怎么区分？"
+      "text": "How do I tell affect and effect apart?"
      }
     ]
    },
@@ -2162,7 +2162,7 @@
     "content": [
      {
       "type": "text",
-      "text": "多数情况下 **affect** 是动词（影响），**effect** 是名词（效果）。记法：*A for action*，动作用 affect。"
+      "text": "Most of the time **affect** is the verb and **effect** is the noun. A memory aid: *A for action*, so the action word is affect."
      }
     ]
    },
@@ -2173,7 +2173,7 @@
     "content": [
      {
       "type": "text",
-      "text": "look forward to 后面接什么？ ☕"
+      "text": "What comes after look forward to? ☕"
      }
     ]
    },
@@ -2184,13 +2184,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
+      "thinking": "One rewritten example says more than an explanation.",
       "start_timestamp": "2026-01-06T14:19:54Z",
       "stop_timestamp": "2026-01-06T14:20:05Z"
      },
      {
       "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
+      "text": "A noun or an -ing form: *I look forward to hearing from you.* The to here is a preposition, not part of an infinitive."
      }
     ]
    },
@@ -2201,7 +2201,7 @@
     "content": [
      {
       "type": "text",
-      "text": "邮件结尾除了 Best regards 还能用什么？ 🌙"
+      "text": "What can I use instead of Best regards to end an email? 🌙"
      }
     ]
    },
@@ -2212,7 +2212,7 @@
     "content": [
      {
       "type": "text",
-      "text": "常见的有 *Kind regards*、*Many thanks*、*Cheers*（比较随意）。正式场合用 *Kind regards* 最保险。"
+      "text": "Common ones are *Kind regards*, *Many thanks* and *Cheers* (more casual). *Kind regards* is the safest in formal settings."
      }
     ]
    },
@@ -2223,7 +2223,7 @@
     "content": [
      {
       "type": "text",
-      "text": "by the way 在正式邮件里可以用吗？ 🎉"
+      "text": "Is by the way fine in a formal email? 🎉"
      }
     ]
    },
@@ -2234,13 +2234,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
+      "thinking": "One rewritten example says more than an explanation.",
       "start_timestamp": "2026-01-06T14:32:38Z",
       "stop_timestamp": "2026-01-06T14:32:57Z"
      },
      {
       "type": "text",
-      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
+      "text": "It works but sounds conversational. *Additionally* or *Also* reads a bit more formal."
      }
     ]
    }
@@ -2248,7 +2248,7 @@
  },
  {
   "uuid": "demo-conv-g027",
-  "name": "烤箱新手问题",
+  "name": "Oven beginner questions",
   "summary": "",
   "created_at": "2025-11-22T14:58:00Z",
   "updated_at": "2025-11-22T14:58:32Z",
@@ -2260,7 +2260,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有没有 15 分钟能做完的晚饭？ 🧑‍🍳"
+      "text": "Any dinner I can make in 15 minutes? 🧑‍🍳"
      }
     ]
    },
@@ -2271,7 +2271,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试试葱油拌面：面煮好，热油浇在葱花、生抽、少许糖上，拌匀即可。再加个煎蛋就很完整。"
+      "text": "Scallion oil noodles: cook the noodles, pour hot oil over chopped scallions, soy sauce and a pinch of sugar, then toss. Add a fried egg and it's a full meal."
      }
     ]
    }
@@ -2279,7 +2279,7 @@
  },
  {
   "uuid": "demo-conv-g028",
-  "name": "京都三日行程",
+  "name": "Three days in Kyoto",
   "summary": "",
   "created_at": "2026-01-11T13:47:00Z",
   "updated_at": "2026-01-11T13:51:15Z",
@@ -2291,7 +2291,7 @@
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？"
+      "text": "What should I know about driving in Iceland?"
      }
     ]
    },
@@ -2302,7 +2302,7 @@
     "content": [
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
      }
     ]
    },
@@ -2313,7 +2313,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，我试试"
+      "text": "OK, I'll try that"
      }
     ]
    },
@@ -2324,7 +2324,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -2335,7 +2335,7 @@
     "content": [
      {
       "type": "text",
-      "text": "京都三天怎么安排比较不赶？ 😂"
+      "text": "How can I plan three days in Kyoto without rushing? 😂"
      }
     ]
    },
@@ -2346,7 +2346,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以按区域分：第一天东山（清水寺、二年坂），第二天岚山，第三天伏见稻荷 + 市区。早上尽量早出门，避开人流。"
+      "text": "Split it by area: day one Higashiyama (Kiyomizu-dera, Ninenzaka), day two Arashiyama, day three Fushimi Inari plus the city centre. Head out early to beat the crowds."
      }
     ]
    }
@@ -2354,7 +2354,7 @@
  },
  {
   "uuid": "demo-conv-g029",
-  "name": "《百年孤独》读后感",
+  "name": "Thoughts on One Hundred Years of Solitude",
   "summary": "",
   "created_at": "2026-01-28T14:41:00Z",
   "updated_at": "2026-01-28T14:58:15Z",
@@ -2366,7 +2366,7 @@
     "content": [
      {
       "type": "text",
-      "text": "推荐几本入门科普书？ ✨"
+      "text": "Can you recommend a few popular science books for beginners? ✨"
      }
     ]
    },
@@ -2377,7 +2377,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以试试《时间简史》《自私的基因》《人类简史》。题材不同，挑你最感兴趣的那本先读。"
+      "text": "Try *A Brief History of Time*, *The Selfish Gene* and *Sapiens*. They cover different ground, so start with the one that interests you most."
      }
     ]
    },
@@ -2388,7 +2388,7 @@
     "content": [
      {
       "type": "text",
-      "text": "纸质书和电子书哪个更好？"
+      "text": "Paper books or e-books?"
      }
     ]
    },
@@ -2399,13 +2399,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
+      "thinking": "They need a method they can act on, not general advice.",
       "start_timestamp": "2026-01-28T14:44:52Z",
       "stop_timestamp": "2026-01-28T14:44:57Z"
      },
      {
       "type": "text",
-      "text": "各有优点：纸质书更容易专注和回翻，电子书方便携带和搜索。看你主要在什么场景读。"
+      "text": "Each has its strengths: paper is easier to focus on and flip back through; e-books are easy to carry and search. It depends on where you usually read."
      }
     ]
    },
@@ -2416,7 +2416,7 @@
     "content": [
      {
       "type": "text",
-      "text": "每天没时间读书，怎么坚持？"
+      "text": "I never have time to read. How do I keep going?"
      }
     ]
    },
@@ -2427,7 +2427,7 @@
     "content": [
      {
       "type": "text",
-      "text": "把目标定小：每天 10 页，或者睡前 15 分钟。随身带一本，零碎时间也能读几页。"
+      "text": "Make the goal small: 10 pages a day, or 15 minutes before bed. Carry a book with you so spare minutes count."
      }
     ]
    },
@@ -2438,7 +2438,7 @@
     "content": [
      {
       "type": "text",
-      "text": "《百年孤独》人名太多记不住怎么办？"
+      "text": "There are too many names in One Hundred Years of Solitude. Any tips?"
      }
     ]
    },
@@ -2449,7 +2449,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以边读边画一张家族树，或者找一张现成的放在手边。读到一半之后你会发现名字的重复本身就是书的主题之一。"
+      "text": "Sketch a family tree as you go, or keep a printed one beside you. Halfway through you'll notice the repeating names are part of the point."
      }
     ]
    }
@@ -2457,7 +2457,7 @@
  },
  {
   "uuid": "demo-conv-g030",
-  "name": "拉伸动作",
+  "name": "Stretching",
   "summary": "",
   "created_at": "2026-01-30T15:45:00Z",
   "updated_at": "2026-01-30T15:45:57Z",
@@ -2469,7 +2469,7 @@
     "content": [
      {
       "type": "text",
-      "text": "零基础想开始跑步，怎么开始？ ☕"
+      "text": "I've never run before. How do I start? ☕"
      }
     ]
    },
@@ -2480,13 +2480,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
+      "thinking": "This involves pain, so mention seeing a doctor when needed.",
       "start_timestamp": "2026-01-30T15:45:39Z",
       "stop_timestamp": "2026-01-30T15:45:57Z"
      },
      {
       "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
+      "text": "Start with run-walk intervals: run 1 minute, walk 2, repeat 8 times. Three times a week, and gradually lengthen the running parts."
      }
     ]
    }
@@ -2494,7 +2494,7 @@
  },
  {
   "uuid": "demo-conv-g031",
-  "name": "会议纪要模板",
+  "name": "Meeting notes template",
   "summary": "",
   "created_at": "2025-12-24T11:34:00Z",
   "updated_at": "2025-12-24T11:51:43Z",
@@ -2506,7 +2506,7 @@
     "content": [
      {
       "type": "text",
-      "text": "事情太多，先做哪个？"
+      "text": "I have too much to do. What comes first?"
      }
     ]
    },
@@ -2517,13 +2517,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
+      "thinking": "Give a structure they can reuse as is.",
       "start_timestamp": "2025-12-24T11:34:24Z",
       "stop_timestamp": "2025-12-24T11:34:41Z"
      },
      {
       "type": "text",
-      "text": "可以用紧急/重要四象限粗分一下，先做重要且紧急的；重要不紧急的要提前排进日程，不然它们会变成紧急的。"
+      "text": "Sort things roughly by urgent and important, and do the important-and-urgent ones first. Schedule the important-but-not-urgent ones ahead of time, or they'll turn urgent."
      }
     ]
    },
@@ -2534,7 +2534,7 @@
     "content": [
      {
       "type": "text",
-      "text": "收到～"
+      "text": "Noted!"
      }
     ]
    },
@@ -2545,7 +2545,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "Let me know how it goes."
      }
     ]
    },
@@ -2556,7 +2556,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一页 PPT 放多少字合适？"
+      "text": "How much text should one slide have?"
      }
     ]
    },
@@ -2567,7 +2567,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一页一个观点，标题就写结论。正文尽量不超过三行，细节放到讲稿里。"
+      "text": "One idea per slide, with the conclusion as the title. Keep the body to three lines or fewer and put details in your speaker notes."
      }
     ]
    },
@@ -2578,7 +2578,7 @@
     "content": [
      {
       "type": "text",
-      "text": "帮我设计一个会议纪要模板 🤔"
+      "text": "Can you design a meeting notes template for me? 🤔"
      }
     ]
    },
@@ -2589,7 +2589,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以包含：\n\n1. 时间、参会人\n2. 议题\n3. 结论\n4. 待办（负责人 + 截止时间）\n\n待办那一栏最重要。"
+      "text": "It could include:\n\n1. Date and attendees\n2. Topics\n3. Decisions\n4. Action items (owner + due date)\n\nThe action items matter most."
      }
     ]
    },
@@ -2600,7 +2600,7 @@
     "content": [
      {
       "type": "text",
-      "text": "周报总写成流水账，怎么改？ ✨"
+      "text": "My weekly updates read like a diary. How do I fix that? ✨"
      }
     ]
    },
@@ -2611,7 +2611,7 @@
     "content": [
      {
       "type": "text",
-      "text": "按「结果—问题—下周计划」三段写，每段只列最重要的两三条。能用数字说明的尽量用数字。"
+      "text": "Use three parts: results, problems, next week's plan, with only the two or three most important points in each. Use numbers wherever you can."
      }
     ]
    }
@@ -2619,7 +2619,7 @@
  },
  {
   "uuid": "demo-conv-g032",
-  "name": "养绿萝的问题",
+  "name": "My pothos is struggling",
   "summary": "",
   "created_at": "2026-02-13T19:34:00Z",
   "updated_at": "2026-02-13T19:39:56Z",
@@ -2631,7 +2631,7 @@
     "content": [
      {
       "type": "text",
-      "text": "绿萝叶子发黄是怎么回事？ 🤔"
+      "text": "Why are my pothos leaves turning yellow? 🤔"
      }
     ]
    },
@@ -2642,7 +2642,7 @@
     "content": [
      {
       "type": "text",
-      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
+      "text": "Usually too much water or too little light. Water only once the topsoil is dry and move it somewhere with bright, indirect light."
      }
     ]
    },
@@ -2653,7 +2653,7 @@
     "content": [
      {
       "type": "text",
-      "text": "猫为什么会踩奶？"
+      "text": "Why do cats knead?"
      }
     ]
    },
@@ -2664,7 +2664,7 @@
     "content": [
      {
       "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+      "text": "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."
      }
     ]
    }
@@ -2672,7 +2672,7 @@
  },
  {
   "uuid": "demo-conv-g033",
-  "name": "Git 分支怎么合并",
+  "name": "Merging Git branches",
   "summary": "",
   "created_at": "2026-02-28T00:39:00Z",
   "updated_at": "2026-02-28T00:57:22Z",
@@ -2684,7 +2684,7 @@
     "content": [
      {
       "type": "text",
-      "text": "写爬虫要注意什么？"
+      "text": "What should I watch out for when writing a scraper?"
      }
     ]
    },
@@ -2695,7 +2695,7 @@
     "content": [
      {
       "type": "text",
-      "text": "几件事：先看网站的 robots.txt 和使用条款；请求之间加间隔，别给对方服务器压力；做好异常处理和重试；数据只用于自己被允许的用途。"
+      "text": "A few things: read the site's robots.txt and terms first; space out your requests so you don't load their server; handle errors and retries; and only use the data in ways you're allowed to."
      }
     ]
    },
@@ -2706,7 +2706,7 @@
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
+      "text": "How do I vertically center an element with flexbox?"
      }
     ]
    },
@@ -2717,13 +2717,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
+      "thinking": "The usual confusion is when to use which, so answer by situation.",
       "start_timestamp": "2026-02-28T00:43:20Z",
       "stop_timestamp": "2026-02-28T00:43:41Z"
      },
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
      }
     ]
    },
@@ -2734,7 +2734,7 @@
     "content": [
      {
       "type": "text",
-      "text": "这个报错是什么意思：`IndexError: list index out of range` 🌙"
+      "text": "What does this error mean: `IndexError: list index out of range` 🌙"
      }
     ]
    },
@@ -2745,13 +2745,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "这里最容易混淆的是使用场景，按场景回答。",
+      "thinking": "The usual confusion is when to use which, so answer by situation.",
       "start_timestamp": "2026-02-28T00:45:46Z",
       "stop_timestamp": "2026-02-28T00:45:52Z"
      },
      {
       "type": "text",
-      "text": "说明你访问的下标超出了列表长度。比如列表只有 3 个元素，下标最大是 2，却访问了 `items[3]`。可以先 `print(len(items))` 看看实际长度。"
+      "text": "You accessed an index past the end of the list. If the list has 3 items, the highest index is 2, but the code asked for `items[3]`. Try `print(len(items))` to see the real length."
      }
     ]
    },
@@ -2762,7 +2762,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有道理"
+      "text": "Fair point"
      }
     ]
    },
@@ -2773,7 +2773,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，有需要再来找我。"
+      "text": "Sure, come back whenever you need."
      }
     ]
    },
@@ -2784,7 +2784,7 @@
     "content": [
      {
       "type": "text",
-      "text": "列表推导式和 for 循环比，有什么好处？"
+      "text": "What's the advantage of a list comprehension over a for loop?"
      }
     ]
    },
@@ -2795,7 +2795,7 @@
     "content": [
      {
       "type": "text",
-      "text": "主要是简洁：`[x*2 for x in nums]` 一行就能表达「把每个元素翻倍」。性能上通常也略快一些，因为循环在解释器内部完成。不过逻辑复杂时，普通 for 循环更好读。"
+      "text": "Mostly brevity: `[x*2 for x in nums]` says \"double every element\" in one line. It's usually a little faster too, since the loop runs inside the interpreter. When the logic gets complex, a plain for loop reads better."
      }
     ]
    }
@@ -2803,7 +2803,7 @@
  },
  {
   "uuid": "demo-conv-g034",
-  "name": "雅思写作思路",
+  "name": "Essay structure",
   "summary": "",
   "created_at": "2025-10-14T11:24:00Z",
   "updated_at": "2025-10-14T11:25:29Z",
@@ -2815,7 +2815,7 @@
     "content": [
      {
       "type": "text",
-      "text": "look forward to 后面接什么？"
+      "text": "What comes after look forward to?"
      }
     ]
    },
@@ -2826,7 +2826,7 @@
     "content": [
      {
       "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
+      "text": "A noun or an -ing form: *I look forward to hearing from you.* The to here is a preposition, not part of an infinitive."
      }
     ]
    }
@@ -2834,7 +2834,7 @@
  },
  {
   "uuid": "demo-conv-g035",
-  "name": "周末做什么菜",
+  "name": "What to cook this weekend",
   "summary": "",
   "created_at": "2025-11-22T11:24:00Z",
   "updated_at": "2025-11-22T11:40:06Z",
@@ -2846,7 +2846,7 @@
     "content": [
      {
       "type": "text",
-      "text": "米饭总是夹生，怎么办？"
+      "text": "My rice keeps coming out undercooked. What am I doing wrong?"
      }
     ]
    },
@@ -2857,7 +2857,7 @@
     "content": [
      {
       "type": "text",
-      "text": "多数是水少了或者没泡。大米和水大约 1:1.2，先泡 20 分钟再煮，煮好焖 10 分钟别急着开盖。"
+      "text": "Usually too little water or no soaking. Use about 1:1.2 rice to water, soak for 20 minutes, and let it rest covered for 10 minutes after cooking."
      }
     ]
    },
@@ -2868,7 +2868,7 @@
     "content": [
      {
       "type": "text",
-      "text": "那如果换一种情况呢？"
+      "text": "What if the situation were different?"
      }
     ]
    },
@@ -2879,7 +2879,7 @@
     "content": [
      {
       "type": "text",
-      "text": "好的，有需要再来找我。"
+      "text": "Sure, come back whenever you need."
      }
     ]
    },
@@ -2890,7 +2890,7 @@
     "content": [
      {
       "type": "text",
-      "text": "番茄炒蛋要先炒蛋还是先炒番茄？ ✨"
+      "text": "For tomato and egg stir-fry, do the eggs or the tomatoes go first? ✨"
      }
     ]
    },
@@ -2901,13 +2901,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
+      "thinking": "They have few ingredients, so suggest one dish they can make right now.",
       "start_timestamp": "2025-11-22T11:33:49Z",
       "stop_timestamp": "2025-11-22T11:34:13Z"
      },
      {
       "type": "text",
-      "text": "先炒蛋：油热下蛋液，凝固到七成就盛出。再炒番茄出汁，最后把蛋倒回去翻匀。这样蛋嫩、汁多。"
+      "text": "Eggs first: pour them into hot oil and take them out when they're about 70% set. Then cook the tomatoes until they release their juice and fold the eggs back in. The eggs stay tender and the sauce stays juicy."
      }
     ]
    },
@@ -2918,7 +2918,7 @@
     "content": [
      {
       "type": "text",
-      "text": "明白了，谢谢！ 👨‍💻"
+      "text": "Got it, thanks! 👨‍💻"
      }
     ]
    },
@@ -2929,7 +2929,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不客气，有问题随时问。"
+      "text": "You're welcome, ask any time."
      }
     ]
    },
@@ -2940,7 +2940,7 @@
     "content": [
      {
       "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
+      "text": "I only have eggs, potatoes and an onion. What can I make?"
      }
     ]
    },
@@ -2951,7 +2951,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
+      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
      }
     ]
    }
@@ -2959,7 +2959,7 @@
  },
  {
   "uuid": "demo-conv-g036",
-  "name": "京都三日行程",
+  "name": "Three days in Kyoto",
   "summary": "",
   "created_at": "2026-03-11T04:33:00Z",
   "updated_at": "2026-03-11T04:48:41Z",
@@ -2971,7 +2971,7 @@
     "content": [
      {
       "type": "text",
-      "text": "短途旅行带什么最容易忘？"
+      "text": "What's easiest to forget on a short trip?"
      }
     ]
    },
@@ -2982,7 +2982,7 @@
     "content": [
      {
       "type": "text",
-      "text": "充电器、常用药、证件复印件、一个折叠购物袋。可以列一个固定清单，每次照着核对。"
+      "text": "Chargers, regular medication, copies of your documents and a folding shopping bag. Keep a fixed checklist and run through it each time."
      }
     ]
    },
@@ -2993,7 +2993,7 @@
     "content": [
      {
       "type": "text",
-      "text": "收到～"
+      "text": "Noted!"
      }
     ]
    },
@@ -3004,7 +3004,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "Let me know how it goes."
      }
     ]
    },
@@ -3015,7 +3015,7 @@
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？"
+      "text": "What should I know about driving in Iceland?"
      }
     ]
    },
@@ -3026,13 +3026,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "行程问题按区域拆分最清楚。",
+      "thinking": "An itinerary reads best split by area.",
       "start_timestamp": "2026-03-11T04:42:45Z",
       "stop_timestamp": "2026-03-11T04:42:53Z"
      },
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
      }
     ]
    },
@@ -3043,7 +3043,7 @@
     "content": [
      {
       "type": "text",
-      "text": "要不要买旅行保险？"
+      "text": "Is travel insurance worth it?"
      }
     ]
    },
@@ -3054,7 +3054,7 @@
     "content": [
      {
       "type": "text",
-      "text": "出境的话建议买，尤其是医疗和行程延误保障。注意看清条款里对高风险活动的限制。"
+      "text": "For trips abroad, yes, especially medical cover and delay protection. Check the exclusions for higher-risk activities."
      }
     ]
    },
@@ -3065,7 +3065,7 @@
     "content": [
      {
       "type": "text",
-      "text": "旅行时怎么拍出好看的照片？"
+      "text": "How do I take better travel photos?"
      }
     ]
    },
@@ -3076,7 +3076,7 @@
     "content": [
      {
       "type": "text",
-      "text": "多利用早晨和傍晚的光线；人物不一定放正中，试试三分构图；多拍几张再挑。"
+      "text": "Use early morning and late afternoon light; don't always centre people, try the rule of thirds; take a few shots and pick the best."
      }
     ]
    }
@@ -3084,7 +3084,7 @@
  },
  {
   "uuid": "demo-conv-g037",
-  "name": "读书笔记方法",
+  "name": "Taking reading notes",
   "summary": "",
   "created_at": "2026-02-22T07:24:00Z",
   "updated_at": "2026-02-22T07:27:39Z",
@@ -3096,7 +3096,7 @@
     "content": [
      {
       "type": "text",
-      "text": "读书笔记怎么做才有用？ 👨‍💻"
+      "text": "How do I take reading notes that are actually useful? 👨‍💻"
      }
     ]
    },
@@ -3107,13 +3107,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户需要的是可执行的方法，不是泛泛的建议。",
+      "thinking": "They need a method they can act on, not general advice.",
       "start_timestamp": "2026-02-22T07:25:07Z",
       "stop_timestamp": "2026-02-22T07:25:25Z"
      },
      {
       "type": "text",
-      "text": "别只抄原文。读完一章，用自己的话写三句：讲了什么、我同意什么、我能用在哪里。"
+      "text": "Don't just copy quotes. After each chapter, write three sentences in your own words: what it said, what you agree with, and where you could use it."
      }
     ]
    },
@@ -3124,7 +3124,7 @@
     "content": [
      {
       "type": "text",
-      "text": "每天没时间读书，怎么坚持？"
+      "text": "I never have time to read. How do I keep going?"
      }
     ]
    },
@@ -3135,7 +3135,7 @@
     "content": [
      {
       "type": "text",
-      "text": "把目标定小：每天 10 页，或者睡前 15 分钟。随身带一本，零碎时间也能读几页。"
+      "text": "Make the goal small: 10 pages a day, or 15 minutes before bed. Carry a book with you so spare minutes count."
      }
     ]
    }
@@ -3143,7 +3143,7 @@
  },
  {
   "uuid": "demo-conv-g038",
-  "name": "怎么改善睡眠",
+  "name": "Sleeping better",
   "summary": "",
   "created_at": "2025-12-23T15:36:00Z",
   "updated_at": "2025-12-23T15:45:21Z",
@@ -3155,7 +3155,7 @@
     "content": [
      {
       "type": "text",
-      "text": "零基础想开始跑步，怎么开始？"
+      "text": "I've never run before. How do I start?"
      }
     ]
    },
@@ -3166,13 +3166,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "涉及身体不适，提醒必要时就医。",
+      "thinking": "This involves pain, so mention seeing a doctor when needed.",
       "start_timestamp": "2025-12-23T15:36:18Z",
       "stop_timestamp": "2025-12-23T15:36:28Z"
      },
      {
       "type": "text",
-      "text": "从跑走结合开始：跑 1 分钟、走 2 分钟，重复 8 组。每周 3 次，逐渐增加跑的时间。"
+      "text": "Start with run-walk intervals: run 1 minute, walk 2, repeat 8 times. Three times a week, and gradually lengthen the running parts."
      }
     ]
    },
@@ -3183,7 +3183,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有道理 👨‍💻"
+      "text": "Fair point 👨‍💻"
      }
     ]
    },
@@ -3194,7 +3194,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "Let me know how it goes."
      }
     ]
    },
@@ -3205,7 +3205,7 @@
     "content": [
      {
       "type": "text",
-      "text": "运动后要拉伸多久？"
+      "text": "How long should I stretch after a workout?"
      }
     ]
    },
@@ -3216,7 +3216,7 @@
     "content": [
      {
       "type": "text",
-      "text": "每个部位 20–30 秒，重点拉大腿前后侧、小腿和臀部，总共 5–10 分钟就够。"
+      "text": "20–30 seconds per area, focusing on the front and back of the thighs, calves and glutes; 5–10 minutes in total is plenty."
      }
     ]
    }
@@ -3224,7 +3224,7 @@
  },
  {
   "uuid": "demo-conv-g039",
-  "name": "会议纪要模板",
+  "name": "Meeting notes template",
   "summary": "",
   "created_at": "2025-10-08T13:15:00Z",
   "updated_at": "2025-10-08T13:16:06Z",
@@ -3236,7 +3236,7 @@
     "content": [
      {
       "type": "text",
-      "text": "帮我设计一个会议纪要模板"
+      "text": "Can you design a meeting notes template for me?"
      }
     ]
    },
@@ -3247,13 +3247,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个能直接套用的结构。",
+      "thinking": "Give a structure they can reuse as is.",
       "start_timestamp": "2025-10-08T13:15:42Z",
       "stop_timestamp": "2025-10-08T13:16:06Z"
      },
      {
       "type": "text",
-      "text": "可以包含：\n\n1. 时间、参会人\n2. 议题\n3. 结论\n4. 待办（负责人 + 截止时间）\n\n待办那一栏最重要。"
+      "text": "It could include:\n\n1. Date and attendees\n2. Topics\n3. Decisions\n4. Action items (owner + due date)\n\nThe action items matter most."
      }
     ]
    }
@@ -3261,7 +3261,7 @@
  },
  {
   "uuid": "demo-conv-g040",
-  "name": "学吉他从哪开始",
+  "name": "Where to start with guitar",
   "summary": "",
   "created_at": "2025-10-17T02:03:00Z",
   "updated_at": "2025-10-17T02:15:05Z",
@@ -3273,7 +3273,7 @@
     "content": [
      {
       "type": "text",
-      "text": "绿萝叶子发黄是怎么回事？"
+      "text": "Why are my pothos leaves turning yellow?"
      }
     ]
    },
@@ -3284,7 +3284,7 @@
     "content": [
      {
       "type": "text",
-      "text": "常见原因是浇水太多或光线太少。等土表面干了再浇，放到明亮的散射光处。"
+      "text": "Usually too much water or too little light. Water only once the topsoil is dry and move it somewhere with bright, indirect light."
      }
     ]
    },
@@ -3295,7 +3295,7 @@
     "content": [
      {
       "type": "text",
-      "text": "有道理"
+      "text": "Fair point"
      }
     ]
    },
@@ -3306,7 +3306,7 @@
     "content": [
      {
       "type": "text",
-      "text": "试过之后可以告诉我效果。"
+      "text": "Let me know how it goes."
      }
     ]
    },
@@ -3317,7 +3317,7 @@
     "content": [
      {
       "type": "text",
-      "text": "学吉他先练什么？ 🙏"
+      "text": "What should I practise first on guitar? 🙏"
      }
     ]
    },
@@ -3328,7 +3328,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先练几个基本和弦：C、G、Am、F（F 比较难，可以先用简化版）。每天 15 分钟，指尖会慢慢长茧。"
+      "text": "A few basic chords: C, G, Am and F (F is hard, so start with the simplified version). Fifteen minutes a day and your fingertips will toughen up."
      }
     ]
    },
@@ -3339,7 +3339,7 @@
     "content": [
      {
       "type": "text",
-      "text": "猫为什么会踩奶？ 😮"
+      "text": "Why do cats knead? 😮"
      }
     ]
    },
@@ -3350,7 +3350,7 @@
     "content": [
      {
       "type": "text",
-      "text": "这是小时候吃奶时留下的习惯，通常表示放松和满足。"
+      "text": "It's a habit from nursing as kittens and usually means the cat feels relaxed and content."
      }
     ]
    }
@@ -3358,7 +3358,7 @@
  },
  {
   "uuid": "demo-conv-g041",
-  "name": "前端布局问题",
+  "name": "A CSS layout question",
   "summary": "",
   "created_at": "2026-01-19T19:30:00Z",
   "updated_at": "2026-01-19T19:34:33Z",
@@ -3370,7 +3370,7 @@
     "content": [
      {
       "type": "text",
-      "text": "flex 布局里怎么让元素垂直居中？"
+      "text": "How do I vertically center an element with flexbox?"
      }
     ]
    },
@@ -3381,13 +3381,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户在问基础概念，先给结论再举一个小例子。",
+      "thinking": "This is a basic concept; lead with the answer, then one small example.",
       "start_timestamp": "2026-01-19T19:30:41Z",
       "stop_timestamp": "2026-01-19T19:31:05Z"
      },
      {
       "type": "text",
-      "text": "父元素加上：\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\n如果水平也要居中，再加 `justify-content: center;`。"
+      "text": "On the parent:\n\n```css\ndisplay: flex;\nalign-items: center;\n```\n\nAdd `justify-content: center;` to center it horizontally as well."
      }
     ]
    },
@@ -3398,7 +3398,7 @@
     "content": [
      {
       "type": "text",
-      "text": "SQL 查询很慢，先从哪里查？ 😊"
+      "text": "My SQL query is slow. Where do I start? 😊"
      }
     ]
    },
@@ -3409,7 +3409,7 @@
     "content": [
      {
       "type": "text",
-      "text": "先用 `EXPLAIN` 看执行计划，重点看有没有全表扫描。常见的改进：给 WHERE 和 JOIN 用到的列加索引、避免在索引列上套函数、只取需要的列而不是 `SELECT *`。"
+      "text": "Run `EXPLAIN` and look for full table scans. Common fixes: index the columns used in WHERE and JOIN, avoid wrapping indexed columns in functions, and select only the columns you need instead of `SELECT *`."
      }
     ]
    }
@@ -3417,7 +3417,7 @@
  },
  {
   "uuid": "demo-conv-g042",
-  "name": "英语口语练习",
+  "name": "Writing practice",
   "summary": "",
   "created_at": "2025-12-14T04:29:00Z",
   "updated_at": "2025-12-14T04:38:07Z",
@@ -3429,7 +3429,7 @@
     "content": [
      {
       "type": "text",
-      "text": "look forward to 后面接什么？"
+      "text": "What comes after look forward to?"
      }
     ]
    },
@@ -3440,7 +3440,7 @@
     "content": [
      {
       "type": "text",
-      "text": "接名词或动名词：*I look forward to hearing from you.* 这里的 to 是介词，不是不定式。"
+      "text": "A noun or an -ing form: *I look forward to hearing from you.* The to here is a preposition, not part of an infinitive."
      }
     ]
    },
@@ -3451,7 +3451,7 @@
     "content": [
      {
       "type": "text",
-      "text": "帮我把这句话改得更自然：I very like this book. 🧑‍🍳"
+      "text": "Can you make this sentence sound more natural: I very like this book. 🧑‍🍳"
      }
     ]
    },
@@ -3462,7 +3462,7 @@
     "content": [
      {
       "type": "text",
-      "text": "可以说 *I really like this book.* 或 *I like this book a lot.* —— very 不能直接修饰动词。"
+      "text": "Try *I really like this book.* or *I like this book a lot.* — very can't modify a verb directly."
      }
     ]
    },
@@ -3473,7 +3473,7 @@
     "content": [
      {
       "type": "text",
-      "text": "我想练口语，每天该怎么安排？"
+      "text": "I want to get better at speaking. How should I plan each day?"
      }
     ]
    },
@@ -3484,7 +3484,7 @@
     "content": [
      {
       "type": "text",
-      "text": "建议每天 20 分钟：5 分钟跟读、10 分钟就一个话题自言自语并录音、5 分钟回听找问题。坚持比时长更重要。"
+      "text": "About 20 minutes: 5 minutes shadowing a recording, 10 minutes talking to yourself about one topic while recording, 5 minutes listening back for mistakes. Consistency matters more than length."
      }
     ]
    },
@@ -3495,7 +3495,7 @@
     "content": [
      {
       "type": "text",
-      "text": "by the way 在正式邮件里可以用吗？ 🙏"
+      "text": "Is by the way fine in a formal email? 🙏"
      }
     ]
    },
@@ -3506,13 +3506,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "给一个改写示例，比讲规则更直观。",
+      "thinking": "One rewritten example says more than an explanation.",
       "start_timestamp": "2025-12-14T04:38:04Z",
       "stop_timestamp": "2025-12-14T04:38:07Z"
      },
      {
       "type": "text",
-      "text": "可以但偏口语。正式一点可以换成 *Additionally* 或 *Also*。"
+      "text": "It works but sounds conversational. *Additionally* or *Also* reads a bit more formal."
      }
     ]
    }
@@ -3520,7 +3520,7 @@
  },
  {
   "uuid": "demo-conv-g043",
-  "name": "烤箱新手问题",
+  "name": "Oven beginner questions",
   "summary": "",
   "created_at": "2025-10-18T04:54:00Z",
   "updated_at": "2025-10-18T04:58:07Z",
@@ -3532,7 +3532,7 @@
     "content": [
      {
       "type": "text",
-      "text": "烤箱要预热多久？ ☕"
+      "text": "How long should I preheat the oven? ☕"
      }
     ]
    },
@@ -3543,7 +3543,7 @@
     "content": [
      {
       "type": "text",
-      "text": "一般 10–15 分钟，等到达设定温度的指示灯亮就行。烤蛋糕之类对温度敏感的，预热一定要充分。"
+      "text": "Usually 10–15 minutes, until the indicator says it has reached temperature. For cakes and other temperature-sensitive bakes, make sure it's fully preheated."
      }
     ]
    },
@@ -3554,7 +3554,7 @@
     "content": [
      {
       "type": "text",
-      "text": "家里只有鸡蛋、土豆和洋葱，能做什么？"
+      "text": "I only have eggs, potatoes and an onion. What can I make?"
      }
     ]
    },
@@ -3565,13 +3565,13 @@
     "content": [
      {
       "type": "thinking",
-      "thinking": "用户手边食材有限，给一道能直接做的菜。",
+      "thinking": "They have few ingredients, so suggest one dish they can make right now.",
       "start_timestamp": "2025-10-18T04:57:52Z",
       "stop_timestamp": "2025-10-18T04:58:07Z"
      },
      {
       "type": "text",
-      "text": "可以做西班牙土豆蛋饼：土豆洋葱切薄片小火煎软，倒入蛋液，小火慢慢凝固，翻面再煎两分钟。"
+      "text": "A Spanish tortilla: slice the potato and onion thinly and cook them gently until soft, pour in the beaten eggs, let it set over low heat, then flip and cook two more minutes."
      }
     ]
    }
@@ -3579,7 +3579,7 @@
  },
  {
   "uuid": "demo-conv-g044",
-  "name": "行李清单",
+  "name": "Packing list",
   "summary": "",
   "created_at": "2026-01-28T09:42:00Z",
   "updated_at": "2026-01-28T09:42:26Z",
@@ -3591,7 +3591,7 @@
     "content": [
      {
       "type": "text",
-      "text": "冰岛自驾要注意什么？"
+      "text": "What should I know about driving in Iceland?"
      }
     ]
    },
@@ -3602,7 +3602,7 @@
     "content": [
      {
       "type": "text",
-      "text": "注意天气和路况，出发前查 road.is；F 路需要四驱；加油站之间距离可能很远，半箱油就加。"
+      "text": "Watch the weather and road conditions (check road.is before setting off); F-roads need four-wheel drive; petrol stations can be far apart, so fill up at half a tank."
      }
     ]
    }
@@ -3610,7 +3610,7 @@
  },
  {
   "uuid": "demo-conv-g045",
-  "name": "每日一词打卡",
+  "name": "Word of the day",
   "summary": "",
   "created_at": "2025-11-03T07:53:00Z",
   "updated_at": "2026-01-03T13:14:50Z",
@@ -3622,7 +3622,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：resilient，帮我造个句"
+      "text": "Word of the day: resilient. Can you use it in a sentence?"
      }
     ]
    },
@@ -3633,7 +3633,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*resilient* —— 例句：\n\n> She remained resilient throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*resilient* — for example:\n\n> She remained resilient throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3644,7 +3644,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：meticulous，帮我造个句"
+      "text": "Word of the day: meticulous. Can you use it in a sentence?"
      }
     ]
    },
@@ -3655,7 +3655,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*meticulous* —— 例句：\n\n> She remained meticulous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*meticulous* — for example:\n\n> She remained meticulous throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3666,7 +3666,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：candid，帮我造个句"
+      "text": "Word of the day: candid. Can you use it in a sentence?"
      }
     ]
    },
@@ -3677,7 +3677,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*candid* —— 例句：\n\n> She remained candid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*candid* — for example:\n\n> She remained candid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3688,7 +3688,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：ambiguous，帮我造个句"
+      "text": "Word of the day: ambiguous. Can you use it in a sentence?"
      }
     ]
    },
@@ -3699,7 +3699,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*ambiguous* —— 例句：\n\n> She remained ambiguous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*ambiguous* — for example:\n\n> She remained ambiguous throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3710,7 +3710,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：pragmatic，帮我造个句"
+      "text": "Word of the day: pragmatic. Can you use it in a sentence?"
      }
     ]
    },
@@ -3721,7 +3721,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*pragmatic* —— 例句：\n\n> She remained pragmatic throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*pragmatic* — for example:\n\n> She remained pragmatic throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3732,7 +3732,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：vivid，帮我造个句"
+      "text": "Word of the day: vivid. Can you use it in a sentence?"
      }
     ]
    },
@@ -3743,7 +3743,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*vivid* —— 例句：\n\n> She remained vivid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*vivid* — for example:\n\n> She remained vivid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3754,7 +3754,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：coherent，帮我造个句 🎉"
+      "text": "Word of the day: coherent. Can you use it in a sentence? 🎉"
      }
     ]
    },
@@ -3765,7 +3765,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*coherent* —— 例句：\n\n> She remained coherent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*coherent* — for example:\n\n> She remained coherent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3776,7 +3776,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：diligent，帮我造个句 🙏"
+      "text": "Word of the day: diligent. Can you use it in a sentence? 🙏"
      }
     ]
    },
@@ -3787,7 +3787,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*diligent* —— 例句：\n\n> She remained diligent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*diligent* — for example:\n\n> She remained diligent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3798,7 +3798,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：eloquent，帮我造个句 👨‍💻"
+      "text": "Word of the day: eloquent. Can you use it in a sentence? 👨‍💻"
      }
     ]
    },
@@ -3809,7 +3809,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*eloquent* —— 例句：\n\n> She remained eloquent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*eloquent* — for example:\n\n> She remained eloquent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3820,7 +3820,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：frugal，帮我造个句"
+      "text": "Word of the day: frugal. Can you use it in a sentence?"
      }
     ]
    },
@@ -3831,7 +3831,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*frugal* —— 例句：\n\n> She remained frugal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*frugal* — for example:\n\n> She remained frugal throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3842,7 +3842,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：genuine，帮我造个句"
+      "text": "Word of the day: genuine. Can you use it in a sentence?"
      }
     ]
    },
@@ -3853,7 +3853,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*genuine* —— 例句：\n\n> She remained genuine throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*genuine* — for example:\n\n> She remained genuine throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3864,7 +3864,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：humble，帮我造个句"
+      "text": "Word of the day: humble. Can you use it in a sentence?"
      }
     ]
    },
@@ -3875,7 +3875,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*humble* —— 例句：\n\n> She remained humble throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*humble* — for example:\n\n> She remained humble throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3886,7 +3886,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：inevitable，帮我造个句"
+      "text": "Word of the day: inevitable. Can you use it in a sentence?"
      }
     ]
    },
@@ -3897,7 +3897,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*inevitable* —— 例句：\n\n> She remained inevitable throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*inevitable* — for example:\n\n> She remained inevitable throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3908,7 +3908,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：keen，帮我造个句"
+      "text": "Word of the day: keen. Can you use it in a sentence?"
      }
     ]
    },
@@ -3919,7 +3919,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*keen* —— 例句：\n\n> She remained keen throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*keen* — for example:\n\n> She remained keen throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3930,7 +3930,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：lucid，帮我造个句"
+      "text": "Word of the day: lucid. Can you use it in a sentence?"
      }
     ]
    },
@@ -3941,7 +3941,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*lucid* —— 例句：\n\n> She remained lucid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*lucid* — for example:\n\n> She remained lucid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3952,7 +3952,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：modest，帮我造个句 🎉"
+      "text": "Word of the day: modest. Can you use it in a sentence? 🎉"
      }
     ]
    },
@@ -3963,7 +3963,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*modest* —— 例句：\n\n> She remained modest throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*modest* — for example:\n\n> She remained modest throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3974,7 +3974,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：notion，帮我造个句 👨‍💻"
+      "text": "Word of the day: notion. Can you use it in a sentence? 👨‍💻"
      }
     ]
    },
@@ -3985,7 +3985,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*notion* —— 例句：\n\n> She remained notion throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*notion* — for example:\n\n> She remained notion throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -3996,7 +3996,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：obscure，帮我造个句 👨‍💻"
+      "text": "Word of the day: obscure. Can you use it in a sentence? 👨‍💻"
      }
     ]
    },
@@ -4007,7 +4007,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*obscure* —— 例句：\n\n> She remained obscure throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*obscure* — for example:\n\n> She remained obscure throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4018,7 +4018,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：plausible，帮我造个句 😂"
+      "text": "Word of the day: plausible. Can you use it in a sentence? 😂"
      }
     ]
    },
@@ -4029,7 +4029,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*plausible* —— 例句：\n\n> She remained plausible throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*plausible* — for example:\n\n> She remained plausible throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4040,7 +4040,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：reluctant，帮我造个句"
+      "text": "Word of the day: reluctant. Can you use it in a sentence?"
      }
     ]
    },
@@ -4051,7 +4051,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*reluctant* —— 例句：\n\n> She remained reluctant throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*reluctant* — for example:\n\n> She remained reluctant throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4062,7 +4062,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：subtle，帮我造个句"
+      "text": "Word of the day: subtle. Can you use it in a sentence?"
      }
     ]
    },
@@ -4073,7 +4073,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*subtle* —— 例句：\n\n> She remained subtle throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*subtle* — for example:\n\n> She remained subtle throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4084,7 +4084,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：tedious，帮我造个句"
+      "text": "Word of the day: tedious. Can you use it in a sentence?"
      }
     ]
    },
@@ -4095,7 +4095,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*tedious* —— 例句：\n\n> She remained tedious throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*tedious* — for example:\n\n> She remained tedious throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4106,7 +4106,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：versatile，帮我造个句 ❤️"
+      "text": "Word of the day: versatile. Can you use it in a sentence? ❤️"
      }
     ]
    },
@@ -4117,7 +4117,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*versatile* —— 例句：\n\n> She remained versatile throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*versatile* — for example:\n\n> She remained versatile throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4128,7 +4128,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：whim，帮我造个句 🤔"
+      "text": "Word of the day: whim. Can you use it in a sentence? 🤔"
      }
     ]
    },
@@ -4139,7 +4139,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*whim* —— 例句：\n\n> She remained whim throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*whim* — for example:\n\n> She remained whim throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4150,7 +4150,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：zeal，帮我造个句"
+      "text": "Word of the day: zeal. Can you use it in a sentence?"
      }
     ]
    },
@@ -4161,7 +4161,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*zeal* —— 例句：\n\n> She remained zeal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*zeal* — for example:\n\n> She remained zeal throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4172,7 +4172,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：abundant，帮我造个句 ❤️"
+      "text": "Word of the day: abundant. Can you use it in a sentence? ❤️"
      }
     ]
    },
@@ -4183,7 +4183,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*abundant* —— 例句：\n\n> She remained abundant throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*abundant* — for example:\n\n> She remained abundant throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4194,7 +4194,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：brisk，帮我造个句"
+      "text": "Word of the day: brisk. Can you use it in a sentence?"
      }
     ]
    },
@@ -4205,7 +4205,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*brisk* —— 例句：\n\n> She remained brisk throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*brisk* — for example:\n\n> She remained brisk throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4216,7 +4216,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：cherish，帮我造个句 😊"
+      "text": "Word of the day: cherish. Can you use it in a sentence? 😊"
      }
     ]
    },
@@ -4227,7 +4227,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*cherish* —— 例句：\n\n> She remained cherish throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*cherish* — for example:\n\n> She remained cherish throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4238,7 +4238,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：dwell，帮我造个句"
+      "text": "Word of the day: dwell. Can you use it in a sentence?"
      }
     ]
    },
@@ -4249,7 +4249,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*dwell* —— 例句：\n\n> She remained dwell throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*dwell* — for example:\n\n> She remained dwell throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4260,7 +4260,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：endeavor，帮我造个句"
+      "text": "Word of the day: endeavor. Can you use it in a sentence?"
      }
     ]
    },
@@ -4271,7 +4271,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*endeavor* —— 例句：\n\n> She remained endeavor throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*endeavor* — for example:\n\n> She remained endeavor throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4282,7 +4282,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：fragile，帮我造个句"
+      "text": "Word of the day: fragile. Can you use it in a sentence?"
      }
     ]
    },
@@ -4293,7 +4293,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*fragile* —— 例句：\n\n> She remained fragile throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*fragile* — for example:\n\n> She remained fragile throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4304,7 +4304,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：grasp，帮我造个句"
+      "text": "Word of the day: grasp. Can you use it in a sentence?"
      }
     ]
    },
@@ -4315,7 +4315,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*grasp* —— 例句：\n\n> She remained grasp throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*grasp* — for example:\n\n> She remained grasp throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4326,7 +4326,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：hinder，帮我造个句"
+      "text": "Word of the day: hinder. Can you use it in a sentence?"
      }
     ]
    },
@@ -4337,7 +4337,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*hinder* —— 例句：\n\n> She remained hinder throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*hinder* — for example:\n\n> She remained hinder throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4348,7 +4348,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：imply，帮我造个句"
+      "text": "Word of the day: imply. Can you use it in a sentence?"
      }
     ]
    },
@@ -4359,7 +4359,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*imply* —— 例句：\n\n> She remained imply throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*imply* — for example:\n\n> She remained imply throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4370,7 +4370,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：resilient，帮我造个句"
+      "text": "Word of the day: resilient. Can you use it in a sentence?"
      }
     ]
    },
@@ -4381,7 +4381,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*resilient* —— 例句：\n\n> She remained resilient throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*resilient* — for example:\n\n> She remained resilient throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4392,7 +4392,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：meticulous，帮我造个句"
+      "text": "Word of the day: meticulous. Can you use it in a sentence?"
      }
     ]
    },
@@ -4403,7 +4403,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*meticulous* —— 例句：\n\n> She remained meticulous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*meticulous* — for example:\n\n> She remained meticulous throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4414,7 +4414,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：candid，帮我造个句 ❤️"
+      "text": "Word of the day: candid. Can you use it in a sentence? ❤️"
      }
     ]
    },
@@ -4425,7 +4425,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*candid* —— 例句：\n\n> She remained candid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*candid* — for example:\n\n> She remained candid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4436,7 +4436,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：ambiguous，帮我造个句 🤔"
+      "text": "Word of the day: ambiguous. Can you use it in a sentence? 🤔"
      }
     ]
    },
@@ -4447,7 +4447,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*ambiguous* —— 例句：\n\n> She remained ambiguous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*ambiguous* — for example:\n\n> She remained ambiguous throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4458,7 +4458,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：pragmatic，帮我造个句"
+      "text": "Word of the day: pragmatic. Can you use it in a sentence?"
      }
     ]
    },
@@ -4469,7 +4469,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*pragmatic* —— 例句：\n\n> She remained pragmatic throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*pragmatic* — for example:\n\n> She remained pragmatic throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4480,7 +4480,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：vivid，帮我造个句"
+      "text": "Word of the day: vivid. Can you use it in a sentence?"
      }
     ]
    },
@@ -4491,7 +4491,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*vivid* —— 例句：\n\n> She remained vivid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*vivid* — for example:\n\n> She remained vivid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4502,7 +4502,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：coherent，帮我造个句 😂"
+      "text": "Word of the day: coherent. Can you use it in a sentence? 😂"
      }
     ]
    },
@@ -4513,7 +4513,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*coherent* —— 例句：\n\n> She remained coherent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*coherent* — for example:\n\n> She remained coherent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4524,7 +4524,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：diligent，帮我造个句 🤔"
+      "text": "Word of the day: diligent. Can you use it in a sentence? 🤔"
      }
     ]
    },
@@ -4535,7 +4535,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*diligent* —— 例句：\n\n> She remained diligent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*diligent* — for example:\n\n> She remained diligent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4546,7 +4546,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：eloquent，帮我造个句"
+      "text": "Word of the day: eloquent. Can you use it in a sentence?"
      }
     ]
    },
@@ -4557,7 +4557,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*eloquent* —— 例句：\n\n> She remained eloquent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*eloquent* — for example:\n\n> She remained eloquent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4568,7 +4568,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：frugal，帮我造个句"
+      "text": "Word of the day: frugal. Can you use it in a sentence?"
      }
     ]
    },
@@ -4579,7 +4579,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*frugal* —— 例句：\n\n> She remained frugal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*frugal* — for example:\n\n> She remained frugal throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4590,7 +4590,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：genuine，帮我造个句"
+      "text": "Word of the day: genuine. Can you use it in a sentence?"
      }
     ]
    },
@@ -4601,7 +4601,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*genuine* —— 例句：\n\n> She remained genuine throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*genuine* — for example:\n\n> She remained genuine throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4612,7 +4612,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：humble，帮我造个句 😊"
+      "text": "Word of the day: humble. Can you use it in a sentence? 😊"
      }
     ]
    },
@@ -4623,7 +4623,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*humble* —— 例句：\n\n> She remained humble throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*humble* — for example:\n\n> She remained humble throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4634,7 +4634,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：inevitable，帮我造个句"
+      "text": "Word of the day: inevitable. Can you use it in a sentence?"
      }
     ]
    },
@@ -4645,7 +4645,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*inevitable* —— 例句：\n\n> She remained inevitable throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*inevitable* — for example:\n\n> She remained inevitable throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4656,7 +4656,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：keen，帮我造个句"
+      "text": "Word of the day: keen. Can you use it in a sentence?"
      }
     ]
    },
@@ -4667,7 +4667,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*keen* —— 例句：\n\n> She remained keen throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*keen* — for example:\n\n> She remained keen throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4678,7 +4678,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：lucid，帮我造个句"
+      "text": "Word of the day: lucid. Can you use it in a sentence?"
      }
     ]
    },
@@ -4689,7 +4689,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*lucid* —— 例句：\n\n> She remained lucid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*lucid* — for example:\n\n> She remained lucid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -4700,7 +4700,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：modest，帮我造个句"
+      "text": "Word of the day: modest. Can you use it in a sentence?"
      }
     ]
    },
@@ -4711,7 +4711,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*modest* —— 例句：\n\n> She remained modest throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*modest* — for example:\n\n> She remained modest throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    }
@@ -4719,7 +4719,7 @@
  },
  {
   "uuid": "demo-conv-g046",
-  "name": "跑步记录",
+  "name": "Running log",
   "summary": "",
   "created_at": "2026-01-05T12:58:00Z",
   "updated_at": "2026-02-15T15:06:53Z",
@@ -4731,7 +4731,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "Check-in: 3 km at 7:10/km"
      }
     ]
    },
@@ -4742,7 +4742,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -4753,7 +4753,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟 🤔"
+      "text": "Check-in: 25 minutes of run-walk 🤔"
      }
     ]
    },
@@ -4764,7 +4764,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    },
@@ -4775,7 +4775,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 👨‍💻"
+      "text": "Check-in: 4 km, easier than last time 👨‍💻"
      }
     ]
    },
@@ -4786,7 +4786,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -4797,7 +4797,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟 🤔"
+      "text": "Check-in: rest day, 10 minutes of stretching 🤔"
      }
     ]
    },
@@ -4808,7 +4808,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    },
@@ -4819,7 +4819,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速 🌙"
+      "text": "Check-in: 3.5 km with a faster last km 🌙"
      }
     ]
    },
@@ -4830,7 +4830,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -4841,7 +4841,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "Check-in: 5 km! First time all the way"
      }
     ]
    },
@@ -4852,7 +4852,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    },
@@ -4863,7 +4863,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量 👍"
+      "text": "Check-in: rainy day, 20 minutes of strength at home 👍"
      }
     ]
    },
@@ -4874,7 +4874,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -4885,7 +4885,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10 🧑‍🍳"
+      "text": "Check-in: 3 km at 7:10/km 🧑‍🍳"
      }
     ]
    },
@@ -4896,7 +4896,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -4907,7 +4907,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟"
+      "text": "Check-in: 25 minutes of run-walk"
      }
     ]
    },
@@ -4918,7 +4918,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -4929,7 +4929,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 👨‍💻"
+      "text": "Check-in: 4 km, easier than last time 👨‍💻"
      }
     ]
    },
@@ -4940,7 +4940,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    },
@@ -4951,7 +4951,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟 🤔"
+      "text": "Check-in: rest day, 10 minutes of stretching 🤔"
      }
     ]
    },
@@ -4962,7 +4962,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -4973,7 +4973,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速"
+      "text": "Check-in: 3.5 km with a faster last km"
      }
     ]
    },
@@ -4984,7 +4984,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    },
@@ -4995,7 +4995,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "Check-in: 5 km! First time all the way"
      }
     ]
    },
@@ -5006,7 +5006,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    },
@@ -5017,7 +5017,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量 🌙"
+      "text": "Check-in: rainy day, 20 minutes of strength at home 🌙"
      }
     ]
    },
@@ -5028,7 +5028,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5039,7 +5039,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "Check-in: 3 km at 7:10/km"
      }
     ]
    },
@@ -5050,7 +5050,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5061,7 +5061,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟"
+      "text": "Check-in: 25 minutes of run-walk"
      }
     ]
    },
@@ -5072,7 +5072,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -5083,7 +5083,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 🎉"
+      "text": "Check-in: 4 km, easier than last time 🎉"
      }
     ]
    },
@@ -5094,7 +5094,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -5105,7 +5105,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟"
+      "text": "Check-in: rest day, 10 minutes of stretching"
      }
     ]
    },
@@ -5116,7 +5116,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5127,7 +5127,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速 👍"
+      "text": "Check-in: 3.5 km with a faster last km 👍"
      }
     ]
    },
@@ -5138,7 +5138,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -5149,7 +5149,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "Check-in: 5 km! First time all the way"
      }
     ]
    },
@@ -5160,7 +5160,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -5171,7 +5171,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量"
+      "text": "Check-in: rainy day, 20 minutes of strength at home"
      }
     ]
    },
@@ -5182,7 +5182,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -5193,7 +5193,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "Check-in: 3 km at 7:10/km"
      }
     ]
    },
@@ -5204,7 +5204,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -5215,7 +5215,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟 ❤️"
+      "text": "Check-in: 25 minutes of run-walk ❤️"
      }
     ]
    },
@@ -5226,7 +5226,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5237,7 +5237,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松 🙏"
+      "text": "Check-in: 4 km, easier than last time 🙏"
      }
     ]
    },
@@ -5248,7 +5248,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -5259,7 +5259,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟"
+      "text": "Check-in: rest day, 10 minutes of stretching"
      }
     ]
    },
@@ -5270,7 +5270,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5281,7 +5281,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速"
+      "text": "Check-in: 3.5 km with a faster last km"
      }
     ]
    },
@@ -5292,7 +5292,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5303,7 +5303,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完"
+      "text": "Check-in: 5 km! First time all the way"
      }
     ]
    },
@@ -5314,7 +5314,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -5325,7 +5325,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：雨天在家做了 20 分钟力量"
+      "text": "Check-in: rainy day, 20 minutes of strength at home"
      }
     ]
    },
@@ -5336,7 +5336,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -5347,7 +5347,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3 公里，配速 7:10"
+      "text": "Check-in: 3 km at 7:10/km"
      }
     ]
    },
@@ -5358,7 +5358,7 @@
     "content": [
      {
       "type": "text",
-      "text": "进步明显 🎉"
+      "text": "Clear progress 🎉"
      }
     ]
    },
@@ -5369,7 +5369,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：跑走结合 25 分钟"
+      "text": "Check-in: 25 minutes of run-walk"
      }
     ]
    },
@@ -5380,7 +5380,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5391,7 +5391,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：4 公里，比上次轻松"
+      "text": "Check-in: 4 km, easier than last time"
      }
     ]
    },
@@ -5402,7 +5402,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5413,7 +5413,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：休息日，拉伸 10 分钟"
+      "text": "Check-in: rest day, 10 minutes of stretching"
      }
     ]
    },
@@ -5424,7 +5424,7 @@
     "content": [
      {
       "type": "text",
-      "text": "休息也是训练的一部分。"
+      "text": "Rest is part of training too."
      }
     ]
    },
@@ -5435,7 +5435,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：3.5 公里，最后一公里加速"
+      "text": "Check-in: 3.5 km with a faster last km"
      }
     ]
    },
@@ -5446,7 +5446,7 @@
     "content": [
      {
       "type": "text",
-      "text": "很稳，记得拉伸。"
+      "text": "Steady. Remember to stretch."
      }
     ]
    },
@@ -5457,7 +5457,7 @@
     "content": [
      {
       "type": "text",
-      "text": "打卡：5 公里！第一次跑完 ☕"
+      "text": "Check-in: 5 km! First time all the way ☕"
      }
     ]
    },
@@ -5468,7 +5468,7 @@
     "content": [
      {
       "type": "text",
-      "text": "不错，保持节奏！"
+      "text": "Nice, keep the rhythm!"
      }
     ]
    }
@@ -5476,7 +5476,7 @@
  },
  {
   "uuid": "demo-conv-g047",
-  "name": "单词打卡 · 第二轮",
+  "name": "Word of the day · round two",
   "summary": "",
   "created_at": "2026-02-16T11:48:00Z",
   "updated_at": "2026-03-21T14:59:36Z",
@@ -5488,7 +5488,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：resilient，帮我造个句 ✨"
+      "text": "Word of the day: resilient. Can you use it in a sentence? ✨"
      }
     ]
    },
@@ -5499,7 +5499,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*resilient* —— 例句：\n\n> She remained resilient throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*resilient* — for example:\n\n> She remained resilient throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5510,7 +5510,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：meticulous，帮我造个句 ☕"
+      "text": "Word of the day: meticulous. Can you use it in a sentence? ☕"
      }
     ]
    },
@@ -5521,7 +5521,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*meticulous* —— 例句：\n\n> She remained meticulous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*meticulous* — for example:\n\n> She remained meticulous throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5532,7 +5532,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：candid，帮我造个句 😊"
+      "text": "Word of the day: candid. Can you use it in a sentence? 😊"
      }
     ]
    },
@@ -5543,7 +5543,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*candid* —— 例句：\n\n> She remained candid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*candid* — for example:\n\n> She remained candid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5554,7 +5554,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：ambiguous，帮我造个句 ✨"
+      "text": "Word of the day: ambiguous. Can you use it in a sentence? ✨"
      }
     ]
    },
@@ -5565,7 +5565,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*ambiguous* —— 例句：\n\n> She remained ambiguous throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*ambiguous* — for example:\n\n> She remained ambiguous throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5576,7 +5576,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：pragmatic，帮我造个句"
+      "text": "Word of the day: pragmatic. Can you use it in a sentence?"
      }
     ]
    },
@@ -5587,7 +5587,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*pragmatic* —— 例句：\n\n> She remained pragmatic throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*pragmatic* — for example:\n\n> She remained pragmatic throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5598,7 +5598,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：vivid，帮我造个句 🙏"
+      "text": "Word of the day: vivid. Can you use it in a sentence? 🙏"
      }
     ]
    },
@@ -5609,7 +5609,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*vivid* —— 例句：\n\n> She remained vivid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*vivid* — for example:\n\n> She remained vivid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5620,7 +5620,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：coherent，帮我造个句"
+      "text": "Word of the day: coherent. Can you use it in a sentence?"
      }
     ]
    },
@@ -5631,7 +5631,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*coherent* —— 例句：\n\n> She remained coherent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*coherent* — for example:\n\n> She remained coherent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5642,7 +5642,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：diligent，帮我造个句"
+      "text": "Word of the day: diligent. Can you use it in a sentence?"
      }
     ]
    },
@@ -5653,7 +5653,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*diligent* —— 例句：\n\n> She remained diligent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*diligent* — for example:\n\n> She remained diligent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5664,7 +5664,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：eloquent，帮我造个句"
+      "text": "Word of the day: eloquent. Can you use it in a sentence?"
      }
     ]
    },
@@ -5675,7 +5675,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*eloquent* —— 例句：\n\n> She remained eloquent throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*eloquent* — for example:\n\n> She remained eloquent throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5686,7 +5686,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：frugal，帮我造个句"
+      "text": "Word of the day: frugal. Can you use it in a sentence?"
      }
     ]
    },
@@ -5697,7 +5697,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*frugal* —— 例句：\n\n> She remained frugal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*frugal* — for example:\n\n> She remained frugal throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5708,7 +5708,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：genuine，帮我造个句"
+      "text": "Word of the day: genuine. Can you use it in a sentence?"
      }
     ]
    },
@@ -5719,7 +5719,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*genuine* —— 例句：\n\n> She remained genuine throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*genuine* — for example:\n\n> She remained genuine throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5730,7 +5730,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：humble，帮我造个句"
+      "text": "Word of the day: humble. Can you use it in a sentence?"
      }
     ]
    },
@@ -5741,7 +5741,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*humble* —— 例句：\n\n> She remained humble throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*humble* — for example:\n\n> She remained humble throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5752,7 +5752,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：inevitable，帮我造个句"
+      "text": "Word of the day: inevitable. Can you use it in a sentence?"
      }
     ]
    },
@@ -5763,7 +5763,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*inevitable* —— 例句：\n\n> She remained inevitable throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*inevitable* — for example:\n\n> She remained inevitable throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5774,7 +5774,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：keen，帮我造个句"
+      "text": "Word of the day: keen. Can you use it in a sentence?"
      }
     ]
    },
@@ -5785,7 +5785,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*keen* —— 例句：\n\n> She remained keen throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*keen* — for example:\n\n> She remained keen throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5796,7 +5796,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：lucid，帮我造个句"
+      "text": "Word of the day: lucid. Can you use it in a sentence?"
      }
     ]
    },
@@ -5807,7 +5807,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*lucid* —— 例句：\n\n> She remained lucid throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*lucid* — for example:\n\n> She remained lucid throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5818,7 +5818,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：modest，帮我造个句"
+      "text": "Word of the day: modest. Can you use it in a sentence?"
      }
     ]
    },
@@ -5829,7 +5829,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*modest* —— 例句：\n\n> She remained modest throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*modest* — for example:\n\n> She remained modest throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5840,7 +5840,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：notion，帮我造个句"
+      "text": "Word of the day: notion. Can you use it in a sentence?"
      }
     ]
    },
@@ -5851,7 +5851,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*notion* —— 例句：\n\n> She remained notion throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*notion* — for example:\n\n> She remained notion throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5862,7 +5862,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：obscure，帮我造个句"
+      "text": "Word of the day: obscure. Can you use it in a sentence?"
      }
     ]
    },
@@ -5873,7 +5873,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*obscure* —— 例句：\n\n> She remained obscure throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*obscure* — for example:\n\n> She remained obscure throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5884,7 +5884,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：plausible，帮我造个句"
+      "text": "Word of the day: plausible. Can you use it in a sentence?"
      }
     ]
    },
@@ -5895,7 +5895,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*plausible* —— 例句：\n\n> She remained plausible throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*plausible* — for example:\n\n> She remained plausible throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5906,7 +5906,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：reluctant，帮我造个句 😊"
+      "text": "Word of the day: reluctant. Can you use it in a sentence? 😊"
      }
     ]
    },
@@ -5917,7 +5917,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*reluctant* —— 例句：\n\n> She remained reluctant throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*reluctant* — for example:\n\n> She remained reluctant throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5928,7 +5928,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：subtle，帮我造个句"
+      "text": "Word of the day: subtle. Can you use it in a sentence?"
      }
     ]
    },
@@ -5939,7 +5939,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*subtle* —— 例句：\n\n> She remained subtle throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*subtle* — for example:\n\n> She remained subtle throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5950,7 +5950,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：tedious，帮我造个句"
+      "text": "Word of the day: tedious. Can you use it in a sentence?"
      }
     ]
    },
@@ -5961,7 +5961,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*tedious* —— 例句：\n\n> She remained tedious throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*tedious* — for example:\n\n> She remained tedious throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5972,7 +5972,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：versatile，帮我造个句 🧑‍🍳"
+      "text": "Word of the day: versatile. Can you use it in a sentence? 🧑‍🍳"
      }
     ]
    },
@@ -5983,7 +5983,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*versatile* —— 例句：\n\n> She remained versatile throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*versatile* — for example:\n\n> She remained versatile throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -5994,7 +5994,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：whim，帮我造个句"
+      "text": "Word of the day: whim. Can you use it in a sentence?"
      }
     ]
    },
@@ -6005,7 +6005,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*whim* —— 例句：\n\n> She remained whim throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*whim* — for example:\n\n> She remained whim throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -6016,7 +6016,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：zeal，帮我造个句"
+      "text": "Word of the day: zeal. Can you use it in a sentence?"
      }
     ]
    },
@@ -6027,7 +6027,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*zeal* —— 例句：\n\n> She remained zeal throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*zeal* — for example:\n\n> She remained zeal throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -6038,7 +6038,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：abundant，帮我造个句"
+      "text": "Word of the day: abundant. Can you use it in a sentence?"
      }
     ]
    },
@@ -6049,7 +6049,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*abundant* —— 例句：\n\n> She remained abundant throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*abundant* — for example:\n\n> She remained abundant throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -6060,7 +6060,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：brisk，帮我造个句"
+      "text": "Word of the day: brisk. Can you use it in a sentence?"
      }
     ]
    },
@@ -6071,7 +6071,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*brisk* —— 例句：\n\n> She remained brisk throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*brisk* — for example:\n\n> She remained brisk throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -6082,7 +6082,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：cherish，帮我造个句 😊"
+      "text": "Word of the day: cherish. Can you use it in a sentence? 😊"
      }
     ]
    },
@@ -6093,7 +6093,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*cherish* —— 例句：\n\n> She remained cherish throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*cherish* — for example:\n\n> She remained cherish throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -6104,7 +6104,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：dwell，帮我造个句"
+      "text": "Word of the day: dwell. Can you use it in a sentence?"
      }
     ]
    },
@@ -6115,7 +6115,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*dwell* —— 例句：\n\n> She remained dwell throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*dwell* — for example:\n\n> She remained dwell throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    },
@@ -6126,7 +6126,7 @@
     "content": [
      {
       "type": "text",
-      "text": "今天的单词：endeavor，帮我造个句"
+      "text": "Word of the day: endeavor. Can you use it in a sentence?"
      }
     ]
    },
@@ -6137,7 +6137,7 @@
     "content": [
      {
       "type": "text",
-      "text": "*endeavor* —— 例句：\n\n> She remained endeavor throughout the long project.\n\n试着用它说一句关于你今天的话？"
+      "text": "*endeavor* — for example:\n\n> She remained endeavor throughout the long project.\n\nCan you use it in a sentence about your day?"
      }
     ]
    }
