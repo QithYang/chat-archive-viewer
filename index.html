@@ -2734,6 +2734,9 @@ async function startApp(data, opts) {
   CAV.events.bindAll();
   CAV.renderer.renderConvList();
   if (CAV.state.CONVS.length) openConv(CAV.state.CONVS[0].uuid);
+  // With only the sample data loaded, land on the stats view so a first
+  // visit shows the analytics; real data still opens on the latest chat.
+  if (CAV.state.CONVS.length && CAV.state.CONVS.every(c => isDemoUuid(c.uuid))) CAV.renderer.setView('stats');
   updateStorageStats();
 }
 
