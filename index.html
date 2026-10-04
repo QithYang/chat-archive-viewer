@@ -1769,6 +1769,12 @@ function computeStats(convs, norm) {
   }
   const spanDays = Math.round((toNoon(dayKeys[dayKeys.length-1]) - toNoon(dayKeys[0])) / 864e5) + 1;
 
+  // heatmap colour levels: split the non-zero days at their quartiles
+  // (nearest rank); level 1 is <= heatCuts[0], level 4 is above heatCuts[2]
+  const dayVals = Array.from(days.values()).sort((a, b) => a - b);
+  const q = p => dayVals[Math.min(dayVals.length-1, Math.floor(p * dayVals.length))];
+  const heatCuts = [q(0.25), q(0.5), q(0.75)];
+
   // contiguous month series, zero-filled
   const monthSeries = [];
   const m0 = new Date(firstTs), m1 = new Date(lastTs);
@@ -1793,6 +1799,7 @@ function computeStats(convs, norm) {
     days: Object.fromEntries(days),
     firstDay: dayKeys[0],
     lastDay: dayKeys[dayKeys.length-1],
+    heatCuts,
     weekday,
     hours,
     monthSeries,
@@ -1838,16 +1845,13 @@ CAV.charts.ring = function ring(pct, cls) {
 // GitHub-style grid ending at the week of `lastDay`, Sunday rows first
 // (same week layout as the timeline). Shows up to 53 weeks, fewer when the
 // data is shorter (at least 20) so a few months of data don't sit in an empty year.
-// Levels split non-zero days at quartiles.
-CAV.charts.heatmap = function heatmap(days, firstDay, lastDay) {
+// Levels use the quartile cuts from computeStats.
+CAV.charts.heatmap = function heatmap(days, firstDay, lastDay, cuts) {
   const T = STATS_TEXT, cell = 11, gap = 3, step = cell + gap, left = 22, top = 18;
   const toDate = k => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m-1, d); };
   const end = toDate(lastDay), first = toDate(firstDay);
   const weeks = Math.max(20, Math.min(53, Math.ceil((end - first) / 864e5 / 7) + 2));
   const start = new Date(end); start.setDate(end.getDate() - end.getDay() - (weeks - 1) * 7);
-  const vals = Object.values(days).sort((a, b) => a - b);
-  const q = p => vals[Math.min(vals.length-1, Math.floor(p * vals.length))];
-  const cuts = [q(0.25), q(0.5), q(0.75)];
   const lvl = v => !v ? 0 : v <= cuts[0] ? 1 : v <= cuts[1] ? 2 : v <= cuts[2] ? 3 : 4;
   const pad = n => String(n).padStart(2, '0');
   let rects = '', labels = '', lastMonth = -1;
@@ -1963,7 +1967,7 @@ CAV.renderer.renderStats = function renderStats() {
   </div>`;
   h += `<div class="st-grid st-g2">${charCard(names.u, s.chars.human, 'ch-u')}${charCard(names.a, s.chars.assistant, 'ch-a')}</div>`;
   h += `<div class="st-grid st-g2">${convCard(T.firstConv, s.firstConv)}${convCard(T.lastConv, s.lastConv)}</div>`;
-  h += sec(T.heat) + `<div class="st-card st-pad">${CAV.charts.heatmap(s.days, s.firstDay, s.lastDay)}</div>`;
+  h += sec(T.heat) + `<div class="st-card st-pad">${CAV.charts.heatmap(s.days, s.firstDay, s.lastDay, s.heatCuts)}</div>`;
   h += sec(T.rhythm) + `<div class="st-grid st-g2">
     <div class="st-card st-pad"><div class="st-l">${T.byWeekday}</div>${CAV.charts.bars(T.weekdays.map((label, i) => ({ label, v:s.weekday[i] })))}</div>
     <div class="st-card st-pad st-center"><div class="st-l">${T.byHour}</div>${CAV.charts.radial(s.hours)}</div>

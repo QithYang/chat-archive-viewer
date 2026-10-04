@@ -39,7 +39,7 @@ The **Stats** tab turns an export into a usage profile. It answers questions suc
 
 - **Local time throughout.** Days, hours and weekdays use the browser's time zone, so the numbers match what the timeline shows.
 - **Separated from the UI.** One pure function takes the conversation list and returns every figure; the charts only draw its output. The result is cached until the data changes (import, merge or delete).
-- **Tested on edge cases.** `node --test` runs the computation on small hand-made inputs with known answers: streaks across a month boundary, the 01:59 / 02:00 cut-off, whitespace and code points in character counts, combined emoji, stopwords and code in word counts, title topics in mixed Chinese and English, and messages or conversations with nothing visible.
+- **Tested on edge cases.** `node --test` runs the computation on small hand-made inputs with known answers: streaks across a month boundary, the 01:59 / 02:00 cut-off, whitespace and code points in character counts, combined emoji, stopwords and code in word counts, title topics in mixed Chinese and English, heatmap quartile cuts, the 00:00 / 23:59 hour buckets, and messages or conversations with nothing visible.
 - **No dependencies.** Charts are inline SVG drawn with the page's own colours and fonts; nothing is fetched from a CDN.
 
 ## Viewer features

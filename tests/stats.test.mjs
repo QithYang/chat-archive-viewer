@@ -23,6 +23,7 @@ const msg = (sender, localTime, text) => ({
   content: text == null ? [] : [{ type: 'text', text }],
 });
 const conv = (uuid, title, msgs) => ({ uuid, title, chat_messages: msgs });
+const p2 = n => String(n).padStart(2, '0');
 
 test('empty input', () => {
   assert.deepEqual(computeStats([], norm), { empty: true });
@@ -126,4 +127,33 @@ test('title topics: mixed Chinese and English titles, stopwords removed', () => 
     conv('b', 'The Python 正则 guide', [msg('human', '2026-03-02T10:00:00', 'x')]),
   ], norm);
   assert.deepEqual(s.titleTopics.map(x => x.w), ['python', '正则']);
+});
+
+test('heatmap levels: quartile cuts over active days only, nearest rank', () => {
+  // eight active days with 1..8 messages; empty days in between are ignored
+  const msgs = [];
+  for (let d = 1; d <= 8; d++) {
+    for (let i = 0; i < d; i++) msgs.push(msg('human', `2026-04-${p2(d * 2)}T10:${p2(i)}:00`, 'x'));
+  }
+  const s = computeStats([conv('a', 'A', msgs)], norm);
+  // sorted counts 1..8: indexes floor(0.25*8)=2, 4, 6 -> 3, 5, 7
+  assert.deepEqual(s.heatCuts, [3, 5, 7]);
+
+  const one = computeStats([conv('b', 'B', [msg('human', '2026-04-01T10:00:00', 'x')])], norm);
+  assert.deepEqual(one.heatCuts, [1, 1, 1]);
+});
+
+test('hour of day uses local time, 00:00 and 23:59 land in the end buckets', () => {
+  const s = computeStats([
+    conv('a', 'A', [
+      msg('human', '2026-05-01T00:00:00', 'a'),
+      msg('assistant', '2026-05-01T23:59:00', 'b'),
+      // 16:30 UTC is 00:30 the next day in UTC+8
+      { sender: 'human', created_at: '2026-05-01T16:30:00Z', content: [{ type: 'text', text: 'c' }] },
+    ]),
+  ], norm);
+  assert.equal(s.hours[0], 2);
+  assert.equal(s.hours[23], 1);
+  assert.equal(s.hours.reduce((a, b) => a + b, 0), s.msgCount);
+  assert.deepEqual(Object.keys(s.days).sort(), ['2026-05-01', '2026-05-02']);
 });
